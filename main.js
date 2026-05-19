@@ -16,7 +16,10 @@ if(toggle&&nav){
   }));
 }
 
-/* ===== SMOOTH SCROLL ===== */
+/* ===== ANCHOR LINKS ===== */
+/* Sin smooth-scroll: peleaba con el control del usuario y se sentia jumpy
+   en mobile (operator report 2026-05-19). Anchor links nativos + el ajuste
+   manual de offset por el header fixed lo resuelve sin animacion forzada. */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const id=a.getAttribute('href');
@@ -24,7 +27,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const target=document.querySelector(id);
     if(target){
       e.preventDefault();
-      target.scrollIntoView({behavior:'smooth',block:'start'});
+      const headerH=60;
+      const top=target.getBoundingClientRect().top+window.scrollY-headerH-8;
+      window.scrollTo(0,top);
     }
   });
 });
@@ -67,13 +72,9 @@ if(track&&dots.length){
     current=i;
   }
   dots.forEach((d,i)=>d.addEventListener('click',()=>scrollToSlide(i)));
-  // Auto-advance every 5s
-  let auto=setInterval(()=>{
-    current=(current+1)%dots.length;
-    scrollToSlide(current);
-  },5000);
-  // Pause on interaction
-  track.addEventListener('pointerdown',()=>clearInterval(auto));
+  // Auto-advance removido (operator 2026-05-19): para una presentacion el
+  // carrusel debe avanzar solo cuando el operator lo indique. El usuario
+  // controla con swipe horizontal o clic en los dots.
   // Sync dots with scroll
   track.addEventListener('scroll',()=>{
     const cards=Array.from(track.querySelectorAll('.impact-card'));
@@ -98,22 +99,10 @@ window.addEventListener('scroll',()=>{
   }
 },{passive:true});
 
-/* ===== SECTION FADE-IN ON SCROLL ===== */
-const sections=document.querySelectorAll('.mision-section,.agente-section,.audiencias-section,.soberania-section,.comparativa-section,.equipo-section');
-const secObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.opacity='1';
-      entry.target.style.transform='translateY(0)';
-      secObserver.unobserve(entry.target);
-    }
-  });
-},{threshold:.15});
-sections.forEach(s=>{
-  s.style.opacity='0';
-  s.style.transform='translateY(20px)';
-  s.style.transition='opacity .6s ease, transform .6s ease';
-  secObserver.observe(s);
-});
+/* ===== SECTION FADE-IN: removido (operator 2026-05-19).
+   El fade-in con translateY(20px) generaba layout shifts perceptibles como
+   "saltos" al scrollear. Para una pagina de presentacion ejecutiva preferimos
+   layout estable y scroll predecible. Las secciones aparecen renderizadas
+   normales desde el primer paint. */
 
 })();
