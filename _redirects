@@ -1,0 +1,18 @@
+# Cloudflare Pages · redirecciones y reglas anti-bot
+#
+# Sintaxis: <from> <to> <status>
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Bloquea raspadores LLM agresivos (opt-out explícito).
+# Nota: esto NO impide que entrenen con la página si ignoran el opt-out;
+# es señalización legal-friendly, refuerzo de robots.txt.
+/gptbot/*            /                       410
+/ccbot/*             /                       410
+
+# Atajos legibles (opcional, útiles para QR/print).
+/app                 https://chagra.guatoc.co  302
+/codigo              https://github.com/kortux/chagra  302
+/github              https://github.com/kortux/chagra  302
+/agpl                https://www.gnu.org/licenses/agpl-3.0.html  302
+
+# SPA fallback no aplica: este sitio es multipágina mínima (una sola).

@@ -1,0 +1,14 @@
+PLACEHOLDER · Reemplazar por screenshot real
+============================================
+
+Archivo esperado: chagra-screenshot-2.png
+Contenido sugerido: Diagnóstico foto IA — pantalla con la captura de
+                    una hoja y el análisis del modelo local.
+
+Cómo capturar:
+1. PWA -> Diagnóstico -> tomar foto de una hoja.
+2. Esperar que el modelo local responda.
+3. Screenshot del resultado (sin datos personales en pantalla).
+4. Optimizar con pngquant (<40 KB).
+5. Guardar como /landing/assets/chagra-screenshot-2.png
+6. Borrar este archivo .PLACEHOLDER.

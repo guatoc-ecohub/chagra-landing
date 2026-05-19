@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chagra · Agente agroecológico colombiano de código abierto</title>
+
+  <meta name="description" content="Chagra es una PWA agroecológica colombiana de código abierto. Conocimiento agroecológico en el celular del campesino. Sin internet. Sin nube extranjera. Sin agroquímicos.">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph mínimo (sin trackers) -->
+  <meta property="og:title" content="Chagra · Agente agroecológico colombiano de código abierto">
+  <meta property="og:description" content="488 especies, IA local, offline-first. AGPL-3.0.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:image" content="/assets/chagra-logo.svg">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/chagra-logo.svg">
+  <link rel="alternate" type="application/rss+xml" title="Chagra changelog" href="https://github.com/kortux/chagra/releases.atom">
+
+  <!-- Estilos self-hosted, sin fuentes externas -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Script self-hosted (no inline, CSP-friendly). Sólo se usa para
+       degradar imágenes rotas al placeholder SVG. -->
+  <script defer src="/main.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="Chagra · inicio">
+        <img src="/assets/chagra-logo.svg" alt="" width="28" height="28">
+        <span>chagra<span class="dot">.</span>app</span>
+      </a>
+      <nav class="nav-links" aria-label="navegación principal">
+        <a href="#que-hace">Qué hace</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#soberania">Soberanía</a>
+        <a href="#comparar">Comparar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">PWA agroecológica · Colombia · AGPL-3.0</p>
+        <h1>Chagra <span class="accent">·</span> agente agroecológico colombiano de código abierto</h1>
+        <p class="lead">
+          Conocimiento agroecológico en el celular del campesino.
+          Sin internet. Sin nube extranjera. Sin agroquímicos.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://chagra.guatoc.co" rel="noopener">Entrar a la app</a>
+          <a class="btn btn-ghost" href="https://github.com/kortux/chagra" rel="noopener">Ver código en GitHub</a>
+        </div>
+        <div class="hero-meta">
+          <span class="pill"><strong>488</strong> especies del catálogo</span>
+          <span class="pill"><strong>176</strong> fichas pedagógicas</span>
+          <span class="pill"><strong>52</strong> fuentes Tier&nbsp;A</span>
+          <span class="pill">offline-first</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUÉ HACE -->
+    <section id="que-hace">
+      <div class="container">
+        <p class="eyebrow">Qué hace</p>
+        <h2>Una herramienta de campo, no un panel de oficina.</h2>
+        <p>
+          Chagra acompaña al productor desde la siembra hasta la cosecha,
+          con datos verificados y agentes de IA que corren localmente.
+        </p>
+
+        <div class="grid" role="list">
+          <div class="card" role="listitem">
+            <span class="icon" aria-hidden="true">🌱</span>
+            <h3>Catálogo agroecológico colombiano</h3>
+            <p>488 especies con datos pedagógicos curados a partir de 52 fuentes Tier&nbsp;A.</p>
+          </div>
+          <div class="card" role="listitem">
+            <span class="icon" aria-hidden="true">🤖</span>
+            <h3>IA local, privacidad total</h3>
+            <p>Los modelos de diagnóstico y conversación corren en tu dispositivo. Tus fotos y datos no salen del celular.</p>
+          </div>
+          <div class="card" role="listitem">
+            <span class="icon" aria-hidden="true">📚</span>
+            <h3>176 fichas pedagógicas</h3>
+            <p>Manejo, asociaciones, riesgos y prácticas agroecológicas, ancladas a fuentes Tier&nbsp;A auditables.</p>
+          </div>
+          <div class="card" role="listitem">
+            <span class="icon" aria-hidden="true">🌾</span>
+            <h3>Funciona offline en el campo</h3>
+            <p>Sin señal, sin Wi-Fi, sin problema. Sincroniza cuando vuelva la conexión.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screenshots">
+      <div class="container">
+        <p class="eyebrow">Capturas</p>
+        <h2>Así se ve en el celular.</h2>
+        <p>Diseñada para pantallas pequeñas, manos sucias y luz de mediodía.</p>
+
+        <div class="screenshots">
+          <figure class="screenshot-card">
+            <img class="js-screenshot"
+                 src="/assets/chagra-screenshot-1.png"
+                 alt="Pantalla de bienvenida con estadísticas: 488 especies, 176 fichas, 52 fuentes">
+            <figcaption class="caption">Bienvenida · stats del catálogo</figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <img class="js-screenshot"
+                 src="/assets/chagra-screenshot-2.png"
+                 alt="Diagnóstico fotográfico de una hoja, con análisis del modelo local">
+            <figcaption class="caption">Diagnóstico foto · IA local</figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <img class="js-screenshot"
+                 src="/assets/chagra-screenshot-3.png"
+                 alt="Agente conversacional respondiendo una pregunta agroecológica">
+            <figcaption class="caption">Agente conversacional</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUIÉN -->
+    <section id="para-quien">
+      <div class="container">
+        <p class="eyebrow">Para quién</p>
+        <h2>Pensada para tres perfiles concretos.</h2>
+
+        <div class="profile-list">
+          <div class="profile">
+            <span class="tag">Gratis</span>
+            <h3>Campesinos pequeños (&lt; 5 ha)</h3>
+            <p>Acceso completo a catálogo, diagnóstico y agente, sin costo y sin registro.</p>
+          </div>
+          <div class="profile">
+            <span class="tag">Gratis</span>
+            <h3>Técnicos y extensionistas</h3>
+            <p>Herramienta de campo y referencia rápida durante visitas en zonas sin señal.</p>
+          </div>
+          <div class="profile">
+            <span class="tag">En desarrollo</span>
+            <h3>Cooperativas y fincas medianas</h3>
+            <p>Capa adicional con trazabilidad y reportes; tier en desarrollo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBERANÍA DIGITAL -->
+    <section id="soberania">
+      <div class="container">
+        <p class="eyebrow">Soberanía digital + código abierto</p>
+        <h2>El campesino no es el producto.</h2>
+        <p>
+          Chagra está construida sobre principios de soberanía digital:
+          el código, los datos y los modelos son auditables y tuyos.
+        </p>
+
+        <ul class="sov-list">
+          <li><strong>AGPL-3.0</strong> · código auditable en GitHub, derivados también deben ser libres.</li>
+          <li><strong>IA local</strong> · los modelos corren en tu dispositivo; tus datos no salen.</li>
+          <li><strong>Sin Big Tech</strong> · esta misma página no carga ni un script de Google, Meta, Cloudflare Insights o similares.</li>
+          <li><strong>Compatible con FarmOS</strong> · estándar internacional de gestión agrícola (FAO-aligned).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- COMPARAR -->
+    <section id="comparar">
+      <div class="container">
+        <p class="eyebrow">Diferencial</p>
+        <h2>Chagra frente a las apps comerciales.</h2>
+
+        <div class="compare-wrap">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col">Característica</th>
+                <th scope="col">Chagra</th>
+                <th scope="col">Apps comerciales típicas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Precio</td>
+                <td class="yes">Gratis</td>
+                <td class="no">Suscripción / freemium</td>
+              </tr>
+              <tr>
+                <td>Funcionamiento offline</td>
+                <td class="yes">Offline-first</td>
+                <td class="no">Requiere internet</td>
+              </tr>
+              <tr>
+                <td>Código</td>
+                <td class="yes">Abierto (AGPL-3.0)</td>
+                <td class="no">Cerrado</td>
+              </tr>
+              <tr>
+                <td>Inteligencia artificial</td>
+                <td class="yes">Local, en tu dispositivo</td>
+                <td class="no">En la nube extranjera</td>
+              </tr>
+              <tr>
+                <td>Enfoque productivo</td>
+                <td class="yes">Agroecológico</td>
+                <td class="no">Agricultura industrial</td>
+              </tr>
+              <tr>
+                <td>Datos del usuario</td>
+                <td class="yes">Se quedan contigo</td>
+                <td class="no">Se monetizan</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="cta-final">
+      <div class="container">
+        <h2>Probala ahora.</h2>
+        <p>No necesitas registro ni descargar nada. Abre en el navegador del celular.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://chagra.guatoc.co" rel="noopener">Entrar a la app</a>
+          <a class="btn btn-ghost" href="https://github.com/kortux/chagra" rel="noopener">Leer el código</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="left">
+        Hecho desde Guatoc, Choachí, Cundinamarca.
+        Una iniciativa de <strong>Guatoc-EcoHub</strong>.
+        Código bajo <a href="https://www.gnu.org/licenses/agpl-3.0.html" rel="noopener">AGPL-3.0</a>.
+      </div>
+      <div class="right small">
+        <a href="https://github.com/kortux/chagra" rel="noopener">GitHub</a>
+        &middot;
+        <span>&copy; 2026</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Chagra logo placeholder · hoja-semilla estilizada
+  AGPL-3.0 · Guatoc-EcoHub
+  Colores: emerald-500 (#10b981) + emerald-300 (#6ee7b7)
+  Operator puede reemplazar este SVG por el oficial cuando esté listo.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Chagra">
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <!-- Tallo -->
+  <path d="M32 56 C 32 44, 32 36, 32 24" stroke="#065f46" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Hoja izquierda -->
+  <path d="M32 36 C 18 32, 12 22, 16 12 C 26 14, 32 22, 32 36 Z" fill="url(#leaf)"/>
+  <!-- Hoja derecha -->
+  <path d="M32 30 C 46 26, 52 16, 48 6 C 38 8, 32 16, 32 30 Z" fill="url(#leaf)" opacity="0.9"/>
+  <!-- Semilla -->
+  <circle cx="32" cy="22" r="3" fill="#fbbf24"/>
+</svg>

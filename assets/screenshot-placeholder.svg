@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 667" width="375" height="667" role="img" aria-label="Captura de pantalla pendiente">
+  <rect width="375" height="667" fill="#0f172a"/>
+  <rect x="16" y="16" width="343" height="635" rx="24" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="187" cy="240" r="48" fill="#065f46"/>
+  <text x="187" y="252" font-family="system-ui, sans-serif" font-size="48" fill="#34d399" text-anchor="middle" font-weight="700">i</text>
+  <text x="187" y="340" font-family="system-ui, sans-serif" font-size="18" fill="#cbd5e1" text-anchor="middle" font-weight="600">Captura pendiente</text>
+  <text x="187" y="370" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Reemplazar por PNG real antes del demo</text>
+  <text x="187" y="630" font-family="system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">chagra · agroecología abierta</text>
+</svg>

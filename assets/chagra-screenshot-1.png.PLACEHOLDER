@@ -1,0 +1,18 @@
+PLACEHOLDER · Reemplazar por screenshot real
+============================================
+
+Archivo esperado: chagra-screenshot-1.png
+Contenido sugerido: WelcomeStatsHero modal expandido en la PWA
+                    (488 especies, 176 fichas, etc.)
+
+Cómo capturar:
+1. Abrir https://chagra.guatoc.co en Chrome móvil (375x812 recomendado).
+2. Dejar cargar el WelcomeStatsHero, tocar para expandir.
+3. F12 -> Device toolbar -> screenshot (o usar `adb shell screencap`).
+4. Optimizar con pngquant para <40 KB:
+     pngquant --quality=65-80 --strip chagra-screenshot-1.png
+5. Guardar como /landing/assets/chagra-screenshot-1.png
+6. Borrar este archivo .PLACEHOLDER.
+
+Si no hay screenshot real al deploy, la landing degrada el bloque
+correspondiente vía CSS (ver styles.css clase .screenshot-card).
