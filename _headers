@@ -1,30 +1,16 @@
-# Cloudflare Pages · cabeceras de seguridad
-# Aplica a chagra.app y chagra.bio
-#
-# CSP estricta: nada externo, ni siquiera fuentes. Justificación: la
-# landing es 100% self-hosted (system-ui, CSS local, sin scripts).
-
 /*
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
-  X-Frame-Options: DENY
+  Cache-Control: public, max-age=3600
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
   X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
 
-# Assets estáticos cacheables 1 año (immutable). Cambia el filename si
-# necesitas bust de cache (no hay hashing automático en este sitio).
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400
+
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/styles.css
-  Cache-Control: public, max-age=86400
-
-/main.js
-  Cache-Control: public, max-age=86400
-
-# HTML root: cache corto para que los cambios de copy se propaguen.
-/
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=604800
