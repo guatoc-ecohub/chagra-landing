@@ -7,11 +7,11 @@
 <meta name="theme-color" content="#0f172a">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Chagra — Agente Agroecológico Colombiano">
-<meta property="og:description" content="488 especies, 176 fichas pedagógicas, 19 biopreparados, IA local. Construido en Choachí, Colombia.">
+<meta property="og:description" content="496 especies, 176 fichas pedagógicas, 32 biopreparados, IA local. Construido en Choachí, Colombia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chagra.app">
 <title>Chagra — Agente Agroecológico Colombiano</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link rel="stylesheet" href="styles.css?v=1779224830">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%2310b981'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%2306b6d4' opacity='.7'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23f8fafc' stroke-width='4'/%3E%3C/svg%3E">
 </head>
@@ -39,6 +39,7 @@
 <li role="none"><a href="#agente" role="menuitem">Qué hace</a></li>
 <li role="none"><a href="#audiencias" role="menuitem">Para quién</a></li>
 <li role="none"><a href="#codigo" role="menuitem">Código</a></li>
+<li role="none"><a href="#aprender" role="menuitem">Aprender</a></li>
 <li role="none"><a href="#equipo" role="menuitem">Equipo</a></li>
 </ul>
 </nav>
@@ -57,7 +58,7 @@
 <div class="hero-content">
 <div class="badge-ver">
 <span class="badge-dot"></span>
-<span>v0.12.139 · AGPL-3.0 · Construido en Choachí</span>
+<span>v0.12.159 · AGPL-3.0 · Construido en Choachí</span>
 </div>
 <h1 class="hero-title"><span class="hero-brand">Chagra</span></h1>
 <p class="hero-tagline">El agente agroecológico colombiano</p>
@@ -74,9 +75,9 @@
 </div>
 </div>
 <div class="stats-bar" role="region" aria-label="Estadísticas principales">
-<div class="stat"><span class="stat-num" data-target="488">0</span><span class="stat-label">Especies del catálogo</span></div>
+<div class="stat"><span class="stat-num" data-target="496">0</span><span class="stat-label">Especies del catálogo</span></div>
 <div class="stat"><span class="stat-num" data-target="176">0</span><span class="stat-label">Fichas pedagógicas</span></div>
-<div class="stat"><span class="stat-num" data-target="19">0</span><span class="stat-label">Biopreparados</span></div>
+<div class="stat"><span class="stat-num" data-target="32">0</span><span class="stat-label">Biopreparados</span></div>
 <div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label">Pueblos custodios</span></div>
 </div>
 </section>
@@ -96,7 +97,7 @@
 <svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
 </div>
 <h3>Validado científicamente</h3>
-<p>488 especies nativas, 19 biopreparados y 176 fichas con respaldo de AGROSAVIA, UNAL, Instituto Humboldt e IDEAM.</p>
+<p>496 especies, 32 biopreparados y 176 fichas con fuentes científicas de AGROSAVIA, UNAL Palmira, Instituto Humboldt e IDEAM citadas en el corpus.</p>
 </article>
 <article class="mision-pill">
 <div class="mision-pill-icon" aria-hidden="true">
@@ -117,7 +118,7 @@
 <svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4C16 14 6 18 6 28s10 16 18 16 18-6 18-16-10-14-18-24z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 30c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="18" cy="22" r="2" fill="currentColor"/><circle cx="30" cy="22" r="2" fill="currentColor"/></svg>
 </div>
 <h3>En su idioma</h3>
-<p>Español colombiano regional. Reconocimiento de voz con regionalismos campesinos. El conocimiento solo sirve si se entiende.</p>
+<p>Español colombiano regional. Síntesis de voz local (Kokoro-TTS) que lee las fichas en voz alta. El conocimiento solo sirve si se entiende.</p>
 </article>
 </div>
 <aside class="mision-etimologia">
@@ -150,7 +151,7 @@
 <article class="impact-card">
 <div class="impact-icon icon-bioprep" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="currentColor" opacity=".1"/><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 14v20M14 19l10-5 10 5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".6"/></svg></div>
 <h3>El agente Chagra reemplaza químicos</h3>
-<p>19 biopreparados orgánicos sugeridos: Bocashi, Caldo Bordelés, Trichoderma, Neem, Bacillus thuringiensis. Sin glifosato, sin agroquímicos.</p>
+<p>32 biopreparados orgánicos sugeridos: Bocashi, Caldo Bordelés, Trichoderma, Neem, Bacillus thuringiensis. Sin glifosato, sin agroquímicos.</p>
 </article>
 <article class="impact-card">
 <div class="impact-icon icon-endemica" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4v40M4 24h40" stroke="currentColor" stroke-width="2" opacity=".3"/><circle cx="24" cy="24" r="12" fill="currentColor" opacity=".1"/><path d="M24 12c-4 4-12 4-12 12s8 12 12 12 12-4 12-12-8-8-12-12z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
@@ -240,7 +241,7 @@
 </div>
 <div class="bullet">
 <div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div><h4>Construido en Choachí, Colombia</h4><p>A 1.400 metros sobre el nivel del mar, en la vertiente oriental de la Cordillera Oriental. Construido con código limpio y respeto profundo por el campesino.</p></div>
+<div><h4>Construido en Choachí, Colombia</h4><p>A 2.538 metros sobre el nivel del mar, en la vertiente oriental de la Cordillera Oriental. Construido con código limpio y respeto profundo por el campesino.</p></div>
 </div>
 </div>
 </div>
@@ -270,6 +271,32 @@
 </div>
 </section>
 
+<!-- ======== APRENDER ======== -->
+<section id="aprender" class="aprender-section">
+<div class="section-inner">
+<header class="section-header">
+<p class="section-eyebrow">Aprender</p>
+<h2 class="section-title">Notas técnicas del campo</h2>
+<p class="section-desc">Textos didácticos para el agricultor, el técnico y el entusiasta. Cada uno se explica primero en lenguaje simple y después con la evidencia científica revisada por pares. Sin promesas vacías, sin marketing.</p>
+</header>
+<div class="aprender-grid">
+<a class="aprender-card" href="/aprender/transicion-15-15-15">
+<span class="aprender-tag">Suelos · Nutrición</span>
+<h3>Del 15-15-15 a la agroecología</h3>
+<p>Lo que descubrió la ciencia en los últimos 30 años sobre NPK, cal viva y suelo vivo. Plan de transición de 3 años para quien lleva décadas con el paquete sintético.</p>
+<span class="aprender-meta">~18 min · referencias peer-review</span>
+</a>
+<a class="aprender-card" href="/aprender/bioseguridad">
+<span class="aprender-tag">Salud · Bioseguridad</span>
+<h3>Bioseguridad en el campo</h3>
+<p>Lo que la ciencia probó sobre glifosato, paraquat y otros químicos. Caso Bayer-Monsanto. EPP mínimo. Riesgos también en biopreparados orgánicos.</p>
+<span class="aprender-meta">~25 min · evidencia peer-review</span>
+</a>
+</div>
+<p class="aprender-footer-note">Próximos artículos: variedades AGROSAVIA · manejo integrado de plagas · suelo vivo y micorrizas.</p>
+</div>
+</section>
+
 <!-- ======== EQUIPO ======== -->
 <section id="equipo" class="equipo-section">
 <div class="section-inner">
@@ -284,7 +311,7 @@
 <div class="equipo-bio">
 <h3>Miguel Guerrero</h3>
 <p class="equipo-role">Desarrollador · Agroecólogo aficionado · Operador</p>
-<p>Dev solo construyendo Chagra desde <strong>Guatoc, Choachí, Cundinamarca</strong> — a 1.400 msnm en la vertiente oriental de la Cordillera Oriental. Sin equipo corporativo, sin inversionistas de riesgo, sin aceleradoras. Solo código limpio, conocimiento agroecológico validado y un propósito: que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
+<p>Dev solo construyendo Chagra desde <strong>Guatoc, Choachí, Cundinamarca</strong> — a 2.538 msnm en la vertiente oriental de la Cordillera Oriental. Sin equipo corporativo, sin inversionistas de riesgo, sin aceleradoras. Solo código limpio, conocimiento agroecológico validado y un propósito: que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
 <div class="equipo-contacto">
 <p><strong>¿Quieres validar especies, contribuir código o usar Chagra en tu finca?</strong></p>
 <a href="mailto:chagra@guatoc.co" class="btn btn-primary">Escríbenos</a>
@@ -292,7 +319,7 @@
 </div>
 </div>
 <div class="aliados-section">
-<h4>Aliados que validan el conocimiento</h4>
+<h4>Fuentes científicas citadas en el corpus</h4>
 <div class="aliados-logos">
 <span class="aliado">AGROSAVIA</span>
 <span class="aliado">UNAL Palmira</span>
@@ -302,9 +329,9 @@
 </div>
 </div>
 <div class="pueblos-section">
-<h4>Saberes custodiados por 8 pueblos originarios</h4>
+<h4>Saberes etnobotánicos referenciados desde literatura científica</h4>
 <p class="pueblos-list">Emberá · Wounaan · Tikuna · Bora · Muisca · Wayuu · Kogui · Inga</p>
-<p class="pueblos-agradecimiento">El conocimiento ancestral documentado en Chagra es compartido con permiso y respeto. Gracias a los custodios que preservan estos saberes vivos.</p>
+<p class="pueblos-agradecimiento">Las referencias provienen de literatura académica colombiana (Bernal et al. 2015 Catálogo Plantas y Líquenes Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). No representan convenios formales de uso de conocimiento tradicional con las comunidades &mdash; ese trabajo está pendiente bajo Ley 21/1991 (Convenio 169 OIT) y Decreto 1320/1998.</p>
 </div>
 </div>
 </section>
