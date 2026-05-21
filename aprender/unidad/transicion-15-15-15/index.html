@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Unidad didáctica: Del 15-15-15 a la agroecología. Transición agroecológica para productores colombianos.">
+<title>Del 15-15-15 a la agroecología — Chagra</title>
+<style>
+/* === RESET & BASE === */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:19px}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  line-height:1.8;
+  background:#0f172a;
+  color:#e2e8f0;
+  min-height:100dvh;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* === SCREEN SYSTEM === */
+.screen{display:none;min-height:100dvh;padding:0}
+.screen.active{display:block}
+
+/* === PROGRESS BAR === */
+.progress-bar{
+  position:fixed;top:0;left:0;width:100%;height:4px;
+  background:#1e293b;z-index:1000;
+}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,#10b981,#06b6d4);
+  transition:width .4s ease;width:0;
+}
+
+/* === LAYOUT === */
+.container{max-width:720px;margin:0 auto;padding:1.2rem 1rem 4rem}
+.container-wide{max-width:960px;margin:0 auto;padding:1.2rem 1rem 4rem}
+
+/* === TYPOGRAPHY === */
+h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;line-height:1.25;margin-bottom:.6rem;color:#f1f5f9}
+h2{font-size:clamp(1.3rem,4vw,1.7rem);font-weight:700;margin:1.5rem 0 .6rem;color:#f1f5f9}
+h3{font-size:clamp(1.05rem,3vw,1.25rem);font-weight:600;margin:1.3rem 0 .5rem;color:#cbd5e1}
+p{margin-bottom:1rem;font-size:1rem}
+.subtitle{color:#94a3b8;font-size:1.05rem;margin-bottom:1.5rem}
+.part-number{
+  font-size:clamp(3rem,10vw,5rem);font-weight:800;
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1;display:block;margin-bottom:.2rem;
+}
+
+/* === CARDS === */
+.card{
+  background:#1e293b;border-radius:12px;padding:1.2rem;margin:1rem 0;
+  border:1px solid #334155;transition:border-color .2s;
+}
+.card:hover{border-color:#475569}
+.card-highlight{border-left:4px solid #10b981}
+.card-warning{border-left:4px solid #fbbf24}
+.card-danger{border-left:4px solid #f87171}
+
+/* === KEY TAKEAWAYS === */
+.kt-grid{display:grid;gap:1rem;margin:1.5rem 0}
+@media(min-width:640px){.kt-grid{grid-template-columns:repeat(2,1fr)}}
+.kt-card{
+  background:#1e293b;border-radius:10px;padding:1rem;
+  border:1px solid #334155;display:flex;gap:.8rem;align-items:flex-start;
+}
+.kt-icon{
+  width:40px;height:40px;min-width:40px;border-radius:8px;
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.kt-card p{margin:0;font-size:.95rem;line-height:1.6}
+
+/* === BUTTONS === */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.75rem 1.5rem;border-radius:8px;font-size:1rem;font-weight:600;
+  transition:all .2s;text-decoration:none;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#10b981,#059669);color:#fff;
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(16,185,129,.3)}
+.btn-secondary{
+  background:#1e293b;color:#e2e8f0;border:1px solid #475569;
+}
+.btn-secondary:hover{background:#334155}
+.btn-ghost{color:#94a3b8}
+.btn-ghost:hover{color:#e2e8f0}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* === NAV BUTTONS === */
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:2rem;padding-top:1rem;border-top:1px solid #334155;gap:1rem;
+}
+.nav-btns .btn{flex:1;max-width:220px}
+
+/* === QUIZ === */
+.quiz-container{background:#1e293b;border-radius:12px;padding:1.2rem;margin:1.5rem 0;border:1px solid #334155}
+.quiz-question{font-weight:600;margin-bottom:1rem;color:#f1f5f9;font-size:1.05rem}
+.quiz-option{
+  display:block;width:100%;text-align:left;padding:.8rem 1rem;
+  margin:.4rem 0;border-radius:8px;background:#0f172a;border:1px solid #334155;
+  color:#e2e8f0;font-size:.95rem;cursor:pointer;transition:all .15s;
+}
+.quiz-option:hover:not(.disabled){border-color:#10b981;background:#162032}
+.quiz-option.correct{border-color:#10b981;background:rgba(16,185,129,.15)}
+.quiz-option.incorrect{border-color:#f87171;background:rgba(248,113,113,.15)}
+.quiz-option.disabled{pointer-events:none;opacity:.7}
+.quiz-feedback{
+  margin-top:.8rem;padding:.8rem;border-radius:8px;font-size:.95rem;display:none;
+}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:rgba(16,185,129,.15);border:1px solid #10b981}
+.quiz-feedback.err{background:rgba(248,113,113,.15);border:1px solid #f87171}
+.quiz-score{color:#10b981;font-weight:700;font-size:1.1rem}
+
+/* === SVG CONTAINERS === */
+.svg-wrap{
+  background:#1e293b;border-radius:12px;padding:1.2rem;margin:1.5rem 0;
+  border:1px solid #334155;text-align:center;
+}
+.svg-wrap svg{max-width:100%;height:auto}
+
+/* === CALCULATORS === */
+.calc-box{
+  background:#1e293b;border-radius:12px;padding:1.2rem;margin:1.5rem 0;
+  border:1px solid #334155;
+}
+.calc-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:end;margin:.6rem 0}
+.calc-field{flex:1;min-width:140px}
+.calc-field label{display:block;font-size:.85rem;color:#94a3b8;margin-bottom:.3rem}
+.calc-field input,.calc-field select{
+  width:100%;padding:.6rem .8rem;border-radius:6px;
+  background:#0f172a;border:1px solid #475569;color:#e2e8f0;font-size:1rem;
+}
+.calc-field input:focus,.calc-field select:focus{outline:none;border-color:#10b981}
+.calc-output{
+  background:#0f172a;border-radius:8px;padding:1rem;margin-top:1rem;
+  border:1px solid #334155;font-size:.95rem;
+}
+.calc-output .val{color:#10b981;font-weight:700;font-size:1.1rem}
+
+/* === TABLES === */
+.data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.data-table th,.data-table td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid #334155}
+.data-table th{background:#162032;color:#94a3b8;font-weight:600;font-size:.85rem;text-transform:uppercase}
+.data-table tr:hover{background:rgba(255,255,255,.03)}
+
+/* === CERTIFICATE === */
+.cert-frame{
+  background:linear-gradient(135deg,#1e293b,#0f172a);
+  border:3px solid #10b981;border-radius:16px;padding:2rem;text-align:center;
+  margin:1.5rem 0;
+}
+.cert-logo{
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;font-size:1.8rem;
+}
+
+/* === HERO === */
+.hero{
+  min-height:100dvh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:2rem 1rem;position:relative;
+}
+.hero-svg{width:220px;height:220px;margin-bottom:1.5rem}
+.hero h1{margin-bottom:.5rem}
+.hero .pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1rem 0}
+.pill{
+  background:#1e293b;border:1px solid #334155;padding:.35rem .8rem;
+  border-radius:20px;font-size:.85rem;color:#94a3b8;
+}
+
+/* === COMPACT LIST === */
+.compact-list{list-style:none;margin:1rem 0;padding:0}
+.compact-list li{
+  padding:.5rem 0 .5rem 1.5rem;position:relative;border-bottom:1px solid #1e293b;
+}
+.compact-list li::before{
+  content:"";position:absolute;left:0;top:.85rem;
+  width:6px;height:6px;border-radius:50%;background:#10b981;
+}
+
+/* === TIMELINE === */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:"";position:absolute;left:.5rem;top:0;bottom:0;
+  width:2px;background:linear-gradient(180deg,#10b981,#06b6d4);
+}
+.timeline-item{position:relative;margin-bottom:1.5rem;padding-left:1rem}
+.timeline-item::before{
+  content:"";position:absolute;left:-1.4rem;top:.4rem;
+  width:12px;height:12px;border-radius:50%;background:#10b981;border:2px solid #0f172a;
+}
+
+/* === TOOLTIP === */
+.tooltip{position:relative;display:inline-block}
+.tooltip .tip{
+  display:none;position:absolute;bottom:120%;left:50%;transform:translateX(-50%);
+  background:#0f172a;color:#e2e8f0;padding:.5rem .8rem;border-radius:6px;
+  font-size:.8rem;white-space:nowrap;border:1px solid #334155;z-index:100;
+}
+.tooltip:hover .tip{display:block}
+
+/* === TOGGLE === */
+.toggle-row{display:flex;gap:1rem;justify-content:center;margin:1rem 0;flex-wrap:wrap}
+.toggle-btn{
+  padding:.5rem 1rem;border-radius:20px;border:1px solid #334155;
+  background:#0f172a;color:#94a3b8;font-size:.9rem;cursor:pointer;transition:all .2s;
+}
+.toggle-btn.active{background:#10b981;color:#fff;border-color:#10b981}
+
+/* === RESPONSIVE === */
+@media(max-width:480px){
+  .container,.container-wide{padding:.8rem .7rem 3rem}
+  html{font-size:17px}
+  .calc-row{flex-direction:column;align-items:stretch}
+  .nav-btns{flex-direction:column}
+  .nav-btns .btn{max-width:none;width:100%}
+  .kt-grid{grid-template-columns:1fr}
+  .hero-svg{width:160px;height:160px}
+}
+
+/* === PRINT === */
+@media print{
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.5}
+  .screen{display:block!important;border-bottom:2px solid #ccc;padding:1rem 0;margin:1rem 0;page-break-inside:avoid}
+  .progress-bar,.nav-btns,.quiz-container,.calc-box{display:none!important}
+  h1,h2,h3{color:#000}
+  .card{background:#f5f5f5;border:1px solid #ddd;color:#000}
+  .svg-wrap{background:#f5f5f5;border:1px solid #ddd}
+  .hero{min-height:auto;padding:1rem}
+  .hero-svg{width:120px;height:120px}
+  .cert-frame{border-color:#333}
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.screen.active .container,.screen.active .container-wide,.screen.active .hero{
+  animation:fadeIn .3s ease;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.microbe{animation:pulse 2s infinite}
+@keyframes growBar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes flowLine{0%{stroke-dashoffset:100}100%{stroke-dashoffset:0}}
+
+/* === HELPERS === */
+.text-center{text-align:center}
+.text-emerald{color:#10b981}
+.text-cyan{color:#06b6d4}
+.text-amber{color:#fbbf24}
+.text-red{color:#f87171}
+.text-dim{color:#94a3b8}
+.font-bold{font-weight:700}
+.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}
+.mb-1{margin-bottom:.5rem}.mb-2{margin-bottom:1rem}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" role="progressbar" aria-label="Progreso de la unidad">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- ==================== SCREEN 0: PORTADA ==================== -->
+<div class="screen active" id="screen-portada" data-screen="portada">
+  <div class="hero">
+    <!-- Hero SVG: plant growing, NPK discarded -->
+    <svg class="hero-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustracion de transición agroecológica">
+      <defs>
+        <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#10b981"/>
+          <stop offset="100%" stop-color="#06b6d4"/>
+        </linearGradient>
+      </defs>
+      <!-- NPK bags faded -->
+      <g opacity="0.2">
+        <rect x="20" y="140" width="30" height="35" rx="3" fill="#f87171"/>
+        <text x="35" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">N</text>
+        <rect x="55" y="145" width="30" height="35" rx="3" fill="#fbbf24"/>
+        <text x="70" y="167" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">P</text>
+        <rect x="90" y="148" width="30" height="35" rx="3" fill="#f87171"/>
+        <text x="105" y="170" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">K</text>
+      </g>
+      <!-- Plant -->
+      <path d="M100 180 Q100 130 100 110" stroke="#10b981" stroke-width="3" fill="none"/>
+      <ellipse cx="82" cy="105" rx="18" ry="12" fill="url(#gLeaf)" transform="rotate(-30,82,105)"/>
+      <ellipse cx="118" cy="100" rx="18" ry="12" fill="url(#gLeaf)" transform="rotate(30,118,100)"/>
+      <ellipse cx="85" cy="80" rx="16" ry="10" fill="url(#gLeaf)" transform="rotate(-20,85,80)"/>
+      <ellipse cx="115" cy="75" rx="16" ry="10" fill="url(#gLeaf)" transform="rotate(20,115,75)"/>
+      <ellipse cx="100" cy="55" rx="14" ry="9" fill="url(#gLeaf)"/>
+      <!-- Growth arrow -->
+      <path d="M135 160 Q145 120 135 80" stroke="#10b981" stroke-width="2.5" fill="none" stroke-dasharray="4,3"/>
+      <polygon points="132,82 138,82 135,72" fill="#10b981"/>
+      <!-- Soil -->
+      <rect x="10" y="180" width="180" height="15" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      <circle cx="40" cy="187" r="2" fill="#10b981" opacity="0.6"/>
+      <circle cx="80" cy="188" r="1.5" fill="#10b981" opacity="0.4"/>
+      <circle cx="130" cy="186" r="2" fill="#10b981" opacity="0.5"/>
+      <circle cx="165" cy="188" r="1.5" fill="#10b981" opacity="0.7"/>
+    </svg>
+
+    <h1>Del 15-15-15 a la agroecología</h1>
+    <p class="subtitle">Lo que descubrio la ciencia en los ultimos 30 anos</p>
+    <p class="text-dim" style="font-size:.95rem;margin-bottom:1.5rem">Para quien lleva decadas con el paquete sintetico.</p>
+
+    <div class="pills">
+      <span class="pill">30 min</span>
+      <span class="pill">7 modulos</span>
+      <span class="pill">15 referencias peer-review</span>
+      <span class="pill">3 calculadoras</span>
+    </div>
+
+    <div id="prevProgressBox" class="hidden" style="margin:1rem 0;padding:.8rem 1rem;background:#162032;border-radius:8px;border:1px solid #334155">
+      <p class="text-dim" style="margin:0;font-size:.9rem">Tu progreso anterior: <span id="prevPct" class="text-emerald font-bold">0%</span> completado</p>
+    </div>
+
+    <button class="btn btn-primary" onclick="goTo('intro')" style="margin-top:1rem;font-size:1.1rem;padding:.9rem 2.2rem">
+      Empezar la unidad
+    </button>
+
+    <p class="text-dim mt-2" style="font-size:.85rem">Progreso guardado localmente en tu dispositivo</p>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 1: INTRO + KEY TAKEAWAYS ==================== -->
+<div class="screen" id="screen-intro" data-screen="intro">
+  <div class="container">
+    <h1>Del 15-15-15 a la agroecología</h1>
+    <p class="subtitle">Lo importante en 1 minuto</p>
+
+    <div class="kt-grid">
+      <div class="kt-card">
+        <div class="kt-icon">&#129516;</div>
+        <div>
+          <p style="font-weight:600;color:#f1f5f9;margin-bottom:.3rem">Suelo vivo</p>
+          <p>1 gramo contiene <strong class="text-emerald">10&#x2079;-10&#x00B9;&#x2070;</strong> microbios que solubilizan nutrientes para la planta.</p>
+        </div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#9889;</div>
+        <div>
+          <p style="font-weight:600;color:#f1f5f9;margin-bottom:.3rem">Eficiencia oculta</p>
+          <p>El NPK 15-15-15 tiene solo <strong class="text-amber">30-50%</strong> eficiencia real; el resto se pierde.</p>
+        </div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#128293;</div>
+        <div>
+          <p style="font-weight:600;color:#f1f5f9;margin-bottom:.3rem">La cal mata</p>
+          <p>Cal viva (CaO) y cal hidratada <strong class="text-red">NO van en suelo</strong>. Solo dolomitica con analisis.</p>
+        </div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#127793;</div>
+        <div>
+          <p style="font-weight:600;color:#f1f5f9;margin-bottom:.3rem">Transición de 3 anos</p>
+          <p>Bocashi + abonos verdes + biopreparados. Ano 3 iguala o supera rendimiento.</p>
+        </div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#128200;</div>
+        <div>
+          <p style="font-weight:600;color:#f1f5f9;margin-bottom:.3rem">Recuperacion real</p>
+          <p>Ano 1: <strong class="text-red">-10 a -25%</strong>. Ano 2: recupera. Ano 3+: <strong class="text-emerald">iguala o supera</strong> con costos 40-60% menores.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('portada')">&#8592; Portada</button>
+      <button class="btn btn-primary" onclick="goTo('parte_1')">Continuar a Parte 1 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 2: PARTE 1 ==================== -->
+<div class="screen" id="screen-parte_1" data-screen="parte_1">
+  <div class="container">
+    <span class="part-number">01</span>
+    <h2>El suelo no es un sustrato inerte</h2>
+
+    <p>Durante 60 anos la agronomia industrial enseno implicitamente que el suelo es una matriz fisica que sostiene la planta y que la nutrición se reduce a tres macronutrientes solubles (N, P, K). Si la planta crece, todo esta bien.</p>
+
+    <p>Esa vision tiene un nombre: <strong class="text-emerald">reduccionismo nutricional</strong>. Funciono. Aumento rendimientos. Y al mismo tiempo, los suelos del mundo perdieron entre <strong>30% y 75%</strong> de su carbono orgánico (Lal 2004 <em>Science</em> 304:1623). En Colombia, los suelos cafeteros tradicionales perdieron en promedio el <strong class="text-amber">50%</strong> de su materia orgánica entre 1970 y 2010 según mediciones de CENICAFE.</p>
+
+    <!-- SVG 1: Perdida de carbono -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Perdida de carbono orgánico: suelos cafeteros colombianos</h3>
+      <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" id="svgCarbono" style="max-width:400px">
+        <!-- 1970 bar -->
+        <text x="80" y="20" text-anchor="middle" fill="#94a3b8" font-size="12">1970</text>
+        <rect id="bar1970" x="50" y="30" width="60" height="150" rx="4" fill="#10b981" opacity="0.9"/>
+        <text x="80" y="115" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" id="txt1970">100%</text>
+        <text x="80" y="195" text-anchor="middle" fill="#94a3b8" font-size="10">MO alta</text>
+
+        <!-- Arrow -->
+        <path d="M130 105 L170 105" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+        <defs><marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="#475569"/></marker></defs>
+
+        <!-- 2010 bar -->
+        <text x="220" y="20" text-anchor="middle" fill="#94a3b8" font-size="12">2010</text>
+        <rect id="bar2010bg" x="190" y="105" width="60" height="75" rx="4" fill="#334155" opacity="0.5"/>
+        <rect id="bar2010" x="190" y="105" width="60" height="75" rx="4" fill="#10b981" opacity="0.5"/>
+        <text x="220" y="145" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" id="txt2010">~50%</text>
+        <text x="220" y="195" text-anchor="middle" fill="#f87171" font-size="10">50% perdido</text>
+
+        <!-- Causes -->
+        <g transform="translate(280,40)">
+          <text x="0" y="0" fill="#94a3b8" font-size="10" font-weight="600">Causas:</text>
+          <text x="0" y="20" fill="#fbbf24" font-size="10">Laboreo profundo</text>
+          <text x="0" y="40" fill="#fbbf24" font-size="10">Sin cobertura</text>
+          <text x="0" y="60" fill="#fbbf24" font-size="10">Insumos solubles</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>Ese carbono no se evaporo por accidente. Se fue por tres causas principales: <strong>laboreo profundo</strong>, <strong>ausencia de cobertura permanente</strong>, y <strong>sustitucion del manejo orgánico por insumos solubles</strong>.</p>
+
+    <div class="card card-highlight">
+      <p style="margin:0"><strong class="text-emerald">Dato clave:</strong> Los suelos cafeteros colombianos perdieron ~50% de materia orgánica en 40 anos (1970-2010) según CENICAFE. La causa no fue natural: fue el modelo agronomico.</p>
+    </div>
+
+    <!-- QUIZ Parte 1 -->
+    <div class="quiz-container" id="quiz-parte_1">
+      <div class="quiz-question">1. Cuantos microbios contiene 1 gramo de suelo agricola sano?</div>
+      <button class="quiz-option" data-q="1_1" data-opt="a">10&#x00B2;-10&#x00B3;</button>
+      <button class="quiz-option" data-q="1_1" data-opt="b">10&#x2075;-10&#x2076;</button>
+      <button class="quiz-option" data-q="1_1" data-opt="c" data-correct="true">10&#x2079;-10&#x00B9;&#x2070;</button>
+      <button class="quiz-option" data-q="1_1" data-opt="d">10&#x00B9;&#x00B2;-10&#x00B9;&#x00B3;</button>
+      <div class="quiz-feedback" id="fb-1_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. Cuanto carbono orgánico perdieron los suelos cafeteros colombianos entre 1970 y 2010?</div>
+      <button class="quiz-option" data-q="1_2" data-opt="a">10%</button>
+      <button class="quiz-option" data-q="1_2" data-opt="b" data-correct="true">50%</button>
+      <button class="quiz-option" data-q="1_2" data-opt="c">80%</button>
+      <button class="quiz-option" data-q="1_2" data-opt="d">Aumentaron</button>
+      <div class="quiz-feedback" id="fb-1_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Cual NO es causa de perdida de C orgánico del suelo?</div>
+      <button class="quiz-option" data-q="1_3" data-opt="a">Laboreo profundo</button>
+      <button class="quiz-option" data-q="1_3" data-opt="b">Ausencia de cobertura permanente</button>
+      <button class="quiz-option" data-q="1_3" data-opt="c">Insumos solubles continuos</button>
+      <button class="quiz-option" data-q="1_3" data-opt="d" data-correct="true">Aplicacion de bocashi anual</button>
+      <div class="quiz-feedback" id="fb-1_3"></div>
+
+      <div id="score-parte_1" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/3</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('intro')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-1" onclick="goTo('parte_2')" disabled>Continuar a Parte 2 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 3: PARTE 2 ==================== -->
+<div class="screen" id="screen-parte_2" data-screen="parte_2">
+  <div class="container">
+    <span class="part-number">02</span>
+    <h2>Por que el suelo necesita mas que NPK</h2>
+
+    <h3>2.1 El suelo vivo</h3>
+    <p>1 gramo de suelo sano contiene <strong class="text-emerald">10&#x2079;-10&#x00B9;&#x2070;</strong> celulas microbianas (Fierer &amp; Jackson 2006 <em>PNAS</em> 103:626). Esta microbiota:</p>
+    <ul class="compact-list">
+      <li>Solubiliza nutrientes atrapados en minerales (P en apatitas, micros en oxidos de Fe/Al)</li>
+      <li>Fija nitrogeno atmosferico (<em>Rhizobium</em>, <em>Azotobacter</em>, cianobacterias) &rarr; <strong>40-200 kg N/ha/ano</strong> sin fertilizante</li>
+      <li>Forma redes micorricas que multiplican la zona efectiva de absorcion radicular hasta <strong>100 veces</strong> (van der Heijden 2015 <em>New Phytol</em> 205:1406)</li>
+      <li>Defiende contra patogenos por exclusion competitiva</li>
+      <li>Genera estructura agregada estable que retiene agua</li>
+    </ul>
+
+    <!-- SVG 2: Suelo vivo -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">El suelo vivo: microbiota en accion</h3>
+      <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="max-width:400px">
+        <!-- Root -->
+        <path d="M200 20 Q200 80 200 140" stroke="#b45309" stroke-width="6" fill="none"/>
+        <path d="M200 60 Q160 90 140 120" stroke="#b45309" stroke-width="3" fill="none"/>
+        <path d="M200 80 Q240 110 260 140" stroke="#b45309" stroke-width="3" fill="none"/>
+        <!-- Root hairs -->
+        <line x1="180" y1="70" x2="165" y2="60" stroke="#b45309" stroke-width="1.5"/>
+        <line x1="175" y1="90" x2="158" y2="85" stroke="#b45309" stroke-width="1.5"/>
+        <line x1="220" y1="75" x2="238" y2="68" stroke="#b45309" stroke-width="1.5"/>
+        <line x1="215" y1="100" x2="233" y2="95" stroke="#b45309" stroke-width="1.5"/>
+
+        <!-- Microbes pulsing -->
+        <g class="microbe">
+          <circle cx="130" cy="80" r="10" fill="rgba(16,185,129,.3)" stroke="#10b981" stroke-width="1.5"/>
+          <text x="130" y="84" text-anchor="middle" fill="#10b981" font-size="8">N&#x2082;</text>
+        </g>
+        <g class="microbe" style="animation-delay:.3s">
+          <circle cx="270" cy="90" r="10" fill="rgba(6,182,212,.3)" stroke="#06b6d4" stroke-width="1.5"/>
+          <text x="270" y="94" text-anchor="middle" fill="#06b6d4" font-size="8">P</text>
+        </g>
+        <g class="microbe" style="animation-delay:.6s">
+          <circle cx="155" cy="140" r="9" fill="rgba(16,185,129,.3)" stroke="#10b981" stroke-width="1.5"/>
+          <text x="155" y="143" text-anchor="middle" fill="#10b981" font-size="7">K</text>
+        </g>
+        <g class="microbe" style="animation-delay:.9s">
+          <circle cx="245" cy="145" r="9" fill="rgba(6,182,212,.3)" stroke="#06b6d4" stroke-width="1.5"/>
+          <text x="245" y="148" text-anchor="middle" fill="#06b6d4" font-size="7">Fe</text>
+        </g>
+        <g class="microbe" style="animation-delay:1.2s">
+          <circle cx="110" cy="120" r="8" fill="rgba(16,185,129,.3)" stroke="#10b981" stroke-width="1.5"/>
+          <text x="110" y="123" text-anchor="middle" fill="#10b981" font-size="7">AMF</text>
+        </g>
+        <g class="microbe" style="animation-delay:1.5s">
+          <circle cx="290" cy="120" r="8" fill="rgba(6,182,212,.3)" stroke="#06b6d4" stroke-width="1.5"/>
+          <text x="290" y="123" text-anchor="middle" fill="#06b6d4" font-size="7">Bac</text>
+        </g>
+
+        <!-- Transfer lines -->
+        <line x1="140" y1="80" x2="170" y2="70" stroke="#10b981" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+        <line x1="260" y1="90" x2="225" y2="85" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+
+        <!-- Label -->
+        <rect x="125" y="175" width="150" height="28" rx="6" fill="#1e293b" stroke="#334155"/>
+        <text x="200" y="194" text-anchor="middle" fill="#10b981" font-size="12" font-weight="600">10&#x2079;-10&#x00B9;&#x2070; microbios/g</text>
+
+        <!-- Soil -->
+        <rect x="20" y="220" width="360" height="25" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <h3>2.2 Eficiencia oculta del NPK en Andes tropicales</h3>
+    <p>NPK soluble continuo reduce <strong class="text-red">30-50%</strong> biomasa microbiana (Treseder 2008 <em>Ecol Lett</em> 11:1111). Los datos de eficiencia real (Cassman et al. 2002 <em>Ambio</em> 31:132) muestran:</p>
+
+    <table class="data-table">
+      <thead><tr><th>Nutriente</th><th>Eficiencia real</th><th>Que le pasa al resto</th></tr></thead>
+      <tbody>
+        <tr><td>Nitrogeno</td><td class="text-amber">30-50%</td><td>Se volatiliza (NH&#x2083;, N&#x2082;O) o se lixivia</td></tr>
+        <tr><td>Fosforo</td><td class="text-red">15-25%</td><td>Se fija en hierro/aluminio</td></tr>
+        <tr><td>Potasio</td><td class="text-amber">40-60%</td><td>Lixivia rapido en arcillosos pobres</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Calculator 1: NPK Efficiency -->
+    <div class="calc-box">
+      <h3 style="margin-top:0;font-size:1.05rem">&#128290; Calculadora: Eficiencia real del NPK</h3>
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>kg de fertilizante aplicado</label>
+          <input type="number" id="npkKg" value="100" min="0" step="10">
+        </div>
+        <div class="calc-field">
+          <label>Nutriente</label>
+          <select id="npkNutriente">
+            <option value="N">Nitrogeno (N) - 30-50%</option>
+            <option value="P">Fosforo (P) - 15-25%</option>
+            <option value="K">Potasio (K) - 40-60%</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="calcNPK()" style="padding:.6rem 1.2rem">Calcular</button>
+      </div>
+      <div class="calc-output" id="npkOutput">
+        La planta usa aprox <span class="val">40 kg</span> de cada 100 kg aplicados.<br>
+        <span class="val">60 kg</span> se pierden (lixivian, volatilizan o se fijan).<br>
+        A <span class="text-dim">$3.500 COP/kg</span>, eso es <span class="val text-red">$210.000 COP</span> perdidos.
+      </div>
+    </div>
+
+    <!-- QUIZ Parte 2 -->
+    <div class="quiz-container" id="quiz-parte_2">
+      <div class="quiz-question">1. Cual es la eficiencia REAL del nitrogeno aplicado como urea en Andes tropicales?</div>
+      <button class="quiz-option" data-q="2_1" data-opt="a">90-100%</button>
+      <button class="quiz-option" data-q="2_1" data-opt="b" data-correct="true">30-50%</button>
+      <button class="quiz-option" data-q="2_1" data-opt="c">Cerca del 100% si esta bien aplicado</button>
+      <button class="quiz-option" data-q="2_1" data-opt="d">5-10%</button>
+      <div class="quiz-feedback" id="fb-2_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. Que le pasa al fosforo del DAP/MAP cuando se aplica?</div>
+      <button class="quiz-option" data-q="2_2" data-opt="a">La planta lo absorbe todo</button>
+      <button class="quiz-option" data-q="2_2" data-opt="b" data-correct="true">15-25% lo absorbe, resto se fija en oxidos Fe/Al</button>
+      <button class="quiz-option" data-q="2_2" data-opt="c">70-80% se lixivia al subsuelo</button>
+      <button class="quiz-option" data-q="2_2" data-opt="d">Se evapora como NH&#x2083;</button>
+      <div class="quiz-feedback" id="fb-2_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Cuantos kg N/ha/ano puede aportar la fijación biologica en suelos sanos?</div>
+      <button class="quiz-option" data-q="2_3" data-opt="a">0-5</button>
+      <button class="quiz-option" data-q="2_3" data-opt="b">10-30</button>
+      <button class="quiz-option" data-q="2_3" data-opt="c" data-correct="true">40-200</button>
+      <button class="quiz-option" data-q="2_3" data-opt="d">500+</button>
+      <div class="quiz-feedback" id="fb-2_3"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">4. La reducción de biomasa microbiana con NPK continuo sin enmienda orgánica es de aprox:</div>
+      <button class="quiz-option" data-q="2_4" data-opt="a">&lt;5%</button>
+      <button class="quiz-option" data-q="2_4" data-opt="b" data-correct="true">30-50%</button>
+      <button class="quiz-option" data-q="2_4" data-opt="c">70-90%</button>
+      <button class="quiz-option" data-q="2_4" data-opt="d">99%</button>
+      <div class="quiz-feedback" id="fb-2_4"></div>
+
+      <div id="score-parte_2" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/4</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_1')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-2" onclick="goTo('parte_3')" disabled>Continuar a Parte 3 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 4: PARTE 3 ==================== -->
+<div class="screen" id="screen-parte_3" data-screen="parte_3">
+  <div class="container">
+    <span class="part-number">03</span>
+    <h2>La cal, el insumo mas malentendido</h2>
+
+    <h3>3.1 Las tres "cales"</h3>
+    <table class="data-table">
+      <thead><tr><th>Cal</th><th>Formula</th><th>pH efectivo</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td>Cal viva</td><td>CaO</td><td class="text-red">&gt;12</td><td>Industria/construccion. <strong class="text-red">NO suelo</strong></td></tr>
+        <tr><td>Cal hidratada</td><td>Ca(OH)&#x2082;</td><td class="text-red">~12</td><td><strong class="text-red">NO suelo agricola</strong></td></tr>
+        <tr><td>Cal dolomitica</td><td>CaMg(CO&#x2083;)&#x2082;</td><td class="text-emerald">7-8 gradual</td><td>Enmienda <strong class="text-emerald">con analisis</strong></td></tr>
+      </tbody>
+    </table>
+
+    <!-- SVG 4: Las 3 cales -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Reaccion de cada cal con agua</h3>
+      <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" id="svgCales" style="max-width:420px">
+        <!-- CaO -->
+        <g onclick="showCal('cao')" style="cursor:pointer">
+          <rect x="20" y="20" width="110" height="130" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+          <text x="75" y="50" text-anchor="middle" fill="#f87171" font-size="14" font-weight="700">CaO</text>
+          <text x="75" y="70" text-anchor="middle" fill="#94a3b8" font-size="11">Cal viva</text>
+          <rect x="45" y="85" width="60" height="50" rx="4" fill="#1e293b" stroke="#334155"/>
+          <text x="75" y="115" text-anchor="middle" fill="#f87171" font-size="16" font-weight="bold" id="phCao">pH &gt;12</text>
+        </g>
+        <!-- Ca(OH)2 -->
+        <g onclick="showCal('caoh')" style="cursor:pointer">
+          <rect x="155" y="20" width="110" height="130" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+          <text x="210" y="50" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="700">Ca(OH)&#x2082;</text>
+          <text x="210" y="70" text-anchor="middle" fill="#94a3b8" font-size="11">Hidratada</text>
+          <rect x="180" y="85" width="60" height="50" rx="4" fill="#1e293b" stroke="#334155"/>
+          <text x="210" y="115" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="bold" id="phCaoh">pH ~12</text>
+        </g>
+        <!-- Dolomitica -->
+        <g onclick="showCal('dolo')" style="cursor:pointer">
+          <rect x="290" y="20" width="110" height="130" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+          <text x="345" y="50" text-anchor="middle" fill="#10b981" font-size="14" font-weight="700">CaMg(CO&#x2083;)&#x2082;</text>
+          <text x="345" y="70" text-anchor="middle" fill="#94a3b8" font-size="11">Dolomitica</text>
+          <rect x="315" y="85" width="60" height="50" rx="4" fill="#1e293b" stroke="#334155"/>
+          <text x="345" y="110" text-anchor="middle" fill="#10b981" font-size="13" font-weight="bold" id="phDolo">pH 7-8</text>
+          <text x="345" y="128" text-anchor="middle" fill="#94a3b8" font-size="9" id="txtDolo">Con analisis</text>
+        </g>
+        <!-- Reaction text -->
+        <text x="210" y="175" text-anchor="middle" fill="#94a3b8" font-size="11" id="calReaction">Toca cada frasco para ver reaccion</text>
+      </svg>
+    </div>
+
+    <h3>3.2 Por que cal viva/hidratada destruye el suelo</h3>
+    <p>En las primeras 24-72 horas ocurre lo siguiente:</p>
+    <ol class="compact-list">
+      <li><strong class="text-red">Reaccion exotermica</strong> &rarr; quemaduras radiculares directas (Sumner &amp; Yamada 2002)</li>
+      <li><strong class="text-red">Choque pH 5&rarr;11</strong> &rarr; esteriliza microbiota, reducción 60-80% biomasa primeros 5cm (Bezdicek 2003)</li>
+      <li><strong class="text-red">Precipitacion P</strong> como Ca&#x2083;(PO&#x2084;)&#x2082; insoluble</li>
+      <li><strong class="text-red">Saponificacion</strong> de acidos humicos &rarr; pierdes carbono construido en decadas</li>
+      <li><strong class="text-red">Volatilizacion N</strong>: NH&#x2084;&#x207A; &rarr; NH&#x2083; gas, perdida hasta 30% mismo dia</li>
+    </ol>
+
+    <h3>3.3 Regla Cochrane 1980</h3>
+    <div class="card card-highlight">
+      <p style="margin:0"><strong>Aplicar SOLO si:</strong> pH &lt; 5.5 <strong>Y</strong> saturacion Al &gt; 30%</p>
+      <p style="margin:.5rem 0 0"><strong>Formula:</strong> t/ha = 1.5 &times; Al intercambiable (cmol/kg)</p>
+      <p style="margin:.3rem 0 0">Nunca &gt;3 t/ha por aplicación. Aplicar 2-3 meses antes de siembra, incorporar 10-15 cm.</p>
+    </div>
+
+    <!-- Calculator 2: Cochrane -->
+    <div class="calc-box">
+      <h3 style="margin-top:0;font-size:1.05rem">&#128290; Calculadora Cochrane: Debo encalar?</h3>
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>pH del suelo</label>
+          <input type="number" id="cochranePH" value="5.2" min="3" max="9" step="0.1">
+        </div>
+        <div class="calc-field">
+          <label>Saturacion Al (%)</label>
+          <input type="number" id="cochraneAl" value="45" min="0" max="100" step="1">
+        </div>
+        <div class="calc-field">
+          <label>Al intercambiable (cmol/kg)</label>
+          <input type="number" id="cochraneAlEx" value="1.8" min="0" max="20" step="0.1">
+        </div>
+        <button class="btn btn-primary" onclick="calcCochrane()" style="padding:.6rem 1.2rem">Calcular</button>
+      </div>
+      <div class="calc-output" id="cochraneOutput">
+        Complete los valores y pulse Calcular.
+      </div>
+    </div>
+
+    <h3>3.4 Alternativas a la cal</h3>
+    <table class="data-table">
+      <thead><tr><th>Alternativa</th><th>Cuando usar</th></tr></thead>
+      <tbody>
+        <tr><td>Yeso agricola (CaSO&#x2084;&middot;2H&#x2082;O)</td><td>Ca sin subir pH, suelos sodicos</td></tr>
+        <tr><td>Bocashi con ceniza 5-10%</td><td>Mantenimiento anual</td></tr>
+        <tr><td>Compost 3-5 kg/m&#x00B2; + ceniza 50-100 g/m&#x00B2;</td><td>pH 5.5-6.0 con baja MO</td></tr>
+        <tr><td>Biocarbon 1-2 t/ha</td><td>Andisoles acidos con MO alta</td></tr>
+      </tbody>
+    </table>
+
+    <!-- QUIZ Parte 3 -->
+    <div class="quiz-container" id="quiz-parte_3">
+      <div class="quiz-question">1. Cual de las "cales" SI se puede aplicar al suelo agricola, bajo analisis previo?</div>
+      <button class="quiz-option" data-q="3_1" data-opt="a">Cal viva (CaO)</button>
+      <button class="quiz-option" data-q="3_1" data-opt="b">Cal hidratada / apagada (Ca(OH)&#x2082;)</button>
+      <button class="quiz-option" data-q="3_1" data-opt="c" data-correct="true">Cal dolomitica (CaMg(CO&#x2083;)&#x2082;)</button>
+      <button class="quiz-option" data-q="3_1" data-opt="d">Ninguna se deberia aplicar nunca</button>
+      <div class="quiz-feedback" id="fb-3_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. Segun la Regla Cochrane 1980, bajo que dos condiciones se aplica cal dolomitica?</div>
+      <button class="quiz-option" data-q="3_2" data-opt="a">pH&lt;7 Y materia orgánica baja</button>
+      <button class="quiz-option" data-q="3_2" data-opt="b" data-correct="true">pH&lt;5.5 Y saturacion Al &gt;30%</button>
+      <button class="quiz-option" data-q="3_2" data-opt="c">Cuando el cultivo lo pide visualmente</button>
+      <button class="quiz-option" data-q="3_2" data-opt="d">Una vez al ano independiente del analisis</button>
+      <div class="quiz-feedback" id="fb-3_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Por que la cal viva DESTRUYE microbiota?</div>
+      <button class="quiz-option" data-q="3_3" data-opt="a">No, si mejora</button>
+      <button class="quiz-option" data-q="3_3" data-opt="b" data-correct="true">Choque pH 5&rarr;11 esteriliza, precipita P, saponifica MO, volatiliza N</button>
+      <button class="quiz-option" data-q="3_3" data-opt="c">Solo dana insectos</button>
+      <button class="quiz-option" data-q="3_3" data-opt="d">No tiene efecto microbiológico</button>
+      <div class="quiz-feedback" id="fb-3_3"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">4. Si pH=6.0 y saturacion Al=15%, debe encalar?</div>
+      <button class="quiz-option" data-q="3_4" data-opt="a">Si, siempre</button>
+      <button class="quiz-option" data-q="3_4" data-opt="b" data-correct="true">No, no se cumplen los criterios Cochrane</button>
+      <button class="quiz-option" data-q="3_4" data-opt="c">Si pero con cal viva</button>
+      <button class="quiz-option" data-q="3_4" data-opt="d">Solo si el cultivo es papa</button>
+      <div class="quiz-feedback" id="fb-3_4"></div>
+
+      <div id="score-parte_3" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/4</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_2')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-3" onclick="goTo('parte_4')" disabled>Continuar a Parte 4 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== SCREEN 5: PARTE 4 ==================== -->
+<div class="screen" id="screen-parte_4" data-screen="parte_4">
+  <div class="container">
+    <span class="part-number">04</span>
+    <h2>Lo que descubrio la ciencia 1990-2020</h2>
+
+    <h3>4.1 Raices como ecosistemas</h3>
+    <p>El <strong class="text-emerald">15-40%</strong> del carbono fotosintetizado sale como exudados (Bardgett 2014). Es economia de intercambio, no bombeo unidireccional. NPK soluble corta esos exudados.</p>
+
+    <h3>4.2 Redes micorricas</h3>
+    <p>El <strong class="text-emerald">80-90%</strong> de plantas terrestres forman simbiosis AMF. Multiplican zona radicular <strong>100&times;</strong>. P soluble suprime micorrizas (Treseder &amp; Allen 2002).</p>
+
+    <!-- SVG 6: Red micorrica -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Efecto de las micorrizas arbusculares (AMF)</h3>
+      <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" style="max-width:420px">
+        <!-- Toggle -->
+        <g transform="translate(60,10)">
+          <rect id="micOffBg" x="0" y="0" width="130" height="28" rx="14" fill="#334155" stroke="#475569" cursor="pointer" onclick="toggleMyco(false)"/>
+          <text x="65" y="19" text-anchor="middle" fill="#e2e8f0" font-size="11" pointer-events="none">Sin micorrizas (P soluble)</text>
+        </g>
+        <g transform="translate(230,10)">
+          <rect id="micOnBg" x="0" y="0" width="130" height="28" rx="14" fill="#10b981" stroke="#10b981" cursor="pointer" onclick="toggleMyco(true)"/>
+          <text x="65" y="19" text-anchor="middle" fill="#fff" font-size="11" pointer-events="none">Con micorrizas</text>
+        </g>
+
+        <!-- Plant -->
+        <g transform="translate(200,80)">
+          <path d="M0 140 L0 40" stroke="#b45309" stroke-width="5"/>
+          <ellipse cx="-25" cy="30" rx="22" ry="14" fill="#10b981" transform="rotate(-25,-25,30)"/>
+          <ellipse cx="25" cy="25" rx="22" ry="14" fill="#10b981" transform="rotate(25,25,25)"/>
+          <ellipse cx="-20" cy="-5" rx="18" ry="11" fill="#10b981" transform="rotate(-15,-20,-5)"/>
+          <ellipse cx="20" cy="-10" rx="18" ry="11" fill="#10b981" transform="rotate(15,20,-10)"/>
+          <ellipse cx="0" cy="-30" rx="16" ry="10" fill="#10b981"/>
+        </g>
+
+        <!-- Root zone NO mycorrhiza -->
+        <g id="zoneNoMyco">
+          <ellipse cx="200" cy="200" rx="35" ry="20" fill="rgba(6,182,212,.15)" stroke="#06b6d4" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="200" y="235" text-anchor="middle" fill="#06b6d4" font-size="11">Zona radicular ~1x</text>
+        </g>
+
+        <!-- Root zone WITH mycorrhiza -->
+        <g id="zoneMyco" style="display:none">
+          <ellipse cx="200" cy="185" rx="120" ry="50" fill="rgba(16,185,129,.12)" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Hyphae lines -->
+          <line x1="180" y1="195" x2="90" y2="175" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+          <line x1="190" y1="200" x2="100" y2="210" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+          <line x1="210" y1="198" x2="300" y2="170" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+          <line x1="220" y1="202" x2="310" y2="215" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+          <line x1="195" y1="205" x2="195" y2="230" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+          <text x="200" y="235" text-anchor="middle" fill="#10b981" font-size="12" font-weight="600">Zona radicular ~100x con AMF</text>
+        </g>
+
+        <!-- Soil line -->
+        <line x1="30" y1="220" x2="390" y2="220" stroke="#475569" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <h3>4.3 N orgánico es mejor</h3>
+    <p>Estudios con <strong>&#x00B9;&#x2075;N</strong> marcado muestran absorcion de aminoacidos completos (glutamato, asparagina) directamente del suelo (Nasholm 2009 <em>New Phytol</em> 182:31).</p>
+
+    <h3>4.4 NPK acidifica permanentemente</h3>
+    <p><strong class="text-red">0.1-0.3 unidades pH/ano</strong> (Guo 2010 <em>Science</em> 327:1008). En 15 anos: pH 6.0 &rarr; 4.5-5.0.</p>
+
+    <h3>4.5 Diversidad estabiliza</h3>
+    <p><strong>4+ cultivos</strong> en rotacion + cobertura permanente = <strong class="text-emerald">+20-40% rendimiento</strong> en anos de estres (Renard &amp; Tilman 2019 <em>Nature</em> 571:257).</p>
+
+    <!-- QUIZ Parte 4 -->
+    <div class="quiz-container" id="quiz-parte_4">
+      <div class="quiz-question">1. Que % del carbono fotosintetizado sale como exudados a la rizosfera?</div>
+      <button class="quiz-option" data-q="4_1" data-opt="a">0.1-1%</button>
+      <button class="quiz-option" data-q="4_1" data-opt="b" data-correct="true">15-40%</button>
+      <button class="quiz-option" data-q="4_1" data-opt="c">80%</button>
+      <button class="quiz-option" data-q="4_1" data-opt="d">Nada, todo se queda en la planta</button>
+      <div class="quiz-feedback" id="fb-4_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. El fosforo del DAP suprime las micorrizas?</div>
+      <button class="quiz-option" data-q="4_2" data-opt="a">No, las estimula</button>
+      <button class="quiz-option" data-q="4_2" data-opt="b" data-correct="true">Si, las suprime y reduce su formacion</button>
+      <button class="quiz-option" data-q="4_2" data-opt="c">Solo en cultivos andinos</button>
+      <button class="quiz-option" data-q="4_2" data-opt="d">Es neutro</button>
+      <div class="quiz-feedback" id="fb-4_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Cuantas unidades de pH puede acidificar el suelo la urea continua?</div>
+      <button class="quiz-option" data-q="4_3" data-opt="a">Ninguna</button>
+      <button class="quiz-option" data-q="4_3" data-opt="b" data-correct="true">0.1-0.3 por ano</button>
+      <button class="quiz-option" data-q="4_3" data-opt="c">1.0 por ano</button>
+      <button class="quiz-option" data-q="4_3" data-opt="d">Solo si hay lluvia</button>
+      <div class="quiz-feedback" id="fb-4_3"></div>
+
+      <div id="score-parte_4" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/3</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_3')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-4" onclick="goTo('parte_5')" disabled>Continuar a Parte 5 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 6: PARTE 5 ==================== -->
+<div class="screen" id="screen-parte_5" data-screen="parte_5">
+  <div class="container">
+    <span class="part-number">05</span>
+    <h2>Piramide nutricional Chagra</h2>
+
+    <!-- SVG 7: Piramide -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Piramide nutricional agroecológica</h3>
+      <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="max-width:400px">
+        <!-- Base: 50-70% -->
+        <polygon points="50,240 350,240 300,160 100,160" fill="rgba(16,185,129,.25)" stroke="#10b981" stroke-width="2"/>
+        <text x="200" y="210" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700">BASE 50-70%</text>
+        <text x="200" y="228" text-anchor="middle" fill="#94a3b8" font-size="10">Bocashi + compost + abonos verdes</text>
+        <text x="200" y="242" text-anchor="middle" fill="#94a3b8" font-size="9">Anual obligatoria</text>
+
+        <!-- Middle: 15-25% -->
+        <polygon points="100,160 300,160 265,95 135,95" fill="rgba(6,182,212,.2)" stroke="#06b6d4" stroke-width="2"/>
+        <text x="200" y="138" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="700">MEDIO 15-25%</text>
+        <text x="200" y="152" text-anchor="middle" fill="#94a3b8" font-size="9">Roca P, ceniza, cal dolomitica</text>
+
+        <!-- Top: 15-20% -->
+        <polygon points="135,95 265,95 230,40 170,40" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="2"/>
+        <text x="200" y="72" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">TOP 15-20%</text>
+        <text x="200" y="86" text-anchor="middle" fill="#94a3b8" font-size="9">Caldos, supermagro</text>
+      </svg>
+    </div>
+
+    <h3>Reemplazos agroecologicos</h3>
+    <table class="data-table">
+      <thead><tr><th>Insumo convencional</th><th>Reemplazo agroecológico</th></tr></thead>
+      <tbody>
+        <tr><td>Urea/sulfato amonio</td><td class="text-emerald">Bocashi + biol + leguminosas</td></tr>
+        <tr><td>DAP/MAP</td><td class="text-emerald">Roca fosforica co-compostada + micorrizas</td></tr>
+        <tr><td>KCl</td><td class="text-emerald">Ceniza limpia + lixiviado frutas</td></tr>
+        <tr><td>15-15-15</td><td class="text-emerald">Bocashi enriquecido + supermagro</td></tr>
+        <tr><td>Cal hidratada/viva</td><td class="text-emerald">Dolomitica con analisis O bocashi+ceniza</td></tr>
+        <tr><td>Glifosato</td><td class="text-emerald">Cobertura permanente + seleccion manual</td></tr>
+        <tr><td>Mancozeb</td><td class="text-emerald">Bordeles + sulfocalcico + <em>Trichoderma</em> + <em>Bacillus</em></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Calculator 3: Bocashi -->
+    <div class="calc-box">
+      <h3 style="margin-top:0;font-size:1.05rem">&#128290; Calculadora: Bocashi para tu finca</h3>
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>Hectareas de finca</label>
+          <input type="number" id="bocashiHa" value="1" min="0.1" max="100" step="0.1">
+        </div>
+        <div class="calc-field">
+          <label>Cultivo principal</label>
+          <select id="bocashiCultivo">
+            <option value="hortalizas">Hortalizas</option>
+            <option value="frutales">Frutales</option>
+            <option value="cafe">Cafe</option>
+            <option value="pastos">Pastos</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="calcBocashi()" style="padding:.6rem 1.2rem">Calcular</button>
+      </div>
+      <div class="calc-output" id="bocashiOutput">
+        Complete los valores y pulse Calcular.
+      </div>
+    </div>
+
+    <h3>4 reglas duras</h3>
+    <div class="card card-danger">
+      <ol style="margin:0;padding-left:1.2rem">
+        <li><strong>Analisis suelo cada 2-3 anos</strong> ($35.000-80.000 COP)</li>
+        <li><strong>Cobertura permanente</strong>, nunca suelo desnudo</li>
+        <li><strong>Diversidad:</strong> minimo 3 especies por era, 3 estratos verticales</li>
+        <li><strong>Bocashi 2-5 kg/m&#x00B2; anual</strong> + biol foliar trimestral</li>
+      </ol>
+    </div>
+
+    <!-- QUIZ Parte 5 -->
+    <div class="quiz-container" id="quiz-parte_5">
+      <div class="quiz-question">1. En la piramide nutricional, que % aporta la base (bocashi+compost+abonos verdes)?</div>
+      <button class="quiz-option" data-q="5_1" data-opt="a">5-10%</button>
+      <button class="quiz-option" data-q="5_1" data-opt="b">30-40%</button>
+      <button class="quiz-option" data-q="5_1" data-opt="c" data-correct="true">50-70%</button>
+      <button class="quiz-option" data-q="5_1" data-opt="d">100%</button>
+      <div class="quiz-feedback" id="fb-5_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. Cual es el reemplazo agroecológico de DAP/MAP?</div>
+      <button class="quiz-option" data-q="5_2" data-opt="a">Cal viva</button>
+      <button class="quiz-option" data-q="5_2" data-opt="b" data-correct="true">Roca fosforica co-compostada + micorrizas</button>
+      <button class="quiz-option" data-q="5_2" data-opt="c">Bocashi sin mas</button>
+      <button class="quiz-option" data-q="5_2" data-opt="d">Glifosato diluido</button>
+      <div class="quiz-feedback" id="fb-5_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Cada cuanto se hace analisis de suelo según las reglas Chagra?</div>
+      <button class="quiz-option" data-q="5_3" data-opt="a">Cada ano</button>
+      <button class="quiz-option" data-q="5_3" data-opt="b" data-correct="true">Cada 2-3 anos</button>
+      <button class="quiz-option" data-q="5_3" data-opt="c">Cada 10 anos</button>
+      <button class="quiz-option" data-q="5_3" data-opt="d">Nunca, observo el cultivo</button>
+      <div class="quiz-feedback" id="fb-5_3"></div>
+
+      <div id="score-parte_5" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/3</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_4')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-5" onclick="goTo('parte_6')" disabled>Continuar a Parte 6 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 7: PARTE 6 ==================== -->
+<div class="screen" id="screen-parte_6" data-screen="parte_6">
+  <div class="container">
+    <span class="part-number">06</span>
+    <h2>Plan transición 3 anos</h2>
+
+    <!-- SVG 8: Timeline -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Linea de tiempo de la transición</h3>
+      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="max-width:500px">
+        <defs>
+          <linearGradient id="gLine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#f87171"/>
+            <stop offset="50%" stop-color="#fbbf24"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+        </defs>
+        <!-- Line -->
+        <line x1="50" y1="120" x2="450" y2="120" stroke="url(#gLine)" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- Year 0 -->
+        <circle cx="50" cy="120" r="12" fill="#f87171" stroke="#0f172a" stroke-width="2"/>
+        <text x="50" y="155" text-anchor="middle" fill="#f87171" font-size="11" font-weight="600">ANO 0</text>
+        <text x="50" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">NPK 100%</text>
+        <text x="50" y="183" text-anchor="middle" fill="#94a3b8" font-size="9">MO baja</text>
+
+        <!-- Year 1 -->
+        <circle cx="180" cy="120" r="12" fill="#fbbf24" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="155" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">ANO 1</text>
+        <text x="180" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">NPK 100% +</text>
+        <text x="180" y="183" text-anchor="middle" fill="#94a3b8" font-size="9">Bocashi 1kg/m2</text>
+
+        <!-- Year 2 -->
+        <circle cx="315" cy="120" r="12" fill="#fbbf24" stroke="#0f172a" stroke-width="2"/>
+        <text x="315" y="155" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">ANO 2</text>
+        <text x="315" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">NPK 50%</text>
+        <text x="315" y="183" text-anchor="middle" fill="#94a3b8" font-size="9">Bocashi 2kg/m2</text>
+
+        <!-- Year 3 -->
+        <circle cx="450" cy="120" r="12" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+        <text x="450" y="155" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">ANO 3</text>
+        <text x="450" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">NPK 0-25%</text>
+        <text x="450" y="183" text-anchor="middle" fill="#94a3b8" font-size="9">Agroecología</text>
+
+        <!-- Indicators comparison -->
+        <text x="250" y="30" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">Indicadores Ano 0 &rarr; Ano 3:</text>
+        <text x="120" y="55" text-anchor="middle" fill="#f87171" font-size="10">MO: 1-2%</text>
+        <text x="250" y="55" text-anchor="middle" fill="#fbbf24" font-size="10">pH: 4.5-5.5</text>
+        <text x="380" y="55" text-anchor="middle" fill="#10b981" font-size="10">Lombrices: 5-15/m2</text>
+        <text x="120" y="72" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">&darr; 3-5%</text>
+        <text x="250" y="72" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">&darr; 5.5-6.5</text>
+        <text x="380" y="72" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">&darr; 50-150/m2</text>
+      </svg>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Ano 1 &mdash; Preparacion</h3>
+        <ul class="compact-list">
+          <li>Analisis suelo linea base</li>
+          <li>Producir bocashi en finca (1 m&#x00B3; por 1000 m&#x00B2;)</li>
+          <li>Reducir herbicidas 50% (cortar manual/guadana)</li>
+          <li>Abonos verdes en lotes en descanso (mucuna, crotalaria, vigna)</li>
+          <li>Mantener NPK actual, agregar bocashi 1 kg/m&#x00B2;</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Ano 2 &mdash; Sustitucion parcial</h3>
+        <ul class="compact-list">
+          <li>NPK al 50%, bocashi 2 kg/m&#x00B2;</li>
+          <li>Roca fosforica + ceniza según analisis</li>
+          <li>Caldos minerales (bordeles, sulfocalcico)</li>
+          <li>Inoculantes biologicos ICA-registrados</li>
+          <li>Analisis suelo medio ano</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Ano 3 &mdash; Cierre transición</h3>
+        <ul class="compact-list">
+          <li>NPK al 25% o cero</li>
+          <li>Bocashi 3-5 kg/m&#x00B2; anual</li>
+          <li>Diversificar cultivos</li>
+          <li>MIP: <em>Trichogramma</em> + Bt + neem</li>
+          <li>Analisis suelo final vs linea base</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Indicadores de exito</h3>
+    <table class="data-table">
+      <thead><tr><th>Indicador</th><th>Ano 0</th><th>Ano 3</th></tr></thead>
+      <tbody>
+        <tr><td>MO suelo</td><td class="text-red">1-2%</td><td class="text-emerald">3-5%</td></tr>
+        <tr><td>pH suelo</td><td class="text-red">4.5-5.5 bajando</td><td class="text-emerald">5.5-6.5 estable</td></tr>
+        <tr><td>Lombrices/m&#x00B2;</td><td class="text-red">5-15</td><td class="text-emerald">50-150</td></tr>
+        <tr><td>Costo insumos</td><td class="text-red">100%</td><td class="text-emerald">40-60%</td></tr>
+        <tr><td>Rendimiento</td><td>100%</td><td class="text-emerald">90-110% (varianza menor)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- QUIZ Parte 6 -->
+    <div class="quiz-container" id="quiz-parte_6">
+      <div class="quiz-question">1. En el Ano 1, que NO se hace?</div>
+      <button class="quiz-option" data-q="6_1" data-opt="a">Analisis de suelo linea base</button>
+      <button class="quiz-option" data-q="6_1" data-opt="b">Empezar bocashi en finca</button>
+      <button class="quiz-option" data-q="6_1" data-opt="c" data-correct="true">Eliminar NPK completamente</button>
+      <button class="quiz-option" data-q="6_1" data-opt="d">Sembrar abonos verdes</button>
+      <div class="quiz-feedback" id="fb-6_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. En el Ano 2, a que nivel se reduce el NPK?</div>
+      <button class="quiz-option" data-q="6_2" data-opt="a">100% (sin cambio)</button>
+      <button class="quiz-option" data-q="6_2" data-opt="b" data-correct="true">50%</button>
+      <button class="quiz-option" data-q="6_2" data-opt="c">25%</button>
+      <button class="quiz-option" data-q="6_2" data-opt="d">0%</button>
+      <div class="quiz-feedback" id="fb-6_2"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">3. Indicador de exito en Ano 3 vs Ano 0: lombrices por m&#x00B2;</div>
+      <button class="quiz-option" data-q="6_3" data-opt="a">Igual: 5-15</button>
+      <button class="quiz-option" data-q="6_3" data-opt="b">Menos: 1-5</button>
+      <button class="quiz-option" data-q="6_3" data-opt="c" data-correct="true">Mucho mas: 50-150</button>
+      <button class="quiz-option" data-q="6_3" data-opt="d">Cero</button>
+      <div class="quiz-feedback" id="fb-6_3"></div>
+
+      <div id="score-parte_6" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/3</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_5')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-6" onclick="goTo('parte_7')" disabled>Continuar a Parte 7 &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 8: PARTE 7 ==================== -->
+<div class="screen" id="screen-parte_7" data-screen="parte_7">
+  <div class="container">
+    <span class="part-number">07</span>
+    <h2>Lo que NO voy a prometer</h2>
+
+    <!-- SVG 9: Charlataneria detector -->
+    <div class="svg-wrap">
+      <h3 style="margin-top:0;margin-bottom:.5rem;font-size:1rem">Detector de charlataneria</h3>
+      <svg viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" style="max-width:420px">
+        <!-- Pseudociencia 1 -->
+        <g onclick="toggleCharla(0)" style="cursor:pointer" id="char0">
+          <rect x="10" y="10" width="120" height="70" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+          <text x="70" y="38" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Biodinamica</text>
+          <text x="70" y="55" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">lunar con cuernos</text>
+          <text x="70" y="72" text-anchor="middle" fill="#94a3b8" font-size="9" id="char0res">Toca para ver</text>
+        </g>
+        <!-- Pseudociencia 2 -->
+        <g onclick="toggleCharla(1)" style="cursor:pointer" id="char1">
+          <rect x="150" y="10" width="120" height="70" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+          <text x="210" y="38" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Agua</text>
+          <text x="210" y="55" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">"estructurada"</text>
+          <text x="210" y="72" text-anchor="middle" fill="#94a3b8" font-size="9" id="char1res">Toca para ver</text>
+        </g>
+        <!-- Pseudociencia 3 -->
+        <g onclick="toggleCharla(2)" style="cursor:pointer" id="char2">
+          <rect x="290" y="10" width="120" height="70" rx="8" fill="#0f172a" stroke="#f87171" stroke-width="2"/>
+          <text x="350" y="38" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Biomagnetismo</text>
+          <text x="350" y="55" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">del suelo</text>
+          <text x="350" y="72" text-anchor="middle" fill="#94a3b8" font-size="9" id="char2res">Toca para ver</text>
+        </g>
+
+        <!-- Chagra approach -->
+        <g transform="translate(110,110)">
+          <rect x="0" y="0" width="200" height="55" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+          <text x="100" y="22" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">Chagra: Bocashi + Analisis + Cobertura</text>
+          <text x="100" y="40" text-anchor="middle" fill="#10b981" font-size="10">RCT: SI &bull; Chagra lo recomienda: SI</text>
+        </g>
+      </svg>
+    </div>
+
+    <h3>Realidades honestas</h3>
+
+    <div class="card card-warning">
+      <p style="margin:0"><strong class="text-amber">1. Ano 1 puede tener -10 a -25% rendimiento</strong> (Seufert 2012 <em>Nature</em> 485:229). Recuperacion ano 2, superacion ano 3-4.</p>
+    </div>
+
+    <div class="card">
+      <p style="margin:0"><strong>2. Mas tiempo de manejo activo</strong> que monocultivo NPK. No hay atajos.</p>
+    </div>
+
+    <div class="card">
+      <p style="margin:0"><strong>3. Mercado orgánico limitado</strong> fuera de Bogota-Medellin-Cali. Planifique su comercializacion.</p>
+    </div>
+
+    <div class="card card-danger">
+      <p style="margin:0"><strong class="text-red">4. No toda "agroecología" que se vende es ciencia.</strong> Hay charlataneria: biodinamica lunar con cuernos, agua estructurada, biomagnetismo. <strong>Chagra se queda con evidencia revisada.</strong></p>
+    </div>
+
+    <!-- QUIZ Parte 7 -->
+    <div class="quiz-container" id="quiz-parte_7">
+      <div class="quiz-question">1. En el primer ano de transición, que hay que esperar?</div>
+      <button class="quiz-option" data-q="7_1" data-opt="a">Rendimiento sube +20%</button>
+      <button class="quiz-option" data-q="7_1" data-opt="b" data-correct="true">Caida de 10-25% tipica</button>
+      <button class="quiz-option" data-q="7_1" data-opt="c">Sin cambio</button>
+      <button class="quiz-option" data-q="7_1" data-opt="d">Quiebra inmediata</button>
+      <div class="quiz-feedback" id="fb-7_1"></div>
+
+      <div class="quiz-question" style="margin-top:1.5rem">2. Cual de estas practicas NO es parte de Chagra agroecológico?</div>
+      <button class="quiz-option" data-q="7_2" data-opt="a">Analisis de suelo</button>
+      <button class="quiz-option" data-q="7_2" data-opt="b">Cobertura permanente</button>
+      <button class="quiz-option" data-q="7_2" data-opt="c">Diversidad funcional</button>
+      <button class="quiz-option" data-q="7_2" data-opt="d" data-correct="true">Cuernos de vaca enterrados en luna llena</button>
+      <div class="quiz-feedback" id="fb-7_2"></div>
+
+      <div id="score-parte_7" class="quiz-score" style="margin-top:1rem;display:none">Puntaje: 0/2</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ghost" onclick="goTo('parte_6')">&#8592; Anterior</button>
+      <button class="btn btn-primary" id="btn-next-7" onclick="goTo('resumen')" disabled>Ver resumen &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 9: RESUMEN + CERTIFICADO ==================== -->
+<div class="screen" id="screen-resumen" data-screen="resumen">
+  <div class="container">
+    <h1>Resumen de la unidad</h1>
+    <p class="subtitle">Lo que aprendiste</p>
+
+    <div class="kt-grid">
+      <div class="kt-card">
+        <div class="kt-icon">&#129516;</div>
+        <div><p>1 gramo de suelo sano: <strong class="text-emerald">10&#x2079;-10&#x00B9;&#x2070;</strong> microbios</p></div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#9889;</div>
+        <div><p>NPK: solo <strong class="text-amber">30-50%</strong> eficiencia real</p></div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#128293;</div>
+        <div><p>Cal viva/hidratada <strong class="text-red">NO en suelo</strong>. Solo dolomitica con analisis</p></div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#127793;</div>
+        <div><p>Transición de <strong>3 anos</strong>: bocashi + abonos verdes + biopreparados</p></div>
+      </div>
+      <div class="kt-card">
+        <div class="kt-icon">&#128200;</div>
+        <div><p>Ano 1: <strong class="text-red">-10 a -25%</strong>. Ano 3+: <strong class="text-emerald">iguala/supera</strong> con costos 40-60% menores</p></div>
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <h3 style="margin-top:0">Tu puntaje en quizzes</h3>
+      <p class="text-dim" style="font-size:.9rem">Promedio: <span id="finalScore" class="text-emerald font-bold" style="font-size:1.3rem">0%</span></p>
+      <div id="scoreBreakdown" style="margin-top:.8rem;font-size:.9rem"></div>
+    </div>
+
+    <!-- Certificate section -->
+    <div id="certSection" class="hidden mt-2">
+      <div class="cert-frame">
+        <div class="cert-logo">&#127793;</div>
+        <h2 style="margin:.5rem 0">Certificado de completacion</h2>
+        <p style="color:#94a3b8;margin-bottom:1rem">Chagra - Sistema de aprendizaje agroecológico</p>
+
+        <p style="font-size:1.1rem;margin-bottom:.3rem">Se certifica que</p>
+        <p id="certNameDisplay" style="font-size:1.4rem;font-weight:700;color:#10b981;margin-bottom:.5rem;border-bottom:2px solid #10b981;display:inline-block;padding:0 1rem">________________</p>
+        <p style="color:#94a3b8;margin-bottom:1rem">completo la unidad <em>"Del 15-15-15 a la agroecología"</em></p>
+        <p style="color:#94a3b8;font-size:.9rem">Fecha: <span id="certDate"></span></p>
+
+        <!-- QR code SVG -->
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="margin:1rem auto;display:block" id="qrSvg">
+          <rect width="80" height="80" fill="#fff"/>
+          <!-- Simplified QR-like pattern for chagra.bio -->
+          <rect x="4" y="4" width="20" height="20" fill="#0f172a"/>
+          <rect x="8" y="8" width="12" height="12" fill="#fff"/>
+          <rect x="12" y="12" width="4" height="4" fill="#0f172a"/>
+          <rect x="56" y="4" width="20" height="20" fill="#0f172a"/>
+          <rect x="60" y="8" width="12" height="12" fill="#fff"/>
+          <rect x="64" y="12" width="4" height="4" fill="#0f172a"/>
+          <rect x="4" y="56" width="20" height="20" fill="#0f172a"/>
+          <rect x="8" y="60" width="12" height="12" fill="#fff"/>
+          <rect x="12" y="64" width="4" height="4" fill="#0f172a"/>
+          <rect x="28" y="4" width="4" height="4" fill="#0f172a"/>
+          <rect x="36" y="4" width="4" height="4" fill="#0f172a"/>
+          <rect x="28" y="12" width="4" height="4" fill="#0f172a"/>
+          <rect x="32" y="8" width="4" height="4" fill="#0f172a"/>
+          <rect x="4" y="28" width="4" height="4" fill="#0f172a"/>
+          <rect x="12" y="32" width="4" height="4" fill="#0f172a"/>
+          <rect x="4" y="36" width="4" height="4" fill="#0f172a"/>
+          <rect x="28" y="28" width="24" height="24" fill="#0f172a"/>
+          <rect x="32" y="32" width="16" height="16" fill="#fff"/>
+          <rect x="36" y="36" width="8" height="8" fill="#0f172a"/>
+          <rect x="56" y="28" width="4" height="4" fill="#0f172a"/>
+          <rect x="64" y="32" width="4" height="4" fill="#0f172a"/>
+          <rect x="56" y="40" width="4" height="4" fill="#0f172a"/>
+          <rect x="68" y="36" width="4" height="4" fill="#0f172a"/>
+          <rect x="28" y="56" width="4" height="4" fill="#0f172a"/>
+          <rect x="36" y="60" width="4" height="4" fill="#0f172a"/>
+          <rect x="28" y="68" width="4" height="4" fill="#0f172a"/>
+          <rect x="40" y="56" width="4" height="4" fill="#0f172a"/>
+          <rect x="48" y="56" width="4" height="4" fill="#0f172a"/>
+          <rect x="44" y="64" width="4" height="4" fill="#0f172a"/>
+          <rect x="52" y="68" width="4" height="4" fill="#0f172a"/>
+          <rect x="56" y="56" width="4" height="4" fill="#0f172a"/>
+          <rect x="64" y="60" width="4" height="4" fill="#0f172a"/>
+          <rect x="56" y="68" width="4" height="4" fill="#0f172a"/>
+          <rect x="68" y="68" width="4" height="4" fill="#0f172a"/>
+          <rect x="72" y="56" width="4" height="4" fill="#0f172a"/>
+        </svg>
+        <p style="font-size:.75rem;color:#94a3b8">chagra.bio</p>
+      </div>
+
+      <div style="margin-top:1rem">
+        <label style="color:#94a3b8;font-size:.9rem">Tu nombre (solo local, no se envia):</label>
+        <input type="text" id="certNameInput" placeholder="Escribe tu nombre" maxlength="40"
+          style="width:100%;padding:.7rem;margin-top:.3rem;border-radius:6px;background:#0f172a;border:1px solid #475569;color:#e2e8f0;font-size:1rem"
+          oninput="updateCertName(this.value)">
+      </div>
+
+      <button class="btn btn-primary" onclick="window.print()" style="margin-top:1rem;width:100%">
+        &#128424; Imprimir / Descargar PDF
+      </button>
+    </div>
+
+    <div id="noCertSection" class="hidden mt-2 card card-warning">
+      <p style="margin:0"><strong class="text-amber">Necesitas 70% de promedio</strong> para obtener el certificado. Tu puntaje actual es <span id="noCertScore"></span>%. Repasa las partes con puntaje bajo y reintenta los quizzes.</p>
+    </div>
+
+    <div class="nav-btns" style="margin-top:2rem">
+      <button class="btn btn-ghost" onclick="goTo('parte_7')">&#8592; Anterior</button>
+      <button class="btn btn-secondary" onclick="shareUnit()">&#128279; Compartir</button>
+      <button class="btn btn-secondary" onclick="goTo('portada')">Volver al inicio</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== REFERENCES ==================== -->
+<div class="screen" id="screen-refs" data-screen="refs">
+  <div class="container">
+    <h2>Referencias</h2>
+    <ol class="compact-list" style="font-size:.9rem">
+      <li>Bardgett RD et al. 2014. <em>Trends Ecol Evol</em> 29:692-699.</li>
+      <li>Bezdicek DF et al. 2003. <em>J Prod Agric</em> 16:267-271.</li>
+      <li>Cassman KG et al. 2002. <em>Ambio</em> 31:132-140.</li>
+      <li>Cochrane TT 1980. <em>Aluminum saturation as a guide to liming acid Oxisols</em>. CIAT, Cali.</li>
+      <li>Fierer N &amp; Jackson RB 2006. <em>PNAS</em> 103:626-631.</li>
+      <li>Guo JH et al. 2010. <em>Science</em> 327:1008-1010.</li>
+      <li>Lal R 2004. <em>Science</em> 304:1623-1627.</li>
+      <li>Nasholm T et al. 2009. <em>New Phytol</em> 182:31-48.</li>
+      <li>Renard D &amp; Tilman D 2019. <em>Nature</em> 571:257-260.</li>
+      <li>Seufert V et al. 2012. <em>Nature</em> 485:229-232.</li>
+      <li>Sumner ME &amp; Yamada T 2002. <em>Commun Soil Sci Plant Anal</em> 33:2467-2496.</li>
+      <li>Treseder KK 2008. <em>Ecol Lett</em> 11:1111-1120.</li>
+      <li>Treseder KK &amp; Allen MF 2002. <em>New Phytol</em> 155:507-515.</li>
+      <li>van der Heijden MGA et al. 2015. <em>New Phytol</em> 205:1406-1423.</li>
+      <li>Restrepo Rivera J 2007. <em>El ABC de la agricultura orgánica y harina de rocas - Vol. 2 Caldos Minerales</em>. ISBN 978-958-44-1280-5.</li>
+    </ol>
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="history.back()">Volver</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+// === STATE ===
+const SCREENS = ['portada','intro','parte_1','parte_2','parte_3','parte_4','parte_5','parte_6','parte_7','resumen'];
+const LS_KEY = 'chagra_unidad_transicion_15_15_15';
+let state = loadState();
+
+// === LOCALSTORAGE ===
+function loadState(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {
+    user_name:'',
+    started_at:new Date().toISOString(),
+    last_visit:new Date().toISOString(),
+    current_screen:'portada',
+    screens_visited:['portada'],
+    quiz_scores:{},
+    completion_pct:0,
+    promedio_quizzes:0,
+    certificate_eligible:false,
+    calculator_uses:{npk_efficiency:0,cochrane:0,bocashi:0}
+  };
+}
+function saveState(){
+  state.last_visit = new Date().toISOString();
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+// === NAVIGATION ===
+function goTo(screenName){
+  if(screenName === 'refs'){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById('screen-refs').classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+
+  const idx = SCREENS.indexOf(screenName);
+  if(idx < 0) return;
+
+  // Hide all, show target
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const target = document.getElementById('screen-'+screenName);
+  if(target) target.classList.add('active');
+
+  // Update state
+  state.current_screen = screenName;
+  if(!state.screens_visited.includes(screenName)) state.screens_visited.push(screenName);
+  updateProgress();
+  saveState();
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  // Check quiz unlocks
+  updateNavButtons();
+
+  // Special: resumen
+  if(screenName === 'resumen') renderResumen();
+}
+
+function updateProgress(){
+  const uniqueScreens = [...new Set(state.screens_visited)];
+  const maxIdx = Math.max(...uniqueScreens.map(s=>SCREENS.indexOf(s)).filter(i=>i>=0));
+  const pct = Math.round(((maxIdx + 1) / SCREENS.length) * 100);
+  state.completion_pct = Math.min(pct, 100);
+  document.getElementById('progressFill').style.width = state.completion_pct + '%';
+
+  // Show previous progress on portada
+  const prevBox = document.getElementById('prevProgressBox');
+  const prevPct = document.getElementById('prevPct');
+  if(prevBox && prevPct && state.completion_pct > 0 && state.current_screen === 'portada'){
+    prevBox.classList.remove('hidden');
+    prevPct.textContent = state.completion_pct + '%';
+  }
+}
+
+function updateNavButtons(){
+  for(let i=1;i<=7;i++){
+    const btn = document.getElementById('btn-next-'+i);
+    if(!btn) continue;
+    const qKey = 'parte_'+i;
+    const score = state.quiz_scores[qKey];
+    // Enable if quiz passed (>=60%) or not yet taken (allow skip after first attempt? no, must pass)
+    // Actually: enable if quiz was taken with >=60%
+    if(score){
+      const pct = (score.correct / score.total);
+      btn.disabled = pct < 0.6;
+    } else {
+      btn.disabled = true; // must take quiz first
+    }
+  }
+}
+
+// === QUIZ SYSTEM ===
+const QUIZ_CONFIG = {
+  parte_1:{total:3, passing:0.6},
+  parte_2:{total:4, passing:0.6},
+  parte_3:{total:4, passing:0.6},
+  parte_4:{total:3, passing:0.6},
+  parte_5:{total:3, passing:0.6},
+  parte_6:{total:3, passing:0.6},
+  parte_7:{total:2, passing:0.6}
+};
+
+const QUIZ_EXPLANATIONS = {
+  '1_1_c':'Correcto. 1 gramo de suelo sano contiene entre mil millones y diez mil millones de celulas microbianas (Fierer & Jackson 2006).',
+  '1_2_b':'Correcto. Los suelos cafeteros colombianos perdieron aproximadamente el 50% de su materia orgánica entre 1970 y 2010 según CENICAFE.',
+  '1_3_d':'Correcto. El bocashi anual APORTA materia orgánica. Las causas de perdida son laboreo profundo, ausencia de cobertura e insumos solubles continuos.',
+  '2_1_b':'Correcto. En Andes tropicales, el nitrogeno aplicado como urea tiene solo 30-50% de eficiencia real (Cassman et al. 2002).',
+  '2_2_b':'Correcto. Solo 15-25% del fosforo aplicado como DAP/MAP es absorbido; el resto se fija en oxidos de hierro y aluminio.',
+  '2_3_c':'Correcto. La fijación biologica de nitrogeno en suelos sanos puede aportar 40-200 kg N/ha/ano sin usar fertilizante.',
+  '2_4_b':'Correcto. El uso continuo de NPK sin enmienda orgánica reduce la biomasa microbiana del suelo entre 30-50% (Treseder 2008).',
+  '3_1_c':'Correcto. Solo la cal dolomitica (CaMg(CO3)2) es una enmienda agricola valida, y siempre bajo analisis previo de suelo.',
+  '3_2_b':'Correcto. La Regla Cochrane establece dos condiciones simultaneas: pH < 5.5 Y saturacion de aluminio > 30%.',
+  '3_3_b':'Correcto. La cal viva genera un choque de pH de 5 a 11 que esteriliza la microbiota, precipita fosforo, saponifica materia orgánica y volatiliza nitrogeno.',
+  '3_4_b':'Correcto. Con pH 6.0 y saturacion Al de 15% NO se cumplen los criterios de Cochrane. Encalar en estas condiciones seria danino.',
+  '4_1_b':'Correcto. Entre el 15% y 40% del carbono fotosintetizado se libera como exudados radiculares (Bardgett 2014).',
+  '4_2_b':'Correcto. El fosforo soluble del DAP suprime la formacion de micorrizas arbusculares (Treseder & Allen 2002).',
+  '4_3_b':'Correcto. La aplicación continua de urea acidifica el suelo 0.1-0.3 unidades de pH por ano (Guo 2010).',
+  '5_1_c':'Correcto. La base de la piramide nutricional agroecológica (bocashi + compost + abonos verdes) aporta el 50-70% de la nutrición.',
+  '5_2_b':'Correcto. El reemplazo agroecológico del DAP/MAP es roca fosforica co-compostada junto con inoculacion de micorrizas.',
+  '5_3_b':'Correcto. Segun las reglas duras de Chagra, el analisis de suelo debe realizarse cada 2-3 anos.',
+  '6_1_c':'Correcto. En el Ano 1 NO se elimina el NPK. Se mantiene la dosis actual y se agrega bocashi como transición.',
+  '6_2_b':'Correcto. En el Ano 2 se reduce el NPK al 50% de la dosis original, aumentando el bocashi a 2 kg/m2.',
+  '6_3_c':'Correcto. Un indicador de exito es pasar de 5-15 lombrices/m2 en el Ano 0 a 50-150 lombrices/m2 en el Ano 3.',
+  '7_1_b':'Correcto. En el primer ano de transición agroecológica, una caida de rendimiento del 10-25% es tipica y esperada (Seufert 2012).',
+  '7_2_d':'Correcto. Los cuernos de vaca enterrados en luna llena son una práctica de la biodinamica, no de la agroecología basada en evidencia científica que promueve Chagra.'
+};
+
+document.addEventListener('click', function(e){
+  const opt = e.target.closest('.quiz-option');
+  if(!opt) return;
+
+  const qId = opt.dataset.q;
+  const isCorrect = opt.dataset.correct === 'true';
+  const fbId = 'fb-' + qId;
+  const fb = document.getElementById(fbId);
+  if(!fb) return;
+
+  // Already answered this question?
+  const container = opt.closest('.quiz-container');
+  const questionDiv = opt.closest('.quiz-question') || opt.previousElementSibling;
+  
+  // Disable all options for this question
+  const allOpts = container.querySelectorAll('.quiz-option[data-q="'+qId+'"]');
+  allOpts.forEach(o=>o.classList.add('disabled'));
+
+  // Mark
+  if(isCorrect){
+    opt.classList.add('correct');
+    fb.innerHTML = '<strong class="text-emerald">Correcto.</strong> ' + (QUIZ_EXPLANATIONS[qId+'_'+opt.dataset.opt] || '');
+    fb.className = 'quiz-feedback show ok';
+  } else {
+    opt.classList.add('incorrect');
+    // Highlight correct one
+    allOpts.forEach(o=>{ if(o.dataset.correct==='true') o.classList.add('correct'); });
+    fb.innerHTML = '<strong class="text-red">Incorrecto.</strong> ' + (QUIZ_EXPLANATIONS[qId+'_'+opt.dataset.opt] || 'La respuesta correcta esta marcada en verde.');
+    fb.className = 'quiz-feedback show err';
+  }
+
+  // Score tracking for this part
+  const partKey = qId.split('_')[0] === '1' ? 'parte_1' :
+                  qId.split('_')[0] === '2' ? 'parte_2' :
+                  qId.split('_')[0] === '3' ? 'parte_3' :
+                  qId.split('_')[0] === '4' ? 'parte_4' :
+                  qId.split('_')[0] === '5' ? 'parte_5' :
+                  qId.split('_')[0] === '6' ? 'parte_6' :
+                  qId.split('_')[0] === '7' ? 'parte_7' : '';
+
+  if(partKey){
+    if(!state.quiz_scores[partKey]) state.quiz_scores[partKey] = {correct:0, total:QUIZ_CONFIG[partKey].total, attempts:0, completed_at:''};
+    state.quiz_scores[partKey].attempts++;
+    
+    // Recalculate score for this part
+    const partContainer = document.getElementById('quiz-'+partKey);
+    if(partContainer){
+      const correctCount = partContainer.querySelectorAll('.quiz-option.correct[data-correct="true"]').length;
+      state.quiz_scores[partKey].correct = correctCount;
+      state.quiz_scores[partKey].completed_at = new Date().toISOString();
+
+      // Show score
+      const scoreEl = document.getElementById('score-'+partKey);
+      if(scoreEl){
+        scoreEl.style.display = 'block';
+        scoreEl.textContent = 'Puntaje: ' + correctCount + '/' + QUIZ_CONFIG[partKey].total;
+      }
+
+      // Enable next if >= 60%
+      const pct = correctCount / QUIZ_CONFIG[partKey].total;
+      const btnIdx = parseInt(partKey.split('_')[1]);
+      const nextBtn = document.getElementById('btn-next-'+btnIdx);
+      if(nextBtn && pct >= 0.6){
+        nextBtn.disabled = false;
+      }
+    }
+    saveState();
+  }
+});
+
+// === CALCULATORS ===
+function calcNPK(){
+  const kg = parseFloat(document.getElementById('npkKg').value) || 0;
+  const nut = document.getElementById('npkNutriente').value;
+  const effMap = {N:0.4, P:0.2, K:0.5};
+  const eff = effMap[nut] || 0.4;
+  const used = kg * eff;
+  const lost = kg - used;
+  const pricePerKg = 3500;
+  const costLost = Math.round(lost * pricePerKg);
+
+  const nutNames = {N:'Nitrogeno (N)', P:'Fosforo (P)', K:'Potasio (K)'};
+  document.getElementById('npkOutput').innerHTML =
+    'La planta usa aprox <span class="val">' + used.toFixed(1) + ' kg</span> de ' + nutNames[nut] + ' de cada ' + kg + ' kg aplicados.<br>' +
+    '<span class="val">' + lost.toFixed(1) + ' kg</span> se pierden (lixivian, volatilizan o se fijan).<br>' +
+    'A <span class="text-dim">$' + pricePerKg.toLocaleString() + ' COP/kg</span>, eso es <span class="val text-red">$' + costLost.toLocaleString() + ' COP</span> perdidos.';
+
+  state.calculator_uses.npk_efficiency++;
+  saveState();
+}
+
+function calcCochrane(){
+  const ph = parseFloat(document.getElementById('cochranePH').value);
+  const alSat = parseFloat(document.getElementById('cochraneAl').value);
+  const alEx = parseFloat(document.getElementById('cochraneAlEx').value);
+  const out = document.getElementById('cochraneOutput');
+
+  if(isNaN(ph) || isNaN(alSat) || isNaN(alEx)){
+    out.innerHTML = 'Por favor ingrese todos los valores.';
+    return;
+  }
+
+  if(ph >= 5.5 || alSat < 30){
+    out.innerHTML = '<strong class="text-red">NO debe encalar.</strong> Riesgo de dano neto: precipita fosforo, calcina microbiota benefica.<br>' +
+      'Criterio: pH=' + ph + ' (&gt;=5.5) O sat.Al=' + alSat + '% (&lt;30%). Ambos deben cumplirse para encalar.';
+  } else {
+    const dosis = 1.5 * alEx;
+    let msg = '<strong class="text-emerald">SI debe encalar.</strong> Se cumplen ambos criterios (pH&lt;5.5 Y sat.Al&gt;30%).<br>' +
+      'Dosis recomendada: <span class="val">' + dosis.toFixed(1) + ' t/ha</span>.';
+    if(dosis > 3){
+      msg += '<br><strong class="text-amber">ADVERTENCIA:</strong> dosis &gt;3 t/ha. Particionar en dos aplicaciones separadas 60 dias.';
+    }
+    msg += '<br><span class="text-dim">Aplicar 2-3 meses antes de siembra, incorporar 10-15 cm.</span>';
+    out.innerHTML = msg;
+  }
+
+  state.calculator_uses.cochrane++;
+  saveState();
+}
+
+function calcBocashi(){
+  const ha = parseFloat(document.getElementById('bocashiHa').value) || 0;
+  const cultivo = document.getElementById('bocashiCultivo').value;
+  const kgMap = {hortalizas:3, frutales:2, cafe:1.5, pastos:0.5};
+  const kgPerM2 = kgMap[cultivo] || 2;
+  const totalKg = ha * 10000 * kgPerM2;
+  const m3 = totalKg * 0.5 / 1000;
+  const costCompra = totalKg * 4000;
+  const costAuto = totalKg * 2000;
+  const ahorro = costCompra - costAuto;
+
+  document.getElementById('bocashiOutput').innerHTML =
+    'Bocashi necesario por ano: <span class="val">' + Math.round(totalKg).toLocaleString() + ' kg</span> (' + m3.toFixed(1) + ' m&#x00B3; aprox)<br>' +
+    'Costo si compras (comercial): <span class="text-red">$' + costCompra.toLocaleString() + ' COP</span><br>' +
+    'Costo si autoproduces: <span class="text-emerald">$' + costAuto.toLocaleString() + ' COP</span><br>' +
+    '<strong>Ahorro por autoproducir: <span class="text-emerald">$' + ahorro.toLocaleString() + ' COP</span></strong>';
+
+  state.calculator_uses.bocashi++;
+  saveState();
+}
+
+// === SVG INTERACTIONS ===
+function showCal(type){
+  const rxn = document.getElementById('calReaction');
+  if(type === 'cao'){
+    rxn.textContent = 'CaO + H2O -> Ca(OH)2 + 63 kJ/mol (EXOTERMICA VIOLENTA, pH>12)';
+    rxn.setAttribute('fill','#f87171');
+  } else if(type === 'caoh'){
+    rxn.textContent = 'Ca(OH)2 disuelto: pH ~12. Alcalinidad inmediata, no controlable.';
+    rxn.setAttribute('fill','#fbbf24');
+  } else {
+    rxn.textContent = 'CaMg(CO3)2 + 2H+ -> Ca2+ + Mg2+ + 2H2O + 2CO2 (lenta, pH gradual 7-8)';
+    rxn.setAttribute('fill','#10b981');
+  }
+}
+
+let mycoState = true;
+function toggleMyco(active){
+  mycoState = active;
+  document.getElementById('zoneMyco').style.display = active ? 'block' : 'none';
+  document.getElementById('zoneNoMyco').style.display = active ? 'none' : 'block';
+  document.getElementById('micOnBg').setAttribute('fill', active ? '#10b981' : '#334155');
+  document.getElementById('micOnBg').setAttribute('stroke', active ? '#10b981' : '#475569');
+  document.getElementById('micOffBg').setAttribute('fill', active ? '#334155' : '#f87171');
+  document.getElementById('micOffBg').setAttribute('stroke', active ? '#475569' : '#f87171');
+}
+
+const charlaStates = [false, false, false];
+function toggleCharla(idx){
+  charlaStates[idx] = !charlaStates[idx];
+  const texts = [
+    ['RCT: NO. Chagra: NO.','RCT: NO. Chagra lo recomienda: NO'],
+    ['RCT: NO. Chagra: NO.','RCT: NO. Chagra lo recomienda: NO'],
+    ['RCT: NO. Chagra: NO.','RCT: NO. Chagra lo recomienda: NO']
+  ];
+  const el = document.getElementById('char'+idx+'res');
+  if(el) el.textContent = charlaStates[idx] ? texts[idx][1] : 'Toca para ver';
+  if(charlaStates[idx]){
+    el.setAttribute('fill','#f87171');
+  } else {
+    el.setAttribute('fill','#94a3b8');
+  }
+}
+
+// === RESUMEN / CERTIFICATE ===
+function renderResumen(){
+  // Calculate average
+  const scores = Object.values(state.quiz_scores);
+  let totalCorrect = 0, totalQuestions = 0;
+  scores.forEach(s=>{ totalCorrect += s.correct; totalQuestions += s.total; });
+  const avg = totalQuestions > 0 ? Math.round((totalCorrect/totalQuestions)*100) : 0;
+  state.promedio_quizzes = avg / 100;
+
+  document.getElementById('finalScore').textContent = avg + '%';
+
+  // Breakdown
+  const parts = ['parte_1','parte_2','parte_3','parte_4','parte_5','parte_6','parte_7'];
+  const names = ['Parte 1: Suelo vivo','Parte 2: Eficiencia NPK','Parte 3: La cal','Parte 4: Ciencia 1990-2020','Parte 5: Piramide','Parte 6: Transición 3 anos','Parte 7: Honestidad'];
+  let html = '';
+  parts.forEach((p,i)=>{
+    const s = state.quiz_scores[p];
+    if(s){
+      const pct = Math.round((s.correct/s.total)*100);
+      const color = pct >= 60 ? 'text-emerald' : 'text-red';
+      html += '<div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid #1e293b">' +
+        '<span>' + names[i] + '</span><span class="' + color + ' font-bold">' + s.correct + '/' + s.total + ' (' + pct + '%)</span></div>';
+    } else {
+      html += '<div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid #1e293b;color:#94a3b8">' +
+        '<span>' + names[i] + '</span><span>Sin completar</span></div>';
+    }
+  });
+  document.getElementById('scoreBreakdown').innerHTML = html;
+
+  // Certificate eligibility
+  state.certificate_eligible = avg >= 70;
+  if(state.certificate_eligible){
+    document.getElementById('certSection').classList.remove('hidden');
+    document.getElementById('noCertSection').classList.add('hidden');
+    document.getElementById('certDate').textContent = new Date().toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'});
+    if(state.user_name) updateCertName(state.user_name);
+  } else {
+    document.getElementById('certSection').classList.add('hidden');
+    document.getElementById('noCertSection').classList.remove('hidden');
+    document.getElementById('noCertScore').textContent = avg;
+  }
+  saveState();
+}
+
+function updateCertName(name){
+  state.user_name = name;
+  const disp = document.getElementById('certNameDisplay');
+  if(disp) disp.textContent = name || '________________';
+  saveState();
+}
+
+function shareUnit(){
+  const url = 'https://chagra.bio/aprender/unidad/transición-15-15-15/';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>{
+      alert('Enlace copiado al portapapeles: ' + url);
+    }).catch(()=>{
+      prompt('Copia este enlace:', url);
+    });
+  } else {
+    prompt('Copia este enlace:', url);
+  }
+}
+
+// === INIT ===
+function init(){
+  updateProgress();
+  updateNavButtons();
+
+  // If returning to non-portada, restore position
+  if(state.current_screen && state.current_screen !== 'portada' && SCREENS.includes(state.current_screen)){
+    // Show saved screen
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    const saved = document.getElementById('screen-'+state.current_screen);
+    if(saved) saved.classList.add('active');
+  }
+
+  // Trigger carbon animation when visible
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && entry.target.id === 'svgCarbono'){
+        animateCarbono();
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.5});
+  const svgC = document.getElementById('svgCarbono');
+  if(svgC) observer.observe(svgC);
+}
+
+function animateCarbono(){
+  // Simple animation: reduce bar height and update text
+  const bar2010 = document.getElementById('bar2010');
+  const txt2010 = document.getElementById('txt2010');
+  if(bar2010) bar2010.setAttribute('height','75');
+  if(txt2010) txt2010.textContent = '~50%';
+}
+
+// Initialize calculator defaults on load
+window.addEventListener('DOMContentLoaded', ()=>{
+  init();
+  calcNPK();
+  calcCochrane();
+  calcBocashi();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Unidad didáctica Bioseguridad en el campo - Quimicos, cuerpo y agroecología. Curso interactivo gratuito para campesinos y técnicos.">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Bioseguridad en el campo | Chagra Aprender">
+<meta property="og:description" content="Lo que la ciencia probo - sin alarmismo y sin disimulo. Curso interactivo gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chagra.bio/aprender/unidad/bioseguridad/">
+<title>Bioseguridad en el campo - Unidad didáctica | Chagra</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-height:100dvh;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:19px;line-height:1.75;color:#e2e8f0;background:#0f172a;-webkit-font-smoothing:antialiased}
+img,picture,svg{display:block;max-width:100%}
+button,input,textarea,select{font:inherit}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;color:inherit}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid #10b981;outline-offset:2px;border-radius:4px}
+::selection{background:#10b981;color:#0f172a}
+
+/* ===== VARIABLES ===== */
+:root{--bg:#0f172a;--bg-s:#1e293b;--bg-t:#334155;--fg:#e2e8f0;--dim:#94a3b8;--em:#10b981;--cy:#06b6d4;--am:#fbbf24;--rd:#f87171;--max-w:720px;--pad:1.25rem;--hh:52px}
+
+/* ===== UTILIDADES ===== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+.hide{display:none!important}
+.text-center{text-align:center}
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap{position:fixed;inset:0 0 auto;z-index:200;height:4px;background:#1e293b}
+.progress-fill{height:100%;background:linear-gradient(90deg,#10b981,#06b6d4);width:0%;transition:width .4s ease}
+
+/* ===== HEADER ===== */
+.unit-header{position:fixed;inset:0 0 auto;z-index:150;height:var(--hh);background:rgba(15,23,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid #334155;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
+.header-brand{font-weight:700;font-size:1.05rem;color:#e2e8f0;display:flex;align-items:center;gap:.5rem}
+.header-brand svg{width:24px;height:24px;color:#10b981}
+.header-nav{display:flex;align-items:center;gap:1rem;font-size:.85rem;color:#94a3b8}
+.header-nav button{padding:.35rem .7rem;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#94a3b8;font-size:.8rem;transition:all .2s}
+.header-nav button:hover,.header-nav button:focus{background:#334155;color:#e2e8f0}
+.header-nav button:disabled{opacity:.3;cursor:not-allowed}
+.header-step{font-size:.8rem;color:#10b981;font-weight:600}
+
+/* ===== SCREENS ===== */
+.screen{max-width:var(--max-w);margin:0 auto;padding:calc(var(--hh) + 24px) var(--pad) 4rem;min-height:100dvh}
+.screen-title{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;line-height:1.2;margin-bottom:.75rem;color:#f8fafc}
+.screen-subtitle{font-size:clamp(1rem,3vw,1.25rem);color:#94a3b8;margin-bottom:2rem;line-height:1.5}
+.section-title{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;margin:2rem 0 1rem;color:#f8fafc}
+.section-subtitle{font-size:1.05rem;font-weight:600;color:#10b981;margin:1.5rem 0 .5rem}
+
+/* ===== HERO ===== */
+.hero-img{width:100%;border-radius:16px;margin-bottom:2rem;aspect-ratio:16/9;object-fit:cover;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+
+/* ===== KEY TAKEAWAYS ===== */
+.takeaway-grid{display:grid;gap:1rem;margin:1.5rem 0}
+.takeaway-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:transform .2s,border-color .2s}
+.takeaway-card:hover{border-color:#10b981;transform:translateY(-2px)}
+.tk-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(16,185,129,.15);color:#10b981;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.tk-text{color:#e2e8f0;font-size:.95rem;line-height:1.6}
+.tk-text strong{color:#fbbf24}
+
+/* ===== CONTENT CARDS ===== */
+.content-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.5rem;margin:1rem 0}
+.content-card p{color:#94a3b8;margin-bottom:1rem}
+.content-card p:last-child{margin-bottom:0}
+.content-card strong{color:#e2e8f0}
+.content-card em{color:#fbbf24;font-style:normal}
+
+/* ===== CALLOUTS ===== */
+.callout{padding:1.25rem;border-radius:12px;margin:1rem 0;border-left:4px solid}
+.callout.warn{background:rgba(248,113,113,.08);border-color:#f87171}
+.callout.info{background:rgba(6,182,212,.08);border-color:#06b6d4}
+.callout.success{background:rgba(16,185,129,.08);border-color:#10b981}
+.callout.amber{background:rgba(251,191,36,.08);border-color:#fbbf24}
+.callout-title{font-weight:700;margin-bottom:.5rem;font-size:1rem}
+.callout.warn .callout-title{color:#f87171}
+.callout.info .callout-title{color:#06b6d4}
+.callout.success .callout-title{color:#10b981}
+.callout.amber .callout-title{color:#fbbf24}
+.callout p{font-size:.95rem;color:#cbd5e1;margin-bottom:.5rem}
+
+/* ===== TABLES ===== */
+.data-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
+.data-table th{background:#1e293b;padding:.75rem 1rem;text-align:left;font-weight:600;color:#f8fafc;border-bottom:2px solid #334155}
+.data-table td{padding:.65rem 1rem;border-bottom:1px solid #334155;color:#94a3b8}
+.data-table tr:hover td{background:rgba(30,41,59,.5)}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:100px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .2s;border:none;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 4px 20px rgba(16,185,129,.3)}
+.btn-primary:hover{box-shadow:0 6px 28px rgba(16,185,129,.4)}
+.btn-secondary{background:#1e293b;color:#e2e8f0;border:1px solid #475569}
+.btn-secondary:hover{background:#334155}
+.btn-amber{background:linear-gradient(135deg,#fbbf24,#d97706);color:#0f172a;font-weight:700;box-shadow:0 4px 20px rgba(251,191,36,.3)}
+.btn-amber:hover{box-shadow:0 6px 28px rgba(251,191,36,.4)}
+.btn-danger{background:linear-gradient(135deg,#f87171,#dc2626);color:#fff;box-shadow:0 4px 20px rgba(248,113,113,.3)}
+.btn-group{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn svg{width:18px;height:18px}
+
+/* ===== QUIZ ===== */
+.quiz-wrap{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.quiz-title{font-weight:700;font-size:1.1rem;margin-bottom:1rem;color:#fbbf24}
+.quiz-q{font-weight:600;margin-bottom:1rem;color:#e2e8f0;font-size:1.05rem}
+.quiz-option{display:block;width:100%;text-align:left;padding:.85rem 1rem;margin-bottom:.5rem;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#94a3b8;font-size:.95rem;cursor:pointer;transition:all .2s}
+.quiz-option:hover{border-color:#10b981;color:#e2e8f0}
+.quiz-option.correct{border-color:#10b981;background:rgba(16,185,129,.1);color:#10b981}
+.quiz-option.wrong{border-color:#f87171;background:rgba(248,113,113,.1);color:#f87171}
+.quiz-option:disabled{opacity:.7;cursor:default}
+.quiz-feedback{padding:1rem;border-radius:8px;margin-top:1rem;font-size:.95rem;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:rgba(16,185,129,.1);border-left:3px solid #10b981;color:#10b981}
+.quiz-feedback.wrong{background:rgba(248,113,113,.1);border-left:3px solid #f87171;color:#f87171}
+
+/* ===== SVG DIAGRAMS ===== */
+.svg-diagram{width:100%;max-width:600px;margin:1.5rem auto;display:block}
+.svg-interactive{cursor:pointer;transition:opacity .2s}
+.svg-interactive:hover{opacity:.85}
+
+/* ===== CALCULATORS ===== */
+.calc-wrap{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.calc-title{font-weight:700;font-size:1.1rem;margin-bottom:1rem;color:#06b6d4}
+.calc-row{display:flex;gap:1rem;align-items:center;margin-bottom:.75rem;flex-wrap:wrap}
+.calc-row label{min-width:200px;font-size:.95rem;color:#94a3b8;flex:1}
+.calc-row input,.calc-row select{flex:1;min-width:140px;padding:.6rem .9rem;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#e2e8f0;font-size:.95rem}
+.calc-result{padding:1rem;border-radius:8px;background:#0f172a;border-left:3px solid #10b981;margin-top:1rem;font-size:.95rem;color:#e2e8f0}
+.calc-result .result-num{font-size:1.5rem;font-weight:700;color:#10b981}
+.calc-check{display:flex;align-items:center;gap:.6rem;padding:.6rem .4rem;font-size:.95rem;color:#94a3b8;cursor:pointer}
+.calc-check input{width:18px;height:18px;accent-color:#10b981}
+
+/* ===== INCOMPATIBILITY MATRIX ===== */
+.matrix-wrap{overflow-x:auto;margin:1rem 0}
+.matrix-table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:500px}
+.matrix-table th,.matrix-table td{padding:.5rem;text-align:center;border:1px solid #334155}
+.matrix-table th{background:#1e293b;color:#f8fafc;font-weight:600;font-size:.75rem}
+.matrix-table td.safe{background:rgba(16,185,129,.15);color:#10b981}
+.matrix-table td.caution{background:rgba(251,191,36,.15);color:#fbbf24}
+.matrix-table td.danger{background:rgba(248,113,113,.15);color:#f87171}
+.matrix-table td.empty{background:#0f172a}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding-left:2rem;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#10b981,#06b6d4)}
+.timeline-item{position:relative;margin-bottom:1.5rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:.35rem;width:18px;height:18px;border-radius:50%;background:#1e293b;border:3px solid #10b981}
+.timeline-item.danger::before{border-color:#f87171}
+.timeline-item.amber::before{border-color:#fbbf24}
+.timeline-year{font-weight:700;color:#10b981;font-size:.85rem}
+.timeline-item.danger .timeline-year{color:#f87171}
+.timeline-item.amber .timeline-year{color:#fbbf24}
+.timeline-text{font-size:.95rem;color:#94a3b8;margin-top:.25rem}
+
+/* ===== REFERENCE LIST ===== */
+.ref-list{font-size:.85rem;color:#64748b;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid #334155}
+.ref-list li{margin-bottom:.5rem;padding-left:1.5rem;text-indent:-1.5rem}
+.ref-list strong{color:#94a3b8}
+
+/* ===== CERTIFICATE ===== */
+.cert-box{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid #10b981;border-radius:16px;padding:2.5rem;text-align:center;margin:2rem 0;position:relative;overflow:hidden}
+.cert-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(16,185,129,.08),transparent 60%),radial-gradient(circle at 70% 80%,rgba(6,182,212,.06),transparent 60%);pointer-events:none}
+.cert-title{font-size:1.6rem;font-weight:700;color:#10b981;margin-bottom:.5rem}
+.cert-sub{font-size:1.1rem;color:#94a3b8;margin-bottom:1.5rem}
+.cert-score{font-size:3rem;font-weight:700;color:#f8fafc;margin:1rem 0}
+.cert-score span{font-size:1.2rem;color:#94a3b8}
+.cert-qr{width:120px;height:120px;margin:1rem auto;background:#fff;border-radius:8px;padding:8px}
+.cert-qr svg{width:100%;height:100%}
+
+/* ===== PHONE CTA ===== */
+.phone-cta{background:linear-gradient(135deg,rgba(248,113,113,.12),rgba(220,38,38,.08));border:2px solid #f87171;border-radius:16px;padding:2rem;text-align:center;margin:2rem 0}
+.phone-num{font-size:2.5rem;font-weight:700;color:#f87171;margin:.5rem 0}
+.phone-num a{color:inherit}
+
+/* ===== DRAG AND DROP ===== */
+.drag-list{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+.drag-item{padding:.85rem 1rem;background:#0f172a;border:1px solid #334155;border-radius:8px;cursor:grab;font-size:.95rem;color:#e2e8f0;display:flex;align-items:center;gap:.75rem;transition:all .2s}
+.drag-item:active{cursor:grabbing}
+.drag-item.dragging{opacity:.5}
+.drag-item .drag-num{width:28px;height:28px;border-radius:50%;background:#334155;color:#94a3b8;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.drag-item.correct{border-color:#10b981;background:rgba(16,185,129,.08)}
+.drag-item.correct .drag-num{background:#10b981;color:#0f172a}
+.drag-item.wrong{border-color:#f87171;background:rgba(248,113,113,.08)}
+.drag-item.wrong .drag-num{background:#f87171;color:#fff}
+
+/* ===== EPISODE PILL ===== */
+.episode-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.epi-pill{padding:.4rem 1rem;border-radius:100px;font-size:.82rem;font-weight:600;border:1px solid #334155;background:#1e293b;color:#94a3b8}
+.epi-pill.on{background:rgba(16,185,129,.15);color:#10b981;border-color:#10b981}
+.epi-pill.warn{background:rgba(248,113,113,.15);color:#f87171;border-color:#f87171}
+.epi-pill.amber{background:rgba(251,191,36,.15);color:#fbbf24;border-color:#fbbf24}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.screen{animation:fadeInUp .35s ease}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.pulse{animation:pulse 2s infinite}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  body{font-size:17px;line-height:1.7}
+  .screen{padding-bottom:3rem}
+  .btn{padding:.75rem 1.4rem;font-size:.95rem}
+  .btn-group{flex-direction:column}
+  .calc-row{flex-direction:column;align-items:stretch}
+  .calc-row label,.calc-row input,.calc-row select{min-width:auto;width:100%}
+  .timeline{padding-left:1.5rem}
+  .timeline-item::before{width:14px;height:14px;left:-1.6rem}
+  .takeaway-card{padding:1rem}
+  .cert-box{padding:1.5rem}
+  .phone-num{font-size:2rem}
+}
+@media(max-width:400px){
+  body{font-size:16px}
+  .screen{padding:calc(var(--hh) + 12px) .75rem 3rem}
+}
+
+/* ===== REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* ===== PRINT ===== */
+@media print{
+  .progress-wrap,.unit-header,.header-nav,.btn-group,button{display:none!important}
+  body{background:#fff;color:#000;font-size:12pt;line-height:1.5}
+  .screen{max-width:100%;padding:1rem 0;color:#000}
+  .screen-title,.section-title,.screen-subtitle{color:#000}
+  .content-card,.takeaway-card,.quiz-wrap,.calc-wrap,.callout{background:#f5f5f5;border-color:#ccc;color:#000}
+  .content-card p,.takeaway-card,.quiz-option,.calc-check,.timeline-text,.data-table td,.ref-list,.epi-pill{color:#333}
+  .content-card strong,.section-title,.quiz-q,.quiz-title,.calc-title,.screen-title{color:#000}
+  .hero-img{max-height:200px;object-fit:cover}
+  a{color:#000;text-decoration:underline}
+  .phone-cta,.cert-box{border-color:#999;background:#f5f5f5}
+  .callout.warn,.callout.info,.callout.success,.callout.amber{background:#f5f5f5;border-left-width:3px}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap" aria-hidden="true">
+<div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- HEADER -->
+<header class="unit-header" role="banner">
+<a href="/" class="header-brand" aria-label="Chagra - Inicio">
+<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".7"/></svg>
+<span>Chagra</span>
+</a>
+<div class="header-nav">
+<span class="header-step" id="headerStep" aria-live="polite">Portada</span>
+<button id="btnPrev" onclick="navPrev()" aria-label="Anterior" disabled>&larr; Anterior</button>
+<button id="btnNextHeader" onclick="navNext()" aria-label="Siguiente">Siguiente &rarr;</button>
+</div>
+</header>
+
+<main id="mainContent">
+
+<!-- ============================================================ -->
+<!-- PANTALLA 0 - PORTADA / SPLASH                                 -->
+<!-- ============================================================ -->
+<section id="screen-0" class="screen" aria-label="Portada">
+<img src="assets/hero-epp.webp" alt="Ilustracion de un agricultor colombiano con equipo de protección personal completo en un campo verde, con escudo protector bloqueando gotas químicas" class="hero-img" loading="eager" width="720" height="405">
+
+<div class="text-center">
+<p class="header-step" style="margin-bottom:1rem">Unidad 2 de 7 &middot; 30-40 min &middot; Interactiva</p>
+<h1 class="screen-title">Bioseguridad en el campo</h1>
+<p class="screen-subtitle" style="max-width:540px;margin:0 auto 2rem">Quimicos, cuerpo y agroecología.<br>Lo que la ciencia probo - sin alarmismo y sin disimulo.</p>
+
+<div class="episode-pills" style="justify-content:center">
+<span class="epi-pill warn">Glifosato y cáncer</span>
+<span class="epi-pill amber">Kit de protección</span>
+<span class="epi-pill on">7 quizzes</span>
+<span class="epi-pill on">3 calculadoras</span>
+<span class="epi-pill warn">Línea 192</span>
+</div>
+
+<div id="previousProgress" class="content-card" style="display:none;max-width:420px;margin:1.5rem auto;text-align:left">
+<p style="color:#10b981;font-weight:600;margin-bottom:.25rem">Tu progreso anterior</p>
+<p style="color:#94a3b8;font-size:.9rem;margin:0" id="previousProgressText"></p>
+</div>
+
+<button class="btn btn-primary" onclick="goTo(1)" style="margin-top:1rem">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+Empezar la unidad
+</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 1 - INTRO + KEY TAKEAWAYS                            -->
+<!-- ============================================================ -->
+<section id="screen-1" class="screen hide" aria-label="Introduccion y puntos clave">
+<h2 class="screen-title">Lo importante en 1 minuto</h2>
+<p class="screen-subtitle">5 cosas que debe saber antes de seguir.</p>
+
+<div class="takeaway-grid">
+<div class="takeaway-card">
+<div class="tk-num">1</div>
+<div class="tk-text">El campo colombiano lleva <strong>60 años usando químicos</strong> que la ciencia ahora sabe que danean. No fue su culpa - nadie le dijo. <strong>Ahora si.</strong></div>
+</div>
+<div class="takeaway-card">
+<div class="tk-num">2</div>
+<div class="tk-text">El <strong>caso Bayer-Monsanto por glifosato</strong>: pagaron <strong>más de USD 15.000 millones</strong> en compensaciones. La OMS/IARC 2015 lo clasificó como <strong>"probable cancerígeno humano" (Grupo 2A)</strong>.</div>
+</div>
+<div class="takeaway-card">
+<div class="tk-num">3</div>
+<div class="tk-text">El <strong>paraquat, clorpirifos y mancozeb</strong> están <strong>prohibidos en la Union Europea y EE.UU.</strong> pero <strong>permitidos en Colombia</strong>.</div>
+</div>
+<div class="takeaway-card">
+<div class="tk-num">4</div>
+<div class="tk-text">La <strong>agroecología también tiene químicos peligrosos</strong> si no se usan con EPP: KOH del JWA, cobre del bordelés, azufre del sulfocálcico, polvo de compost (aspergilosis).</div>
+</div>
+<div class="takeaway-card">
+<div class="tk-num">5</div>
+<div class="tk-text">El <strong>kit mínimo de protección personal</strong> cuesta entre <strong>$85.000 y $300.000 COP</strong>. Lo que cuesta un viaje al especialista cuando ya está enfermo.</div>
+</div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="goTo(2)">Continuar a Parte 1 &rarr;</button>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- PANTALLA 2 - PARTE 1: Como entra el químico al cuerpo         -->
+<!-- ============================================================ -->
+<section id="screen-2" class="screen hide" aria-label="Parte 1: Como entra el químico al cuerpo">
+<p class="header-step">Parte 1 de 7 &middot; Lo simple: para todos</p>
+<h2 class="screen-title">Como entra el químico al cuerpo</h2>
+<p class="screen-subtitle">Imagine que su piel es una esponja. Cuando usted toca un químico liquido sin guante, parte de ese liquido pasa por la esponja al adentro de su cuerpo.</p>
+
+<!-- SVG 1: Esponja-piel + química invisible -->
+<div class="content-card text-center">
+<svg class="svg-diagram" viewBox="0 0 500 320" aria-label="Diagrama de absorcion de químicos por la piel, inhalación y ojos">
+<defs>
+<linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4a574"/><stop offset="100%" stop-color="#c49a6c"/></linearGradient>
+<linearGradient id="dropGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171" stop-opacity=".7"/><stop offset="100%" stop-color="#dc2626" stop-opacity=".3"/></linearGradient>
+<linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981" stop-opacity=".25"/><stop offset="100%" stop-color="#06b6d4" stop-opacity=".15"/></linearGradient>
+</defs>
+
+<!-- Silueta humana -->
+<ellipse cx="250" cy="140" rx="28" ry="30" fill="url(#skinGrad)" opacity=".3"/>
+<rect x="222" y="170" width="56" height="70" rx="12" fill="url(#skinGrad)" opacity=".3"/>
+<rect x="185" y="180" width="30" height="55" rx="8" fill="url(#skinGrad)" opacity=".25"/>
+<rect x="285" y="180" width="30" height="55" rx="8" fill="url(#skinGrad)" opacity=".25"/>
+<rect x="230" y="240" width="18" height="55" rx="6" fill="url(#skinGrad)" opacity=".2"/>
+<rect x="252" y="240" width="18" height="55" rx="6" fill="url(#skinGrad)" opacity=".2"/>
+
+<!-- Organos internos -->
+<rect x="240" y="195" width="20" height="14" rx="5" fill="#f87171" opacity=".5"/>
+<rect x="235" y="215" width="30" height="10" rx="4" fill="#8b5cf6" opacity=".4"/>
+<circle cx="250" cy="140" r="10" fill="#06b6d4" opacity=".3"/>
+
+<!-- Escudo protector (con EPP) -->
+<path id="eppShield" d="M180 110 Q250 70 320 110 L320 260 Q250 290 180 260Z" fill="url(#shieldGrad)" stroke="#10b981" stroke-width="2" stroke-dasharray="8 4" opacity=".7"/>
+<text x="250" y="285" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">ESCUDO EPP</text>
+
+<!-- Gotas de químico que rebotan con EPP -->
+<g id="dropsNoEpp">
+<circle cx="150" cy="120" r="5" fill="url(#dropGrad)"><animate attributeName="cy" values="120;180;120" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;.3;.8" dur="2.5s" repeatCount="indefinite"/></circle>
+<circle cx="350" cy="100" r="4" fill="url(#dropGrad)"><animate attributeName="cy" values="100;170;100" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;.2;.7" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="180" cy="90" r="3" fill="url(#dropGrad)"><animate attributeName="cy" values="90;160;90" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;.2;.6" dur="2s" repeatCount="indefinite"/></circle>
+</g>
+
+<!-- Flechas hacia organos -->
+<g stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 3" opacity=".6">
+<line x1="200" y1="190" x2="235" y2="200"><animate attributeName="opacity" values="0;.6;0" dur="2s" repeatCount="indefinite"/></line>
+<line x1="300" y1="200" x2="265" y2="210"><animate attributeName="opacity" values="0;.6;0" dur="2.5s" repeatCount="indefinite"/></line>
+<line x1="250" y1="160" x2="250" y2="130"><animate attributeName="opacity" values="0;.6;0" dur="1.8s" repeatCount="indefinite"/></line>
+</g>
+
+<!-- Labels -->
+<text x="80" y="160" fill="#94a3b8" font-size="11" text-anchor="middle">Gotas de</text>
+<text x="80" y="174" fill="#94a3b8" font-size="11" text-anchor="middle">aspersor</text>
+<text x="420" y="160" fill="#94a3b8" font-size="11" text-anchor="middle">Nube de</text>
+<text x="420" y="174" fill="#94a3b8" font-size="11" text-anchor="middle">fumigada</text>
+<text x="250" y="40" fill="#f87171" font-size="12" font-weight="600" text-anchor="middle">SIN PROTECCION: las gotas entran al cuerpo</text>
+
+<!-- Boton toggle EPP (simulado con rect) -->
+<rect x="180" y="295" width="140" height="22" rx="11" fill="#1e293b" stroke="#10b981" stroke-width="1" opacity=".6"/>
+<text x="250" y="310" fill="#10b981" font-size="9" text-anchor="middle" font-weight="600">Activa el EPP para ver la protección</text>
+</svg>
+<p style="color:#64748b;font-size:.85rem;margin-top:.5rem">Sin EPP las gotas de químico entran por piel, ojos y pulmones. Con EPP rebotan.</p>
+</div>
+
+<div class="content-card">
+<p>Cuando <strong>respira la nube de la fumigada sin tapabocas</strong>, los pulmones absorben las gotas que no se ven. Esas gotas viajan a la sangre. Por eso los químicos del campo enferman a la gente despacio. No es de un dia. Es de muchos años acumulados.</p>
+</div>
+
+<div class="callout warn">
+<p class="callout-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" style="vertical-align:text-bottom;margin-right:4px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Los más sensibles al peligro</p>
+<ul style="list-style:disc;padding-left:1.5rem;color:#cbd5e1">
+<li><strong>Ninos</strong> - su cuerpo absorbe más por kilo de peso</li>
+<li><strong>Mujeres embarazadas</strong> - el feto recibe lo que recibe la madre</li>
+<li><strong>Personas mayores</strong> - rinones e hígado más lentos para limpiar</li>
+<li><strong>Quien trabaja sin protección por años</strong> - el dano se acumula</li>
+</ul>
+</div>
+
+<!-- Quiz Parte 1 -->
+<div class="quiz-wrap" data-quiz="parte_1" data-required="60">
+<div class="quiz-title">Quiz - Parte 1</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Como entra principalmente un químico liquido al cuerpo del aplicador?</p>
+<button class="quiz-option" data-correct="false">a) Solo por la boca</button>
+<button class="quiz-option" data-correct="true">b) Por la piel (absorcion cutanea), por inhalación del aerosol y por contacto con ojos</button>
+<button class="quiz-option" data-correct="false">c) Solo por inhalación</button>
+<button class="quiz-option" data-correct="false">d) No entra si te banas inmediatamente</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Quien NO está en el grupo de más sensibles a químicos agricolas?</p>
+<button class="quiz-option" data-correct="false">a) Ninos</button>
+<button class="quiz-option" data-correct="false">b) Mujeres embarazadas</button>
+<button class="quiz-option" data-correct="false">c) Personas mayores</button>
+<button class="quiz-option" data-correct="true">d) Adultos sanos que han usado EPP completo toda su vida</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Por que los químicos del campo "enferman despacio"?</p>
+<button class="quiz-option" data-correct="false">a) Porque los químicos modernos son inofensivos</button>
+<button class="quiz-option" data-correct="true">b) Porque el dano se acumula a lo largo de muchos años de exposición</button>
+<button class="quiz-option" data-correct="false">c) Solo enferman si la dosis es muy alta</button>
+<button class="quiz-option" data-correct="false">d) No es cierto, enferman de inmediato</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 2 &rarr;</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 3 - PARTE 2: Caso Bayer-Monsanto                     -->
+<!-- ============================================================ -->
+<section id="screen-3" class="screen hide" aria-label="Parte 2: La historia que cambio todo">
+<p class="header-step">Parte 2 de 7 &middot; Lo simple: para todos</p>
+<h2 class="screen-title">La historia que cambio todo:<br>Dewayne Johnson vs Monsanto</h2>
+<p class="screen-subtitle">En 2018, un jardinero demostró en tribunales que el glifosato causa cáncer. Después vinieron más de 125.000 demandas.</p>
+
+<div class="content-card">
+<p>En 2018, en California (EE.UU.), <strong>Dewayne "Lee" Johnson</strong> trabajaba como jardinero. Su trabajo era aplicar <strong>Roundup</strong> (el herbicida glifosato de Monsanto-Bayer) en parques públicos.</p>
+<p>Después de varios años, Johnson desarrollo <strong>linfoma no Hodgkin</strong> - un cáncer de los ganglios linfáticos. Tenía 46 años.</p>
+<p>El jurado decidio que <strong>el glifosato causo su cáncer</strong>. La empresa fue condenada a pagar <strong>289 millones de dolares</strong> (después rebajado a 20.5 millones).</p>
+</div>
+
+<!-- SVG 2: Timeline Bayer-Monsanto -->
+<div class="content-card">
+<h3 class="section-subtitle">Linea de tiempo del caso</h3>
+<div class="timeline">
+<div class="timeline-item">
+<span class="timeline-year">1974</span>
+<p class="timeline-text">Monsanto patenta el glifosato como herbicida. Se convierte en el químico agrícola más usado del mundo.</p>
+</div>
+<div class="timeline-item amber">
+<span class="timeline-year">2015</span>
+<p class="timeline-text"><strong>IARC/OMS clasifica glifosato como Grupo 2A "probable cancerígeno humano"</strong> - Lyon, Francia.</p>
+</div>
+<div class="timeline-item danger">
+<span class="timeline-year">2018</span>
+<p class="timeline-text"><strong>Dewayne Johnson gana la primera demanda</strong>. USD 289M. Monsanto sabía desde hace décadas según documentos internos revelados.</p>
+</div>
+<div class="timeline-item amber">
+<span class="timeline-year">2018</span>
+<p class="timeline-text">Bayer compra Monsanto por USD 63 mil millones. Hereda todas las demandas.</p>
+</div>
+<div class="timeline-item danger">
+<span class="timeline-year">2020</span>
+<p class="timeline-text">Bayer ofrece <strong>USD 10.900 millones</strong> para resolver demandas. No es suficiente - siguen llegando.</p>
+</div>
+<div class="timeline-item danger">
+<span class="timeline-year">2024</span>
+<p class="timeline-text"><strong>Mas de 125.000 demandas activas</strong>. Bayer ha pagado <strong>más de USD 15.000 millones</strong> en compensaciones. Y el químico SIGUE en las tiendas.</p>
+</div>
+</div>
+</div>
+
+<div class="callout info">
+<p class="callout-title">El glifosato está en su tienda agropecuaria hoy</p>
+<p>Estos productos contienen el mismo ingrediente activo (glifosato): <strong>Roundup, Faena, Glyfocom, Panzer, Touchdown, Sicofosato</strong>. Todos son lo mismo.</p>
+</div>
+
+<div class="content-card">
+<p><strong>A usted le diran:</strong> "está aprobado por el ICA, como va a ser peligroso?".</p>
+<p>La respuesta honesta: <strong>el ICA aprueba un químico cuando el fabricante presenta sus propios estudios</strong>. Si el fabricante esconde estudios incomodos, la aprobacion se basa en informacion parcial. Esto paso con el glifosato en EE.UU. - Monsanto sabía hace décadas que habia problemas y los documentos internos así lo prueban (revelados en los juicios).</p>
+<p>La <strong>Organizacion Mundial de la Salud</strong> (via IARC en Lyon, Francia) en 2015 <strong>clasificó al glifosato como "probable cancerígeno humano" (grupo 2A)</strong>.</p>
+</div>
+
+<!-- Quiz Parte 2 -->
+<div class="quiz-wrap" data-quiz="parte_2" data-required="60">
+<div class="quiz-title">Quiz - Parte 2</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Que cáncer desarrollo Dewayne Johnson tras años aplicando Roundup?</p>
+<button class="quiz-option" data-correct="false">a) Cancer de pulmón</button>
+<button class="quiz-option" data-correct="true">b) Linfoma no Hodgkin</button>
+<button class="quiz-option" data-correct="false">c) Cancer de piel</button>
+<button class="quiz-option" data-correct="false">d) Cancer de tiroides</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Cuanto ha pagado Bayer en compensaciones por glifosato hasta 2024?</p>
+<button class="quiz-option" data-correct="false">a) USD 100 millones</button>
+<button class="quiz-option" data-correct="false">b) USD 1.000 millones</button>
+<button class="quiz-option" data-correct="true">c) Mas de USD 15.000 millones</button>
+<button class="quiz-option" data-correct="false">d) Nada - todavia no ha pagado</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Que clasificación dio la IARC/OMS al glifosato en 2015?</p>
+<button class="quiz-option" data-correct="false">a) Seguro para uso humano</button>
+<button class="quiz-option" data-correct="false">b) Posible cancerígeno (Grupo 2B)</button>
+<button class="quiz-option" data-correct="true">c) Probable cancerígeno humano (Grupo 2A)</button>
+<button class="quiz-option" data-correct="false">d) Cancerigeno confirmado (Grupo 1)</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="4">
+<p class="quiz-q">4. Por que el glifosato sigue vendiendose en Colombia a pesar del caso Bayer?</p>
+<button class="quiz-option" data-correct="false">a) Porque es seguro en Colombia</button>
+<button class="quiz-option" data-correct="true">b) Porque el ICA aprueba con estudios del fabricante y el químico no ha sido prohibido formalmente aqui</button>
+<button class="quiz-option" data-correct="false">c) Porque los productores lo exigen</button>
+<button class="quiz-option" data-correct="false">d) Porque ya no es peligroso</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 3 &rarr;</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 4 - PARTE 3: Kit mínimo de protección                -->
+<!-- ============================================================ -->
+<section id="screen-4" class="screen hide" aria-label="Parte 3: El kit mínimo de protección">
+<p class="header-step">Parte 3 de 7 &middot; Lo simple: para todos</p>
+<h2 class="screen-title">El kit mínimo de protección</h2>
+<p class="screen-subtitle">Si va a aplicar cualquier químico (incluyendo biopreparados como bordelés, sulfocálcico o JWA), use esto.</p>
+
+<!-- Calculadora EPP -->
+<div class="calc-wrap">
+<div class="calc-title">Calculadora: Tu riesgo según EPP</div>
+<p style="color:#94a3b8;font-size:.9rem;margin-bottom:1rem">Marca lo que usas habitualmente. Te diremos cuanto químico absorbe tu cuerpo.</p>
+
+<label class="calc-check"><input type="checkbox" id="epp-gafas" onchange="calcEpp()"> Gafas químicas selladas (protege ojos 95%)</label>
+<label class="calc-check"><input type="checkbox" id="epp-mascara" onchange="calcEpp()"> Mascarilla N95 o respirador (protege pulmones 80%)</label>
+<label class="calc-check"><input type="checkbox" id="epp-guantes" onchange="calcEpp()"> Guantes nitrilo gruesos (protege piel 70%)</label>
+<label class="calc-check"><input type="checkbox" id="epp-overol" onchange="calcEpp()"> Overol manga larga (protege cuerpo 60%)</label>
+<label class="calc-check"><input type="checkbox" id="epp-botas" onchange="calcEpp()"> Botas de caucho (protege pies 50%)</label>
+<label class="calc-check"><input type="checkbox" id="epp-jabon" onchange="calcEpp()"> Jabon fuerte post-aplicación (reduce residual 40%)</label>
+
+<div class="calc-result" id="eppResult">
+<span class="result-num">100%</span> de absorcion de químico - sin protección alguna. Marca los items arriba.
+</div>
+</div>
+
+<!-- Tabla de costos -->
+<h3 class="section-subtitle">Lo que necesita y cuanto cuesta (COP 2026)</h3>
+<table class="data-table">
+<thead>
+<tr><th>Equipo</th><th>Para que</th><th>Costo aprox.</th></tr>
+</thead>
+<tbody>
+<tr><td>Gafas químicas (sellan el ojo)</td><td>Que no entren salpicaduras</td><td>$25.000 - $40.000</td></tr>
+<tr><td>Mascarilla N95 o respirador con filtro químico</td><td>Que no respire el aerosol</td><td>$5.000 - $80.000</td></tr>
+<tr><td>Guantes nitrilo gruesos</td><td>Que no toque la piel</td><td>$15.000 - $30.000</td></tr>
+<tr><td>Overol manga larga</td><td>Que no le caiga al cuerpo</td><td>$35.000 - $150.000</td></tr>
+<tr><td>Botas de caucho</td><td>Que no toque la piel del pie</td><td>Ya tiene</td></tr>
+<tr><td>Jabon fuerte</td><td>Para ducharse después</td><td>$5.000</td></tr>
+</tbody>
+</table>
+
+<div class="callout success">
+<p class="callout-title">Si solo puede comprar 3 cosas hoy</p>
+<p style="font-size:1.1rem;font-weight:700;color:#10b981;margin:0">Gafas + Mascarilla + Guantes.</p>
+<p style="margin-top:.5rem;margin-bottom:0">Esos tres protegen sus tres entradas más criticas: <strong>ojos, pulmones y piel de las manos</strong>.</p>
+</div>
+
+<div class="content-card">
+<p style="font-size:1.1rem"><strong>Total kit mínimo: $85.000 - $300.000 COP</strong>. Lo que cuesta un viaje al especialista cuando ya está enfermo.</p>
+</div>
+
+<!-- Quiz Parte 3 -->
+<div class="quiz-wrap" data-quiz="parte_3" data-required="60">
+<div class="quiz-title">Quiz - Parte 3</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Si solo puede comprar TRES elementos de protección hoy, cuales son los más criticos?</p>
+<button class="quiz-option" data-correct="false">a) Botas, sombrero, camisa</button>
+<button class="quiz-option" data-correct="true">b) Gafas químicas + mascarilla N95 + guantes nitrilo</button>
+<button class="quiz-option" data-correct="false">c) Overol blanco + botas + sombrero</button>
+<button class="quiz-option" data-correct="false">d) Cualquier cosa que cubra el cuerpo</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Cuanto cuesta aproximadamente el kit mínimo COP 2026?</p>
+<button class="quiz-option" data-correct="false">a) $5.000 - $10.000</button>
+<button class="quiz-option" data-correct="true">b) $85.000 - $300.000</button>
+<button class="quiz-option" data-correct="false">c) $1 - 2 millones</button>
+<button class="quiz-option" data-correct="false">d) Mas de $5 millones</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Para que químicos se necesita EPP (incluso si son orgánicos)?</p>
+<button class="quiz-option" data-correct="false">a) Solo para glifosato y paraquat</button>
+<button class="quiz-option" data-correct="false">b) Solo para los químicos sinteticos</button>
+<button class="quiz-option" data-correct="true">c) Para cualquier químico, incluyendo bordelés, sulfocálcico, JWA</button>
+<button class="quiz-option" data-correct="false">d) Para ninguno si son orgánicos</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 4 &rarr;</button>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- PANTALLA 5 - PARTE 4: Evidencia epidemiologica (técnico)      -->
+<!-- ============================================================ -->
+<section id="screen-5" class="screen hide" aria-label="Parte 4: Evidencia científica">
+<p class="header-step">Parte 4 de 7 &middot; Tecnico: para profesionales</p>
+<h2 class="screen-title">Evidencia científica de danos a la salud</h2>
+<p class="screen-subtitle">Meta-análisis y estudios cohorte revisados por pares (peer-review).</p>
+
+<!-- SVG 4: Mapa global prohibiciones -->
+<div class="content-card text-center">
+<h3 class="section-subtitle">Prohibiciones mundiales vs Colombia</h3>
+<svg class="svg-diagram" viewBox="0 0 600 340" aria-label="Mapa comparativo de prohibiciones de agroquimicos: UE, EE.UU., Brasil vs Colombia">
+<rect x="0" y="0" width="600" height="340" rx="12" fill="#1e293b"/>
+
+<!-- Headers -->
+<rect x="10" y="10" width="140" height="30" rx="6" fill="#334155"/>
+<text x="80" y="30" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600">Quimico</text>
+<rect x="160" y="10" width="105" height="30" rx="6" fill="rgba(16,185,129,.15)"/>
+<text x="212" y="30" text-anchor="middle" fill="#10b981" font-size="11" font-weight="600">Union Europea</text>
+<rect x="275" y="10" width="105" height="30" rx="6" fill="rgba(6,182,212,.15)"/>
+<text x="327" y="30" text-anchor="middle" fill="#06b6d4" font-size="11" font-weight="600">EE.UU.</text>
+<rect x="390" y="10" width="95" height="30" rx="6" fill="rgba(251,191,36,.15)"/>
+<text x="437" y="30" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="600">Brasil</text>
+<rect x="495" y="10" width="95" height="30" rx="6" fill="rgba(248,113,113,.15)"/>
+<text x="542" y="30" text-anchor="middle" fill="#f87171" font-size="11" font-weight="600">Colombia</text>
+
+<!-- Glifosato row -->
+<rect x="10" y="48" width="140" height="28" rx="6" fill="#0f172a"/>
+<text x="80" y="66" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Glifosato</text>
+<rect x="160" y="48" width="105" height="28" rx="6" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1"/>
+<text x="212" y="66" text-anchor="middle" fill="#fbbf24" font-size="10">Restricciones</text>
+<rect x="275" y="48" width="105" height="28" rx="6" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1"/>
+<text x="327" y="66" text-anchor="middle" fill="#fbbf24" font-size="10">Restricciones</text>
+<rect x="390" y="48" width="95" height="28" rx="6" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1"/>
+<text x="437" y="66" text-anchor="middle" fill="#fbbf24" font-size="10">Restricciones</text>
+<rect x="495" y="48" width="95" height="28" rx="6" fill="rgba(16,185,129,.1)" stroke="#10b981" stroke-width="1"/>
+<text x="542" y="66" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">PERMITIDO</text>
+
+<!-- Paraquat row -->
+<rect x="10" y="84" width="140" height="28" rx="6" fill="#0f172a"/>
+<text x="80" y="102" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Paraquat</text>
+<rect x="160" y="84" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="212" y="102" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2007</text>
+<rect x="275" y="84" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="327" y="102" text-anchor="middle" fill="#f87171" font-size="10">Restricciones</text>
+<rect x="390" y="84" width="95" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="437" y="102" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2020</text>
+<rect x="495" y="84" width="95" height="28" rx="6" fill="rgba(16,185,129,.1)" stroke="#10b981" stroke-width="1"/>
+<text x="542" y="102" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">PERMITIDO</text>
+
+<!-- Clorpirifos row -->
+<rect x="10" y="120" width="140" height="28" rx="6" fill="#0f172a"/>
+<text x="80" y="138" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Clorpirifos</text>
+<rect x="160" y="120" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="212" y="138" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2020</text>
+<rect x="275" y="120" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="327" y="138" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2021</text>
+<rect x="390" y="120" width="95" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="437" y="138" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2022</text>
+<rect x="495" y="120" width="95" height="28" rx="6" fill="rgba(16,185,129,.1)" stroke="#10b981" stroke-width="1"/>
+<text x="542" y="138" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">PERMITIDO</text>
+
+<!-- Mancozeb row -->
+<rect x="10" y="156" width="140" height="28" rx="6" fill="#0f172a"/>
+<text x="80" y="174" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="600">Mancozeb</text>
+<rect x="160" y="156" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="212" y="174" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">PROHIBIDO 2021</text>
+<rect x="275" y="156" width="105" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="327" y="174" text-anchor="middle" fill="#f87171" font-size="10">Restricciones</text>
+<rect x="390" y="156" width="95" height="28" rx="6" fill="rgba(248,113,113,.15)" stroke="#f87171" stroke-width="1"/>
+<text x="437" y="174" text-anchor="middle" fill="#f87171" font-size="10">Restricciones</text>
+<rect x="495" y="156" width="95" height="28" rx="6" fill="rgba(16,185,129,.1)" stroke="#10b981" stroke-width="1"/>
+<text x="542" y="174" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">PERMITIDO</text>
+
+<!-- Colombia highlighted -->
+<rect x="495" y="48" width="95" height="136" rx="6" fill="none" stroke="#f87171" stroke-width="2" stroke-dasharray="4 2"/>
+<text x="542" y="215" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">TODOS PERMITIDOS</text>
+
+<!-- Legend -->
+<circle cx="40" cy="250" r="8" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="1.5"/><text x="56" y="254" fill="#94a3b8" font-size="10">= Prohibido</text>
+<circle cx="40" cy="275" r="8" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="1.5"/><text x="56" y="279" fill="#94a3b8" font-size="10">= Restricciones</text>
+<circle cx="40" cy="300" r="8" fill="rgba(16,185,129,.2)" stroke="#10b981" stroke-width="1.5"/><text x="56" y="304" fill="#94a3b8" font-size="10">= Permitido</text>
+</svg>
+</div>
+
+<!-- Glifosato -->
+<h3 class="section-subtitle">Glifosato (Roundup, Faena, Panzer, Glyfocom)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Linfoma no Hodgkin:</strong> meta-análisis Zhang et al. 2019 <em>Mutation Research</em> 781:186-206 - incremento de riesgo <strong style="color:#f87171">41%</strong> en exposición alta acumulada</li>
+<li><strong>Disrupcion microbiota intestinal</strong> (Tang et al. 2020 <em>Environ Pollut</em> 261:114129)</li>
+<li><strong>Hepatotoxicidad crónica</strong> a dosis bajas (Mesnage et al. 2017 <em>Sci Rep</em> 7:39328)</li>
+<li><strong>IARC/OMS 2015 Monograph 112:</strong> <span style="color:#f87171;font-weight:700">Grupo 2A "probable cancerígeno humano"</span></li>
+</ul>
+</div>
+
+<!-- Paraquat -->
+<h3 class="section-subtitle">Paraquat (Gramoxone, Praxone)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Enfermedad de Parkinson:</strong> Tanner et al. 2011 <em>Environ Health Perspect</em> 119:866 - incremento de riesgo <strong style="color:#f87171">150-200%</strong> con exposición ocupacional crónica</li>
+<li><strong>Toxicidad aguda LD50 ~30 mg/kg.</strong> <span style="color:#f87171;font-weight:700">No tiene antidoto efectivo.</span> Mortalidad &gt;70% en intoxicaciones agudas</li>
+<li>Union Europea: <strong style="color:#10b981">prohibido 2007</strong>. Brasil: <strong style="color:#10b981">prohibido 2020</strong>. Colombia: <strong style="color:#f87171">ICA registrado</strong></li>
+</ul>
+</div>
+
+<!-- Clorpirifos -->
+<h3 class="section-subtitle">Clorpirifos (Lorsban, Pyrinex)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Reduccion de coeficiente intelectual</strong> en hijos de madres expuestas durante embarazo: Engel et al. 2007 <em>Environ Health Perspect</em> 115:1271; Rauh et al. 2012 <em>PNAS</em> 109:7871</li>
+<li><strong>Trastornos de conducta (TDAH, autismo):</strong> Shelton et al. 2014</li>
+<li>EE.UU.: <strong style="color:#10b981">prohibido 2021</strong>. UE: <strong style="color:#10b981">prohibido 2020</strong>. Colombia: <strong style="color:#f87171">ICA registrado</strong></li>
+</ul>
+</div>
+
+<!-- Mancozeb -->
+<h3 class="section-subtitle">Mancozeb (Dithane)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li>Metabolito <strong>ETU</strong> clasificado por IARC como <strong style="color:#fbbf24">Grupo 2B "posible cancerígeno"</strong></li>
+<li>UE: <strong style="color:#10b981">prohibido 2021</strong>. Colombia: <strong style="color:#f87171">ICA registrado</strong></li>
+</ul>
+</div>
+
+<!-- Quiz Parte 4 -->
+<div class="quiz-wrap" data-quiz="parte_4" data-required="60">
+<div class="quiz-title">Quiz - Parte 4</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Que enfermedad neurologica se asocia con exposición ocupacional crónica al paraquat?</p>
+<button class="quiz-option" data-correct="false">a) Esclerosis multiple</button>
+<button class="quiz-option" data-correct="true">b) Enfermedad de Parkinson</button>
+<button class="quiz-option" data-correct="false">c) Migrana crónica</button>
+<button class="quiz-option" data-correct="false">d) Ninguna</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Cual es el efecto documentado del clorpirifos en hijos de madres expuestas durante embarazo?</p>
+<button class="quiz-option" data-correct="false">a) Aumento de altura</button>
+<button class="quiz-option" data-correct="true">b) Reduccion de coeficiente intelectual + trastornos de conducta (TDAH, autismo)</button>
+<button class="quiz-option" data-correct="false">c) Mejora del sistema inmune</button>
+<button class="quiz-option" data-correct="false">d) No tiene efecto</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Cual es el estado regulatorio del paraquat en Colombia vs UE/EE.UU.?</p>
+<button class="quiz-option" data-correct="false">a) Prohibido en los tres</button>
+<button class="quiz-option" data-correct="false">b) Permitido en los tres</button>
+<button class="quiz-option" data-correct="true">c) Prohibido en UE (2007) y Brasil (2020), pero permitido en Colombia (ICA registrado)</button>
+<button class="quiz-option" data-correct="false">d) Solo prohibido en Colombia</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="4">
+<p class="quiz-q">4. Cual es el riesgo principal del mancozeb?</p>
+<button class="quiz-option" data-correct="false">a) Es totalmente seguro</button>
+<button class="quiz-option" data-correct="false">b) Solo dana insectos</button>
+<button class="quiz-option" data-correct="true">c) Su metabolito ETU es clasificado por IARC como Grupo 2B (posible cancerígeno)</button>
+<button class="quiz-option" data-correct="false">d) Solo dana plantas</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 5 &rarr;</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 6 - PARTE 5: Riesgos de la agroecología              -->
+<!-- ============================================================ -->
+<section id="screen-6" class="screen hide" aria-label="Parte 5: Riesgos de la agroecología">
+<p class="header-step">Parte 5 de 7 &middot; Lo que pocos dicen</p>
+<h2 class="screen-title">La agroecología también tiene químicos peligrosos</h2>
+<p class="screen-subtitle">La transición a agroecología NO elimina todos los riesgos. Algunos biopreparados contienen sustancias que requieren EPP.</p>
+
+<div class="callout amber">
+<p class="callout-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" style="vertical-align:text-bottom;margin-right:4px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Esto es informacion critica y poco difundida</p>
+<p>El hecho de que algo sea "orgánico" o "agroecológico" <strong>no significa que sea inofensivo</strong>. El hidroxido de potasio del JWA puede dejarlo ciego.</p>
+</div>
+
+<!-- SVG 5: Detector riesgo biopreparados -->
+<div class="calc-wrap">
+<div class="calc-title">Detector de riesgo por biopreparado</div>
+<div class="calc-row">
+<label for="bioSelect">Selecciona un biopreparado:</label>
+<select id="bioSelect" onchange="showBioRisk()">
+<option value="">-- Seleccionar --</option>
+<option value="jwa">JADAM Wetting Agent (JWA)</option>
+<option value="calviva">Cal viva / Cal hidratada</option>
+<option value="bordelés">Caldo bordelés (CuSO₄)</option>
+<option value="sulfocálcico">Caldo sulfocálcico (azufre)</option>
+<option value="compost">Compost activo en descomposicion</option>
+<option value="vinagre">Vinagre pirolenhoso</option>
+</select>
+</div>
+<div id="bioResult" style="display:none;margin-top:1rem">
+<div id="bioRiskLevel" class="callout" style="margin-bottom:1rem"></div>
+<div class="content-card" style="margin:0">
+<p id="bioEPP" style="margin-bottom:.5rem"></p>
+<p id="bioContraindicated"></p>
+<p id="bioPlace"></p>
+</div>
+</div>
+</div>
+
+<!-- Hidroxido de potasio -->
+<h3 class="section-subtitle">Hidroxido de potasio (KOH) - en JADAM Wetting Agent (JWA)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Corrosivo grado industrial.</strong> pH del KOH solido en agua ~13-14</li>
+<li>Quemaduras químicas profundas de piel (<strong style="color:#f87171">3er grado en &lt;30 segundos</strong>)</li>
+<li><strong>Lesion ocular irreversible (ceguera)</strong></li>
+<li>Dano respiratorio si se inhala el polvo</li>
+<li><strong>EPP obligatorio:</strong> gafas químicas selladas + guantes nitrilo grueso + mascarilla N95 + manga larga. Producir en lugar ventilado, <strong>NO en cocina cerrada</strong>.</li>
+</ul>
+</div>
+
+<!-- Cal viva -->
+<h3 class="section-subtitle">Cal viva (CaO) y cal hidratada (Ca(OH)₂)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li>Alcalinas fuertes, reacciones exotermicas</li>
+<li>Quemaduras químicas alcalinas (<strong style="color:#f87171">peores que acidas</strong> por mayor penetracion tisular)</li>
+<li>Lesiones oculares severas, quemaduras respiratorias por inhalación</li>
+</ul>
+<p style="color:#10b981;font-weight:600;margin-top:.5rem">Chagra recomienda cal dolomitica en lugar de cal viva o hidratada - por seguridad.</p>
+</div>
+
+<!-- Sulfato de cobre -->
+<h3 class="section-subtitle">Sulfato de cobre (CuSO₄) - caldo bordelés</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Hepatotoxicidad acumulativa</strong> por exposición crónica</li>
+<li>Cu acumulado en suelo &gt;100 ppm tóxico para lombrices y micorrizas</li>
+<li>IFOAM limita a <strong>4 kg Cu/ha/ano</strong></li>
+<li><strong>EPP:</strong> mascarilla N95 para preparación + gafas + guantes</li>
+</ul>
+</div>
+
+<!-- Compost aspergilosis -->
+<h3 class="section-subtitle">Compost en descomposicion - aspergilosis</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li>Compost activo contiene esporas de <em>Aspergillus fumigatus</em></li>
+<li>Si se inhalan en grandes cantidades (volteo de pilas), pueden causar <strong style="color:#f87171">aspergilosis pulmonar o alveolitis alergica</strong></li>
+<li><strong>EPP:</strong> mascarilla N95 durante volteo</li>
+<li><strong style="color:#f87171">Personas inmunocomprometidas (VIH, diabetes mal controlada, EPOC) deben evitar manipular compost activo</strong></li>
+</ul>
+</div>
+
+<!-- Quiz Parte 5 -->
+<div class="quiz-wrap" data-quiz="parte_5" data-required="60">
+<div class="quiz-title">Quiz - Parte 5</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Que químico del JADAM Wetting Agent (JWA) requiere especial cuidado?</p>
+<button class="quiz-option" data-correct="false">a) Es solo aceite y agua, no requiere cuidado</button>
+<button class="quiz-option" data-correct="true">b) Hidroxido de potasio (KOH), corrosivo grado industrial</button>
+<button class="quiz-option" data-correct="false">c) Solo necesita protección de manos</button>
+<button class="quiz-option" data-correct="false">d) Es totalmente inofensivo si es orgánico</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Por que Chagra recomienda cal dolomitica y NO cal viva ni hidratada?</p>
+<button class="quiz-option" data-correct="false">a) Por costo</button>
+<button class="quiz-option" data-correct="true">b) Por seguridad (quemaduras químicas) y por impacto al suelo</button>
+<button class="quiz-option" data-correct="false">c) Por disponibilidad</button>
+<button class="quiz-option" data-correct="false">d) Son lo mismo</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Quienes NO deben manipular compost activo en descomposicion?</p>
+<button class="quiz-option" data-correct="false">a) Cualquiera puede</button>
+<button class="quiz-option" data-correct="false">b) Solo los ninos</button>
+<button class="quiz-option" data-correct="true">c) Personas inmunocomprometidas (VIH, diabetes mal controlada, EPOC) por riesgo de aspergilosis pulmonar</button>
+<button class="quiz-option" data-correct="false">d) Solo las embarazadas</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 6 &rarr;</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 7 - PARTE 6: Mezclas prohibidas                      -->
+<!-- ============================================================ -->
+<section id="screen-7" class="screen hide" aria-label="Parte 6: Mezclas químicas prohibidas">
+<p class="header-step">Parte 6 de 7 &middot; Tecnico: mezclas peligrosas</p>
+<h2 class="screen-title">Mezclas químicas prohibidas</h2>
+<p class="screen-subtitle">Algunas mezclas producen gases toxicos. Otras anulan el efecto de los productos. Aqui está la matriz.</p>
+
+<!-- SVG 6: Matriz de incompatibilidad -->
+<div class="content-card">
+<h3 class="section-subtitle">Matriz de compatibilidad</h3>
+<div class="matrix-wrap">
+<table class="matrix-table">
+<thead><tr><th></th><th>Bordeles</th><th>Sulfocalcico</th><th>Purin ortiga</th><th>Trichoderma</th><th>Bacillus</th><th>Aceites</th></tr></thead>
+<tbody>
+<tr><th>Bordeles</th><td class="empty">-</td><td class="danger">PROHIBIDO</td><td class="caution">48h</td><td class="danger">PROHIBIDO</td><td class="danger">PROHIBIDO</td><td class="danger">PROHIBIDO</td></tr>
+<tr><th>Sulfocalcico</th><td class="danger">PROHIBIDO</td><td class="empty">-</td><td class="safe">SEGURO</td><td class="danger">PROHIBIDO</td><td class="danger">PROHIBIDO</td><td class="caution">48h</td></tr>
+<tr><th>Purin ortiga</th><td class="caution">48h</td><td class="safe">SEGURO</td><td class="empty">-</td><td class="safe">SEGURO</td><td class="safe">SEGURO</td><td class="safe">SEGURO</td></tr>
+<tr><th>Trichoderma</th><td class="danger">PROHIBIDO</td><td class="danger">PROHIBIDO</td><td class="safe">SEGURO</td><td class="empty">-</td><td class="safe">SEGURO</td><td class="caution">48h</td></tr>
+<tr><th>Bacillus</th><td class="danger">PROHIBIDO</td><td class="danger">PROHIBIDO</td><td class="safe">SEGURO</td><td class="safe">SEGURO</td><td class="empty">-</td><td class="caution">48h</td></tr>
+<tr><th>Aceites</th><td class="danger">PROHIBIDO</td><td class="caution">48h</td><td class="safe">SEGURO</td><td class="caution">48h</td><td class="caution">48h</td><td class="empty">-</td></tr>
+</tbody>
+</table>
+</div>
+<p style="color:#64748b;font-size:.8rem;margin-top:.5rem"><strong style="color:#10b981">Verde</strong> = pueden mezclarse &middot; <strong style="color:#fbbf24">Amarillo</strong> = esperar 48h entre aplicaciones &middot; <strong style="color:#f87171">Rojo</strong> = NUNCA mezclar</p>
+</div>
+
+<!-- Calculadora mezclas -->
+<div class="calc-wrap">
+<div class="calc-title">Calculadora: Detector de mezclas peligrosas</div>
+<div class="calc-row">
+<label for="mixA">Producto A:</label>
+<select id="mixA" onchange="checkMix()">
+<option value="">-- Seleccionar --</option>
+<option value="bordelés">Caldo bordelés (Cu)</option>
+<option value="sulfocálcico">Caldo sulfocálcico (S)</option>
+<option value="purin">Purin de ortiga</option>
+<option value="tricho">Trichoderma</option>
+<option value="bacillus">Bacillus thuringiensis</option>
+<option value="aceites">Aceites foliares</option>
+<option value="acido">Cualquier acido</option>
+<option value="cloro">Cloro / Hipoclorito</option>
+<option value="amonio">Amoniaco</option>
+</select>
+</div>
+<div class="calc-row">
+<label for="mixB">Producto B:</label>
+<select id="mixB" onchange="checkMix()">
+<option value="">-- Seleccionar --</option>
+<option value="bordelés">Caldo bordelés (Cu)</option>
+<option value="sulfocálcico">Caldo sulfocálcico (S)</option>
+<option value="purin">Purin de ortiga</option>
+<option value="tricho">Trichoderma</option>
+<option value="bacillus">Bacillus thuringiensis</option>
+<option value="aceites">Aceites foliares</option>
+<option value="acido">Cualquier acido</option>
+<option value="cloro">Cloro / Hipoclorito</option>
+<option value="amonio">Amoniaco</option>
+</select>
+</div>
+<div id="mixResult" class="calc-result" style="display:none"></div>
+</div>
+
+<div class="callout warn">
+<p class="callout-title">Gases toxicos de mezclas domesticas</p>
+<ul style="list-style:disc;padding-left:1.5rem;color:#cbd5e1">
+<li><strong>Cualquier acido + Cloro (hipoclorito)</strong> &rarr; <span style="color:#f87171;font-weight:700">Gas cloro (Cl₂)</span> - quemadura pulmonar, muerte por edema pulmonar</li>
+<li><strong>Cloro + Amoniaco</strong> &rarr; <span style="color:#f87171;font-weight:700">Cloramina (NH₂Cl)</span> - tóxica respiratoria</li>
+</ul>
+</div>
+
+<div class="content-card">
+<h3 style="color:#f87171;font-weight:700;margin-bottom:.75rem">Mezclas agroecológicas prohibidas</h3>
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li><strong>Caldo bordelés (Cu) + Caldo sulfocálcico (S):</strong> precipita CuS inutilizable + libera gases sulfurados toxicos</li>
+<li><strong>Bordeles + aceites foliares:</strong> fitotoxicidad</li>
+<li><strong>Purin de ortiga (Fe) + cupricos:</strong> precipita Fe-Cu</li>
+<li><strong>Cupricos/sulfuricos + inoculantes biologicos (Trichoderma, Bacillus):</strong> mata el inoculo</li>
+<li><strong>Glifosato + surfactantes:</strong> aumenta toxicidad (sinergia Mesnage 2013)</li>
+</ul>
+</div>
+
+<!-- Quiz Parte 6 -->
+<div class="quiz-wrap" data-quiz="parte_6" data-required="60">
+<div class="quiz-title">Quiz - Parte 6</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Que gas tóxico se forma al mezclar acidos con cloro (hipoclorito)?</p>
+<button class="quiz-option" data-correct="false">a) Vapor de agua</button>
+<button class="quiz-option" data-correct="true">b) Cloro gaseoso (Cl₂) - causa edema pulmonar y puede ser mortal</button>
+<button class="quiz-option" data-correct="false">c) Oxigeno</button>
+<button class="quiz-option" data-correct="false">d) Nitrogeno</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Por que NO se debe mezclar caldo bordelés con caldo sulfocálcico?</p>
+<button class="quiz-option" data-correct="false">a) Porque cuestan diferente</button>
+<button class="quiz-option" data-correct="true">b) Precipita CuS inutilizable + libera gases sulfurados toxicos</button>
+<button class="quiz-option" data-correct="false">c) Porque pierden olor</button>
+<button class="quiz-option" data-correct="false">d) No hay problema en mezclarlos</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Por que los productos cupricos/sulfuricos NO deben mezclarse con inoculantes biologicos (Trichoderma, Bacillus)?</p>
+<button class="quiz-option" data-correct="false">a) Porque cambia el color</button>
+<button class="quiz-option" data-correct="true">b) Porque el cobre y azufre matan el inoculo biologico, destruyendo el biocontrol</button>
+<button class="quiz-option" data-correct="false">c) Porque no se mezclan bien</button>
+<button class="quiz-option" data-correct="false">d) No hay problema, se pueden mezclar</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="navNext()">Continuar a Parte 7 &rarr;</button>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PANTALLA 8 - PARTE 7: Practica del agricultor                 -->
+<!-- ============================================================ -->
+<section id="screen-8" class="screen hide" aria-label="Parte 7: Practicas que salvan">
+<p class="header-step">Parte 7 de 7 &middot; Practica: rutinas que salvan</p>
+<h2 class="screen-title">Rutinas que salvan vidas</h2>
+<p class="screen-subtitle">El kit en su finca y los pasos que debe seguir después de cada aplicación.</p>
+
+<!-- SVG 7: Simulador rutina post-aplicación -->
+<div class="content-card">
+<h3 class="section-subtitle">Pon los pasos en orden correcto</h3>
+<p style="color:#94a3b8;font-size:.9rem;margin-bottom:1rem">Haga clic en cada paso para colocarlo en la secuencia correcta (1, 2, 3...).</p>
+
+<div id="routineGame">
+<div class="drag-list" id="routineList">
+<button class="drag-item" data-step="4" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-4">?</span>
+Quitar overol primero, luego botas, luego guantes, último mascarilla y gafas
+</button>
+<button class="drag-item" data-step="1" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-1">?</span>
+Antes de quitarse el EPP: enjuagar botas y guantes con agua limpia
+</button>
+<button class="drag-item" data-step="6" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-6">?</span>
+Ducha completa con jabon fuerte - cabeza incluida
+</button>
+<button class="drag-item" data-step="2" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-2">?</span>
+Lavarse las manos con guantes puestos (jabon fuerte 20 seg)
+</button>
+<button class="drag-item" data-step="7" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-7">?</span>
+Enjuagar boca y nariz
+</button>
+<button class="drag-item" data-step="3" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-3">?</span>
+Lavar overol contaminado SEPARADO de ropa familiar
+</button>
+<button class="drag-item" data-step="5" onclick="selectRoutineStep(this)">
+<span class="drag-num" id="num-5">?</span>
+Lavar ojos con suero fisiologico o agua limpia
+</button>
+</div>
+<button class="btn btn-secondary" onclick="resetRoutine()" style="margin-top:.5rem">Reiniciar orden</button>
+</div>
+<div id="routineFeedback" class="quiz-feedback" style="margin-top:1rem"></div>
+</div>
+
+<!-- Calculadora Costo EPP vs Enfermedad -->
+<div class="calc-wrap">
+<div class="calc-title">Calculadora: EPP vs costo de enfermedad</div>
+<div class="calc-row">
+<label for="workYears">Años trabajando sin EPP completo:</label>
+<input type="number" id="workYears" min="0" max="60" step="0.5" value="5" onchange="calcCost()">
+</div>
+<div class="calc-row">
+<label for="chemicalType">Quimico principal usado:</label>
+<select id="chemicalType" onchange="calcCost()">
+<option value="glifosato">Glifosato</option>
+<option value="paraquat">Paraquat</option>
+<option value="clorpirifos">Clorpirifos</option>
+<option value="mancozeb">Mancozeb</option>
+</select>
+</div>
+<div class="calc-result" id="costResult">
+<span class="result-num">5%</span> riesgo acumulado estimado &middot; $0 COP costo proyectado &middot; Kit EPP: $150.000 COP
+</div>
+<p style="color:#64748b;font-size:.8rem;margin-top:.75rem"><em>Los costos de tratamiento son estimaciones del sistema de salud colombiano 2026. Valores reales varian. No es un diagnóstico médico.</em></p>
+</div>
+
+<h3 class="section-subtitle">Kit mínimo para su finca (lista para llevar a la ferreteria)</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li>1 mascarilla N95 (o respirador media-cara con cartucho químico)</li>
+<li>1 par gafas químicas selladas</li>
+<li>1 caja guantes nitrilo grueso (100 pares)</li>
+<li>1 overol manga larga</li>
+<li>1 par botas caucho dedicadas a aplicación</li>
+<li>1 jabon fuerte tipo industrial</li>
+<li>1 cubeta solo para enjuagar EPP</li>
+<li>1 estante separado para EPP (<strong>NO mezclar con ropa familiar</strong>)</li>
+</ul>
+</div>
+
+<h3 class="section-subtitle">Reglas para embarazadas y ninos</h3>
+<div class="callout warn">
+<ul style="list-style:disc;padding-left:1.5rem;color:#cbd5e1;margin:0">
+<li><strong>Embarazadas:</strong> NO aplican químicos NI manipulan biopreparados con KOH/cal viva/cobre/azufre. Ningun trimestre.</li>
+<li><strong>Ninos menores de 12:</strong> NO aplicar, NO acercarse a la nube de aspersion por 4h, NO comer fruta no lavada del lote tratado.</li>
+<li><strong>Ninos 12-17:</strong> solo con EPP completo bajo supervisión adulta y aplicaciones de bajo riesgo.</li>
+<li><strong>Lactantes:</strong> madre lactando NO entra al lote tratado por 24h mínimo.</li>
+</ul>
+</div>
+
+<h3 class="section-subtitle">Almacenamiento seguro</h3>
+<div class="content-card">
+<ul style="list-style:disc;padding-left:1.5rem;color:#94a3b8">
+<li>Cuarto cerrado con llave (lejos de cocina, dormitorios, alimentos)</li>
+<li>Estante alto fuera del alcance de ninos y mascotas</li>
+<li>Productos químicos y biopreparados <strong>SEPARADOS</strong></li>
+<li>Recipientes con tapa hermetica (<strong>NO botellas de gaseosa</strong> - confunden)</li>
+<li>Plan de emergencia visible con <strong style="color:#f87171">Linea Toxicologia Colombia: 192</strong></li>
+</ul>
+</div>
+
+<!-- Línea 192 prominente -->
+<div class="phone-cta">
+<p style="color:#f87171;font-weight:700;font-size:1.1rem;margin-bottom:.25rem">En caso de envenenamiento agudo</p>
+<ol style="list-style:decimal;padding-left:1.5rem;color:#cbd5e1;text-align:left;max-width:480px;margin:.75rem auto;font-size:.95rem">
+<li>Llamar inmediatamente al <strong style="color:#f87171">192</strong> (CISPROQUIM Colombia, gratuito 24h)</li>
+<li>Llevar al hospital con el envase del producto</li>
+<li>No inducir vomito sin instruccion del Centro Toxicologia</li>
+<li>No dar leche, aceite ni "remedios caseros"</li>
+</ol>
+<p class="phone-num"><a href="tel:192">192</a></p>
+<p style="color:#94a3b8;font-size:.9rem">CISPROQUIM Colombia - Gratuito - 24 horas</p>
+</div>
+
+<!-- Quiz Parte 7 -->
+<div class="quiz-wrap" data-quiz="parte_7" data-required="60">
+<div class="quiz-title">Quiz - Parte 7</div>
+
+<div class="quiz-item" data-q="1">
+<p class="quiz-q">1. Cual es el ORDEN correcto para quitarse el EPP después de aplicar?</p>
+<button class="quiz-option" data-correct="false">a) Mascarilla &rarr; gafas &rarr; guantes &rarr; overol &rarr; botas</button>
+<button class="quiz-option" data-correct="true">b) Overol &rarr; botas &rarr; guantes &rarr; mascarilla y gafas (último)</button>
+<button class="quiz-option" data-correct="false">c) Todo al mismo tiempo, no importa</button>
+<button class="quiz-option" data-correct="false">d) Solo lavarse las manos basta</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="2">
+<p class="quiz-q">2. Pueden los ninos menores de 12 años aplicar químicos en finca?</p>
+<button class="quiz-option" data-correct="false">a) Si, con supervisión</button>
+<button class="quiz-option" data-correct="false">b) Si, si son pequenas cantidades</button>
+<button class="quiz-option" data-correct="true">c) NO, en ningun caso. Tampoco acercarse a nube de aspersion por 4h</button>
+<button class="quiz-option" data-correct="false">d) Si, después de 10 años</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="3">
+<p class="quiz-q">3. Cual es el número de la Línea Toxicológica CISPROQUIM Colombia (24h gratuito)?</p>
+<button class="quiz-option" data-correct="false">a) 123</button>
+<button class="quiz-option" data-correct="true">b) 192</button>
+<button class="quiz-option" data-correct="false">c) 911</button>
+<button class="quiz-option" data-correct="false">d) 113</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-item" data-q="4">
+<p class="quiz-q">4. Que NO se debe hacer en caso de envenenamiento agudo?</p>
+<button class="quiz-option" data-correct="false">a) Llamar al 192</button>
+<button class="quiz-option" data-correct="false">b) Llevar al hospital con el envase</button>
+<button class="quiz-option" data-correct="true">c) Inducir vomito o dar leche/aceite/remedios caseros sin instruccion del Centro Toxicologia</button>
+<button class="quiz-option" data-correct="false">d) Mantener al paciente caliente y consciente</button>
+<div class="quiz-feedback"></div>
+</div>
+
+<div class="quiz-score" style="margin-top:1rem;font-weight:700;color:#10b981;display:none"></div>
+</div>
+
+<div class="btn-group">
+<button class="btn btn-secondary" onclick="navPrev()">&larr; Anterior</button>
+<button class="btn btn-primary" onclick="goTo(9)">Ver resumen y certificado &rarr;</button>
+</div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- PANTALLA 9 - RESUMEN + CERTIFICADO                            -->
+<!-- ============================================================ -->
+<section id="screen-9" class="screen hide" aria-label="Resumen y certificado">
+<h2 class="screen-title">Resumen de la unidad</h2>
+<p class="screen-subtitle">Bioseguridad en el campo: lo que aprendiste.</p>
+
+<!-- Score -->
+<div class="cert-box" id="certBox">
+<div class="cert-title" id="certTitle">Tu promedio</div>
+<div class="cert-sub" id="certSub">Completaste la unidad de bioseguridad</div>
+<div class="cert-score" id="finalScore">--<span>%</span></div>
+<div id="certMessage" style="color:#94a3b8;margin-bottom:1rem"></div>
+
+<!-- QR placeholder -->
+<div class="cert-qr" id="certQR" style="display:none">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" fill="#fff"/>
+<rect x="5" y="5" width="25" height="25" fill="#0f172a"/>
+<rect x="10" y="10" width="15" height="15" fill="#fff"/>
+<rect x="13" y="13" width="9" height="9" fill="#0f172a"/>
+<rect x="70" y="5" width="25" height="25" fill="#0f172a"/>
+<rect x="75" y="10" width="15" height="15" fill="#fff"/>
+<rect x="78" y="13" width="9" height="9" fill="#0f172a"/>
+<rect x="5" y="70" width="25" height="25" fill="#0f172a"/>
+<rect x="10" y="75" width="15" height="15" fill="#fff"/>
+<rect x="13" y="78" width="9" height="9" fill="#0f172a"/>
+<rect x="35" y="5" width="5" height="5" fill="#0f172a"/>
+<rect x="45" y="5" width="5" height="5" fill="#0f172a"/>
+<rect x="55" y="5" width="5" height="5" fill="#0f172a"/>
+<rect x="35" y="15" width="5" height="5" fill="#0f172a"/>
+<rect x="40" y="20" width="5" height="5" fill="#0f172a"/>
+<rect x="50" y="15" width="5" height="5" fill="#0f172a"/>
+<rect x="55" y="25" width="5" height="5" fill="#0f172a"/>
+<rect x="35" y="35" width="5" height="5" fill="#0f172a"/>
+<rect x="45" y="40" width="5" height="5" fill="#0f172a"/>
+<rect x="55" y="35" width="5" height="5" fill="#0f172a"/>
+<rect x="40" y="50" width="5" height="5" fill="#0f172a"/>
+<rect x="50" y="50" width="5" height="5" fill="#0f172a"/>
+<rect x="35" y="55" width="5" height="5" fill="#0f172a"/>
+<rect x="45" y="60" width="5" height="5" fill="#0f172a"/>
+<rect x="55" y="55" width="5" height="5" fill="#0f172a"/>
+<rect x="5" y="35" width="5" height="5" fill="#0f172a"/>
+<rect x="15" y="40" width="5" height="5" fill="#0f172a"/>
+<rect x="25" y="35" width="5" height="5" fill="#0f172a"/>
+<rect x="70" y="40" width="5" height="5" fill="#0f172a"/>
+<rect x="80" y="45" width="5" height="5" fill="#0f172a"/>
+<rect x="85" y="35" width="5" height="5" fill="#0f172a"/>
+<rect x="70" y="55" width="5" height="5" fill="#0f172a"/>
+<rect x="75" y="65" width="5" height="5" fill="#0f172a"/>
+<rect x="85" y="60" width="5" height="5" fill="#0f172a"/>
+<rect x="70" y="75" width="5" height="5" fill="#0f172a"/>
+<rect x="80" y="80" width="5" height="5" fill="#0f172a"/>
+<rect x="90" y="75" width="5" height="5" fill="#0f172a"/>
+<rect x="35" y="70" width="5" height="5" fill="#0f172a"/>
+<rect x="45" y="75" width="5" height="5" fill="#0f172a"/>
+<rect x="55" y="80" width="5" height="5" fill="#0f172a"/>
+<rect x="40" y="85" width="5" height="5" fill="#0f172a"/>
+<rect x="50" y="90" width="5" height="5" fill="#0f172a"/>
+<rect x="60" y="70" width="5" height="5" fill="#0f172a"/>
+<text x="50" y="97" font-size="5" text-anchor="middle" fill="#64748b">chagra.bio</text>
+</svg>
+</div>
+<div id="certQRLabel" style="display:none;color:#64748b;font-size:.85rem">chagra.bio/aprender/unidad/bioseguridad/</div>
+</div>
+
+<!-- Key takeaways recap -->
+<h3 class="section-subtitle">5 puntos clave</h3>
+<div class="takeaway-grid">
+<div class="takeaway-card"><div class="tk-num">1</div><div class="tk-text">60 años de químicos que la ciencia <strong>ahora sabe que danean</strong>. No fue su culpa. Ahora si sabe.</div></div>
+<div class="takeaway-card"><div class="tk-num">2</div><div class="tk-text">Bayer-Monsanto: <strong>&gt;USD 15.000 millones</strong> en compensaciones. Glifosato = probable cancerígeno (OMS 2015).</div></div>
+<div class="takeaway-card"><div class="tk-num">3</div><div class="tk-text">Paraquat, clorpirifos, mancozeb: <strong>prohibidos en UE/EE.UU.</strong> - permitidos en Colombia.</div></div>
+<div class="takeaway-card"><div class="tk-num">4</div><div class="tk-text">La agroecología <strong>también tiene riesgos</strong>: KOH del JWA, cobre del bordelés, aspergilosis del compost.</div></div>
+<div class="takeaway-card"><div class="tk-num">5</div><div class="tk-text">Kit EPP: <strong>$85.000-300.000 COP</strong>. Linea de emergencia: <strong>192</strong>. Uselo siempre.</div></div>
+</div>
+
+<!-- Score breakdown -->
+<div class="content-card" style="margin-top:1.5rem">
+<h3 style="color:#f8fafc;margin-bottom:1rem;font-size:1.1rem">Resultados por quiz</h3>
+<div id="scoreBreakdown" style="color:#94a3b8;font-size:.95rem"></div>
+</div>
+
+<div class="btn-group" style="margin-top:2rem">
+<button class="btn btn-secondary" onclick="goTo(0)">Volver a empezar</button>
+<button class="btn btn-secondary" onclick="window.print()">Imprimir certificado</button>
+<button class="btn btn-primary" onclick="location.href='/'">Volver a Aprender</button>
+</div>
+
+<!-- References -->
+<h3 class="section-subtitle">Referencias científicas</h3>
+<ol class="ref-list">
+<li>Engel SM et al. 2007. <em>Environ Health Perspect</em> 115:1271-1276.</li>
+<li>Eriksson M et al. 2008. <em>Int J Cancer</em> 123:1657-1663.</li>
+<li>Hayes TB et al. 2010. <em>PNAS</em> 107:4612-4617.</li>
+<li><strong>IARC 2015. Monograph 112: glyphosate.</strong> Lyon, IARC/WHO.</li>
+<li>McDuffie HH et al. 2001. <em>Cancer Epidemiol Biomarkers Prev</em> 10:1155-1163.</li>
+<li>Mesnage R et al. 2013. <em>BioMed Res Int</em> 2013:179691.</li>
+<li>Mesnage R et al. 2017. <em>Sci Rep</em> 7:39328.</li>
+<li>Rauh VA et al. 2012. <em>PNAS</em> 109:7871-7876.</li>
+<li>Shelton JF et al. 2014. <em>Environ Health Perspect</em> 122:1103-1109.</li>
+<li>Tang Q et al. 2020. <em>Environ Pollut</em> 261:114129.</li>
+<li>Tanner CM et al. 2011. <em>Environ Health Perspect</em> 119:866-872.</li>
+<li>Wery N 2014. <em>Front Cell Infect Microbiol</em> 4:6.</li>
+<li><strong>Zhang L, Rana I et al. 2019. Exposure to glyphosate-based herbicides and risk for non-Hodgkin lymphoma: a meta-analysis.</strong> <em>Mutation Research</em> 781:186-206.</li>
+</ol>
+
+<div class="callout info" style="margin-top:1.5rem">
+<p class="callout-title">Línea Toxicológica CISPROQUIM Colombia</p>
+<p style="text-align:center;margin:0"><strong style="color:#f87171;font-size:1.5rem">192</strong> &middot; 24 horas &middot; Gratuito</p>
+</div>
+
+<div class="text-center" style="margin-top:3rem;color:#64748b;font-size:.8rem">
+<p>Hecho desde Guatoc &middot; Choachi &middot; Cundinamarca &middot; Colombia</p>
+<p>Una iniciativa de <a href="https://guatoc.co" style="color:#d4a574;text-decoration:underline">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
+</div>
+</section>
+
+</main>
+
+<script>
+// ============================================================
+// CHAGRA BIOSEGURIDAD - UNIT CONTROLLER
+// ============================================================
+(function(){
+'use strict';
+
+// ===== STATE =====
+const TOTAL_SCREENS = 10;
+let currentScreen = 0;
+const LS_KEY = 'chagra_unidad_bioseguridad';
+
+// ===== NAVIGATION =====
+function showScreen(n){
+  for(let i=0;i<TOTAL_SCREENS;i++){
+    document.getElementById('screen-'+i).classList.toggle('hide', i!==n);
+  }
+  currentScreen = n;
+  updateProgress(n);
+  updateHeader(n);
+  saveProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProgress(n){
+  const pct = Math.round((n/(TOTAL_SCREENS-1))*100);
+  document.getElementById('progressFill').style.width = pct+'%';
+}
+
+function updateHeader(n){
+  const labels = [
+    'Portada','Introduccion','Parte 1: Como entra','Parte 2: Caso Bayer','Parte 3: Kit EPP',
+    'Parte 4: Evidencia','Parte 5: Riesgos agroecología','Parte 6: Mezclas',
+    'Parte 7: Practica','Resumen'
+  ];
+  document.getElementById('headerStep').textContent = (labels[n]||'Portada') + ' ('+n+'/'+(TOTAL_SCREENS-1)+')';
+  document.getElementById('btnPrev').disabled = n===0;
+  const nextBtn = document.getElementById('btnNextHeader');
+  nextBtn.disabled = n===TOTAL_SCREENS-1;
+  if(n===TOTAL_SCREENS-1) nextBtn.style.visibility='hidden';
+  else nextBtn.style.visibility='visible';
+}
+
+function navNext(){
+  if(currentScreen < TOTAL_SCREENS-1) showScreen(currentScreen+1);
+}
+function navPrev(){
+  if(currentScreen > 0) showScreen(currentScreen-1);
+}
+function goTo(n){ showScreen(n); }
+
+// Keyboard navigation
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight' && currentScreen<TOTAL_SCREENS-1) navNext();
+  if(e.key==='ArrowLeft' && currentScreen>0) navPrev();
+});
+
+// ===== LOCALSTORAGE =====
+function getState(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {started_at:new Date().toISOString(),current_screen:0,screens_visited:[],quiz_scores:{},completion_pct:0,promedio_quizzes:0,certificate_eligible:false,calculator_uses:{}};
+}
+
+function saveProgress(){
+  const s = getState();
+  s.current_screen = currentScreen;
+  s.last_visit = new Date().toISOString();
+  if(!s.screens_visited.includes(currentScreen)) s.screens_visited.push(currentScreen);
+  s.completion_pct = Math.round((s.screens_visited.length/TOTAL_SCREENS)*100);
+  // Count quiz scores
+  const quizzes = Object.values(s.quiz_scores);
+  if(quizzes.length>0){
+    const totalCorrect = quizzes.reduce((a,q)=>a+q.correct,0);
+    const totalQ = quizzes.reduce((a,q)=>a+q.total,0);
+    s.promedio_quizzes = totalQ>0 ? Math.round((totalCorrect/totalQ)*1000)/1000 : 0;
+    s.certificate_eligible = s.promedio_quizzes >= 0.70;
+  }
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+  updatePreviousProgress(s);
+}
+
+function updatePreviousProgress(s){
+  const box = document.getElementById('previousProgress');
+  const txt = document.getElementById('previousProgressText');
+  if(!s || !s.screens_visited || s.screens_visited.length<=1){
+    if(box) box.style.display='none';
+    return;
+  }
+  if(box) box.style.display='block';
+  if(txt) txt.textContent = s.completion_pct+'% completado. Ultima visita: '+new Date(s.last_visit||Date.now()).toLocaleDateString('es-CO');
+}
+
+function recordQuiz(parte, correct, total){
+  const s = getState();
+  if(!s.quiz_scores[parte] || correct > s.quiz_scores[parte].correct){
+    s.quiz_scores[parte] = {correct,total,attempts:(s.quiz_scores[parte]?.attempts||0)+1,completed_at:new Date().toISOString()};
+  }else{
+    s.quiz_scores[parte].attempts = (s.quiz_scores[parte].attempts||0)+1;
+  }
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+}
+
+// ===== QUIZ SYSTEM =====
+document.querySelectorAll('.quiz-wrap').forEach(wrap=>{
+  const parte = wrap.dataset.quiz;
+  const items = wrap.querySelectorAll('.quiz-item');
+  let correctCount = 0;
+
+  items.forEach(item=>{
+    const qnum = item.dataset.q;
+    const options = item.querySelectorAll('.quiz-option');
+    const feedback = item.querySelector('.quiz-feedback');
+
+    options.forEach(opt=>{
+      opt.addEventListener('click',function(){
+        if(opt.disabled) return;
+        const isCorrect = opt.dataset.correct==='true';
+
+        // Disable all options for this question
+        options.forEach(o=>{
+          o.disabled = true;
+          if(o.dataset.correct==='true') o.classList.add('correct');
+          else if(o===opt && !isCorrect) o.classList.add('wrong');
+        });
+
+        // Show feedback
+        if(isCorrect){
+          correctCount++;
+          feedback.textContent = 'Correcto. Buen trabajo.';
+          feedback.className = 'quiz-feedback show correct';
+        }else{
+          feedback.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+          feedback.className = 'quiz-feedback show wrong';
+        }
+
+        // Check if all answered
+        const allAnswered = Array.from(items).every(it=>{
+          return Array.from(it.querySelectorAll('.quiz-option')).some(o=>o.disabled);
+        });
+
+        if(allAnswered){
+          const total = items.length;
+          const pct = Math.round((correctCount/total)*100);
+          recordQuiz(parte, correctCount, total);
+          const scoreEl = wrap.querySelector('.quiz-score');
+          scoreEl.textContent = 'Resultado: '+correctCount+'/'+total+' ('+pct+'%)';
+          scoreEl.style.display = 'block';
+          if(pct>=60){
+            scoreEl.style.color = '#10b981';
+          }else{
+            scoreEl.style.color = '#f87171';
+          }
+        }
+      });
+    });
+  });
+});
+
+// ===== CALCULATOR: EPP RISK =====
+function calcEpp(){
+  const items = {
+    'epp-gafas':95,'epp-mascara':80,'epp-guantes':70,'epp-overol':60,'epp-botas':50,'epp-jabon':40
+  };
+  let totalProtection = 0;
+  let checkedCount = 0;
+  for(const[id,prot] of Object.entries(items)){
+    if(document.getElementById(id).checked){ totalProtection+=prot; checkedCount++; }
+  }
+  // Compound protection (multiplicative approximation)
+  const checked = Object.keys(items).filter(id=>document.getElementById(id).checked);
+  let remaining = 100;
+  checked.forEach(id=>{
+    const prot = items[id];
+    remaining *= (1 - prot/100);
+  });
+  const absorption = Math.round(remaining);
+
+  const result = document.getElementById('eppResult');
+  if(checkedCount===0){
+    result.innerHTML = '<span class="result-num">100%</span> de absorcion de químico - sin protección alguna. Marca los items arriba.';
+    result.style.borderColor = '#f87171';
+  }else if(absorption<10){
+    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#10b981">Excelente protección.</strong> Con este EPP reduce drasticamente el riesgo.';
+    result.style.borderColor = '#10b981';
+  }else if(absorption<40){
+    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#fbbf24">Proteccion parcial.</strong> Considere completar el kit.';
+    result.style.borderColor = '#fbbf24';
+  }else{
+    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#f87171">Proteccion insuficiente.</strong> Su cuerpo sigue absorbiendo mucho químico.';
+    result.style.borderColor = '#f87171';
+  }
+  trackCalc('epp_riesgo');
+}
+
+// ===== CALCULATOR: BIO RISK DETECTOR =====
+const BIO_RISKS = {
+  jwa:{
+    level:'danger',levelText:'ALTO RIESGO',
+    text:'Hidroxido de potasio (KOH) es corrosivo grado industrial. pH ~13-14. Puede causar ceguera y quemaduras de 3er grado en menos de 30 segundos.',
+    epp:'Gafas quimicas selladas + guantes nitrilo grueso + mascarilla N95 + manga larga + lugar ventilado',
+    contraindicated:'Ninos, embarazadas, personas con problemas respiratorios',
+    place:'Lugar ventilado al aire libre. NUNCA en cocina cerrada'
+  },
+  calviva:{
+    level:'danger',levelText:'ALTO RIESGO',
+    text:'Cal viva (CaO) produce reacciones exotermicas y quemaduras alcalinas profundas. Peor que acidas por mayor penetracion tisular.',
+    epp:'Gafas + guantes nitrilo grueso + mascarilla + manga larga + lugar ventilado',
+    contraindicated:'Ninos, embarazadas, personas con piel sensible',
+    place:'Lugar ventilado al aire libre'
+  },
+  bordelés:{
+    level:'warn',levelText:'RIESGO MODERADO',
+    text:'Sulfato de cobre acumulativo en hígado y riñón. Toxicidad crónica por exposición repetida.',
+    epp:'Mascarilla N95 para preparación + gafas + guantes',
+    contraindicated:'Personas con problemas hepaticos o renales',
+    place:'Lugar con ventilacion'
+  },
+  sulfocálcico:{
+    level:'warn',levelText:'RIESGO MODERADO',
+    text:'Azufre puede irritar vias respiratorias. Gases sulfurados en mezclas inadecuadas.',
+    epp:'Mascarilla N95 + gafas + guantes + manga larga',
+    contraindicated:'Asmaticos, personas con EPOC',
+    place:'Lugar ventilado'
+  },
+  compost:{
+    level:'info',levelText:'RIESGO BAJO (con precaución)',
+    text:'Esporas de Aspergillus fumigatus pueden causar aspergilosis pulmonar en inmunocomprometidos.',
+    epp:'Mascarilla N95 durante volteo',
+    contraindicated:'VIH, diabetes mal controlada, EPOC, tratamiento immunosupresor',
+    place:'Al aire libre'
+  },
+  vinagre:{
+    level:'success',levelText:'RIESGO MINIMO',
+    text:'Vinagre pirolenhoso es de los biopreparados más seguros. Puede irritar ojos y piel en concentraciones altas.',
+    epp:'Gafas basicas recomendadas para preparación concentrada',
+    contraindicated:'Ninguno especial',
+    place:'Cualquier lugar ventilado'
+  }
+};
+
+function showBioRisk(){
+  const sel = document.getElementById('bioSelect').value;
+  const result = document.getElementById('bioResult');
+  if(!sel){ result.style.display='none'; return; }
+  const data = BIO_RISKS[sel];
+  if(!data){ result.style.display='none'; return; }
+
+  const levelDiv = document.getElementById('bioRiskLevel');
+  levelDiv.className = 'callout ' + (data.level==='danger'?'warn':data.level==='warn'?'amber':data.level==='info'?'info':'success');
+  levelDiv.innerHTML = '<p class="callout-title">'+data.levelText+'</p><p>'+data.text+'</p>';
+
+  document.getElementById('bioEPP').innerHTML = '<strong style="color:#06b6d4">EPP requerido:</strong> '+data.epp;
+  document.getElementById('bioContraindicated').innerHTML = '<strong style="color:#f87171">Quienes NO deben manipularlo:</strong> '+data.contraindicated;
+  document.getElementById('bioPlace').innerHTML = '<strong style="color:#fbbf24">Lugar de preparación:</strong> '+data.place;
+
+  result.style.display = 'block';
+  trackCalc('bio_detector');
+}
+
+// ===== CALCULATOR: MIX DETECTOR =====
+const MIX_MATRIX = {
+  'bordelés+sulfocálcico':'PROHIBIDO: Precipita CuS inutilizable + libera gases sulfurados toxicos.',
+  'sulfocálcico+bordelés':'PROHIBIDO: Precipita CuS inutilizable + libera gases sulfurados toxicos.',
+  'bordelés+tricho':'PROHIBIDO: El cobre mata Trichoderma. Destruye el biocontrol.',
+  'tricho+bordelés':'PROHIBIDO: El cobre mata Trichoderma. Destruye el biocontrol.',
+  'bordelés+bacillus':'PROHIBIDO: El cobre mata Bacillus. Destruye el biocontrol.',
+  'bacillus+bordelés':'PROHIBIDO: El cobre mata Bacillus. Destruye el biocontrol.',
+  'bordelés+aceites':'PROHIBIDO: Fitotoxicidad severa. Puede quemar las hojas.',
+  'aceites+bordelés':'PROHIBIDO: Fitotoxicidad severa. Puede quemar las hojas.',
+  'sulfocálcico+tricho':'PROHIBIDO: El azufre mata Trichoderma.',
+  'tricho+sulfocálcico':'PROHIBIDO: El azufre mata Trichoderma.',
+  'sulfocálcico+bacillus':'PROHIBIDO: El azufre mata Bacillus.',
+  'bacillus+sulfocálcico':'PROHIBIDO: El azufre mata Bacillus.',
+  'acido+cloro':'PROHIBIDO: Gas cloro (Cl2) - quemadura pulmonar, potencialmente mortal.',
+  'cloro+acido':'PROHIBIDO: Gas cloro (Cl2) - quemadura pulmonar, potencialmente mortal.',
+  'cloro+amonio':'PROHIBIDO: Cloramina (NH2Cl) - tóxica respiratoria.',
+  'amonio+cloro':'PROHIBIDO: Cloramina (NH2Cl) - tóxica respiratoria.',
+  'purin+bordelés':'PRECAUCION-48h: Esperar 48h entre aplicaciones. El hierro precipita con el cobre.',
+  'bordelés+purin':'PRECAUCION-48h: Esperar 48h entre aplicaciones. El hierro precipita con el cobre.',
+  'tricho+aceites':'PRECAUCION-48h: Aceites pueden afectar viabilidad de Trichoderma.',
+  'aceites+tricho':'PRECAUCION-48h: Aceites pueden afectar viabilidad de Trichoderma.',
+  'bacillus+aceites':'PRECAUCION-48h: Aceites pueden afectar viabilidad de Bacillus.',
+  'aceites+bacillus':'PRECAUCION-48h: Aceites pueden afectar viabilidad de Bacillus.',
+  'sulfocálcico+aceites':'PRECAUCION-48h: Puede aumentar fitotoxicidad del azufre.',
+  'aceites+sulfocálcico':'PRECAUCION-48h: Puede aumentar fitotoxicidad del azufre.'
+};
+
+function checkMix(){
+  const a = document.getElementById('mixA').value;
+  const b = document.getElementById('mixB').value;
+  const result = document.getElementById('mixResult');
+  if(!a||!b){ result.style.display='none'; return; }
+  if(a===b){ result.style.display='none'; return; }
+
+  const key = a+'+'+b;
+  const outcome = MIX_MATRIX[key];
+
+  if(!outcome){
+    result.innerHTML = '<strong style="color:#10b981">SEGURO</strong> - No hay incompatibilidad conocida entre estos productos.';
+    result.style.borderColor = '#10b981';
+  }else if(outcome.startsWith('PROHIBIDO')){
+    result.innerHTML = '<strong style="color:#f87171">'+outcome+'</strong>';
+    result.style.borderColor = '#f87171';
+  }else{
+    result.innerHTML = '<strong style="color:#fbbf24">'+outcome+'</strong>';
+    result.style.borderColor = '#fbbf24';
+  }
+  result.style.display = 'block';
+  trackCalc('mezclas_peligrosas');
+}
+
+// ===== CALCULATOR: COST EPP VS DISEASE =====
+const RISK_TABLE = {
+  glifosato:{risk:0.5,disease:'linfoma no Hodgkin',costLow:50000000,costHigh:200000000},
+  paraquat:{risk:1.5,disease:'enfermedad de Parkinson',costLow:5000000,costHigh:20000000},
+  clorpirifos:{risk:0.3,disease:'trastorno neurologico',costLow:30000000,costHigh:100000000},
+  mancozeb:{risk:0.4,disease:'cáncer tiroideo',costLow:30000000,costHigh:100000000}
+};
+
+function calcCost(){
+  const years = parseFloat(document.getElementById('workYears').value)||0;
+  const chem = document.getElementById('chemicalType').value;
+  const data = RISK_TABLE[chem];
+  const result = document.getElementById('costResult');
+
+  if(!data || years<=0){
+    result.innerHTML = '<span class="result-num">0%</span> riesgo &middot; Ingrese años y químico arriba.';
+    return;
+  }
+
+  const accumRisk = Math.min(years * data.risk, 99);
+  const avgCost = Math.round((data.costLow + data.costHigh)/2);
+  const projectedCost = Math.round(avgCost * (accumRisk/100));
+  const kitCostPerYear = 150000;
+  const totalKitCost = kitCostPerYear * years;
+  const ratio = totalKitCost>0 ? Math.round(projectedCost/totalKitCost) : 0;
+
+  let html = '<span class="result-num">'+accumRisk.toFixed(1)+'%</span> riesgo acumulado de '+data.disease+'<br>';
+  html += 'Costo proyectado si enferma: <strong>$'+projectedCost.toLocaleString('es-CO')+' COP</strong><br>';
+  html += 'Costo total kit EPP ('+years+' años): <strong>$'+totalKitCost.toLocaleString('es-CO')+' COP</strong><br>';
+  if(ratio>0) html += '<strong style="color:#10b981">$1 en EPP = ~$'+ratio.toLocaleString('es-CO')+' ahorrado en salud</strong>';
+
+  result.innerHTML = html;
+  trackCalc('epp_vs_enfermedad');
+}
+
+// ===== ROUTINE GAME (step ordering) =====
+let routineOrder = [];
+const CORRECT_ROUTINE = [1,2,3,4,5,6,7]; // indices 0-based: step numbers
+
+function selectRoutineStep(el){
+  const step = parseInt(el.dataset.step);
+  const numEl = document.getElementById('num-'+step);
+
+  // If already assigned, unassign
+  const existingIdx = routineOrder.indexOf(step);
+  if(existingIdx>=0){
+    routineOrder.splice(existingIdx,1);
+    numEl.textContent = '?';
+    el.classList.remove('correct','wrong');
+    updateRoutineFeedback();
+    return;
+  }
+
+  // Assign next number
+  routineOrder.push(step);
+  numEl.textContent = routineOrder.length;
+
+  // Check if complete
+  if(routineOrder.length===7){
+    // Verify order
+    let allCorrect = true;
+    for(let i=0;i<7;i++){
+      const elStep = routineOrder[i];
+      const correctStep = CORRECT_ROUTINE[i];
+      const item = document.querySelector('.drag-item[data-step="'+elStep+'"]');
+      if(elStep===correctStep){
+        item.classList.add('correct');
+      }else{
+        item.classList.add('wrong');
+        allCorrect = false;
+      }
+    }
+    const fb = document.getElementById('routineFeedback');
+    if(allCorrect){
+      fb.textContent = 'Orden correcto. Protege su cuerpo en cada paso.';
+      fb.className = 'quiz-feedback show correct';
+    }else{
+      fb.textContent = 'Algunos pasos están en orden incorrecto. Los marcados en verde están bien, los rojos deben revisarse.';
+      fb.className = 'quiz-feedback show wrong';
+    }
+  }
+}
+
+function resetRoutine(){
+  routineOrder = [];
+  document.querySelectorAll('.drag-item').forEach(el=>{
+    el.classList.remove('correct','wrong');
+    const step = el.dataset.step;
+    document.getElementById('num-'+step).textContent = '?';
+  });
+  document.getElementById('routineFeedback').className = 'quiz-feedback';
+  document.getElementById('routineFeedback').textContent = '';
+}
+
+function updateRoutineFeedback(){
+  if(routineOrder.length<7){
+    document.getElementById('routineFeedback').className = 'quiz-feedback';
+    document.getElementById('routineFeedback').textContent = '';
+  }
+}
+
+// ===== CERTIFICATE / SUMMARY =====
+function showCertificate(){
+  const s = getState();
+  const quizzes = s.quiz_scores || {};
+  const keys = Object.keys(quizzes);
+
+  // Calculate average
+  let totalCorrect = 0, totalQuestions = 0;
+  keys.forEach(k=>{
+    totalCorrect += quizzes[k].correct;
+    totalQuestions += quizzes[k].total;
+  });
+  const avg = totalQuestions>0 ? Math.round((totalCorrect/totalQuestions)*100) : 0;
+
+  document.getElementById('finalScore').innerHTML = avg+'<span>%</span>';
+
+  if(avg>=70){
+    document.getElementById('certTitle').textContent = 'Certificado de completitud';
+    document.getElementById('certSub').textContent = 'Completaste la unidad de Bioseguridad en el campo';
+    document.getElementById('certMessage').innerHTML = '<strong style="color:#10b981">Felicidades.</strong> Promedio: '+avg+'%. Has demostrado comprension de los temas de bioseguridad.';
+    document.getElementById('certQR').style.display = 'block';
+    document.getElementById('certQRLabel').style.display = 'block';
+  }else if(avg>=40){
+    document.getElementById('certTitle').textContent = 'Unidad completada';
+    document.getElementById('certSub').textContent = 'Bioseguridad en el campo';
+    document.getElementById('certMessage').innerHTML = 'Promedio: '+avg+'%. Te invitamos a <strong>repasar las partes con bajo puntaje</strong> y reintentar los quizzes para obtener el certificado.';
+    document.getElementById('certQR').style.display = 'none';
+    document.getElementById('certQRLabel').style.display = 'none';
+  }else{
+    document.getElementById('certTitle').textContent = 'Sigue aprendiendo';
+    document.getElementById('certSub').textContent = 'Bioseguridad en el campo';
+    document.getElementById('certMessage').innerHTML = 'Promedio: '+avg+'%. Te recomendamos <strong>repasar la unidad completa</strong> antes de continuar. La bioseguridad es tema de vida o muerte.';
+    document.getElementById('certQR').style.display = 'none';
+    document.getElementById('certQRLabel').style.display = 'none';
+  }
+
+  // Score breakdown
+  const names = {
+    parte_1:'Parte 1: Como entra el químico',
+    parte_2:'Parte 2: Caso Bayer-Monsanto',
+    parte_3:'Parte 3: Kit de protección',
+    parte_4:'Parte 4: Evidencia científica',
+    parte_5:'Parte 5: Riesgos agroecología',
+    parte_6:'Parte 6: Mezclas prohibidas',
+    parte_7:'Parte 7: Practica del agricultor'
+  };
+  let breakdownHtml = '';
+  Object.keys(names).forEach(k=>{
+    const q = quizzes[k];
+    if(q){
+      const pct = Math.round((q.correct/q.total)*100);
+      const color = pct>=70?'#10b981':pct>=40?'#fbbf24':'#f87171';
+      breakdownHtml += '<div style="margin-bottom:.5rem"><strong style="color:'+color+'">'+pct+'%</strong> - '+names[k]+' ('+q.correct+'/'+q.total+')</div>';
+    }else{
+      breakdownHtml += '<div style="margin-bottom:.5rem;color:#64748b">-- - '+names[k]+' (sin intentar)</div>';
+    }
+  });
+  document.getElementById('scoreBreakdown').innerHTML = breakdownHtml;
+}
+
+// ===== TRACKING CALC USES =====
+function trackCalc(name){
+  const s = getState();
+  s.calculator_uses = s.calculator_uses || {};
+  s.calculator_uses[name] = (s.calculator_uses[name]||0)+1;
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+}
+
+// ===== INIT =====
+function init(){
+  const s = getState();
+  // If returning user, show where they left off (but allow restart)
+  if(s.screens_visited && s.screens_visited.length>0){
+    updatePreviousProgress(s);
+  }
+  // Start at screen 0 always (user can see previous progress message)
+  showScreen(0);
+
+  // Hook certificate generation when reaching screen 9
+  const origGoTo = window.goTo;
+  window.goTo = function(n){
+    if(n===9) showCertificate();
+    showScreen(n);
+  };
+}
+
+// Expose to global
+window.navNext = navNext;
+window.navPrev = navPrev;
+window.goTo = goTo;
+window.calcEpp = calcEpp;
+window.showBioRisk = showBioRisk;
+window.checkMix = checkMix;
+window.calcCost = calcCost;
+window.selectRoutineStep = selectRoutineStep;
+window.resetRoutine = resetRoutine;
+
+// Start
+document.addEventListener('DOMContentLoaded', init);
+
+})();
+</script>
+</body>
+</html>
