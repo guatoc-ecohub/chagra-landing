@@ -1,0 +1,36 @@
+name: smoke deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Cloudflare Pages deploy
+        run: |
+          echo "Cloudflare Pages typically deploys in ~60-90s after push"
+          sleep 120
+
+      - name: Run smoke-css-coverage
+        run: |
+          chmod +x tests/smoke-css-coverage.sh
+          ./tests/smoke-css-coverage.sh https://chagra.bio
+
+      - name: Verify SCORM units load
+        run: |
+          for UNIT in transicion-15-15-15 bioseguridad; do
+            URL="https://chagra.bio/aprender/unidad/$UNIT/"
+            JS_URL="https://chagra.bio/aprender/unidad/$UNIT/unit.js"
+            CODE_HTML=$(curl -sI -o /dev/null -w "%{http_code}" "$URL")
+            CODE_JS=$(curl -sI -o /dev/null -w "%{http_code}" "$JS_URL")
+            echo "$UNIT: HTML=$CODE_HTML JS=$CODE_JS"
+            if [ "$CODE_HTML" != "200" ] || [ "$CODE_JS" != "200" ]; then
+              echo "FAIL: $UNIT no carga correctamente"
+              exit 1
+            fi
+          done
