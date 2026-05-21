@@ -519,3 +519,67 @@ strong{color:var(--fg);font-weight:600}
 @media(max-width:640px){
   .legal-footer{font-size:.74rem;padding:.65rem .85rem;margin-left:1rem;margin-right:1rem}
 }
+
+/* ===== REPORTAR INVASORA — form publico (Task #89) ===== */
+.report-form-section{margin:3rem 0 2rem;padding:1.75rem;background:linear-gradient(140deg,rgba(16,185,129,.05) 0%,rgba(6,182,212,.03) 50%,rgba(255,255,255,.015) 100%);border:1px solid rgba(16,185,129,.18);border-radius:18px}
+.report-form-section h2{font-size:1.25rem;color:#f1f5f9;margin:0 0 1.25rem;font-weight:700;letter-spacing:-.01em;border:none}
+.report-form{display:flex;flex-direction:column;gap:1.25rem}
+.report-field{display:flex;flex-direction:column;gap:.4rem}
+.report-field label{font-size:.92rem;color:#e2e8f0;font-weight:600;letter-spacing:.005em}
+.report-req{color:#34d399;font-weight:700;margin-left:.1rem}
+.report-form input[type="text"],
+.report-form input[type="file"],
+.report-form select,
+.report-form textarea{
+  background:rgba(15,23,42,.6);
+  border:1px solid var(--border-strong);
+  border-radius:10px;
+  padding:.7rem .85rem;
+  color:var(--fg);
+  font-size:1rem;
+  font-family:inherit;
+  line-height:1.45;
+  transition:border-color var(--transition),background-color var(--transition),box-shadow var(--transition);
+  width:100%;
+}
+.report-form input[type="text"]:focus,
+.report-form input[type="file"]:focus,
+.report-form select:focus,
+.report-form textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  background:rgba(15,23,42,.85);
+  box-shadow:0 0 0 3px rgba(16,185,129,.18);
+}
+.report-form select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#94a3b8 50%),linear-gradient(135deg,#94a3b8 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:2.5rem}
+.report-form textarea{resize:vertical;min-height:5.5rem}
+.report-fieldset{border:1px dashed var(--border-strong);border-radius:12px;padding:1rem 1.1rem 1.1rem;display:flex;flex-direction:column;gap:.85rem;background:rgba(15,23,42,.25)}
+.report-fieldset legend{padding:0 .5rem;font-size:.88rem;font-weight:600;color:#cbd5e1;letter-spacing:.005em}
+.report-coords{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.report-coords>div{display:flex;flex-direction:column;gap:.35rem}
+.report-help{font-size:.8rem;color:#94a3b8;line-height:1.5}
+.report-help-inline{color:#94a3b8;font-weight:400;font-size:.85rem}
+.report-checkbox{display:flex;gap:.65rem;align-items:flex-start;font-size:.92rem;color:#cbd5e1;line-height:1.55;cursor:pointer}
+.report-checkbox input[type="checkbox"]{margin-top:.25rem;accent-color:#10b981;width:18px;height:18px;flex-shrink:0;cursor:pointer}
+.report-checkbox span strong{color:#f1f5f9}
+.report-disclaimer{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:.85rem 1rem;font-size:.85rem;color:#fde68a;line-height:1.6}
+.report-disclaimer strong{color:#fbbf24}
+.report-disclaimer code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:rgba(15,23,42,.5);padding:.1rem .35rem;border-radius:4px;font-size:.85em;color:#fef3c7}
+.report-actions{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:.5rem}
+.report-actions .btn{padding:.75rem 1.5rem;font-size:.95rem}
+.report-status{margin:.25rem 0 0;font-size:.9rem;color:#cbd5e1;min-height:1.4em;line-height:1.5}
+.report-status.is-error{color:#fca5a5}
+.report-status.is-ok{color:#86efac}
+.report-honeypot{position:absolute!important;left:-9999px!important;top:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.report-canales-oficiales{margin:2.5rem 0 1rem;padding:1.25rem 1.4rem;border-left:3px solid var(--accent-2);background:rgba(6,182,212,.04);border-radius:0 12px 12px 0}
+.report-canales-oficiales h2{font-size:1.05rem;color:#f1f5f9;margin:0 0 .65rem;font-weight:700;border:none}
+.report-canales-oficiales p{color:#cbd5e1;font-size:.95rem;margin:0 0 .65rem}
+.report-canales-oficiales ul{list-style:disc;padding-left:1.25rem;color:#cbd5e1;font-size:.92rem;line-height:1.7}
+.report-canales-oficiales a{color:#22d3ee;font-weight:500;text-decoration:underline;text-underline-offset:2px}
+.report-canales-oficiales a:hover{color:#67e8f9}
+@media(max-width:640px){
+  .report-form-section{padding:1.25rem;border-radius:14px}
+  .report-coords{grid-template-columns:1fr;gap:.5rem}
+  .report-actions{flex-direction:column}
+  .report-actions .btn{width:100%;justify-content:center}
+}

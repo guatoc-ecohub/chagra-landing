@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "fuente": "chagra/catalog/chagra-catalog-seed-v3.1.json (filtro: conservation_status='invasor' OR roles_in_guild contiene 'invasive')",
+    "fecha_extraccion": "2026-05-21",
+    "marco_legal": "Resolucion 0684/2018 MinAmbiente — declara especies de fauna y flora silvestres invasoras en territorio colombiano",
+    "nota_consolidacion": "Cytisus monspessulanus y Genista monspessulana se reportan como una sola entrada ('retamo liso') por ser sinonimos botanicos (POWO acepta Genista monspessulana). En el catalogo Chagra hay 18 IDs pero corresponden a 17 especies distintas.",
+    "nota_publica": "Listado para el form publico /reportar-invasora/. No incluye URLs de infraestructura privada. AGPL-3.0."
+  },
+  "species": [
+    { "id": "acacia_melanoxylon",     "nombre_cientifico": "Acacia melanoxylon R. Br.",                      "nombre_comun": "Acacia negra" },
+    { "id": "cenchrus_clandestinus",  "nombre_cientifico": "Cenchrus clandestinus (Hochst. ex Chiov.) Morrone", "nombre_comun": "Kikuyo" },
+    { "id": "eichhornia_crassipes",   "nombre_cientifico": "Pontederia crassipes Mart. (sin. Eichhornia crassipes)", "nombre_comun": "Taruya / buchon de agua" },
+    { "id": "eucalyptus_globulus",    "nombre_cientifico": "Eucalyptus globulus Labill.",                    "nombre_comun": "Eucalipto blanco" },
+    { "id": "genista_monspessulana",  "nombre_cientifico": "Genista monspessulana (L.) L.A.S.Johnson (sin. Cytisus monspessulanus)", "nombre_comun": "Retamo liso / retamo de tenir" },
+    { "id": "hedychium_coronarium",   "nombre_cientifico": "Hedychium coronarium J. Konig",                  "nombre_comun": "Matandrea" },
+    { "id": "ipomoea_purpurea",       "nombre_cientifico": "Ipomoea purpurea (L.) Roth",                     "nombre_comun": "Campanilla morada" },
+    { "id": "lantana_camara",         "nombre_cientifico": "Lantana camara L.",                              "nombre_comun": "Camaroncillo" },
+    { "id": "melinis_minutiflora",    "nombre_cientifico": "Melinis minutiflora P.Beauv.",                   "nombre_comun": "Pasto gordura" },
+    { "id": "pennisetum_setaceum",    "nombre_cientifico": "Cenchrus setaceus (Forssk.) Morrone (sin. Pennisetum setaceum)", "nombre_comun": "Pasto fuente" },
+    { "id": "pinus_patula",           "nombre_cientifico": "Pinus patula Schiede ex Schltdl. & Cham.",       "nombre_comun": "Pino patula" },
+    { "id": "pistia_stratiotes",      "nombre_cientifico": "Pistia stratiotes L.",                           "nombre_comun": "Lechuga de agua" },
+    { "id": "pteridium_aquilinum",    "nombre_cientifico": "Pteridium aquilinum (L.) Kuhn",                  "nombre_comun": "Helecho marranero" },
+    { "id": "pueraria_phaseoloides",  "nombre_cientifico": "Pueraria phaseoloides (Roxb.) Benth.",           "nombre_comun": "Kudzu tropical" },
+    { "id": "rubus_alceifolius",      "nombre_cientifico": "Rubus alceifolius Poir.",                        "nombre_comun": "Mora silvestre asiatica" },
+    { "id": "thunbergia_alata",       "nombre_cientifico": "Thunbergia alata Bojer ex Sims",                 "nombre_comun": "Ojo de poeta" },
+    { "id": "ulex_europaeus",         "nombre_cientifico": "Ulex europaeus L.",                              "nombre_comun": "Retamo espinoso" }
+  ]
+}
