@@ -509,7 +509,12 @@ window.calcCost = calcCost;
 window.selectRoutineStep = selectRoutineStep;
 window.resetRoutine = resetRoutine;
 
-// Start
-document.addEventListener('DOMContentLoaded', init);
+// Start — defensivo: si DOM ya esta listo (script sin defer al final del body),
+// llamar init() directamente. Si no, esperar evento.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
 })();

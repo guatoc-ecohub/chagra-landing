@@ -409,10 +409,17 @@ function animateCarbono(){
   if(txt2010) txt2010.textContent = '~50%';
 }
 
-// Initialize calculator defaults on load
-window.addEventListener('DOMContentLoaded', ()=>{
+// Initialize calculator defaults on load — defensivo: si el DOM ya esta listo
+// (caso de script sin defer al final del body), ejecutar directamente. Si no,
+// esperar DOMContentLoaded. Cubre todos los modos de carga.
+function __chagraBootstrap(){
   init();
   calcNPK();
   calcCochrane();
   calcBocashi();
-});
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __chagraBootstrap);
+} else {
+  __chagraBootstrap();
+}
