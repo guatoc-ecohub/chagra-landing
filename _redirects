@@ -1,3 +1,8 @@
 /app      https://chagra.guatoc.co   302
 /github   https://github.com/guatoc-ecohub/Chagra   302
 /agpl     https://www.gnu.org/licenses/agpl-3.0.html   302
+
+# Aprender — URLs cortas redirigen a SCORM (curso interactivo, comportamiento esperado por usuarios).
+# El artículo standalone sigue accesible explícitamente con .html para quien lo prefiera.
+/aprender/bioseguridad              /aprender/unidad/bioseguridad/             301!
+/aprender/transicion-15-15-15       /aprender/unidad/transicion-15-15-15/      301!
