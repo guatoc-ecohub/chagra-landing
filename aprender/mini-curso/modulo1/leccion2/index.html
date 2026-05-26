@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lección 2 del Mini-curso Chagra: Principios agroecológicos básicos. Aprende los fundamentos de la agricultura orgánica.">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<title>Lección 2: Principios Agroecológicos — Mini-curso Chagra</title>
+<link rel="stylesheet" href="/styles.css?v=2026-05-26-mini-curso">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+.lesson-page{max-width:780px;margin:0 auto;padding:calc(var(--header-h) + 2rem) 1.5rem 4rem}
+.lesson-breadcrumb{font-size:.85rem;color:var(--fg-dim);margin-bottom:1rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.lesson-breadcrumb a{color:var(--fg-muted);text-decoration:none}
+.lesson-breadcrumb a:hover{color:var(--accent)}
+.lesson-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.1);color:var(--accent);padding:.4rem .8rem;border-radius:100px;font-size:.8rem;font-weight:600;margin-bottom:1rem}
+.lesson-badge svg{width:16px;height:16px}
+.lesson-header{margin-bottom:3rem}
+.lesson-title{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;color:#f8fafc;margin-bottom:.5rem;line-height:1.2}
+.lesson-subtitle{font-size:1.1rem;color:var(--fg-muted);margin-bottom:1.5rem}
+.lesson-meta{display:flex;gap:1.5rem;font-size:.9rem;color:var(--fg-dim);flex-wrap:wrap}
+.lesson-meta span{display:flex;align-items:center;gap:.4rem}
+.lesson-meta svg{width:16px;height:16px}
+.progress-bar{width:100%;height:4px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;margin:2rem 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .4s ease}
+.content-section{margin-bottom:3rem}
+.section-title{font-size:1.4rem;font-weight:700;color:#f8fafc;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-title svg{width:24px;height:24px;color:var(--accent-2)}
+.content-block{color:var(--fg-muted);line-height:1.8;margin-bottom:1.5rem;font-size:1.05rem}
+.content-block strong{color:#f8fafc;font-weight:600}
+.content-block em{color:var(--accent-2);font-style:normal}
+.principle-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;transition:all var(--transition)}
+.principle-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.principle-header{display:flex;gap:1rem;margin-bottom:1rem}
+.principle-number{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;flex-shrink:0}
+.principle-title{font-size:1.2rem;color:#f8fafc;font-weight:700}
+.principle-desc{color:var(--fg-muted);line-height:1.7;margin-bottom:1rem}
+.principle-example{background:rgba(6,182,212,.08);border-left:3px solid var(--accent-2);padding:.8rem 1rem;border-radius:0 8px 8px 0;margin-top:1rem}
+.principle-example p{margin:0;font-size:.9rem;color:var(--fg-muted)}
+.principle-example strong{color:var(--accent-2)}
+.callout{padding:1.25rem;border-radius:12px;margin:1.5rem 0;border-left:4px solid}
+.callout.info{background:rgba(6,182,212,.08);border-color:var(--accent-2)}
+.callout.success{background:rgba(16,185,129,.08);border-color:var(--accent)}
+.callout-title{font-weight:700;margin-bottom:.5rem;font-size:1rem;display:flex;align-items:center;gap:.5rem}
+.callout-title svg{width:18px;height:18px}
+.callout.info .callout-title{color:var(--accent-2)}
+.callout.success .callout-title{color:var(--accent)}
+.callout p{font-size:.95rem;color:var(--fg-muted);margin:0;line-height:1.6}
+.lesson-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.nav-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all var(--transition)}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 4px 20px rgba(16,185,129,.3)}
+.nav-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(16,185,129,.4)}
+.nav-btn.secondary{background:var(--bg-card);color:var(--fg-muted);border:1px solid var(--border)}
+.nav-btn.secondary:hover{background:var(--bg-elevated);color:var(--fg)}
+.nav-btn svg{width:18px;height:18px}
+.nav-btn.prev svg{transform:rotate(180deg)}
+@media(max-width:640px){
+  .lesson-meta{gap:1rem}
+  .lesson-title{font-size:1.6rem}
+  .principle-header{flex-direction:column;gap:.5rem}
+  .principle-number{width:36px;height:36px;font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+<div class="header-inner">
+<a href="/" class="logo" aria-label="Chagra — Inicio">
+<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
+<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
+<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+</svg>
+<span class="logo-text">Chagra</span>
+</a>
+<nav class="primary-nav">
+<ul role="menubar">
+<li role="none"><a href="/" role="menuitem">Inicio</a></li>
+<li role="none"><a href="/#agente" role="menuitem">Qué hace</a></li>
+<li role="none"><a href="/aprender/" role="menuitem" class="active">Aprender</a></li>
+<li role="none"><a href="/#equipo" role="menuitem">Equipo</a></li>
+<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main class="lesson-page">
+<div class="lesson-breadcrumb">
+<a href="/">Inicio</a> <span class="sep">›</span>
+<a href="/aprender/">Aprender</a> <span class="sep">›</span>
+<a href="/aprender/mini-curso/">Mini-curso</a> <span class="sep">›</span>
+<span>Módulo 1</span>
+</div>
+
+<div class="lesson-badge">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+Módulo 1 · Lección 2 de 3
+</div>
+
+<div class="lesson-header">
+<h1 class="lesson-title">Principios Agroecológicos Básicos</h1>
+<p class="lesson-subtitle">Los 5 pilares fundamentales de la agroecología para transformar tu producción agrícola.</p>
+<div class="lesson-meta">
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+~12 minutos
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+Fundamentos
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+Teoría esencial
+</span>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 66%"></div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M12 18v-6"/><path d="M8 15h8"/></svg>
+Los 5 Principios Fundamentales
+</h2>
+<p style="color: var(--fg-muted); margin-bottom: 2rem;">La agroecología se basa en principios ecológicos probados. Aquí están los 5 más importantes para tu transición:</p>
+
+<div class="principle-card">
+<div class="principle-header">
+<div class="principle-number">1</div>
+<div class="principle-title">Reciclar Nutrientes y Materia Orgánica</div>
+</div>
+<p class="principle-desc">En un ecosistema natural, no hay desperdicios: todo se recicla. La agroecología imita este ciclo cerrado donde los residuos se convierten en recursos.</p>
+<div class="principle-example">
+<p><strong>Ejemplo práctico:</strong> Los rastrojos de cosecha → compost → abono orgánico → suelo vivo → mejores cultivos. Nada se tira.</p>
+</div>
+</div>
+
+<div class="principle-card">
+<div class="principle-header">
+<div class="principle-number">2</div>
+<div class="principle-title">Diversificar Especies y Variedades</div>
+</div>
+<p class="principle-desc">La monocultura es antinatural. Los ecosistemas sanos tienen <em>biodiversidad</em>: árboles, arbustos, hierbas, insectos benéficos, microorganismos del suelo.</p>
+<div class="principle-example">
+<p><strong>Ejemplo práctico:</strong> Asocia maíz + frijol + calabaza (las "tres hermanas"). El maíz da estructura, el frijol fija nitrógeno, la calabaza cubre el suelo.</p>
+</div>
+</div>
+
+<div class="principle-card">
+<div class="principle-header">
+<div class="principle-number">3</div>
+<div class="principle-title">Sin Chemical Synthesis</div>
+</div>
+<p class="principle-desc">Los agroquímicos sintéticos (NPK, glifosato, insecticidas) matan vida del suelo y crean dependencia. La agroecología usa insumos orgánicos locales.</p>
+<div class="principle-example">
+<p><strong>Ejemplo práctico:</strong> En lugar de urea sintética (US$80/50kg), usa biol o compost (costo cercano a cero si produces tus propios insumos).</p>
+</div>
+</div>
+
+<div class="principle-card">
+<div class="principle-header">
+<div class="principle-number">4</div>
+<div class="principle-title">Manejo Ecológico de Plagas</div>
+</div>
+<p class="principle-desc">Las plagas son síntomas de desequilibrio. En lugar de bombear químicos, restauramos el equilibrio del ecosistema para que las plagas no se disparen.</p>
+<div class="principle-example">
+<p><strong>Ejemplo práctico:</strong> Control biológico: mariquitas vs pulgones, plantas trampa (tagetes) vs nemátodos, extractos botánicos (ajo, ají) vs insectos.</p>
+</div>
+</div>
+
+<div class="principle-card">
+<div class="principle-header">
+<div class="principle-number">5</div>
+<div class="principle-title">Valorar Conocimiento Local + Ciencia</div>
+</div>
+<p class="principle-desc">Los campesinos tienen siglos de observación práctica. La agroecología combina este saber ancestral con evidencia científica revisada por pares.</p>
+<div class="principle-example">
+<p><strong>Ejemplo práctico:</strong> Tu abuelo sabía que sembrar en luna llena "da mejor" — la ciencia no confirma efectos lunares, pero SÍ confirma que sembrar en época seca reduce enfermedades fungosas.</p>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+Contra-mitos Agroecológicos
+</h2>
+<div class="callout info">
+<div class="callout-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+Mito vs Realidad
+</div>
+<p style="margin: 0;"><strong>❌ Mito:</strong> "Agroecología es rendir menos"<br><strong>✓ Realidad:</strong> A corto plazo sí, pero a 3-5 años los sistemas agroecológicos igualan o superan rendimientos convencionales con menos costos externos.<br><br><strong>❌ Mito:</strong> "Es solo para pequeños productores"<br><strong>✓ Realidad:</strong> Funciona en cualquier escala. La clave es el diseño del sistema, no el tamaño.<br><br><strong>❌ Mito:</strong> "No necesita tecnología"<br><strong>✓ Realidad:</strong> Usa tecnología apropiada: riego por goteo, sensores de humedad, diagnóstico AI (como Chagra), pero DEPENDIENDO de insumos locales.</p>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 66%"></div>
+</div>
+
+<div class="lesson-nav">
+<a href="/aprender/mini-curso/modulo1/leccion1/" class="nav-btn secondary prev">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+Lección 1
+</a>
+<a href="/aprender/mini-curso/modulo1/leccion3/" class="nav-btn primary">
+Lección 3: Tu primera chagra
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+<div class="footer-inner">
+<div class="footer-bottom">
+<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> &middot; DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
+<p>Hecho desde Guatoc &middot; Choachí &middot; Cundinamarca &middot; Colombia</p>
+<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>

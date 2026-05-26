@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lección 1 del Mini-curso Chagra: ¿Qué es Chagra y la agroecología? Descubre los fundamentos de la agricultura orgánica.">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<title>Lección 1: ¿Qué es Chagra? — Mini-curso Chagra</title>
+<link rel="stylesheet" href="/styles.css?v=2026-05-26-mini-curso">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+.lesson-page{max-width:780px;margin:0 auto;padding:calc(var(--header-h) + 2rem) 1.5rem 4rem}
+.lesson-breadcrumb{font-size:.85rem;color:var(--fg-dim);margin-bottom:1rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.lesson-breadcrumb a{color:var(--fg-muted);text-decoration:none}
+.lesson-breadcrumb a:hover{color:var(--accent)}
+.lesson-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.1);color:var(--accent);padding:.4rem .8rem;border-radius:100px;font-size:.8rem;font-weight:600;margin-bottom:1rem}
+.lesson-badge svg{width:16px;height:16px}
+.lesson-header{margin-bottom:3rem}
+.lesson-title{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;color:#f8fafc;margin-bottom:.5rem;line-height:1.2}
+.lesson-subtitle{font-size:1.1rem;color:var(--fg-muted);margin-bottom:1.5rem}
+.lesson-meta{display:flex;gap:1.5rem;font-size:.9rem;color:var(--fg-dim);flex-wrap:wrap}
+.lesson-meta span{display:flex;align-items:center;gap:.4rem}
+.lesson-meta svg{width:16px;height:16px}
+.progress-bar{width:100%;height:4px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;margin:2rem 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .4s ease}
+.content-section{margin-bottom:3rem}
+.section-title{font-size:1.4rem;font-weight:700;color:#f8fafc;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-title svg{width:24px;height:24px;color:var(--accent-2)}
+.content-block{color:var(--fg-muted);line-height:1.8;margin-bottom:1.5rem;font-size:1.05rem}
+.content-block strong{color:#f8fafc;font-weight:600}
+.content-block em{color:var(--accent-2);font-style:normal}
+.key-point{background:rgba(6,182,212,.08);border-left:3px solid var(--accent-2);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.5rem 0}
+.key-point p{margin:0;color:var(--fg-muted);font-size:.95rem;line-height:1.6}
+.key-point strong{color:var(--accent-2)}
+.callout{padding:1.25rem;border-radius:12px;margin:1.5rem 0;border-left:4px solid}
+.callout.info{background:rgba(6,182,212,.08);border-color:var(--accent-2)}
+.callout.success{background:rgba(16,185,129,.08);border-color:var(--accent)}
+.callout-title{font-weight:700;margin-bottom:.5rem;font-size:1rem;display:flex;align-items:center;gap:.5rem}
+.callout-title svg{width:18px;height:18px}
+.callout.info .callout-title{color:var(--accent-2)}
+.callout.success .callout-title{color:var(--accent)}
+.callout p{font-size:.95rem;color:var(--fg-muted);margin:0;line-height:1.6}
+.principle-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:1.5rem 0}
+.principle-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:all var(--transition)}
+.principle-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.principle-card .icon{width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,.12);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.principle-card .icon svg{width:20px;height:20px}
+.principle-card h4{color:#f8fafc;font-size:1.1rem;margin-bottom:.5rem}
+.principle-card p{color:var(--fg-muted);font-size:.95rem;line-height:1.6;margin:0}
+.lesson-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.nav-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all var(--transition)}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 4px 20px rgba(16,185,129,.3)}
+.nav-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(16,185,129,.4)}
+.nav-btn.secondary{background:var(--bg-card);color:var(--fg-muted);border:1px solid var(--border)}
+.nav-btn.secondary:hover{background:var(--bg-elevated);color:var(--fg)}
+.nav-btn svg{width:18px;height:18px}
+.nav-btn.prev svg{transform:rotate(180deg)}
+@media(max-width:640px){
+  .lesson-meta{gap:1rem}
+  .lesson-title{font-size:1.6rem}
+  .principle-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+<div class="header-inner">
+<a href="/" class="logo" aria-label="Chagra — Inicio">
+<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
+<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
+<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+</svg>
+<span class="logo-text">Chagra</span>
+</a>
+<nav class="primary-nav">
+<ul role="menubar">
+<li role="none"><a href="/" role="menuitem">Inicio</a></li>
+<li role="none"><a href="/#agente" role="menuitem">Qué hace</a></li>
+<li role="none"><a href="/aprender/" role="menuitem" class="active">Aprender</a></li>
+<li role="none"><a href="/#equipo" role="menuitem">Equipo</a></li>
+<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main class="lesson-page">
+<div class="lesson-breadcrumb">
+<a href="/">Inicio</a> <span class="sep">›</span>
+<a href="/aprender/">Aprender</a> <span class="sep">›</span>
+<a href="/aprender/mini-curso/">Mini-curso</a> <span class="sep">›</span>
+<span>Módulo 1</span>
+</div>
+
+<div class="lesson-badge">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+Módulo 1 · Lección 1 de 3
+</div>
+
+<div class="lesson-header">
+<h1 class="lesson-title">¿Qué es Chagra y la Agroecología?</h1>
+<p class="lesson-subtitle">Descubre los fundamentos de la agricultura orgánica y cómo Chagra te ayuda a transformar tu producción.</p>
+<div class="lesson-meta">
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+~15 minutos
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+Introductory
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+Teoría + Práctica
+</span>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 33%"></div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+¿Qué es una Chagra?
+</h2>
+<div class="content-block">
+<p>Una <strong>chagra</strong> es un término indígena amazónico que designa un huerto familiar diversificado donde se cultivan simultáneamente plantas alimenticias, medicinales y ornamentales. Es un sistema de producción ancestral que combina <em>conocimiento tradicional</em> con <em>ciencia moderna</em>.</p>
+</div>
+<div class="key-point">
+<p><strong>Chagra</strong> (plataforma digital) extiende este concepto al siglo XXI: es un asistente agroecológico que te ayuda a diseñar, managear y optimizar tu producción agrícola orgánica usando inteligencia artificial y evidencia científica revisada por pares.</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M12 18v-6"/><path d="M8 15h8"/></svg>
+¿Qué es la Agroecología?
+</h2>
+<div class="content-block">
+<p>La <strong>agroecología</strong> es una disciplina científica que aplica principios ecológicos al diseño y manejo de sistemas agrícolas sostenibles. No es solo "agricultura sin químicos", sino un enfoque holístico que integra:</p>
+</div>
+<div class="principle-grid">
+<div class="principle-card">
+<div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M12 18c-3 0-5-2-5-5"/></svg>
+</div>
+<h4>Suelo Vivo</h4>
+<p>Fomentar microorganismos benéficos, materia orgánica y biodiversidad underground.</p>
+</div>
+<div class="principle-card">
+<div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><circle cx="12" cy="12" r="3"/></svg>
+</div>
+<h4>Biodiversidad</h4>
+<p>Diversidad de cultivos, asociaciones beneficiosas y control biológico natural.</p>
+</div>
+<div class="principle-card">
+<div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+</div>
+<h4>Ciclos Cerrados</h4>
+<p>Reciclar nutrientes, minimizar desperdicios y usar recursos locales renovables.</p>
+</div>
+<div class="principle-card">
+<div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M12 18v-6"/><path d="M8 15h8"/></svg>
+</div>
+<h4>Conocimiento Local</h4>
+<p>Valorar saberes tradicionales campesinos + ciencia revisada por pares.</p>
+</div>
+</div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+¿Qué hace Chagra?
+</h2>
+<div class="content-block">
+<p><strong>Chagra</strong> es una plataforma gratuita y de código abierto que te ayuda en cada etapa de tu transición agroecológica:</p>
+<ul style="list-style: none; padding: 0; margin: 1rem 0;">
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Diagnóstico</em>: sube una foto de tu plagas/enfermedad y obtén identificación con IA
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Tratamiento</em>: recetas de biopreparados orgánicos verificadas (method Restrepo)
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Planificación</em>: calendario de siembra, rotación de cultivos y asociaciones
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Aprendizaje</em>: módulos didácticos basados en ciencia y evidencia
+</li>
+</ul>
+</div>
+<div class="callout info">
+<div class="callout-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+Anti-hallucination garantizado
+</div>
+<p>Chagra usa una base de conocimiento científico (AGROSAVIA, CORPOICA, papers peer-review) para evitar inventos. Si no hay evidencia sólida, Chagra te lo dice claramente.</p>
+</div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+¿Por qué este mini-curso?
+</h2>
+<div class="content-block">
+<p>Este <strong>mini-curso gratuito de 3 módulos</strong> está diseñado para darte una base sólida en agroecología práctica. No necesitas experiencia previa — solo curiosidad y ganas de aprender.</p>
+</div>
+<div class="callout success">
+<div class="callout-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+Al completar este mini-curso podrás:
+</div>
+<p style="margin: 0;">✓ Explicar qué es la agroecología y sus principios básicos<br>✓ Preparar 5 biopreparados orgánicos efectivos<br>✓ Identificar y manejar 5 plagas comunes sin químicos tóxicos<br>✓ Diseñar tu primera charga con plan de 3 años</p>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 33%"></div>
+</div>
+
+<div class="lesson-nav">
+<a href="/aprender/mini-curso/" class="nav-btn secondary prev">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+Volver al mini-curso
+</a>
+<a href="/aprender/mini-curso/modulo1/leccion2/" class="nav-btn primary">
+Lección 2: Principios agroecológicos
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+<div class="footer-inner">
+<div class="footer-bottom">
+<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> &middot; DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
+<p>Hecho desde Guatoc &middot; Choachí &middot; Cundinamarca &middot; Colombia</p>
+<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
