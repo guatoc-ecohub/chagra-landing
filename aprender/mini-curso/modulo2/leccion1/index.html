@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lección 1 Módulo 2: Caldo sulfocálcico - Receta de biopreparado fungicida para control de hongos en cultivos.">
+<meta name="theme-color" content="#0f172a">
+<title>Caldo Sulfocálcico — Módulo 2 Lección 1</title>
+<link rel="stylesheet" href="/styles.css?v=2026-05-26-mini-curso">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+.lesson-page{max-width:780px;margin:0 auto;padding:calc(var(--header-h) + 2rem) 1.5rem 4rem}
+.breadcrumb{font-size:.85rem;color:var(--fg-dim);margin-bottom:1rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.1);color:var(--accent);padding:.4rem .8rem;border-radius:100px;font-size:.8rem;margin-bottom:1rem}
+.title{font-size:clamp(1.8rem,4vw,2.2rem);font-weight:800;color:#f8fafc;margin-bottom:.5rem}
+.subtitle{font-size:1.1rem;color:var(--fg-muted);margin-bottom:2rem}
+.section{margin-bottom:2.5rem}
+.section-title{font-size:1.3rem;font-weight:700;color:#f8fafc;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-title svg{width:22px;height:22px;color:var(--accent-2)}
+.content{color:var(--fg-muted);line-height:1.7;margin-bottom:1rem}
+.recipe-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.recipe-header{display:flex;gap:1rem;margin-bottom:1rem}
+.recipe-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.recipe-title{font-size:1.2rem;color:#f8fafc;font-weight:700}
+.ingredients{background:rgba(6,182,212,.08);border-left:3px solid var(--accent-2);padding:1rem;border-radius:0 8px 8px 0;margin-bottom:1rem}
+.ingredients h4{color:var(--accent-2);font-size:1rem;margin-bottom:.5rem}
+.ingredients ul{list-style:none;padding:0;margin:0}
+.ingredients li{padding:.4rem 0 .4rem 1.5rem;position:relative;color:var(--fg-muted);font-size:.95rem}
+.ingredients li::before{content:'•';position:absolute;left:0;color:var(--accent-2);font-weight:700}
+.steps{list-style:none;padding:0;margin:0}
+.steps li{padding:.8rem 0 .8rem 2.2rem;position:relative;color:var(--fg-muted);line-height:1.6}
+.steps li::before{content:attr(data-step);position:absolute;left:0;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700}
+.warning{background:rgba(248,113,113,.08);border-left:3px solid #f87171;padding:1rem;border-radius:0 8px 8px 0;margin:1.5rem 0}
+.warning-title{color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.warning-title svg{width:18px;height:18px}
+.warning p{margin:0;color:var(--fg-muted);font-size:.95rem}
+.nav{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff}
+.btn.secondary{background:var(--bg-card);color:var(--fg-muted);border:1px solid var(--border)}
+.btn svg{width:18px;height:18px}
+@media(max-width:640px){.title{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="header-inner">
+<a href="/" class="logo"><svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/><path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/><path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/><path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/></svg><span class="logo-text">Chagra</span></a>
+<nav class="primary-nav"><ul role="menubar"><li role="none"><a href="/" role="menuitem">Inicio</a></li><li role="none"><a href="/aprender/" role="menuitem" class="active">Aprender</a></li><li role="none"><a href="/legal/" role="menuitem">Legal</a></li></ul></nav>
+</div></header>
+<main class="lesson-page">
+<div class="breadcrumb"><a href="/">Inicio</a> › <a href="/aprender/">Aprender</a> › <a href="/aprender/mini-curso/">Mini-curso</a> › Módulo 2</div>
+<div class="badge">🌿 Módulo 2 · Lección 1 de 5</div>
+<h1 class="title">Caldo Sulfocálcico</h1>
+<p class="subtitle">Fungicida orgánico multipropósito para control de hongos en cultivos de hoja, frutales y hortalizas.</p>
+<div class="section">
+<h2 class="section-title">📦 ¿Qué es?</h2>
+<p class="content">El <strong>caldo sulfocálcico</strong> es un biopreparado fungicida elaborado con azufre y cal viva. Actúa por contacto y tiene efecto residual de 7-10 días. Es ampliamente usado en agricultura orgánica certificada.</p>
+</div>
+<div class="recipe-card">
+<div class="recipe-header"><div class="recipe-icon">🧪</div><div class="recipe-title">Ingredientes (para 20 litros)</div></div>
+<div class="ingredients"><h4>Materiales:</h4><ul><li>2 kg de azufre en polvo (grado agricola)</li><li>1.5 kg de cal viva (óxido de calcio)</li><li>20 litros de agua</li><li>1 barril de plástico con tapa (mínimo 30L)</li><li>Palabra de madera para revolver</li><li>Guantes, gafas y mascarilla (EPP obligatorio)</li></ul></div>
+<h3 style="color:#f8fafc;margin-bottom:.8rem">Preparación:</h3>
+<ul class="steps"><li data-step="1">Disuelve 1.5 kg de cal viva en 10 litros de agua. Deja reposar 12 horas (se forma "lechada de cal").</li><li data-step="2">En otro recipiente, mezcla 2 kg de azufre con 5 litros de agua hasta formar pasta homogénea.</li><li data-step="3">Añade la pasta de azufre a la lechada de cal lentamente, revolviendo constantemente.</li><li data-step="4">Completa a 20 litros con agua restante. Revuelve por 15 minutos.</li><li data-step="5">Tapa el barril y deja madurar 48 horas en lugar fresco y oscuro. El color final debe ser ambarino-rojizo.</li></ul>
+</div>
+<div class="section">
+<h2 class="section-title">🎯 Aplicación</h2>
+<p class="content"><strong>Dosis:</strong> 2-3% (200-300 ml por 10L de agua)<br><strong>Frecuencia:</strong> Cada 7-10 días, o después de lluvia fuerte<br><strong>Mezclar:</strong> Agitar bien antes de diluir. Aplicar en horas frescas (mañana o tarde)<br><strong>Compatibilidad:</strong> No mezclar con aceites ni otros pesticidas. Esperar 5 días entre aplicaciones de diferentes productos</p>
+</div>
+<div class="warning">
+<div class="warning-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Precauciones Críticas</div>
+<p>• Cal viva es cáustica: siempre usa guantes, gafas y mascarilla<br>• Nunca agregues agua a la cal viva (siempre cal al agua)<br>• El caldo sulfocálcico es fitotóxico en altas dosis: prueba en pocas plantas primero<br>• Desechos neutrales con vinagre antes de botar al drenaje</p>
+</div>
+<div class="nav">
+<a href="/aprender/mini-curso/modulo1/leccion3/" class="btn secondary">← Módulo 1</a>
+<a href="/aprender/mini-curso/modulo2/leccion2/" class="btn primary">Lección 2: Purín de Ortiga →</a>
+</div>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="footer-inner"><p class="legal-footer">Información referencial basada en literatura académica. <a href="/legal/">Términos y condiciones</a></p><p>Guatoc-EcoHub · AGPL-3.0 · 2026</p></div></footer>
+</body>
+</html>

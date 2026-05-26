@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lección 3 del Mini-curso Chagra: Tu primera chagra - Plan de inicio para transición agroecológica.">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<title>Lección 3: Tu Primera Chagra — Mini-curso Chagra</title>
+<link rel="stylesheet" href="/styles.css?v=2026-05-26-mini-curso">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+.lesson-page{max-width:780px;margin:0 auto;padding:calc(var(--header-h) + 2rem) 1.5rem 4rem}
+.lesson-breadcrumb{font-size:.85rem;color:var(--fg-dim);margin-bottom:1rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.lesson-breadcrumb a{color:var(--fg-muted);text-decoration:none}
+.lesson-breadcrumb a:hover{color:var(--accent)}
+.lesson-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.1);color:var(--accent);padding:.4rem .8rem;border-radius:100px;font-size:.8rem;font-weight:600;margin-bottom:1rem}
+.lesson-badge svg{width:16px;height:16px}
+.lesson-header{margin-bottom:3rem}
+.lesson-title{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;color:#f8fafc;margin-bottom:.5rem;line-height:1.2}
+.lesson-subtitle{font-size:1.1rem;color:var(--fg-muted);margin-bottom:1.5rem}
+.lesson-meta{display:flex;gap:1.5rem;font-size:.9rem;color:var(--fg-dim);flex-wrap:wrap}
+.lesson-meta span{display:flex;align-items:center;gap:.4rem}
+.lesson-meta svg{width:16px;height:16px}
+.progress-bar{width:100%;height:4px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;margin:2rem 0}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .4s ease}
+.content-section{margin-bottom:3rem}
+.section-title{font-size:1.4rem;font-weight:700;color:#f8fafc;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-title svg{width:24px;height:24px;color:var(--accent-2)}
+.content-block{color:var(--fg-muted);line-height:1.8;margin-bottom:1.5rem;font-size:1.05rem}
+.content-block strong{color:#f8fafc;font-weight:600}
+.content-block em{color:var(--accent-2);font-style:normal}
+.year-plan{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.year-header{display:flex;gap:1rem;margin-bottom:1rem}
+.year-badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;flex-shrink:0}
+.year-title{font-size:1.3rem;color:#f8fafc;font-weight:700}
+.year-desc{color:var(--fg-muted);line-height:1.7;margin-bottom:1rem}
+.year-tasks{list-style:none;padding:0;margin:0}
+.year-tasks li{padding:.6rem 0 .6rem 1.8rem;position:relative;color:var(--fg-muted);font-size:.95rem;line-height:1.6}
+.year-tasks li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
+.callout{padding:1.25rem;border-radius:12px;margin:1.5rem 0;border-left:4px solid}
+.callout.success{background:rgba(16,185,129,.08);border-color:var(--accent)}
+.callout-title{font-weight:700;margin-bottom:.5rem;font-size:1rem;display:flex;align-items:center;gap:.5rem}
+.callout.success .callout-title{color:var(--accent)}
+.callout p{font-size:.95rem;color:var(--fg-muted);margin:0;line-height:1.6}
+.lesson-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.nav-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all var(--transition)}
+.nav-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 4px 20px rgba(16,185,129,.3)}
+.nav-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(16,185,129,.4)}
+.nav-btn.secondary{background:var(--bg-card);color:var(--fg-muted);border:1px solid var(--border)}
+.nav-btn.secondary:hover{background:var(--bg-elevated);color:var(--fg)}
+.nav-btn svg{width:18px;height:18px}
+.nav-btn.prev svg{transform:rotate(180deg)}
+@media(max-width:640px){
+  .lesson-meta{gap:1rem}
+  .lesson-title{font-size:1.6rem}
+  .year-header{flex-direction:column;gap:.5rem}
+  .year-badge{width:40px;height:40px;font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+<div class="header-inner">
+<a href="/" class="logo" aria-label="Chagra — Inicio">
+<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
+<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
+<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+</svg>
+<span class="logo-text">Chagra</span>
+</a>
+<nav class="primary-nav">
+<ul role="menubar">
+<li role="none"><a href="/" role="menuitem">Inicio</a></li>
+<li role="none"><a href="/#agente" role="menuitem">Qué hace</a></li>
+<li role="none"><a href="/aprender/" role="menuitem" class="active">Aprender</a></li>
+<li role="none"><a href="/#equipo" role="menuitem">Equipo</a></li>
+<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main class="lesson-page">
+<div class="lesson-breadcrumb">
+<a href="/">Inicio</a> <span class="sep">›</span>
+<a href="/aprender/">Aprender</a> <span class="sep">›</span>
+<a href="/aprender/mini-curso/">Mini-curso</a> <span class="sep">›</span>
+<span>Módulo 1</span>
+</div>
+
+<div class="lesson-badge">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+Módulo 1 · Lección 3 de 3 ✓
+</div>
+
+<div class="lesson-header">
+<h1 class="lesson-title">Tu Primera Chagra: Plan de Inicio</h1>
+<p class="lesson-subtitle">Un plan de 3 años para transicionar desde agricultura convencional hacia agroecología de forma realista.</p>
+<div class="lesson-meta">
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+~18 minutos
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+Práctico
+</span>
+<span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+Plan de acción
+</span>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 100%"></div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+Plan de Transición: 3 Años
+</h2>
+<p style="color: var(--fg-muted); margin-bottom: 2rem;">Transicionar NO significa tirar todo y empezar de cero. Es un proceso gradual. Aquí tienes un plan realista:</p>
+
+<div class="year-plan">
+<div class="year-header">
+<div class="year-badge">1</div>
+<div class="year-title">Año 1: Experimentación</div>
+</div>
+<p class="year-desc">No cambies tu sistema principal. Empieza con parcelas piloto (10-20% de tu área) mientras sigues con tu manejo convencional.</p>
+<ul class="year-tasks">
+<li>Elige 1 cultivo principal y haz una parcela piloto agroecológica</li>
+<li>Prepara 2 biopreparados básicos (compost + biol o purín)</li>
+<li>Observa y registra: plagas, rendimientos, costos, clima</li>
+<li>Usa Chagra para diagnosticar problemas y buscar soluciones</li>
+<li>Documenta todo: fotos, notas, resultados (crítico para aprender)</li>
+</ul>
+</div>
+
+<div class="year-plan">
+<div class="year-header">
+<div class="year-badge">2</div>
+<div class="year-title">Año 2: Expansión</div>
+</div>
+<p class="year-desc">Si la parcela piloto funcionó (rendimiento similar o mejor, menos costos), escala al 40-60% del área.</p>
+<ul class="year-tasks">
+<li>Duplica el área agroecológica con cultivos que ya probaron</li>
+<li>Añade 2-3 biopreparados nuevos (caldo sulfocálcico, extracto de ajo)</li>
+<li>Implementa rotación de cultivos y asociaciones benéficas</li>
+<li>Reduce agroquímicos sintéticos un 50% en las parcelas agroecológicas</li>
+<li>Compara costos: agroecología vs convencional (insumos, mano de obra)</li>
+</ul>
+</div>
+
+<div class="year-plan">
+<div class="year-header">
+<div class="year-badge">3</div>
+<div class="year-title">Año 3: Consolidación</div>
+</div>
+<p class="year-desc">Transición completa (o casi completa) del sistema principal hacia agroecología.</p>
+<ul class="year-tasks">
+<li>Convierte el 80-100% del área a agroecología</li>
+<li>Manejo integrado de plagas con control biológico predominante</li>
+<li>Cero agroquímicos sintéticos (solo orgánicos certificados si es necesario)</li>
+<li>Suelo vivo visible: lombrices, materia orgánica, estructura esponjosa</li>
+<li>Menor dependencia de insumos externos, mayor resiliencia climática</li>
+</ul>
+</div>
+</div>
+
+<div class="content-section">
+<h2 class="section-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/><path d="M12 18c-3 0-5-2-5-5"/></svg>
+Primera Parcela: Qué Sembrar
+</h2>
+<div class="content-block">
+<p>Para tu primera parcela piloto (10-20% del área total), elige cultivos que:</p>
+<ul style="list-style: none; padding: 0; margin: 1rem 0;">
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Tengas experiencia previa</em> (menos riesgo)
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Tengan mercado local</em> (vender excedentes fácilmente)
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Sean de ciclo corto</em> (resultados rápidos, aprendes más rápido)
+</li>
+<li style="margin-bottom: .75rem; padding-left: 1.5rem; position: relative;">
+<span style="position: absolute; left: 0; color: var(--accent);">✓</span>
+<em>Tengan biopreparados conocidos</em> (menos incertidumbre)
+</li>
+</ul>
+<p><strong>Ejemplos para Colombia:</strong> lechuga, espinaca, cilantro, tomate de mesa, pimentón, fríjol, habichuela, zanahoria.</p>
+</div>
+</div>
+
+<div class="content-section">
+<div class="callout success">
+<div class="callout-title">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+¡Módulo 1 Completado!
+</div>
+<p style="margin: 0;">Ahora conoces los fundamentos de Chagra y la agroecología. En el <strong>Módulo 2</strong>, aprenderás a preparar 5 biopreparados orgánicos para reemplazar agroquímicos sintéticos. ¡Vamos!</p>
+</div>
+</div>
+
+<div class="progress-bar">
+<div class="progress-fill" style="width: 100%"></div>
+</div>
+
+<div class="lesson-nav">
+<a href="/aprender/mini-curso/modulo1/leccion2/" class="nav-btn secondary prev">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+Lección 2
+</a>
+<a href="/aprender/mini-curso/modulo2/leccion1/" class="nav-btn primary">
+Módulo 2: Biopreparados
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+<div class="footer-inner">
+<div class="footer-bottom">
+<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> &middot; DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
+<p>Hecho desde Guatoc &middot; Choachí &middot; Cundinamarca &middot; Colombia</p>
+<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
