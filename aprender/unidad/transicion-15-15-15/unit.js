@@ -363,7 +363,7 @@ function updateCertName(name){
 }
 
 function shareUnit(){
-  const url = 'https://chagra.bio/aprender/unidad/transición-15-15-15/';
+  const url = 'https://chagra.bio/aprender/unidad/transicion-15-15-15/';
   if(navigator.clipboard){
     navigator.clipboard.writeText(url).then(()=>{
       alert('Enlace copiado al portapapeles: ' + url);
