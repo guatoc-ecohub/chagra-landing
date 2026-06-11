@@ -30,7 +30,7 @@ function updateHeader(n){
   const labels = [
     'Portada','Introduccion','Parte 1: Como entra','Parte 2: Caso Bayer','Parte 3: Kit EPP',
     'Parte 4: Evidencia','Parte 5: Riesgos agroecología','Parte 6: Mezclas',
-    'Parte 7: Practica','Resumen'
+    'Parte 7: Práctica','Resumen'
   ];
   document.getElementById('headerStep').textContent = (labels[n]||'Portada') + ' ('+n+'/'+(TOTAL_SCREENS-1)+')';
   document.getElementById('btnPrev').disabled = n===0;
@@ -89,7 +89,7 @@ function updatePreviousProgress(s){
     return;
   }
   if(box) box.style.display='block';
-  if(txt) txt.textContent = s.completion_pct+'% completado. Ultima visita: '+new Date(s.last_visit||Date.now()).toLocaleDateString('es-CO');
+  if(txt) txt.textContent = s.completion_pct+'% completado. Última visita: '+new Date(s.last_visit||Date.now()).toLocaleDateString('es-CO');
 }
 
 function recordQuiz(parte, correct, total){
@@ -456,7 +456,7 @@ function showCertificate(){
     parte_4:'Parte 4: Evidencia científica',
     parte_5:'Parte 5: Riesgos agroecología',
     parte_6:'Parte 6: Mezclas prohibidas',
-    parte_7:'Parte 7: Practica del agricultor'
+    parte_7:'Parte 7: Práctica del agricultor'
   };
   let breakdownHtml = '';
   Object.keys(names).forEach(k=>{

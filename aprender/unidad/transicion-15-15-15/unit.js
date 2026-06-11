@@ -108,22 +108,22 @@ const QUIZ_EXPLANATIONS = {
   '1_3_d':'Correcto. El bocashi anual APORTA materia orgánica. Las causas de perdida son laboreo profundo, ausencia de cobertura e insumos solubles continuos.',
   '2_1_b':'Correcto. En Andes tropicales, el nitrogeno aplicado como urea tiene solo 30-50% de eficiencia real (Cassman et al. 2002).',
   '2_2_b':'Correcto. Solo 15-25% del fosforo aplicado como DAP/MAP es absorbido; el resto se fija en oxidos de hierro y aluminio.',
-  '2_3_c':'Correcto. La fijación biologica de nitrogeno en suelos sanos puede aportar 40-200 kg N/ha/ano sin usar fertilizante.',
+  '2_3_c':'Correcto. La fijación biológica de nitrogeno en suelos sanos puede aportar 40-200 kg N/ha/año sin usar fertilizante.',
   '2_4_b':'Correcto. El uso continuo de NPK sin enmienda orgánica reduce la biomasa microbiana del suelo entre 30-50% (Treseder 2008).',
-  '3_1_c':'Correcto. Solo la cal dolomitica (CaMg(CO3)2) es una enmienda agricola valida, y siempre bajo analisis previo de suelo.',
+  '3_1_c':'Correcto. Solo la cal dolomitica (CaMg(CO3)2) es una enmienda agricola valida, y siempre bajo análisis previo de suelo.',
   '3_2_b':'Correcto. La Regla Cochrane establece dos condiciones simultaneas: pH < 5.5 Y saturacion de aluminio > 30%.',
   '3_3_b':'Correcto. La cal viva genera un choque de pH de 5 a 11 que esteriliza la microbiota, precipita fosforo, saponifica materia orgánica y volatiliza nitrogeno.',
   '3_4_b':'Correcto. Con pH 6.0 y saturacion Al de 15% NO se cumplen los criterios de Cochrane. Encalar en estas condiciones seria danino.',
   '4_1_b':'Correcto. Entre el 15% y 40% del carbono fotosintetizado se libera como exudados radiculares (Bardgett 2014).',
   '4_2_b':'Correcto. El fosforo soluble del DAP suprime la formacion de micorrizas arbusculares (Treseder & Allen 2002).',
-  '4_3_b':'Correcto. La aplicación continua de urea acidifica el suelo 0.1-0.3 unidades de pH por ano (Guo 2010).',
-  '5_1_c':'Correcto. La base de la piramide nutricional agroecológica (bocashi + compost + abonos verdes) aporta el 50-70% de la nutrición.',
+  '4_3_b':'Correcto. La aplicación continua de urea acidifica el suelo 0.1-0.3 unidades de pH por año (Guo 2010).',
+  '5_1_c':'Correcto. La base de la pirámide nutricional agroecológica (bocashi + compost + abonos verdes) aporta el 50-70% de la nutrición.',
   '5_2_b':'Correcto. El reemplazo agroecológico del DAP/MAP es roca fosforica co-compostada junto con inoculacion de micorrizas.',
-  '5_3_b':'Correcto. Segun las reglas duras de Chagra, el analisis de suelo debe realizarse cada 2-3 anos.',
-  '6_1_c':'Correcto. En el Ano 1 NO se elimina el NPK. Se mantiene la dosis actual y se agrega bocashi como transición.',
-  '6_2_b':'Correcto. En el Ano 2 se reduce el NPK al 50% de la dosis original, aumentando el bocashi a 2 kg/m2.',
-  '6_3_c':'Correcto. Un indicador de exito es pasar de 5-15 lombrices/m2 en el Ano 0 a 50-150 lombrices/m2 en el Ano 3.',
-  '7_1_b':'Correcto. En el primer ano de transición agroecológica, una caida de rendimiento del 10-25% es tipica y esperada (Seufert 2012).',
+  '5_3_b':'Correcto. Según las reglas duras de Chagra, el análisis de suelo debe realizarse cada 2-3 años.',
+  '6_1_c':'Correcto. En el Año 1 NO se elimina el NPK. Se mantiene la dosis actual y se agrega bocashi como transición.',
+  '6_2_b':'Correcto. En el Año 2 se reduce el NPK al 50% de la dosis original, aumentando el bocashi a 2 kg/m2.',
+  '6_3_c':'Correcto. Un indicador de exito es pasar de 5-15 lombrices/m2 en el Año 0 a 50-150 lombrices/m2 en el Año 3.',
+  '7_1_b':'Correcto. En el primer año de transición agroecológica, una caida de rendimiento del 10-25% es tipica y esperada (Seufert 2012).',
   '7_2_d':'Correcto. Los cuernos de vaca enterrados en luna llena son una práctica de la biodinamica, no de la agroecología basada en evidencia científica que promueve Chagra.'
 };
 
@@ -237,7 +237,7 @@ function calcCochrane(){
     let msg = '<strong class="text-emerald">SI debe encalar.</strong> Se cumplen ambos criterios (pH&lt;5.5 Y sat.Al&gt;30%).<br>' +
       'Dosis recomendada: <span class="val">' + dosis.toFixed(1) + ' t/ha</span>.';
     if(dosis > 3){
-      msg += '<br><strong class="text-amber">ADVERTENCIA:</strong> dosis &gt;3 t/ha. Particionar en dos aplicaciones separadas 60 dias.';
+      msg += '<br><strong class="text-amber">ADVERTENCIA:</strong> dosis &gt;3 t/ha. Particionar en dos aplicaciones separadas 60 días.';
     }
     msg += '<br><span class="text-dim">Aplicar 2-3 meses antes de siembra, incorporar 10-15 cm.</span>';
     out.innerHTML = msg;
@@ -259,7 +259,7 @@ function calcBocashi(){
   const ahorro = costCompra - costAuto;
 
   document.getElementById('bocashiOutput').innerHTML =
-    'Bocashi necesario por ano: <span class="val">' + Math.round(totalKg).toLocaleString() + ' kg</span> (' + m3.toFixed(1) + ' m&#x00B3; aprox)<br>' +
+    'Bocashi necesario por año: <span class="val">' + Math.round(totalKg).toLocaleString() + ' kg</span> (' + m3.toFixed(1) + ' m&#x00B3; aprox)<br>' +
     'Costo si compras (comercial): <span class="text-red">$' + costCompra.toLocaleString() + ' COP</span><br>' +
     'Costo si autoproduces: <span class="text-emerald">$' + costAuto.toLocaleString() + ' COP</span><br>' +
     '<strong>Ahorro por autoproducir: <span class="text-emerald">$' + ahorro.toLocaleString() + ' COP</span></strong>';
@@ -324,7 +324,7 @@ function renderResumen(){
 
   // Breakdown
   const parts = ['parte_1','parte_2','parte_3','parte_4','parte_5','parte_6','parte_7'];
-  const names = ['Parte 1: Suelo vivo','Parte 2: Eficiencia NPK','Parte 3: La cal','Parte 4: Ciencia 1990-2020','Parte 5: Piramide','Parte 6: Transición 3 anos','Parte 7: Honestidad'];
+  const names = ['Parte 1: Suelo vivo','Parte 2: Eficiencia NPK','Parte 3: La cal','Parte 4: Ciencia 1990-2020','Parte 5: Pirámide','Parte 6: Transición 3 años','Parte 7: Honestidad'];
   let html = '';
   parts.forEach((p,i)=>{
     const s = state.quiz_scores[p];
@@ -363,7 +363,7 @@ function updateCertName(name){
 }
 
 function shareUnit(){
-  const url = 'https://chagra.bio/aprender/unidad/transicion-15-15-15/';
+  const url = 'https://chagra.bio/aprender/unidad/transición-15-15-15/';
   if(navigator.clipboard){
     navigator.clipboard.writeText(url).then(()=>{
       alert('Enlace copiado al portapapeles: ' + url);
