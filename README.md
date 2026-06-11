@@ -88,7 +88,7 @@ recomendadas (no requieren cuenta corporativa, aceptan tarjeta CO):
 | **Namecheap** | ~14 USD/año | ~50 USD/año | Conocido en LATAM. |
 
 **Recomendación:** comprar `chagra.app` ya (más fácil de recordar
-para Diana). `chagra.bio` puede esperar 24-48h si presupuesto justo.
+para usuarios y aliados). `chagra.bio` puede esperar 24-48h si presupuesto justo.
 
 ### 4.2 Apuntar DNS a Cloudflare
 
