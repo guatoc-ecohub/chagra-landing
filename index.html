@@ -10,9 +10,12 @@
 <meta property="og:description" content="263 especies (60 de páramo), 263 fichas pedagógicas, 36 biopreparados, agente de IA local groundeado. Construido en Choachí, Colombia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chagra.app">
+<meta property="og:image" content="https://chagra.bio/assets/hero-chagra.webp">
+<meta property="og:image:alt" content="Chagra — agente agroecológico colombiano, ilustración de chagra agroforestal de múltiples estratos">
+<meta name="twitter:card" content="summary_large_image">
 <title>Chagra — Agente Agroecológico Colombiano</title>
 
-<link rel="stylesheet" href="styles.css?v=2026-05-21-v3">
+<link rel="stylesheet" href="styles.css?v=2026-06-13">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%2310b981'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%2306b6d4' opacity='.7'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23f8fafc' stroke-width='4'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -37,7 +40,9 @@
 <ul role="menubar">
 <li role="none"><a href="#mision" role="menuitem">Misión</a></li>
 <li role="none"><a href="#agente" role="menuitem">Qué hace</a></li>
+<li role="none"><a href="#capacidades" role="menuitem">Capacidades</a></li>
 <li role="none"><a href="#como-piensa" role="menuitem">El agente</a></li>
+<li role="none"><a href="#como-funciona" role="menuitem">Cómo funciona</a></li>
 <li role="none"><a href="#audiencias" role="menuitem">Para quién</a></li>
 <li role="none"><a href="#codigo" role="menuitem">Código</a></li>
 <li role="none"><a href="#aprender" role="menuitem">Aprender</a></li>
@@ -181,6 +186,61 @@
 </div>
 </section>
 
+<!-- ======== CAPACIDADES (LO ÚLTIMO) ======== -->
+<section id="capacidades" class="agente-section">
+<div class="section-inner">
+<header class="section-header">
+<p class="section-eyebrow">Lo último</p>
+<h2 class="section-title">Lo que Chagra ya hace hoy</h2>
+<p class="section-desc">Cada capacidad está construida y funcionando en la app — no es promesa de roadmap.</p>
+</header>
+<div class="mision-grid">
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14l16 1M14 16l8 16M34 18L26 33" stroke="currentColor" stroke-width="1.5" opacity=".55"/></svg>
+</div>
+<h3>Grafo de conocimiento</h3>
+<p>Chagra sabe qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas. Las relaciones entre especies, plagas y biopreparados están conectadas en un grafo consultable.</p>
+</article>
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="12" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 12l3-5h6l3 5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity=".4"/></svg>
+</div>
+<h3>Identifica por foto</h3>
+<p>Toma una foto de la planta o de la plaga y el agente la reconoce, la contrasta contra el catálogo y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</p>
+</article>
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="19" y="6" width="10" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 22a12 12 0 0024 0M24 34v6M18 40h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<h3>Habla y escucha</h3>
+<p>Pregúntale en voz alta y te responde leyendo en español colombiano. Pensado para quien prefiere hablar antes que escribir, con voz y reconocimiento de habla locales.</p>
+</article>
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M14 30a8 8 0 010-16 10 10 0 0119-3 7 7 0 013 13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 36l-2 6M26 36l-2 6M34 36l-2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</div>
+<h3>Alertas climáticas</h3>
+<p>Avisa de heladas, sequías y los efectos del fenómeno del Niño según tu piso térmico, apoyado en datos públicos del IDEAM. La alerta crítica aparece de una, para que no se te pase.</p>
+</article>
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 38L20 12l8 14 5-8 9 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="12" r="2.5" fill="currentColor"/><path d="M6 38h36" stroke="currentColor" stroke-width="1.5" opacity=".4"/></svg>
+</div>
+<h3>Conoce tu finca</h3>
+<p>Un onboarding corto detecta tu ubicación y piso térmico, y desde ahí el agente ajusta sus respuestas a tu altura, tu clima y tu región — sin preguntarte lo mismo dos veces.</p>
+</article>
+<article class="mision-pill">
+<div class="mision-pill-icon" aria-hidden="true">
+<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg>
+</div>
+<h3>Cuaderno de campo</h3>
+<p>Registra tus cultivos, observaciones y labores, y exporta un PDF ordenado — un insumo útil para procesos de certificación orgánica y para tu propia memoria de la finca.</p>
+</article>
+</div>
+</div>
+</section>
+
 <!-- ======== CÓMO PIENSA EL AGENTE ======== -->
 <section id="como-piensa" class="mision-section">
 <div class="mision-deco" aria-hidden="true"></div>
@@ -218,6 +278,91 @@
 </div>
 <h3>Guardas de seguridad</h3>
 <p>Nunca recomienda dosis peligrosas ni mezclas tóxicas. Conoce la toxicidad de las plantas, las variedades adaptadas, el tipo de suelo y los saberes tradicionales documentados — y avisa cuando una pregunta parte de una premisa equivocada.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ======== CÓMO FUNCIONA ======== -->
+<section id="como-funciona" class="como-section">
+<div class="como-deco" aria-hidden="true"></div>
+<div class="section-inner">
+<header class="section-header">
+<p class="section-eyebrow">Cómo funciona</p>
+<h2 class="section-title">El recorrido de una pregunta</h2>
+<p class="section-desc">Chagra no improvisa. De la voz del campesino a una respuesta confiable, en cuatro pasos. Si el dato no existe, lo dice con honestidad.</p>
+</header>
+
+<!-- 4 pasos -->
+<ol class="como-flow">
+<li class="como-step">
+<span class="como-badge como-b1" aria-hidden="true">1</span>
+<h3>El campesino pregunta</h3>
+<p>En español del campo o en su lengua propia, por voz o por texto. «¿Qué le echo a la mata de tomate que tiene un bicho blanco?»</p>
+<span class="como-arrow" aria-hidden="true">→</span>
+</li>
+<li class="como-step">
+<span class="como-badge como-b2" aria-hidden="true">2</span>
+<h3>Chagra entiende</h3>
+<p>Interpreta la intención real: reconoce el cultivo, la plaga descrita y el piso térmico, aunque se use vocabulario regional.</p>
+<span class="como-arrow" aria-hidden="true">→</span>
+</li>
+<li class="como-step">
+<span class="como-badge como-b3" aria-hidden="true">3</span>
+<h3>Consulta su conocimiento</h3>
+<p>Busca en el catálogo agroecológico colombiano: la especie, su plaga y el biopreparado adecuado para ese caso y esa altura.</p>
+<span class="como-arrow" aria-hidden="true">→</span>
+</li>
+<li class="como-step">
+<span class="como-badge como-b4" aria-hidden="true">4</span>
+<h3>Responde con su fuente</h3>
+<p>Entrega una respuesta clara y aplicable, citando la fuente. Si no tiene el dato verificado, lo dice en vez de inventar.</p>
+</li>
+</ol>
+
+<!-- Conversación de ejemplo -->
+<div class="como-demo-wrap">
+<div class="como-demo" role="img" aria-label="Ejemplo de conversación: el campesino describe un bicho blanco en su mata de tomate y Chagra responde que parece mosca blanca, sugiere un biopreparado a base de plantas aplicado en horas frescas cubriendo el envés de la hoja, y cita una entidad agropecuaria nacional como fuente.">
+<p class="como-demo-label">Así se ve en el celular</p>
+<div class="como-bubble como-user">Tengo la mata de tomate con un bicho blanco que vuela. ¿Qué le echo?</div>
+<div class="como-bubble como-ai">Eso suena a mosca blanca. Para el tomate puede preparar un biopreparado a base de plantas y aplicarlo en las horas frescas del día, cubriendo bien el envés de la hoja.</div>
+<div class="como-bubble como-ai">Le doy la dosis y el paso a paso, con su respaldo.<span class="como-src">Fuente: entidad agropecuaria nacional</span></div>
+</div>
+<p class="como-demo-note">Ejemplo ilustrativo. La respuesta real cita la entidad específica de donde sale cada dato.</p>
+</div>
+
+<!-- Por qué confiar -->
+<h3 class="como-subtitle">Por qué se puede confiar en Chagra</h3>
+<div class="como-props">
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+<h4>No inventa</h4>
+<p>Cada respuesta sale de su catálogo de conocimiento, no de suposiciones. Si el dato no está, Chagra lo dice en vez de adivinar.</p>
+</article>
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v8c0 9 6 16 16 22 10-6 16-13 16-22v-8L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 22h12M18 28h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h4>Fuentes institucionales</h4>
+<p>Construido sobre conocimiento agropecuario colombiano de entidades de investigación y control oficiales (AGROSAVIA, ICA, IDEAM, Humboldt), con la fuente a la vista.</p>
+</article>
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 8h28a4 4 0 014 4v18a4 4 0 01-4 4H22l-10 8v-8h-2a4 4 0 01-4-4V12a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 18h16M16 24h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h4>Habla como el campo</h4>
+<p>Entiende el vocabulario regional y las lenguas del campo, no solo el español de manual. Habla como habla la gente.</p>
+</article>
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M8 18a8 8 0 0116 0M24 18a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 30h40M6 38h36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M14 18v8M34 18v8" stroke="currentColor" stroke-width="2"/></svg></div>
+<h4>Funciona sin internet</h4>
+<p>Pensado para zonas con mala señal: el campesino consulta en la finca aunque no haya datos en ese momento.</p>
+</article>
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42l10-26 8 14 6-10 12 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 42h36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="34" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+<h4>Sabe de pisos térmicos</h4>
+<p>El consejo cambia con la altura. Chagra organiza el conocimiento por piso térmico, del valle cálido al páramo frío.</p>
+</article>
+<article class="como-prop">
+<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 42c0-10-7-16-7-24a7 7 0 0114 0c0 8-7 14-7 24z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 22c-3-2-6-1-7-4M24 22c3-2 6-1 7-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></svg></div>
+<h4>Crece cada día</h4>
+<p>El conocimiento se amplía constantemente con especies, plagas, biopreparados y datos de clima verificados. Hoy ya supera las 260 especies del catálogo.</p>
 </article>
 </div>
 </div>
