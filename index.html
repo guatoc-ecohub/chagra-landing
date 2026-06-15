@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es-CO">
+<html lang="es-CO" data-lang="es" data-aud="campesino">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chagra — Conocimiento agroecológico en el celular del campesino colombiano. Sin internet, sin nube extranjera, sin agroquímicos. Open source AGPL-3.0.">
-<meta name="theme-color" content="#0f172a">
+<meta name="description" content="Chagra — Conocimiento agroecológico verificado en el celular del campesino colombiano. Sin internet, sin nube extranjera, 100% energía solar off-grid. Una IA local que no inventa. Open source AGPL-3.0.">
+<meta name="theme-color" content="#020617">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Chagra — Agente Agroecológico Colombiano">
-<meta property="og:description" content="263 especies (60 de páramo), 263 fichas pedagógicas, 36 biopreparados, agente de IA local groundeado. Construido en Choachí, Colombia.">
+<meta property="og:description" content="684 especies verificadas, una IA local que no inventa, 100% energía solar off-grid. Asesor agroecológico que funciona sin internet. Open source AGPL-3.0. Construido en Choachí, Colombia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chagra.app">
 <meta property="og:image" content="https://chagra.bio/assets/hero-chagra.webp">
@@ -15,7 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <title>Chagra — Agente Agroecológico Colombiano</title>
 
-<link rel="stylesheet" href="styles.css?v=2026-06-13">
+<link rel="preload" href="assets/hero-chagra.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="styles.css?v=2026-06-14b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%2310b981'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%2306b6d4' opacity='.7'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23f8fafc' stroke-width='4'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -33,20 +34,35 @@
 </svg>
 <span class="logo-text">Chagra</span>
 </a>
+
+<div class="header-controls">
+<!-- AUDIENCE TOGGLE -->
+<div class="seg-toggle" role="group" aria-label="Seleccionar audiencia" data-toggle="aud">
+<button type="button" class="seg-btn is-active" data-aud-set="campesino" aria-pressed="true">
+<span lang="es" data-lang-block="es">Soy campesino</span><span lang="en" data-lang-block="en" hidden>I'm a farmer</span>
+</button>
+<button type="button" class="seg-btn" data-aud-set="institucion" aria-pressed="false">
+<span lang="es" data-lang-block="es">Soy institución</span><span lang="en" data-lang-block="en" hidden>I'm an institution</span>
+</button>
+</div>
+<!-- LANGUAGE TOGGLE -->
+<div class="seg-toggle seg-lang" role="group" aria-label="Idioma / Language" data-toggle="lang">
+<button type="button" class="seg-btn is-active" data-lang-set="es" aria-pressed="true" lang="es">ES</button>
+<button type="button" class="seg-btn" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+</div>
+</div>
+
 <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
 <span></span><span></span><span></span>
 </button>
 <nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
 <ul role="menubar">
-<li role="none"><a href="#mision" role="menuitem">Misión</a></li>
-<li role="none"><a href="#agente" role="menuitem">Qué hace</a></li>
-<li role="none"><a href="#capacidades" role="menuitem">Capacidades</a></li>
-<li role="none"><a href="#como-piensa" role="menuitem">El agente</a></li>
-<li role="none"><a href="#como-funciona" role="menuitem">Cómo funciona</a></li>
-<li role="none"><a href="#audiencias" role="menuitem">Para quién</a></li>
-<li role="none"><a href="#codigo" role="menuitem">Código</a></li>
-<li role="none"><a href="#aprender" role="menuitem">Aprender</a></li>
-<li role="none"><a href="#equipo" role="menuitem">Equipo</a></li>
+<li role="none"><a href="#pilares" role="menuitem"><span lang="es" data-lang-block="es">Qué es</span><span lang="en" data-lang-block="en" hidden>What it is</span></a></li>
+<li role="none"><a href="#capacidades" role="menuitem"><span lang="es" data-lang-block="es">Qué hace</span><span lang="en" data-lang-block="en" hidden>What it does</span></a></li>
+<li role="none"><a href="#como-piensa" role="menuitem"><span lang="es" data-lang-block="es">No inventa</span><span lang="en" data-lang-block="en" hidden>No hallucinations</span></a></li>
+<li role="none"><a href="#soberania" role="menuitem"><span lang="es" data-lang-block="es">Soberanía</span><span lang="en" data-lang-block="en" hidden>Sovereignty</span></a></li>
+<li role="none"><a href="#audiencias" role="menuitem"><span lang="es" data-lang-block="es">Para quién</span><span lang="en" data-lang-block="en" hidden>Who it's for</span></a></li>
+<li role="none"><a href="#aprender" role="menuitem"><span lang="es" data-lang-block="es">Aprender</span><span lang="en" data-lang-block="en" hidden>Learn</span></a></li>
 <li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
 </ul>
 </nav>
@@ -58,352 +74,276 @@
 <!-- ======== HERO ======== -->
 <section class="hero" aria-label="Presentación">
 <div class="hero-media" aria-hidden="true">
-<img src="assets/hero-chagra.webp" alt="Ilustración de una chagra agroforestal colombiana con múltiples estratos verticales de vegetación" loading="eager" decoding="async" width="1344" height="768">
+<img src="assets/hero-chagra.webp" alt="Ilustración de una chagra agroforestal colombiana con múltiples estratos verticales de vegetación" loading="eager" decoding="async" fetchpriority="high" width="1344" height="768">
 <div class="hero-overlay"></div>
 <div class="hero-grid" aria-hidden="true"></div>
 </div>
 <div class="hero-content">
 <div class="badge-ver">
 <span class="badge-dot"></span>
-<span>v1.0 · AGPL-3.0 · Construido en Choachí</span>
+<span lang="es" data-lang-block="es">v1.0 · AGPL-3.0 · Construido en Choachí con energía solar</span>
+<span lang="en" data-lang-block="en" hidden>v1.0 · AGPL-3.0 · Built in Choachí, solar-powered</span>
 </div>
 <h1 class="hero-title"><span class="hero-brand">Chagra</span></h1>
-<p class="hero-tagline">El agente agroecológico colombiano</p>
-<p class="hero-desc">Ciencia revisada + saberes etnobotánicos documentados + IA local en el celular del campesino. <strong class="soberania">Sin internet. Sin nube extranjera. Sin agroquímicos.</strong></p>
+<p class="hero-tagline">
+<span lang="es" data-lang-block="es">El agente agroecológico colombiano</span>
+<span lang="en" data-lang-block="en" hidden>The Colombian agroecology agent</span>
+</p>
+<p class="hero-desc">
+<span lang="es" data-lang-block="es" data-aud-show="campesino">Ciencia revisada + saberes documentados + una IA local en el celular del campesino. <strong class="soberania">Sin internet. Sin nube extranjera. Sin agroquímicos. Con energía del sol.</strong></span>
+<span lang="es" data-lang-block="es" data-aud-show="institucion" hidden>Inteligencia agroecológica soberana: conocimiento agropecuario colombiano verificado + una IA local que no inventa. Funciona sin internet, sin nube y <strong class="soberania">100% con energía solar off-grid</strong>. Código abierto AGPL-3.0.</span>
+<span lang="en" data-lang-block="en" data-aud-show="campesino" hidden>Peer-reviewed science + documented knowledge + a local AI in the farmer's phone. <strong class="soberania">Offline. No foreign cloud. No agrochemicals. Solar-powered.</strong></span>
+<span lang="en" data-lang-block="en" data-aud-show="institucion" hidden>Sovereign agroecological intelligence: verified Colombian agronomic knowledge + an on-device AI that does not hallucinate. Runs offline, with no cloud and <strong class="soberania">100% on off-grid solar</strong>. Open source, AGPL-3.0.</span>
+</p>
 <div class="hero-cta">
 <a href="https://chagra.app" class="btn btn-primary" rel="noopener">
-<span>Entrar a la app</span>
+<span lang="es" data-lang-block="es">Entrar a la app</span><span lang="en" data-lang-block="en" hidden>Open the app</span>
 <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10h10m-4-4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
 </a>
 <a href="https://github.com/guatoc-ecohub/Chagra" class="btn btn-secondary" rel="noopener">
 <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-<span>Ver código</span>
+<span lang="es" data-lang-block="es">Ver código</span><span lang="en" data-lang-block="en" hidden>View code</span>
 </a>
+</div>
+<!-- SELLO DE SOBERANÍA -->
+<div class="hero-seal" role="img" aria-label="Sello: sin nube, 100% local, energía solar off-grid">
+<svg viewBox="0 0 120 120" width="92" height="92" aria-hidden="true">
+<defs>
+<linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+<path id="sealArc" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0" fill="none"/>
+</defs>
+<circle cx="60" cy="60" r="56" fill="none" stroke="url(#sealGrad)" stroke-width="2"/>
+<circle cx="60" cy="60" r="46" fill="none" stroke="url(#sealGrad)" stroke-width="1" opacity=".4"/>
+<text font-size="9.2" font-weight="700" letter-spacing="2.1" fill="#e2f5ef">
+<textPath href="#sealArc" startOffset="0%">· SIN NUBE · 100% LOCAL · ENERGÍA SOLAR </textPath>
+</text>
+<circle cx="60" cy="48" r="9" fill="url(#sealGrad)"/>
+<g stroke="#10b981" stroke-width="1.6" stroke-linecap="round">
+<path d="M60 33v5M60 58v5M45 48h5M70 48h5M49.4 37.4l3.5 3.5M67.1 54.6l3.5 3.5M70.6 37.4l-3.5 3.5M52.9 54.6l-3.5 3.5"/>
+</g>
+<g transform="translate(48,68)" fill="none" stroke="#06b6d4" stroke-width="1.7" stroke-linejoin="round">
+<path d="M2 14L6 2h12l4 12z"/>
+<path d="M4.3 9.5h17.4M12 2v12" stroke-opacity=".7"/>
+<path d="M9 18h6M12 14v4" stroke-linecap="round"/>
+</g>
+</svg>
 </div>
 </div>
 <div class="stats-bar" role="region" aria-label="Estadísticas principales">
-<div class="stat"><span class="stat-num" data-target="263">0</span><span class="stat-label">Especies del catálogo</span></div>
-<div class="stat"><span class="stat-num" data-target="60">0</span><span class="stat-label">Especies de páramo</span></div>
-<div class="stat"><span class="stat-num" data-target="36">0</span><span class="stat-label">Biopreparados</span></div>
-<div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label">Pueblos referenciados</span></div>
+<div class="stat"><span class="stat-num" data-target="684">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies del catálogo</span><span lang="en" data-lang-block="en" hidden>Catalogued species</span></span></div>
+<div class="stat"><span class="stat-num" data-target="60">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies de páramo</span><span lang="en" data-lang-block="en" hidden>Páramo species</span></span></div>
+<div class="stat"><span class="stat-num" data-target="74">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Biopreparados y fermentos</span><span lang="en" data-lang-block="en" hidden>Bio-preparations &amp; ferments</span></span></div>
+<div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Pueblos referenciados</span><span lang="en" data-lang-block="en" hidden>Indigenous peoples cited</span></span></div>
 </div>
 </section>
 
-<!-- ======== MISIÓN (INFOGRAFÍA) ======== -->
-<section id="mision" class="mision-section">
-<div class="mision-deco" aria-hidden="true"></div>
+<!-- ======== 4 PILARES (lo nuevo a destacar) ======== -->
+<section id="pilares" class="pilares-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Misión</p>
-<h2 class="section-title mision-title">La ciencia agroecológica al alcance del campesino</h2>
-<p class="section-desc">Cuatro decisiones de diseño no negociables. Cada una nace de respeto al campesino.</p>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Qué es Chagra</span><span lang="en" data-lang-block="en" hidden>What Chagra is</span></p>
+<h2 class="section-title">
+<span lang="es" data-lang-block="es">Cuatro razones para confiar en Chagra</span>
+<span lang="en" data-lang-block="en" hidden>Four reasons to trust Chagra</span>
+</h2>
+<p class="section-desc">
+<span lang="es" data-lang-block="es">No es una app de plantas más. Es una plataforma agroclimática soberana, honesta y construida con respeto por el campesino.</span>
+<span lang="en" data-lang-block="en" hidden>Not just another plant app. It is a sovereign agroclimatic platform, honest by design, built with respect for the smallholder farmer.</span>
+</p>
 </header>
-<div class="mision-grid">
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-</div>
-<h3>Validado científicamente</h3>
-<p>263 especies (60 de páramo, Cordillera de Cruz Verde), 36 biopreparados y 263 fichas pedagógicas con fuentes de AGROSAVIA, UNAL Palmira, Instituto Humboldt e IDEAM citadas en el corpus.</p>
+<div class="pilares-grid">
+<!-- Pilar A: soberanía -->
+<article class="pilar-card pilar-soberania">
+<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="18" r="7" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".8"><path d="M24 6v3M24 27v3M11 18h3M34 18h3M15 9l2 2M31 25l2 2M33 9l-2 2M17 25l-2 2"/></g><path d="M10 42l5-12h18l5 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13 36h22M24 30v12" stroke="currentColor" stroke-width="1.4" opacity=".6"/></svg></div>
+<span class="pilar-num">01</span>
+<h3><span lang="es" data-lang-block="es">Soberanía total</span><span lang="en" data-lang-block="en" hidden>Full sovereignty</span></h3>
+<p><span lang="es" data-lang-block="es">Sin nube extranjera y <strong>100% energía solar off-grid</strong>. La IA corre en un servidor propio, alimentado por el sol. Cero nube, cero red. Tu dato nunca sale del celular.</span><span lang="en" data-lang-block="en" hidden>No foreign cloud and <strong>100% off-grid solar power</strong>. The AI runs on our own server, powered by the sun. Zero cloud, zero grid. Your data never leaves the phone.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M8 18a8 8 0 0116 0M24 18a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 30h40M4 36h40M4 42h40" stroke="currentColor" stroke-width="1.5" opacity=".4"/><path d="M14 18v8M34 18v8" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
-</div>
-<h3>Funciona sin internet</h3>
-<p>PWA offline-first. El campesino no siempre tiene señal y la app responde igual. IndexedDB local + sync cuando vuelva la red.</p>
+<!-- Pilar B: asesor offline + voz -->
+<article class="pilar-card">
+<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="14" y="4" width="20" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 4h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 14a5 5 0 0110 0v6a5 5 0 01-10 0z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 20a8 8 0 0016 0M24 28v4M21 32h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+<span class="pilar-num">02</span>
+<h3><span lang="es" data-lang-block="es">Asesor sin internet, por voz</span><span lang="en" data-lang-block="en" hidden>Offline advisor, by voice</span></h3>
+<p><span lang="es" data-lang-block="es">PWA offline-first: responde en la finca aunque no haya señal. Pregúntale hablando y te contesta en voz alta, en español del campo.</span><span lang="en" data-lang-block="en" hidden>Offline-first PWA: it answers in the field even with no signal. Ask out loud and it replies by voice, in rural Colombian Spanish.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="20" width="36" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 20v-6a10 10 0 0120 0v6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="32" r="3" fill="currentColor"/></svg>
-</div>
-<h3>IA local — datos en tu celular</h3>
-<p>El agente responde con un modelo de lenguaje local (Granite 3.1 para conversar, Qwen 2.5 VL para ver las fotos). Sin Google, sin AWS, sin OpenAI. Los datos del campesino nunca salen del dispositivo.</p>
+<!-- Pilar C: conocimiento verificado + anti-alucinación -->
+<article class="pilar-card">
+<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+<span class="pilar-num">03</span>
+<h3><span lang="es" data-lang-block="es">Conocimiento verificado</span><span lang="en" data-lang-block="en" hidden>Verified knowledge</span></h3>
+<p><span lang="es" data-lang-block="es">Cada respuesta se ancla a un catálogo verificado con fuentes a la vista (AGROSAVIA, ICA, IDEAM, Humboldt). Si un dato no está, <strong>lo dice en vez de inventarlo</strong>.</span><span lang="en" data-lang-block="en" hidden>Every answer is grounded in a verified catalogue with sources shown (AGROSAVIA, ICA, IDEAM, Humboldt). If a fact is missing, it <strong>says so instead of making it up</strong>.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4C16 14 6 18 6 28s10 16 18 16 18-6 18-16-10-14-18-24z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 30c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".6"/><circle cx="18" cy="22" r="2" fill="currentColor"/><circle cx="30" cy="22" r="2" fill="currentColor"/></svg>
-</div>
-<h3>En su idioma</h3>
-<p>Español colombiano regional. Síntesis de voz local (Kokoro-TTS) que lee las fichas en voz alta. El conocimiento solo sirve si se entiende.</p>
+<!-- Pilar D: módulos + impacto climático -->
+<article class="pilar-card">
+<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 40L18 16l7 12 5-8 8 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 40h36" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".5"/><circle cx="36" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M36 4v3M36 17v3M28 12h3M41 12h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".7"/></svg></div>
+<span class="pilar-num">04</span>
+<h3><span lang="es" data-lang-block="es">Módulos e impacto climático</span><span lang="en" data-lang-block="en" hidden>Modules &amp; climate impact</span></h3>
+<p><span lang="es" data-lang-block="es">Restauración por piso térmico, clima extendido, monitoreo participativo de glaciares y protección frente a contratos abusivos de bonos de carbono.</span><span lang="en" data-lang-block="en" hidden>Restoration by thermal floor, extended climate, participatory glacier monitoring, and protection against abusive carbon-credit contracts.</span></p>
 </article>
 </div>
 <aside class="mision-etimologia">
 <svg class="mision-etimologia-icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<p>La palabra <em>chagra</em> viene de las comunidades indígenas amazónicas y andinas — un sistema agroforestal donde plantas de distintos estratos crecen juntas, en armonía con el bosque. No es monocultivo. Es agricultura como conversación con el ecosistema.</p>
+<p><span lang="es" data-lang-block="es">La palabra <em>chagra</em> viene de las comunidades indígenas amazónicas y andinas — un sistema agroforestal donde plantas de distintos estratos crecen juntas, en armonía con el bosque. No es monocultivo. Es agricultura como conversación con el ecosistema.</span><span lang="en" data-lang-block="en" hidden>The word <em>chagra</em> comes from Amazonian and Andean Indigenous communities — an agroforestry system where plants of different strata grow together, in harmony with the forest. Not monoculture. Farming as a conversation with the ecosystem.</span></p>
 </aside>
 </div>
 </section>
 
-<!-- ======== AGENTE ======== -->
-<section id="agente" class="agente-section">
+<!-- ======== ASÍ SE VE (screenshots reales) ======== -->
+<section id="asi-se-ve" class="screens-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Factores de impacto reales</p>
-<h2 class="section-title">Qué hace el agente Chagra IA</h2>
-<p class="section-desc">No son números de marketing: son factores de referencia documentados (FAO, AGROSAVIA, IDEAM-MADS) que sustentan las recomendaciones del agente.</p>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">En el celular</span><span lang="en" data-lang-block="en" hidden>On the phone</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Así se ve Chagra</span><span lang="en" data-lang-block="en" hidden>This is what Chagra looks like</span></h2>
+<p class="section-desc"><span lang="es" data-lang-block="es">Pantallas reales de la app: el asesor que conversa, el módulo de carbono que protege y el seguimiento por finca.</span><span lang="en" data-lang-block="en" hidden>Real screens from the app: the conversational advisor, the carbon module that protects, and per-farm tracking.</span></p>
 </header>
-<div class="carousel" role="region" aria-roledescription="carrusel" aria-label="Factores de impacto">
-<div class="carousel-track">
-<article class="impact-card">
-<div class="impact-icon icon-agua" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4C16 16 8 24 8 32c0 8.8 7.2 16 16 16s16-7.2 16-16c0-8-8-16-16-28z" fill="currentColor" opacity=".15"/><path d="M24 4C16 16 8 24 8 32c0 8.8 7.2 16 16 16s16-7.2 16-16c0-8-8-16-16-28z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3>El agente Chagra al frente del riego ahorra litros cada día</h3>
-<p>Factor FAO + AGROSAVIA: 5 litros al día por planta con riego por goteo versus aspersión, documentado en 90 días de monitoreo.</p>
-</article>
-<article class="impact-card">
-<div class="impact-icon icon-carbono" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="1" opacity=".3"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="currentColor" opacity=".2"/></svg></div>
-<h3>El agente Chagra cuida el aire</h3>
-<p>Factor IDEAM-MADS: 22 kilogramos de CO₂ absorbidos al año por cada árbol nativo andino joven plantado en sistemas agroforestales.</p>
-</article>
-<article class="impact-card">
-<div class="impact-icon icon-bioprep" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="currentColor" opacity=".1"/><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 14v20M14 19l10-5 10 5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".6"/></svg></div>
-<h3>El agente Chagra reemplaza químicos</h3>
-<p>36 biopreparados y fermentos tradicionales documentados: Bocashi, Caldo Bordelés, Trichoderma, Neem, Bacillus thuringiensis. Sin glifosato, sin agroquímicos.</p>
-</article>
-<article class="impact-card">
-<div class="impact-icon icon-endemica" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4v40M4 24h40" stroke="currentColor" stroke-width="2" opacity=".3"/><circle cx="24" cy="24" r="12" fill="currentColor" opacity=".1"/><path d="M24 12c-4 4-12 4-12 12s8 12 12 12 12-4 12-12-8-8-12-12z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3>El agente Chagra protege especies endémicas y en peligro</h3>
-<p>10 especies endémicas de Colombia (incluidas 4 en categoría crítica) y 14 nativas protegidas en el catálogo, con notas de conservación <em>in-situ</em> basadas en evidencia.</p>
-</article>
-<article class="impact-card">
-<div class="impact-icon icon-pueblos" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="16" cy="16" r="8" fill="currentColor" opacity=".15"/><circle cx="32" cy="16" r="8" fill="currentColor" opacity=".1"/><circle cx="24" cy="32" r="8" fill="currentColor" opacity=".2"/><circle cx="16" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="32" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
-<h3>Chagra cita literatura etnobotánica de 8 pueblos indígenas</h3>
-<p>Emberá, Wounaan, Tikuna, Bora, Muisca, Wayuu, Kogui e Inga. Las referencias provienen de literatura académica colombiana (Bernal 2015, García-Barriga, Pérez-Arbeláez 1947, TRAMIL, Vademécum MinSalud 2008), no de convenios directos con comunidades.</p>
-</article>
-<article class="impact-card">
-<div class="impact-icon icon-invasora" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4C12 4 4 14 4 24s10 16 20 16 20-8 20-16S36 4 24 4z" fill="currentColor" opacity=".1"/><path d="M24 14v20M14 24h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3>El agente Chagra alerta sobre 11 especies invasoras</h3>
-<p>Cada especie invasora catalogada incluye una alternativa nativa sugerida para sustitución ecológica.</p>
-</article>
+<div class="screens-grid">
+<figure class="screen-shot">
+<img src="assets/chagra-screenshot-2.webp" alt="Pantalla de la app Chagra: el Asesor responde una consulta sobre captura de carbono citando la fuente, con respuestas ancladas al catálogo (grounded)" loading="lazy" decoding="async" width="270" height="563">
+<figcaption><span lang="es" data-lang-block="es">El asesor conversa y cita la fuente.</span><span lang="en" data-lang-block="en" hidden>The advisor talks and cites its source.</span></figcaption>
+</figure>
+<figure class="screen-shot">
+<img src="assets/chagra-screenshot-1.webp" alt="Pantalla de la app Chagra: balance neto de carbono de la finca, con un medidor de captura versus emisión en toneladas de CO2 equivalente" loading="lazy" decoding="async" width="270" height="560">
+<figcaption><span lang="es" data-lang-block="es">El balance de la finca, con fuentes.</span><span lang="en" data-lang-block="en" hidden>The farm's balance, with sources.</span></figcaption>
+</figure>
+<figure class="screen-shot">
+<img src="assets/chagra-screenshot-3.webp" alt="Pantalla de la app Chagra: progresión mensual acumulada de carbono capturado en la finca, mostrada como una gráfica de línea" loading="lazy" decoding="async" width="270" height="394">
+<figcaption><span lang="es" data-lang-block="es">El seguimiento en el tiempo.</span><span lang="en" data-lang-block="en" hidden>Tracking over time.</span></figcaption>
+</figure>
 </div>
-<div class="carousel-nav" aria-hidden="true">
-<button class="carousel-dot active" data-index="0" aria-label="Diapositiva 1"></button>
-<button class="carousel-dot" data-index="1" aria-label="Diapositiva 2"></button>
-<button class="carousel-dot" data-index="2" aria-label="Diapositiva 3"></button>
-<button class="carousel-dot" data-index="3" aria-label="Diapositiva 4"></button>
-</div>
-</div>
+<p class="screens-note"><span lang="es" data-lang-block="es">Capturas del módulo de carbono. El diseño biopunk es el mismo en toda la app.</span><span lang="en" data-lang-block="en" hidden>Screens from the carbon module. The biopunk design is consistent across the app.</span></p>
 </div>
 </section>
 
-<!-- ======== CAPACIDADES (LO ÚLTIMO) ======== -->
+<!-- ======== CAPACIDADES ======== -->
 <section id="capacidades" class="agente-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Lo último</p>
-<h2 class="section-title">Lo que Chagra ya hace hoy</h2>
-<p class="section-desc">Cada capacidad está construida y funcionando en la app — no es promesa de roadmap.</p>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Capacidades</span><span lang="en" data-lang-block="en" hidden>Capabilities</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Lo que Chagra ya hace hoy</span><span lang="en" data-lang-block="en" hidden>What Chagra already does today</span></h2>
+<p class="section-desc"><span lang="es" data-lang-block="es">Cada capacidad está construida y funcionando en la app — no es promesa de roadmap.</span><span lang="en" data-lang-block="en" hidden>Every capability is built and working in the app — not a roadmap promise.</span></p>
 </header>
-<div class="mision-grid">
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14l16 1M14 16l8 16M34 18L26 33" stroke="currentColor" stroke-width="1.5" opacity=".55"/></svg>
-</div>
-<h3>Grafo de conocimiento</h3>
-<p>Chagra sabe qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas. Las relaciones entre especies, plagas y biopreparados están conectadas en un grafo consultable.</p>
+<div class="cap-grid">
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14l16 1M14 16l8 16M34 18L26 33" stroke="currentColor" stroke-width="1.5" opacity=".55"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Grafo de conocimiento</span><span lang="en" data-lang-block="en" hidden>Knowledge graph</span></h3>
+<p><span lang="es" data-lang-block="es">Sabe qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas — todo conectado en un grafo consultable.</span><span lang="en" data-lang-block="en" hidden>It knows which plant pairs with which, which bio-preparation controls which pest and which species are antagonists — all connected in a queryable graph.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="12" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 12l3-5h6l3 5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity=".4"/></svg>
-</div>
-<h3>Identifica por foto</h3>
-<p>Toma una foto de la planta o de la plaga y el agente la reconoce, la contrasta contra el catálogo y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</p>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="12" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 12l3-5h6l3 5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity=".4"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Identifica por foto</span><span lang="en" data-lang-block="en" hidden>Identifies by photo</span></h3>
+<p><span lang="es" data-lang-block="es">Toma una foto de la planta o la plaga y el agente la reconoce y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</span><span lang="en" data-lang-block="en" hidden>Take a photo of the plant or pest and the agent recognizes it and suggests agroecological management. The image is processed on-device, never uploaded.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="19" y="6" width="10" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 22a12 12 0 0024 0M24 34v6M18 40h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-</div>
-<h3>Habla y escucha</h3>
-<p>Pregúntale en voz alta y te responde leyendo en español colombiano. Pensado para quien prefiere hablar antes que escribir, con voz y reconocimiento de habla locales.</p>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="19" y="6" width="10" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 22a12 12 0 0024 0M24 34v6M18 40h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Habla y escucha</span><span lang="en" data-lang-block="en" hidden>Speaks and listens</span></h3>
+<p><span lang="es" data-lang-block="es">Pregúntale en voz alta y te responde leyendo en español colombiano. Pensado para quien prefiere hablar antes que escribir.</span><span lang="en" data-lang-block="en" hidden>Ask out loud and it reads its answer back in Colombian Spanish. Built for those who'd rather talk than type.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M14 30a8 8 0 010-16 10 10 0 0119-3 7 7 0 013 13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 36l-2 6M26 36l-2 6M34 36l-2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-</div>
-<h3>Alertas climáticas</h3>
-<p>Avisa de heladas, sequías y los efectos del fenómeno del Niño según tu piso térmico, apoyado en datos públicos del IDEAM. La alerta crítica aparece de una, para que no se te pase.</p>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M14 30a8 8 0 010-16 10 10 0 0119-3 7 7 0 013 13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 36l-2 6M26 36l-2 6M34 36l-2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Clima extendido por finca</span><span lang="en" data-lang-block="en" hidden>Extended per-farm climate</span></h3>
+<p><span lang="es" data-lang-block="es">Pronóstico y alertas de heladas, sequías y fenómeno del Niño según tu piso térmico, con datos públicos del IDEAM y validación cruzada de varios modelos.</span><span lang="en" data-lang-block="en" hidden>Forecasts and alerts for frost, drought and El Niño tuned to your thermal floor, using public IDEAM data and cross-validation across several models.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 38L20 12l8 14 5-8 9 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="12" r="2.5" fill="currentColor"/><path d="M6 38h36" stroke="currentColor" stroke-width="1.5" opacity=".4"/></svg>
-</div>
-<h3>Conoce tu finca</h3>
-<p>Un onboarding corto detecta tu ubicación y piso térmico, y desde ahí el agente ajusta sus respuestas a tu altura, tu clima y tu región — sin preguntarte lo mismo dos veces.</p>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42l8-18 7 10 6-22 5 14 4-6 6 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 42h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Restauración por piso térmico</span><span lang="en" data-lang-block="en" hidden>Restoration by thermal floor</span></h3>
+<p><span lang="es" data-lang-block="es">Sugiere especies nativas para restaurar según la altura y la etapa de sucesión (pioneras, intermedias, clímax), del valle cálido al páramo. Con referencias de MinAmbiente, IAvH y la UICN.</span><span lang="en" data-lang-block="en" hidden>Suggests native species for restoration by altitude and succession stage (pioneer, intermediate, climax), from warm valley to páramo. Referenced to MinAmbiente, IAvH and IUCN.</span></p>
 </article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg>
-</div>
-<h3>Cuaderno de campo</h3>
-<p>Registra tus cultivos, observaciones y labores, y exporta un PDF ordenado — un insumo útil para procesos de certificación orgánica y para tu propia memoria de la finca.</p>
+<article class="cap-card cap-glaciar">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 40l10-20 6 9 5-14 4 9 11 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 20l-3 6h6zM26 15l-2.5 5h5z" fill="currentColor" opacity=".3"/><path d="M6 40h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><circle cx="38" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Monitoreo participativo de glaciares</span><span lang="en" data-lang-block="en" hidden>Participatory glacier monitoring</span></h3>
+<p><span lang="es" data-lang-block="es">Una guía de campo para reportar el estado de un punto glaciar (tipo de superficie, dureza de la nieve, peligros) con método y escala creíbles — pensada para alimentar el monitoreo de la criosfera colombiana (IDEAM).</span><span lang="en" data-lang-block="en" hidden>A field guide to report the state of a glacier point (surface type, snow hardness, hazards) with a credible method and scale — designed to feed Colombia's cryosphere monitoring (IDEAM).</span></p>
+</article>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 6c-7 5-12 6-12 6v10c0 9 5 14 12 18 7-4 12-9 12-18V12s-5-1-12-6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v8M24 30h.02" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Te protege en lo económico</span><span lang="en" data-lang-block="en" hidden>It protects you economically</span></h3>
+<p><span lang="es" data-lang-block="es">Explica el Pago por Servicios Ambientales del Estado y <strong>alerta sobre contratos abusivos de bonos de carbono</strong> (plazos de décadas, intermediarios, cláusulas de reversión). Antes de firmar nada, te dice a quién consultar gratis.</span><span lang="en" data-lang-block="en" hidden>It explains the State's Payment for Ecosystem Services and <strong>warns about abusive carbon-credit contracts</strong> (multi-decade terms, middlemen, reversion clauses). Before you sign anything, it tells you who to consult for free.</span></p>
+</article>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 28c0-6 4-10 8-10 2-4 8-4 10 0 4 0 6 3 6 7M8 30c-2 4 2 8 6 8h16c5 0 8-5 5-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="30" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Cuidado animal (no solo plantas)</span><span lang="en" data-lang-block="en" hidden>Animal care (not just plants)</span></h3>
+<p><span lang="es" data-lang-block="es">Orientación de diagnóstico para animales de finca — incluye cerdos, bovinos y aves — bajo el mismo principio: anclado a evidencia, con aviso de cuándo consultar un veterinario.</span><span lang="en" data-lang-block="en" hidden>Diagnostic guidance for farm animals — including pigs, cattle and poultry — under the same principle: grounded in evidence, with clear advice on when to see a vet.</span></p>
+</article>
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Cuaderno de campo</span><span lang="en" data-lang-block="en" hidden>Field notebook</span></h3>
+<p><span lang="es" data-lang-block="es">Registra cultivos, observaciones y labores, y exporta un PDF ordenado — útil para procesos de certificación orgánica y para tu propia memoria de la finca.</span><span lang="en" data-lang-block="en" hidden>Log crops, observations and tasks, and export a tidy PDF — useful for organic-certification processes and for your own farm records.</span></p>
 </article>
 </div>
 </div>
 </section>
 
-<!-- ======== CÓMO PIENSA EL AGENTE ======== -->
+<!-- ======== UNA IA QUE NO INVENTA ======== -->
 <section id="como-piensa" class="mision-section">
 <div class="mision-deco" aria-hidden="true"></div>
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">El agente por dentro</p>
-<h2 class="section-title mision-title">Una IA que no inventa</h2>
-<p class="section-desc">El agente conversa, escucha y aconseja — pero siempre anclado al catálogo verificado. Si no sabe algo, lo dice.</p>
-</header>
-<div class="mision-grid">
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="10" r="4" fill="currentColor"/><circle cx="12" cy="26" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="26" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 14l-12 8M24 14l12 8M12 30l6 7M36 30l-6 7" stroke="currentColor" stroke-width="1.5" opacity=".6" fill="none"/></svg>
-</div>
-<h3>La mano de Chagra</h3>
-<p>Desde el agente brota una red orgánica — como ramas de un árbol o micorrizas — donde cada nodo es algo que Chagra sabe hacer. Tocas una rama y se abren sus opciones. Es el corazón visual de la app.</p>
-</article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 6L8 12v10c0 11 7 18 16 22 9-4 16-11 16-22V12L24 6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-</div>
-<h3>Respuestas ancladas (anti-invención)</h3>
-<p>Cada respuesta se apoya en las fichas del catálogo y en un grafo de conocimiento. Si un dato no está, el agente lo advierte en vez de inventarlo. Sin alucinaciones disfrazadas de certeza.</p>
-</article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="18" y="6" width="12" height="22" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 24a12 12 0 0024 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 36v6M18 42h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-</div>
-<h3>Hablas, no escribes</h3>
-<p>Pregúntale en voz alta. El agente transcribe tu voz (Whisper, local) y te lee la respuesta en voz alta. Pensado para quien no quiere teclear largo en el celular.</p>
-</article>
-<article class="mision-pill">
-<div class="mision-pill-icon" aria-hidden="true">
-<svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L6 12v12c0 12 8 20 18 24 10-4 18-12 18-24V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="34" r="2" fill="currentColor"/></svg>
-</div>
-<h3>Guardas de seguridad</h3>
-<p>Nunca recomienda dosis peligrosas ni mezclas tóxicas. Conoce la toxicidad de las plantas, las variedades adaptadas, el tipo de suelo y los saberes tradicionales documentados — y avisa cuando una pregunta parte de una premisa equivocada.</p>
-</article>
-</div>
-</div>
-</section>
-
-<!-- ======== CÓMO FUNCIONA ======== -->
-<section id="como-funciona" class="como-section">
-<div class="como-deco" aria-hidden="true"></div>
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow">Cómo funciona</p>
-<h2 class="section-title">El recorrido de una pregunta</h2>
-<p class="section-desc">Chagra no improvisa. De la voz del campesino a una respuesta confiable, en cuatro pasos. Si el dato no existe, lo dice con honestidad.</p>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">El agente por dentro</span><span lang="en" data-lang-block="en" hidden>Inside the agent</span></p>
+<h2 class="section-title mision-title"><span lang="es" data-lang-block="es">Una IA que no inventa</span><span lang="en" data-lang-block="en" hidden>An AI that doesn't make things up</span></h2>
+<p class="section-desc"><span lang="es" data-lang-block="es">El agente conversa, escucha y aconseja — pero siempre anclado al catálogo verificado. Si no sabe algo, lo dice.</span><span lang="en" data-lang-block="en" hidden>The agent talks, listens and advises — but always grounded in the verified catalogue. If it doesn't know, it says so.</span></p>
 </header>
 
-<!-- 4 pasos -->
-<ol class="como-flow">
-<li class="como-step">
-<span class="como-badge como-b1" aria-hidden="true">1</span>
-<h3>El campesino pregunta</h3>
-<p>En español del campo o en su lengua propia, por voz o por texto. «¿Qué le echo a la mata de tomate que tiene un bicho blanco?»</p>
-<span class="como-arrow" aria-hidden="true">→</span>
+<!-- recorrido de una pregunta — 3 pasos iconográficos -->
+<ol class="flow3" aria-label="Cómo funciona en tres pasos">
+<li class="flow3-step">
+<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="16" y="4" width="16" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 12a4 4 0 018 0v5a4 4 0 01-8 0z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M17 17a7 7 0 0014 0M24 24v4M21 28h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M36 22c3 1 6 4 6 8M40 18c4 2 6 6 6 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/></svg></div>
+<span class="flow3-badge">1</span>
+<h3><span lang="es" data-lang-block="es">Preguntas por voz</span><span lang="en" data-lang-block="en" hidden>You ask by voice</span></h3>
+<p><span lang="es" data-lang-block="es">«¿Qué le echo a la mata de tomate que tiene un bicho blanco?» En español del campo, por voz o por texto.</span><span lang="en" data-lang-block="en" hidden>"What do I put on my tomato plant with a little white bug?" In rural Spanish, by voice or text.</span></p>
+<span class="flow3-arrow" aria-hidden="true">→</span>
 </li>
-<li class="como-step">
-<span class="como-badge como-b2" aria-hidden="true">2</span>
-<h3>Chagra entiende</h3>
-<p>Interpreta la intención real: reconoce el cultivo, la plaga descrita y el piso térmico, aunque se use vocabulario regional.</p>
-<span class="como-arrow" aria-hidden="true">→</span>
+<li class="flow3-step">
+<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="10" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="38" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="34" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="14" r="4" fill="currentColor" opacity=".25" stroke="currentColor" stroke-width="2"/><path d="M14 12h6M28 14h6M13 15l9 16M35 17l-9 16" stroke="currentColor" stroke-width="1.5" opacity=".6"/></svg></div>
+<span class="flow3-badge">2</span>
+<h3><span lang="es" data-lang-block="es">Busca en su catálogo</span><span lang="en" data-lang-block="en" hidden>It searches its catalogue</span></h3>
+<p><span lang="es" data-lang-block="es">Entiende la intención y consulta el catálogo agroecológico colombiano: la especie, su plaga y el biopreparado para esa altura.</span><span lang="en" data-lang-block="en" hidden>It understands the intent and queries the Colombian agroecology catalogue: the species, its pest and the bio-preparation for that altitude.</span></p>
+<span class="flow3-arrow" aria-hidden="true">→</span>
 </li>
-<li class="como-step">
-<span class="como-badge como-b3" aria-hidden="true">3</span>
-<h3>Consulta su conocimiento</h3>
-<p>Busca en el catálogo agroecológico colombiano: la especie, su plaga y el biopreparado adecuado para ese caso y esa altura.</p>
-<span class="como-arrow" aria-hidden="true">→</span>
-</li>
-<li class="como-step">
-<span class="como-badge como-b4" aria-hidden="true">4</span>
-<h3>Responde con su fuente</h3>
-<p>Entrega una respuesta clara y aplicable, citando la fuente. Si no tiene el dato verificado, lo dice en vez de inventar.</p>
+<li class="flow3-step">
+<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 8h28a2 2 0 012 2v22a2 2 0 01-2 2H20l-8 8v-8h-2a2 2 0 01-2-2V10a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 17l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 26h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></div>
+<span class="flow3-badge">3</span>
+<h3><span lang="es" data-lang-block="es">Responde con su fuente</span><span lang="en" data-lang-block="en" hidden>It answers with its source</span></h3>
+<p><span lang="es" data-lang-block="es">Una respuesta clara y aplicable, citando la fuente. Si no tiene el dato verificado, lo dice en vez de inventar.</span><span lang="en" data-lang-block="en" hidden>A clear, actionable answer, citing the source. If it lacks a verified fact, it says so instead of inventing one.</span></p>
 </li>
 </ol>
 
-<!-- Conversación de ejemplo -->
+<!-- conversación de ejemplo -->
 <div class="como-demo-wrap">
 <div class="como-demo" role="img" aria-label="Ejemplo de conversación: el campesino describe un bicho blanco en su mata de tomate y Chagra responde que parece mosca blanca, sugiere un biopreparado a base de plantas aplicado en horas frescas cubriendo el envés de la hoja, y cita una entidad agropecuaria nacional como fuente.">
-<p class="como-demo-label">Así se ve en el celular</p>
-<div class="como-bubble como-user">Tengo la mata de tomate con un bicho blanco que vuela. ¿Qué le echo?</div>
-<div class="como-bubble como-ai">Eso suena a mosca blanca. Para el tomate puede preparar un biopreparado a base de plantas y aplicarlo en las horas frescas del día, cubriendo bien el envés de la hoja.</div>
-<div class="como-bubble como-ai">Le doy la dosis y el paso a paso, con su respaldo.<span class="como-src">Fuente: entidad agropecuaria nacional</span></div>
+<p class="como-demo-label"><span lang="es" data-lang-block="es">Así se ve en el celular</span><span lang="en" data-lang-block="en" hidden>This is how it looks on the phone</span></p>
+<div class="como-bubble como-user"><span lang="es" data-lang-block="es">Tengo la mata de tomate con un bicho blanco que vuela. ¿Qué le echo?</span><span lang="en" data-lang-block="en" hidden>My tomato plant has a little white flying bug. What do I put on it?</span></div>
+<div class="como-bubble como-ai"><span lang="es" data-lang-block="es">Eso suena a mosca blanca. Para el tomate puede preparar un biopreparado a base de plantas y aplicarlo en las horas frescas del día, cubriendo bien el envés de la hoja.</span><span lang="en" data-lang-block="en" hidden>That sounds like whitefly. For tomato you can prepare a plant-based bio-preparation and apply it in the cool hours of the day, covering the underside of the leaf well.</span></div>
+<div class="como-bubble como-ai"><span lang="es" data-lang-block="es">Le doy la dosis y el paso a paso, con su respaldo.</span><span lang="en" data-lang-block="en" hidden>I'll give you the dose and step-by-step, with its backing.</span><span class="como-src"><span lang="es" data-lang-block="es">Fuente: entidad agropecuaria nacional</span><span lang="en" data-lang-block="en" hidden>Source: national agricultural agency</span></span></div>
 </div>
-<p class="como-demo-note">Ejemplo ilustrativo. La respuesta real cita la entidad específica de donde sale cada dato.</p>
+<p class="como-demo-note"><span lang="es" data-lang-block="es">Ejemplo ilustrativo. La respuesta real cita la entidad específica de donde sale cada dato.</span><span lang="en" data-lang-block="en" hidden>Illustrative example. The real answer cites the specific entity each fact comes from.</span></p>
 </div>
 
-<!-- Por qué confiar -->
-<h3 class="como-subtitle">Por qué se puede confiar en Chagra</h3>
-<div class="como-props">
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-<h4>No inventa</h4>
-<p>Cada respuesta sale de su catálogo de conocimiento, no de suposiciones. Si el dato no está, Chagra lo dice en vez de adivinar.</p>
+<!-- guardas + IA local + fuentes (consolidado) -->
+<div class="confianza-grid">
+<article class="confianza-card">
+<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v8c0 9 6 16 16 22 10-6 16-13 16-22v-8L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="34" r="2" fill="currentColor"/></svg></div>
+<h4><span lang="es" data-lang-block="es">Guardas de seguridad</span><span lang="en" data-lang-block="en" hidden>Safety guards</span></h4>
+<p><span lang="es" data-lang-block="es">Nunca recomienda dosis peligrosas ni mezclas tóxicas. Conoce la toxicidad de las plantas y avisa cuando una pregunta parte de una premisa equivocada.</span><span lang="en" data-lang-block="en" hidden>It never recommends dangerous doses or toxic mixes. It knows plant toxicity and flags when a question rests on a wrong premise.</span></p>
 </article>
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v8c0 9 6 16 16 22 10-6 16-13 16-22v-8L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 22h12M18 28h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h4>Fuentes institucionales</h4>
-<p>Construido sobre conocimiento agropecuario colombiano de entidades de investigación y control oficiales (AGROSAVIA, ICA, IDEAM, Humboldt), con la fuente a la vista.</p>
+<article class="confianza-card">
+<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="20" width="36" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 20v-6a10 10 0 0120 0v6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="31" r="3" fill="currentColor"/></svg></div>
+<h4><span lang="es" data-lang-block="es">IA local en el dispositivo</span><span lang="en" data-lang-block="en" hidden>On-device local AI</span></h4>
+<p><span lang="es" data-lang-block="es">El agente conversa con un modelo de lenguaje abierto y local, y lee las fotos con visión por computador. Sin nube de terceros.</span><span lang="en" data-lang-block="en" hidden>The agent runs on an open, local language model and reads photos with on-device computer vision. No third-party cloud.</span></p>
 </article>
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 8h28a4 4 0 014 4v18a4 4 0 01-4 4H22l-10 8v-8h-2a4 4 0 01-4-4V12a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 18h16M16 24h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h4>Habla como el campo</h4>
-<p>Entiende el vocabulario regional y las lenguas del campo, no solo el español de manual. Habla como habla la gente.</p>
-</article>
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M8 18a8 8 0 0116 0M24 18a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 30h40M6 38h36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M14 18v8M34 18v8" stroke="currentColor" stroke-width="2"/></svg></div>
-<h4>Funciona sin internet</h4>
-<p>Pensado para zonas con mala señal: el campesino consulta en la finca aunque no haya datos en ese momento.</p>
-</article>
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42l10-26 8 14 6-10 12 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 42h36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="34" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h4>Sabe de pisos térmicos</h4>
-<p>El consejo cambia con la altura. Chagra organiza el conocimiento por piso térmico, del valle cálido al páramo frío.</p>
-</article>
-<article class="como-prop">
-<div class="como-prop-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 42c0-10-7-16-7-24a7 7 0 0114 0c0 8-7 14-7 24z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 22c-3-2-6-1-7-4M24 22c3-2 6-1 7-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></svg></div>
-<h4>Crece cada día</h4>
-<p>El conocimiento se amplía constantemente con especies, plagas, biopreparados y datos de clima verificados. Hoy ya supera las 260 especies del catálogo.</p>
+<article class="confianza-card">
+<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 22h12M18 28h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h4><span lang="es" data-lang-block="es">Fuentes institucionales</span><span lang="en" data-lang-block="en" hidden>Institutional sources</span></h4>
+<p><span lang="es" data-lang-block="es">Construido sobre conocimiento agropecuario colombiano de entidades de investigación y control oficiales (AGROSAVIA, ICA, IDEAM, Humboldt), con la fuente a la vista.</span><span lang="en" data-lang-block="en" hidden>Built on Colombian agronomic knowledge from official research and regulatory bodies (AGROSAVIA, ICA, IDEAM, Humboldt), with the source on display.</span></p>
 </article>
 </div>
 </div>
 </section>
 
-<!-- ======== AUDIENCIAS ======== -->
-<section id="audiencias" class="audiencias-section">
+<!-- ======== SOBERANÍA (digital + energética) ======== -->
+<section id="soberania" class="soberania-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Para quién construimos</p>
-<h2 class="section-title">Chagra es para ti</h2>
-</header>
-<div class="audiencia-cards">
-<article class="audiencia-card">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="currentColor" opacity=".1"/><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 44c0-8.8 7.2-14 16-14s16 5.2 16 14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3>Campesino y campesina pequeña</h3>
-<p>Para ti que cultivas menos de 5 hectáreas para tu familia y el mercado local. Para ti que sabes más de la tierra que cualquier libro. Chagra es <strong>código libre</strong>, funciona sin internet y habla tu idioma.</p>
-<span class="audiencia-tag">Open source · AGPL-3.0</span>
-</article>
-<article class="audiencia-card">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M28 28l10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 8v8M12 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
-<h3>Técnico y extensionista agroecológico</h3>
-<p>Para ti que acompañas procesos campesinos y necesitas una herramienta confiable para validar especies, sugerir biopreparados y registrar observaciones de campo con respaldo científico.</p>
-<span class="audiencia-tag">Open source · AGPL-3.0</span>
-</article>
-<article class="audiencia-card">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M16 32c-4.4 0-8-3.6-8-8s3.6-8 8-8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 32c4.4 0 8-3.6 8-8s-3.6-8-8-8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 32l8 8 8-8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v16" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3>Cooperativas e instituciones</h3>
-<p>Para organizaciones que quieren adoptar Chagra en sus territorios. Membresía solidaria que sostiene el desarrollo y prioriza funcionalidades según necesidades campesinas reales.</p>
-<span class="audiencia-tag">Membresía solidaria</span>
-</article>
-</div>
-</div>
-</section>
-
-<!-- ======== SOBERANÍA ======== -->
-<section id="codigo" class="soberania-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow">Soberanía digital</p>
-<h2 class="section-title">Tu dato nunca sale de tu celular</h2>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Soberanía digital y energética</span><span lang="en" data-lang-block="en" hidden>Digital &amp; energy sovereignty</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Cero nube, cero red. Soberanía completa.</span><span lang="en" data-lang-block="en" hidden>Zero cloud, zero grid. Complete sovereignty.</span></h2>
 </header>
 <div class="soberania-grid">
 <div class="soberania-visual" aria-hidden="true">
@@ -411,26 +351,28 @@
 <defs><linearGradient id="escudoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981" stop-opacity=".3"/><stop offset="100%" stop-color="#06b6d4" stop-opacity=".1"/></linearGradient></defs>
 <path d="M100 4L12 48v60c0 56 38 108 88 128 50-20 88-72 88-128V48L100 4z" fill="url(#escudoGrad)"/>
 <path d="M100 4L12 48v60c0 56 38 108 88 128 50-20 88-72 88-128V48L100 4z" fill="none" stroke="currentColor" stroke-width="2.5"/>
-<path d="M60 120l20 20 50-50" fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="100" cy="108" r="6" fill="#06b6d4" opacity=".5"/>
+<circle cx="100" cy="92" r="15" fill="#10b981" opacity=".85"/>
+<g stroke="#10b981" stroke-width="2.4" stroke-linecap="round"><path d="M100 64v9M100 111v9M72 92h9M119 92h9M80.2 72.2l6.4 6.4M113.4 105.4l6.4 6.4M119.8 72.2l-6.4 6.4M86.6 105.4l-6.4 6.4"/></g>
+<g transform="translate(78,128)" fill="none" stroke="#06b6d4" stroke-width="2.6" stroke-linejoin="round"><path d="M4 30L12 4h20l8 26z"/><path d="M8 17h28M22 4v26" stroke-opacity=".7"/></g>
+<path d="M88 196l8 8 18-18" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 </div>
 <div class="soberania-bullets">
-<div class="bullet">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<div><h4>AGPL-3.0</h4><p>Código auditable en GitHub. Cualquiera puede revisar, copiar y mejorar. Siempre será libre.</p></div>
+<div class="bullet bullet-solar">
+<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="9" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.2M12 13.8V16M4.5 9h2.2M17.3 9h2.2M6.7 3.7l1.5 1.5M15.8 12.8l1.5 1.5M17.3 3.7l-1.5 1.5M8.2 12.8l-1.5 1.5"/></g><path d="M5 22l1.8-4h10.4L19 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6.4 19.4h11.2M12 18v4" stroke="currentColor" stroke-width="1.3" opacity=".6"/></svg></div>
+<div><h4><span lang="es" data-lang-block="es">100% energía solar off-grid</span><span lang="en" data-lang-block="en" hidden>100% off-grid solar power</span></h4><p><span lang="es" data-lang-block="es">Chagra no solo evita la nube extranjera: evita la red eléctrica. El servidor que sirve la IA corre con energía solar autogenerada en la finca. Una herramienta para el clima, construida con energía limpia.</span><span lang="en" data-lang-block="en" hidden>Chagra avoids more than the foreign cloud: it avoids the power grid. The server that runs the AI is powered by solar energy generated on the farm. A tool for the climate, built with clean energy.</span></p></div>
 </div>
 <div class="bullet">
 <div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<div><h4>IA local groundeada</h4><p>El agente conversa con un modelo local (Granite 3.1) anclado al catálogo: si un dato no está en las fichas, no se lo inventa. Visión con Qwen 2.5 VL. Sin Google, sin AWS, sin OpenAI.</p></div>
+<div><h4><span lang="es" data-lang-block="es">IA local groundeada</span><span lang="en" data-lang-block="en" hidden>Grounded local AI</span></h4><p><span lang="es" data-lang-block="es">El agente conversa con un modelo abierto y local anclado al catálogo: si un dato no está en las fichas, no se lo inventa. Visión por computador en el dispositivo, sin nube de terceros.</span><span lang="en" data-lang-block="en" hidden>The agent uses an open, local model grounded in the catalogue: if a fact isn't in the records, it won't invent it. On-device computer vision, no third-party cloud.</span></p></div>
 </div>
 <div class="bullet">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12v10" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<div><h4>Compatible con FarmOS</h4><p>Interoperabilidad con el estándar internacional de la FAO para gestión de datos agrícolas.</p></div>
+<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+<div><h4><span lang="es" data-lang-block="es">Código abierto e interoperable</span><span lang="en" data-lang-block="en" hidden>Open source &amp; interoperable</span></h4><p><span lang="es" data-lang-block="es">Licencia AGPL-3.0, auditable en GitHub: cualquiera puede revisar, copiar y mejorar. Interoperable con farmOS, el estándar internacional de la FAO para gestión de datos agrícolas.</span><span lang="en" data-lang-block="en" hidden>AGPL-3.0 licensed and auditable on GitHub: anyone can review, copy and improve it. Interoperable with farmOS, the FAO's international standard for agricultural data.</span></p></div>
 </div>
 <div class="bullet">
 <div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div><h4>Construido en Choachí, Colombia</h4><p>A 2.538 metros sobre el nivel del mar, en la vertiente oriental de la Cordillera Oriental. Construido con código limpio y respeto profundo por el campesino.</p></div>
+<div><h4><span lang="es" data-lang-block="es">Construido en Choachí, Colombia</span><span lang="en" data-lang-block="en" hidden>Built in Choachí, Colombia</span></h4><p><span lang="es" data-lang-block="es">A 2.538 metros sobre el nivel del mar, en la vertiente oriental de la Cordillera Oriental. Con código limpio y respeto profundo por el campesino.</span><span lang="en" data-lang-block="en" hidden>At 2,538 metres above sea level, on the eastern slope of Colombia's Eastern Cordillera. Built with clean code and deep respect for the smallholder farmer.</span></p></div>
 </div>
 </div>
 </div>
@@ -441,21 +383,56 @@
 <section class="comparativa-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Diferencial</p>
-<h2 class="section-title">Chagra versus lo que ya existe</h2>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Diferencial</span><span lang="en" data-lang-block="en" hidden>What sets it apart</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Chagra frente a lo que ya existe</span><span lang="en" data-lang-block="en" hidden>Chagra versus what already exists</span></h2>
 </header>
 <div class="comparison-table" role="table" aria-label="Comparación entre Chagra y aplicaciones comerciales">
 <div class="comparison-row header" role="row">
-<div class="comparison-cell feature" role="columnheader">Característica</div>
+<div class="comparison-cell feature" role="columnheader"><span lang="es" data-lang-block="es">Característica</span><span lang="en" data-lang-block="en" hidden>Feature</span></div>
 <div class="comparison-cell chagra" role="columnheader">Chagra</div>
-<div class="comparison-cell comercial" role="columnheader">Apps comerciales</div>
+<div class="comparison-cell comercial" role="columnheader"><span lang="es" data-lang-block="es">Apps comerciales</span><span lang="en" data-lang-block="en" hidden>Commercial apps</span></div>
 </div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Modelo</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Open source AGPL-3.0</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Propietario · de pago</span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Funciona sin internet</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Sí — PWA offline</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Requiere conexión</span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Código</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">AGPL-3.0 open source</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Cerrado y propietario</span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Inteligencia artificial</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Local en el dispositivo</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Nube de terceros</span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Enfoque agronómico</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Agroecológico</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Agricultura industrial</span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell">Datos del usuario</div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Nunca salen del celular</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn">Captura y monetización</span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Código y licencia</span><span lang="en" data-lang-block="en" hidden>Code &amp; license</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Open source AGPL-3.0</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Propietario · de pago</span><span lang="en" data-lang-block="en" hidden>Proprietary · paid</span></span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Funciona sin internet</span><span lang="en" data-lang-block="en" hidden>Works offline</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Sí — PWA offline</span><span lang="en" data-lang-block="en" hidden>Yes — offline PWA</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Requiere conexión</span><span lang="en" data-lang-block="en" hidden>Needs a connection</span></span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Inteligencia artificial</span><span lang="en" data-lang-block="en" hidden>Artificial intelligence</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Local en el dispositivo</span><span lang="en" data-lang-block="en" hidden>Local, on-device</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Nube de terceros</span><span lang="en" data-lang-block="en" hidden>Third-party cloud</span></span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Energía</span><span lang="en" data-lang-block="en" hidden>Energy</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">100% solar off-grid</span><span lang="en" data-lang-block="en" hidden>100% off-grid solar</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Centros de datos</span><span lang="en" data-lang-block="en" hidden>Data centres</span></span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Enfoque agronómico</span><span lang="en" data-lang-block="en" hidden>Agronomic focus</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Agroecológico · campesino</span><span lang="en" data-lang-block="en" hidden>Agroecological · smallholder</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Agricultura industrial</span><span lang="en" data-lang-block="en" hidden>Industrial agriculture</span></span></div></div>
+<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Datos del usuario</span><span lang="en" data-lang-block="en" hidden>User data</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Nunca salen del celular</span><span lang="en" data-lang-block="en" hidden>Never leave the phone</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Captura y monetización</span><span lang="en" data-lang-block="en" hidden>Captured &amp; monetised</span></span></div></div>
+</div>
+</div>
+</section>
+
+<!-- ======== AUDIENCIAS ======== -->
+<section id="audiencias" class="audiencias-section">
+<div class="section-inner">
+<header class="section-header">
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Para quién construimos</span><span lang="en" data-lang-block="en" hidden>Who we build for</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Chagra es para ti</span><span lang="en" data-lang-block="en" hidden>Chagra is for you</span></h2>
+</header>
+<div class="audiencia-cards">
+<article class="audiencia-card" data-aud-card="campesino">
+<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="currentColor" opacity=".1"/><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 44c0-8.8 7.2-14 16-14s16 5.2 16 14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Campesino y campesina pequeña</span><span lang="en" data-lang-block="en" hidden>Smallholder farmers</span></h3>
+<p><span lang="es" data-lang-block="es">Para ti que cultivas menos de 5 hectáreas para tu familia y el mercado local. Para ti que sabes más de la tierra que cualquier libro. Chagra es <strong>código libre</strong>, funciona sin internet y habla tu idioma.</span><span lang="en" data-lang-block="en" hidden>For you, farming under 5 hectares for your family and the local market. For you, who knows the land better than any book. Chagra is <strong>free software</strong>, works offline and speaks your language.</span></p>
+<span class="audiencia-tag">Open source · AGPL-3.0</span>
+</article>
+<article class="audiencia-card" data-aud-card="campesino">
+<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M28 28l10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 8v8M12 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Técnico y extensionista</span><span lang="en" data-lang-block="en" hidden>Technicians &amp; extension agents</span></h3>
+<p><span lang="es" data-lang-block="es">Para ti que acompañas procesos campesinos y necesitas una herramienta confiable para validar especies, sugerir biopreparados y registrar observaciones de campo con respaldo científico.</span><span lang="en" data-lang-block="en" hidden>For you, supporting farming communities and needing a reliable tool to validate species, suggest bio-preparations and log field observations with scientific backing.</span></p>
+<span class="audiencia-tag">Open source · AGPL-3.0</span>
+</article>
+<article class="audiencia-card audiencia-inst" data-aud-card="institucion">
+<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42h36M10 42V20M38 42V20M6 20l18-12 18 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 42V26M24 42V26M31 42V26" stroke="currentColor" stroke-width="1.6" opacity=".7"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Cooperativas, instituciones y aliados</span><span lang="en" data-lang-block="en" hidden>Cooperatives, institutions &amp; partners</span></h3>
+<p><span lang="es" data-lang-block="es">Para organizaciones que adoptan Chagra en sus territorios: catálogo verificado, registro de campo exportable, restauración por piso térmico, monitoreo participativo de glaciares (MRV) y orientación sobre Pago por Servicios Ambientales. Interoperable con farmOS (estándar FAO). Soberano y auditable.</span><span lang="en" data-lang-block="en" hidden>For organizations adopting Chagra in their territories: verified catalogue, exportable field records, restoration by thermal floor, participatory glacier monitoring (MRV) and guidance on Payments for Ecosystem Services. Interoperable with farmOS (FAO standard). Sovereign and auditable.</span></p>
+<span class="audiencia-tag audiencia-tag-inst"><span lang="es" data-lang-block="es">Open source · Interoperable FAO/farmOS · MRV participativo</span><span lang="en" data-lang-block="en" hidden>Open source · FAO/farmOS interoperable · Participatory MRV</span></span>
+</article>
+</div>
+<!-- CTA institucional (resalta para audiencia institución) -->
+<div class="inst-cta" data-aud-show="institucion" hidden>
+<p><span lang="es" data-lang-block="es"><strong>¿Tu institución quiere usar o cofinanciar Chagra?</strong> Soberanía offline, energía solar y MRV participativo, listos para territorio.</span><span lang="en" data-lang-block="en" hidden><strong>Funders &amp; research partners.</strong> Offline sovereignty, solar power and participatory MRV — built for, and with, smallholder farmers.</span></p>
+<a href="mailto:chagra@guatoc.co" class="btn btn-primary"><span lang="es" data-lang-block="es">Escríbenos</span><span lang="en" data-lang-block="en" hidden>Get in touch</span></a>
 </div>
 </div>
 </section>
@@ -464,9 +441,9 @@
 <section id="aprender" class="aprender-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Aprender</p>
-<h2 class="section-title">Notas técnicas del campo</h2>
-<p class="section-desc">Textos didácticos para el agricultor, el técnico y el entusiasta. Cada uno se explica primero en lenguaje simple y después con la evidencia científica revisada por pares. Sin promesas vacías, sin marketing.</p>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Aprender</span><span lang="en" data-lang-block="en" hidden>Learn</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Notas técnicas del campo</span><span lang="en" data-lang-block="en" hidden>Technical notes from the field</span></h2>
+<p class="section-desc"><span lang="es" data-lang-block="es">Textos didácticos para el agricultor, el técnico y el entusiasta. Cada uno se explica primero en lenguaje simple y después con la evidencia científica revisada por pares. Sin promesas vacías, sin marketing.</span><span lang="en" data-lang-block="en" hidden>Educational pieces for farmers, technicians and enthusiasts. Each one is explained first in plain language, then with peer-reviewed scientific evidence. No empty promises, no marketing.</span></p>
 </header>
 <div class="aprender-grid">
 <a class="aprender-card" href="/aprender/transición-15-15-15">
@@ -480,10 +457,10 @@
 <path d="M14 56 Q 22 52 32 54 Q 42 52 50 56" stroke="#22d3ee" stroke-opacity=".6"/>
 </svg>
 </div>
-<span class="aprender-tag">Suelos · Nutrición</span>
-<h3>Del 15-15-15 a la agroecología</h3>
-<p>Lo que descubrió la ciencia en los últimos 30 años sobre NPK, cal viva y suelo vivo. Plan de transición de 3 años para quien lleva décadas con el paquete sintético.</p>
-<span class="aprender-meta">~18 min · referencias peer-review</span>
+<span class="aprender-tag"><span lang="es" data-lang-block="es">Suelos · Nutrición</span><span lang="en" data-lang-block="en" hidden>Soils · Nutrition</span></span>
+<h3><span lang="es" data-lang-block="es">Del 15-15-15 a la agroecología</span><span lang="en" data-lang-block="en" hidden>From 15-15-15 to agroecology</span></h3>
+<p><span lang="es" data-lang-block="es">Lo que descubrió la ciencia en los últimos 30 años sobre NPK, cal viva y suelo vivo. Plan de transición de 3 años para quien lleva décadas con el paquete sintético.</span><span lang="en" data-lang-block="en" hidden>What science has learned over 30 years about NPK, quicklime and living soil. A 3-year transition plan for those who've spent decades on the synthetic package.</span></p>
+<span class="aprender-meta"><span lang="es" data-lang-block="es">~18 min · referencias peer-review</span><span lang="en" data-lang-block="en" hidden>~18 min · peer-reviewed references</span></span>
 </a>
 <a class="aprender-card" href="/aprender/bioseguridad">
 <div class="aprender-card-icon" aria-hidden="true">
@@ -494,13 +471,13 @@
 <circle cx="32" cy="30" r="20" stroke="url(#aprIcon2)" stroke-opacity=".25" stroke-dasharray="2 4"/>
 </svg>
 </div>
-<span class="aprender-tag">Salud · Bioseguridad</span>
-<h3>Bioseguridad en el campo</h3>
-<p>Lo que la ciencia probó sobre glifosato, paraquat y otros químicos. Caso Bayer-Monsanto. EPP mínimo. Riesgos también en biopreparados orgánicos.</p>
-<span class="aprender-meta">~25 min · evidencia peer-review</span>
+<span class="aprender-tag"><span lang="es" data-lang-block="es">Salud · Bioseguridad</span><span lang="en" data-lang-block="en" hidden>Health · Biosafety</span></span>
+<h3><span lang="es" data-lang-block="es">Bioseguridad en el campo</span><span lang="en" data-lang-block="en" hidden>Biosafety in the field</span></h3>
+<p><span lang="es" data-lang-block="es">Lo que la ciencia probó sobre glifosato, paraquat y otros químicos. Caso Bayer-Monsanto. EPP mínimo. Riesgos también en biopreparados orgánicos.</span><span lang="en" data-lang-block="en" hidden>What science has shown about glyphosate, paraquat and other chemicals. The Bayer-Monsanto case. Minimum PPE. Risks in organic bio-preparations too.</span></p>
+<span class="aprender-meta"><span lang="es" data-lang-block="es">~25 min · evidencia peer-review</span><span lang="en" data-lang-block="en" hidden>~25 min · peer-reviewed evidence</span></span>
 </a>
 </div>
-<p class="aprender-footer-note">Próximos artículos: variedades AGROSAVIA · manejo integrado de plagas · suelo vivo y micorrizas.</p>
+<p class="aprender-footer-note"><span lang="es" data-lang-block="es">Próximos artículos: variedades AGROSAVIA · manejo integrado de plagas · suelo vivo y micorrizas.</span><span lang="en" data-lang-block="en" hidden>Coming soon: AGROSAVIA varieties · integrated pest management · living soil and mycorrhizae.</span></p>
 </div>
 </section>
 
@@ -508,8 +485,8 @@
 <section id="equipo" class="equipo-section">
 <div class="section-inner">
 <header class="section-header">
-<p class="section-eyebrow">Quiénes están detrás</p>
-<h2 class="section-title">Una persona, una misión</h2>
+<p class="section-eyebrow"><span lang="es" data-lang-block="es">Quiénes están detrás</span><span lang="en" data-lang-block="en" hidden>Who's behind it</span></p>
+<h2 class="section-title"><span lang="es" data-lang-block="es">Una persona, una misión</span><span lang="en" data-lang-block="en" hidden>One person, one mission</span></h2>
 </header>
 <div class="equipo-content">
 <div class="equipo-foto">
@@ -517,16 +494,16 @@
 </div>
 <div class="equipo-bio">
 <h3>Miguel Guerrero</h3>
-<p class="equipo-role">Desarrollador · Agroecólogo aficionado · Operador</p>
-<p>Dev solo construyendo Chagra desde <strong>Guatoc, Choachí, Cundinamarca</strong> — a 2.538 msnm en la vertiente oriental de la Cordillera Oriental. Sin equipo corporativo, sin inversionistas de riesgo, sin aceleradoras. Solo código limpio, conocimiento agroecológico validado y un propósito: que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
+<p class="equipo-role"><span lang="es" data-lang-block="es">Desarrollador · Agroecólogo aficionado · Operador</span><span lang="en" data-lang-block="en" hidden>Developer · Amateur agroecologist · Operator</span></p>
+<p><span lang="es" data-lang-block="es">Dev solo construyendo Chagra desde <strong>Guatoc, Choachí, Cundinamarca</strong> — a 2.538 msnm en la vertiente oriental de la Cordillera Oriental. Sin equipo corporativo, sin inversionistas de riesgo, sin aceleradoras. Solo código limpio, conocimiento agroecológico validado y un propósito: que el campesino colombiano tenga herramientas digitales que lo respeten.</span><span lang="en" data-lang-block="en" hidden>A solo developer building Chagra from <strong>Guatoc, Choachí, Cundinamarca</strong> — at 2,538 m on the eastern slope of the Eastern Cordillera. No corporate team, no venture investors, no accelerators. Just clean code, validated agroecological knowledge and one purpose: that Colombian smallholder farmers have digital tools that respect them.</span></p>
 <div class="equipo-contacto">
-<p><strong>¿Quieres validar especies, contribuir código o usar Chagra en tu finca?</strong></p>
-<a href="mailto:chagra@guatoc.co" class="btn btn-primary">Escríbenos</a>
+<p><strong><span lang="es" data-lang-block="es">¿Quieres validar especies, contribuir código o usar Chagra en tu finca?</span><span lang="en" data-lang-block="en" hidden>Want to validate species, contribute code or use Chagra on your farm?</span></strong></p>
+<a href="mailto:chagra@guatoc.co" class="btn btn-primary"><span lang="es" data-lang-block="es">Escríbenos</span><span lang="en" data-lang-block="en" hidden>Get in touch</span></a>
 </div>
 </div>
 </div>
 <div class="aliados-section">
-<h4>Fuentes científicas citadas en el corpus</h4>
+<h4><span lang="es" data-lang-block="es">Fuentes científicas citadas en el corpus</span><span lang="en" data-lang-block="en" hidden>Scientific sources cited in the corpus</span></h4>
 <div class="aliados-logos">
 <span class="aliado">AGROSAVIA</span>
 <span class="aliado">UNAL Palmira</span>
@@ -536,9 +513,9 @@
 </div>
 </div>
 <div class="pueblos-section">
-<h4>Saberes etnobotánicos referenciados desde literatura científica</h4>
+<h4><span lang="es" data-lang-block="es">Saberes etnobotánicos referenciados desde literatura científica</span><span lang="en" data-lang-block="en" hidden>Ethnobotanical knowledge referenced from scientific literature</span></h4>
 <p class="pueblos-list">Emberá · Wounaan · Tikuna · Bora · Muisca · Wayuu · Kogui · Inga</p>
-<p class="pueblos-agradecimiento">Las referencias provienen de literatura académica colombiana (Bernal et al. 2015 Catálogo Plantas y Líquenes Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). No representan convenios formales de uso de conocimiento tradicional con las comunidades &mdash; ese trabajo está pendiente bajo Ley 21/1991 (Convenio 169 OIT) y Decreto 1320/1998.</p>
+<p class="pueblos-agradecimiento"><span lang="es" data-lang-block="es">Las referencias provienen de literatura académica colombiana (Bernal et al. 2015 Catálogo Plantas y Líquenes Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). No representan convenios formales de uso de conocimiento tradicional con las comunidades &mdash; ese trabajo está pendiente bajo Ley 21/1991 (Convenio 169 OIT) y Decreto 1320/1998.</span><span lang="en" data-lang-block="en" hidden>References come from Colombian academic literature (Bernal et al. 2015 Catalogue of Plants and Lichens of Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; MinSalud Vademecum 2008). They do not represent formal traditional-knowledge agreements with the communities &mdash; that work is pending under Law 21/1991 (ILO Convention 169) and Decree 1320/1998.</span></p>
 </div>
 </div>
 </section>
@@ -559,20 +536,20 @@
 </svg>
 <div>
 <p class="footer-nombre">Chagra</p>
-<p class="footer-tag">Agente agroecológico colombiano</p>
+<p class="footer-tag"><span lang="es" data-lang-block="es">Agente agroecológico colombiano</span><span lang="en" data-lang-block="en" hidden>Colombian agroecology agent</span></p>
 </div>
 </div>
 <div class="footer-links">
 <div class="footer-col">
 <h4>Chagra</h4>
 <ul>
-<li><a href="https://chagra.app">Aplicación web</a></li>
-<li><a href="https://github.com/guatoc-ecohub/Chagra">Código en GitHub</a></li>
-<li><a href="#mision">Misión</a></li>
+<li><a href="https://chagra.app"><span lang="es" data-lang-block="es">Aplicación web</span><span lang="en" data-lang-block="en" hidden>Web app</span></a></li>
+<li><a href="https://github.com/guatoc-ecohub/Chagra"><span lang="es" data-lang-block="es">Código en GitHub</span><span lang="en" data-lang-block="en" hidden>Code on GitHub</span></a></li>
+<li><a href="#pilares"><span lang="es" data-lang-block="es">Qué es</span><span lang="en" data-lang-block="en" hidden>What it is</span></a></li>
 </ul>
 </div>
 <div class="footer-col">
-<h4>Contacto</h4>
+<h4><span lang="es" data-lang-block="es">Contacto</span><span lang="en" data-lang-block="en" hidden>Contact</span></h4>
 <ul>
 <li><a href="mailto:chagra@guatoc.co">chagra@guatoc.co</a></li>
 <li><a href="https://guatoc.co">Guatoc-EcoHub</a></li>
@@ -581,14 +558,14 @@
 </div>
 </div>
 <div class="footer-bottom">
-<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> · DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
-<p>Hecho desde Guatoc · Choachí · Cundinamarca · Colombia</p>
-<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> · AGPL-3.0 · 2026</p>
-<p class="footer-disclaimer"><em>La palabra «chagra» proviene de las comunidades indígenas amazónicas y andinas. Su uso en este proyecto busca honrar ese legado con responsabilidad.</em></p>
+<p class="legal-footer"><span lang="es" data-lang-block="es">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales.</span><span lang="en" data-lang-block="en" hidden>Reference information based on academic literature and public regulations (ICA, AGROSAVIA, MADS). No formal institutional agreements.</span> <a href="/legal/"><span lang="es" data-lang-block="es">Términos y condiciones</span><span lang="en" data-lang-block="en" hidden>Terms &amp; conditions</span></a> · DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
+<p><span lang="es" data-lang-block="es">Hecho desde Guatoc · Choachí · Cundinamarca · Colombia · con energía solar</span><span lang="en" data-lang-block="en" hidden>Made in Guatoc · Choachí · Cundinamarca · Colombia · solar-powered</span></p>
+<p><span lang="es" data-lang-block="es">Una iniciativa de</span><span lang="en" data-lang-block="en" hidden>An initiative by</span> <a href="https://guatoc.co">Guatoc-EcoHub</a> · AGPL-3.0 · 2026</p>
+<p class="footer-disclaimer"><em><span lang="es" data-lang-block="es">La palabra «chagra» proviene de las comunidades indígenas amazónicas y andinas. Su uso en este proyecto busca honrar ese legado con responsabilidad.</span><span lang="en" data-lang-block="en" hidden>The word "chagra" comes from Amazonian and Andean Indigenous communities. Its use in this project seeks to honour that legacy responsibly.</span></em></p>
 </div>
 </div>
 </footer>
 
-<script src="main.js?v=2026-05-21-v3"></script>
+<script src="main.js?v=2026-06-14"></script>
 </body>
 </html>
