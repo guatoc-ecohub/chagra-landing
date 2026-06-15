@@ -1,6 +1,75 @@
 (function(){
 'use strict';
 
+const root=document.documentElement;
+
+/* ===== I18N + AUDIENCIA · toggles ===== */
+/* El contenido vive duplicado en el HTML con [data-lang-block="es|en"] y, donde
+   aplica, [data-aud-show="campesino|institucion"]. JS solo alterna atributos en
+   <html> y la visibilidad real; sin texto inyectado (compatible con CSP estricta
+   y con SEO: ambos idiomas están en el DOM). */
+
+function applyVisibility(){
+  const lang=root.getAttribute('data-lang')||'es';
+  const aud=root.getAttribute('data-aud')||'campesino';
+  // Bloques por idioma
+  document.querySelectorAll('[data-lang-block]').forEach(el=>{
+    const matchLang=el.getAttribute('data-lang-block')===lang;
+    // Si además depende de audiencia, ambos deben coincidir
+    const audAttr=el.getAttribute('data-aud-show');
+    const matchAud=!audAttr||audAttr===aud;
+    el.hidden=!(matchLang&&matchAud);
+  });
+  // Elementos que SOLO dependen de audiencia (sin data-lang-block propio)
+  document.querySelectorAll('[data-aud-show]:not([data-lang-block])').forEach(el=>{
+    el.hidden=el.getAttribute('data-aud-show')!==aud;
+  });
+}
+
+function setLang(lang){
+  root.setAttribute('data-lang',lang);
+  root.setAttribute('lang',lang==='en'?'en':'es-CO');
+  document.querySelectorAll('[data-lang-set]').forEach(b=>{
+    const on=b.getAttribute('data-lang-set')===lang;
+    b.classList.toggle('is-active',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+  });
+  try{localStorage.setItem('chagra-lang',lang);}catch(e){/* private mode */}
+  applyVisibility();
+}
+
+function setAud(aud){
+  root.setAttribute('data-aud',aud);
+  document.querySelectorAll('[data-aud-set]').forEach(b=>{
+    const on=b.getAttribute('data-aud-set')===aud;
+    b.classList.toggle('is-active',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+  });
+  try{localStorage.setItem('chagra-aud',aud);}catch(e){/* private mode */}
+  applyVisibility();
+}
+
+document.querySelectorAll('[data-lang-set]').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.getAttribute('data-lang-set')));
+});
+document.querySelectorAll('[data-aud-set]').forEach(b=>{
+  b.addEventListener('click',()=>setAud(b.getAttribute('data-aud-set')));
+});
+
+// Restaurar preferencias guardadas o detectar idioma del navegador
+(function initPrefs(){
+  let lang='es',aud='campesino';
+  try{
+    const sl=localStorage.getItem('chagra-lang');
+    const sa=localStorage.getItem('chagra-aud');
+    if(sl==='es'||sl==='en')lang=sl;
+    else if((navigator.language||'').toLowerCase().startsWith('en'))lang='en';
+    if(sa==='campesino'||sa==='institucion')aud=sa;
+  }catch(e){/* private mode */}
+  setLang(lang);
+  setAud(aud);
+})();
+
 /* ===== MOBILE MENU ===== */
 const toggle=document.querySelector('.mobile-menu-toggle');
 const nav=document.getElementById('primary-nav');
@@ -59,50 +128,13 @@ const counterObserver=new IntersectionObserver((entries)=>{
 },{threshold:.5});
 counters.forEach(c=>counterObserver.observe(c));
 
-/* ===== CAROUSEL ===== */
-const track=document.querySelector('.carousel-track');
-const dots=document.querySelectorAll('.carousel-dot');
-if(track&&dots.length){
-  let current=0;
-  function scrollToSlide(i){
-    const cards=track.querySelectorAll('.impact-card');
-    if(!cards[i])return;
-    cards[i].scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});
-    dots.forEach((d,j)=>d.classList.toggle('active',j===i));
-    current=i;
-  }
-  dots.forEach((d,i)=>d.addEventListener('click',()=>scrollToSlide(i)));
-  // Auto-advance removido (operator 2026-05-19): para una presentacion el
-  // carrusel debe avanzar solo cuando el operator lo indique. El usuario
-  // controla con swipe horizontal o clic en los dots.
-  // Sync dots with scroll
-  track.addEventListener('scroll',()=>{
-    const cards=Array.from(track.querySelectorAll('.impact-card'));
-    const idx=cards.findIndex(c=>{
-      const r=c.getBoundingClientRect();
-      return r.left>=0&&r.left<window.innerWidth/2;
-    });
-    if(idx>=0){
-      dots.forEach((d,j)=>d.classList.toggle('active',j===idx));
-      current=idx;
-    }
-  },{passive:true});
-}
-
 /* ===== HEADER SHADOW ON SCROLL ===== */
 const header=document.querySelector('.site-header');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>10){
-    header.style.borderBottomColor='rgba(254,243,199,.15)';
-  }else{
-    header.style.borderBottomColor='rgba(254,243,199,.08)';
-  }
-},{passive:true});
-
-/* ===== SECTION FADE-IN: removido (operator 2026-05-19).
-   El fade-in con translateY(20px) generaba layout shifts perceptibles como
-   "saltos" al scrollear. Para una pagina de presentacion ejecutiva preferimos
-   layout estable y scroll predecible. Las secciones aparecen renderizadas
-   normales desde el primer paint. */
+if(header){
+  window.addEventListener('scroll',()=>{
+    header.style.borderBottomColor=window.scrollY>10
+      ?'rgba(248,250,252,.15)':'rgba(248,250,252,.08)';
+  },{passive:true});
+}
 
 })();
