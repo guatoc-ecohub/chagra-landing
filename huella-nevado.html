@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Calcula la huella de carbono de tu viaje a los nevados de Colombia y compénsala sembrando árboles nativos con comunidades campesinas.">
+<meta name="description" content="Calcula la huella de carbono completa de tu viaje a los nevados de Colombia —transporte, comida, alojamiento y compras— y compénsala sembrando árboles nativos con comunidades campesinas.">
 <meta name="theme-color" content="#1a472a">
 
-<meta property="og:title" content="Huella de tu visita al nevado — La Cordada × Chagra">
-<meta property="og:description" content="Viaja a los nevados colombianos con conciencia. Mide tu impacto, compénsalo sembrando.">
+<meta property="og:title" content="Huella de tu visita al nevado — La Cordada × Guatoc">
+<meta property="og:description" content="Viaja a los nevados colombianos con conciencia. Mide tu impacto completo y compénsalo sembrando.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://chagra.bio/og-image.svg">
 
-<title>Huella de tu visita al nevado — La Cordada × Chagra</title>
+<title>Huella de tu visita al nevado — La Cordada × Guatoc</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,26 +28,32 @@
   --bg-deep: #0a0f0c;
   --bg-card: rgba(26, 71, 42, 0.15);
   --bg-card-hover: rgba(26, 71, 42, 0.28);
-  --border-subtle: rgba(212, 175, 55, 0.15);
-  --text-primary: #f0efe8;
-  --text-secondary: #a8b5a2;
-  --text-muted: #6b7a65;
+  --border-subtle: rgba(212, 175, 55, 0.22);
+  --text-primary: #f4f3ec;
+  --text-secondary: #bcc7b6;
+  --text-muted: #8c9a86;
   --glass-bg: rgba(10, 15, 12, 0.7);
-  --glass-border: rgba(212, 175, 55, 0.12);
+  --glass-border: rgba(212, 175, 55, 0.18);
   --glass-blur: 20px;
   --radius: 16px;
   --radius-sm: 10px;
   --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --c-transporte: #3aa0d8;
+  --c-comida: #e0a93b;
+  --c-alojamiento: #2e8b57;
+  --c-compras: #b56fd8;
 }
 
 [data-theme="light"] {
   --bg-deep: #f5f3ec;
-  --bg-card: rgba(26, 71, 42, 0.06);
-  --bg-card-hover: rgba(26, 71, 42, 0.12);
-  --text-primary: #1a1f1c;
-  --text-secondary: #4a5548;
-  --text-muted: #7a8576;
-  --glass-bg: rgba(245, 243, 236, 0.85);
+  --bg-card: rgba(26, 71, 42, 0.08);
+  --bg-card-hover: rgba(26, 71, 42, 0.14);
+  --border-subtle: rgba(26, 71, 42, 0.22);
+  --text-primary: #16201a;
+  --text-secondary: #3c473a;
+  --text-muted: #5c6858;
+  --glass-bg: rgba(245, 243, 236, 0.9);
+  --glass-border: rgba(26, 71, 42, 0.18);
 }
 
 html { scroll-behavior: smooth; }
@@ -100,11 +106,11 @@ body {
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(212,175,55,0.12);
-  border: 1px solid rgba(212,175,55,0.25);
+  background: rgba(212,175,55,0.14);
+  border: 1px solid rgba(212,175,55,0.3);
   border-radius: 100px;
   padding: 6px 18px 6px 10px;
-  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
   color: var(--brand-gold-light);
   margin-bottom: 1.5rem;
   backdrop-filter: blur(8px);
@@ -130,13 +136,13 @@ body {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 300;
   color: var(--text-secondary);
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto 2rem;
 }
 .hero-scroll {
   position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 6px;
-  color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.06em;
+  color: var(--text-secondary); font-size: 0.74rem; letter-spacing: 0.06em;
   text-transform: uppercase; cursor: pointer; z-index: 1;
   animation: float 3s ease-in-out infinite;
 }
@@ -156,8 +162,13 @@ body {
   font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;
 }
 .calculator h2 span { color: var(--brand-gold-light); }
-.calculator-sub { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem; }
+.calculator-sub { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem; }
 
+.form-section-title {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--brand-gold-light); margin: 1.5rem 0 0.6rem; display: flex; align-items: center; gap: 7px;
+}
+.form-section-title:first-of-type { margin-top: 0.5rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
 
@@ -177,8 +188,9 @@ body {
 .form-group select:focus, .form-group input:focus {
   outline: none; border-color: var(--brand-gold); background: var(--bg-card-hover);
 }
-.form-group select:hover, .form-group input:hover { border-color: rgba(212,175,55,0.3); }
+.form-group select:hover, .form-group input:hover { border-color: rgba(212,175,55,0.45); }
 .form-full { grid-column: 1 / -1; }
+.field-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -188,15 +200,15 @@ body {
   cursor: pointer; transition: var(--transition);
 }
 .btn-primary {
-  background: linear-gradient(135deg, #1a472a 0%, #236b3a 100%);
-  color: #f0efe8;
+  background: linear-gradient(135deg, #1a472a 0%, #2a7a47 100%);
+  color: #ffffff;
   box-shadow: 0 4px 20px rgba(26,71,42,0.4);
 }
 .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(26,71,42,0.5); }
 .btn-primary:active { transform: translateY(0); }
 .btn-gold {
-  background: linear-gradient(135deg, #d4af37 0%, #c49b2c 100%);
-  color: #1a1f1c;
+  background: linear-gradient(135deg, #d4af37 0%, #b8881f 100%);
+  color: #14100a;
   font-weight: 700;
   width: 100%;
   padding: 1rem;
@@ -222,28 +234,44 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.result-label { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; }
-.result-comparisons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+.result-label { color: var(--text-secondary); font-size: 0.92rem; margin-top: 0.25rem; }
+.result-route { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem; }
+.result-perperson { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* ── Breakdown ── */
+.breakdown { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.bd-row { text-align: left; }
+.bd-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.86rem; margin-bottom: 4px; }
+.bd-name { display: flex; align-items: center; gap: 7px; color: var(--text-primary); font-weight: 500; }
+.bd-val { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+.bd-val span { color: var(--text-muted); font-weight: 400; font-size: 0.78rem; margin-left: 4px; }
+.bd-track { height: 9px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
+[data-theme="light"] .bd-track { background: rgba(26,71,42,0.1); }
+.bd-fill { height: 100%; border-radius: 100px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+.bd-dot { width: 9px; height: 9px; border-radius: 3px; flex-shrink: 0; }
+
+.result-comparisons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem; }
 .result-comp {
-  background: rgba(10,15,12,0.4);
+  background: rgba(10,15,12,0.45);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 0.85rem;
   font-size: 0.82rem;
   text-align: center;
+  color: var(--text-secondary);
 }
-.result-comp strong { display: block; font-size: 1.2rem; color: var(--brand-gold-light); }
+[data-theme="light"] .result-comp { background: rgba(26,71,42,0.06); }
+.result-comp strong { display: block; font-size: 1.25rem; color: var(--brand-gold-light); margin-bottom: 2px; }
+[data-theme="light"] .result-comp strong { color: #9a7a14; }
 
-.cta-compensate {
-  margin-top: 1.5rem; text-align: center;
-}
-.cta-compensate p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
-.cta-compensate a { color: var(--brand-gold); font-weight: 600; text-decoration: none; }
-.cta-compensate a:hover { text-decoration: underline; }
+.cta-compensate { margin-top: 1.5rem; text-align: center; }
+.cta-compensate > p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.cta-note { font-size: 0.74rem; color: var(--text-muted); margin-top: 0.5rem; }
 
 /* ── Theme toggle ── */
 .theme-toggle {
   position: fixed; top: 1rem; right: 1rem; z-index: 10;
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 42px; height: 42px; border-radius: 50%;
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -258,20 +286,24 @@ body {
 .footer {
   text-align: center; padding: 3rem 1.5rem;
   border-top: 1px solid var(--border-subtle);
-  color: var(--text-muted); font-size: 0.8rem;
+  color: var(--text-secondary); font-size: 0.82rem;
 }
-.footer a { color: var(--brand-gold); text-decoration: none; }
+.footer a { color: var(--brand-gold-light); text-decoration: none; font-weight: 600; }
+[data-theme="light"] .footer a { color: #9a7a14; }
 .footer a:hover { text-decoration: underline; }
-.footer-logos { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+.footer-logos { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-bottom: 1rem; font-size: 0.92rem; font-weight: 700; color: var(--text-primary); }
 
 /* ── Disclaimer ── */
 .disclaimer {
-  font-size: 0.72rem; color: var(--text-muted);
-  margin-top: 1.5rem; padding: 0.75rem;
-  border-left: 2px solid var(--brand-gold);
-  background: rgba(10,15,12,0.3); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.74rem; color: var(--text-muted); line-height: 1.55;
+  margin-top: 1.5rem; padding: 0.85rem 0.9rem;
+  border-left: 3px solid var(--brand-gold);
+  background: rgba(10,15,12,0.35); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
-.disclaimer a { color: var(--brand-gold); }
+[data-theme="light"] .disclaimer { background: rgba(26,71,42,0.05); }
+.disclaimer a { color: var(--brand-gold-light); }
+[data-theme="light"] .disclaimer a { color: #9a7a14; }
+.disclaimer strong { color: var(--text-secondary); }
 
 /* ── a11y ── */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -281,6 +313,9 @@ body {
   .calculator { padding: 1.25rem; }
   .result-number { font-size: 2.5rem; }
   .result-comparisons { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 </style>
 </head>
@@ -294,39 +329,41 @@ body {
   <section class="hero" aria-label="Hero principal">
     <div class="hero-mountain" aria-hidden="true"></div>
     <div class="hero-content">
-      <div class="hero-badge" aria-hidden="true">
-        <span class="hero-badge-dot"></span>
-        La Cordada · Xperiencia
+      <div class="hero-badge">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        La Cordada × Guatoc
       </div>
       <h1>Huella de tu visita al nevado</h1>
-      <p>Viaja a los nevados colombianos con conciencia. Mide el CO₂e de tu trayecto puerta a puerta y compénsalo sembrando árboles nativos con comunidades campesinas de páramo.</p>
+      <p>Viaja a los nevados colombianos con conciencia. Mide el CO₂e completo de tu viaje —transporte, comida, alojamiento y compras— y compénsalo sembrando árboles nativos con comunidades campesinas de páramo.</p>
     </div>
     <div class="hero-scroll" onclick="document.getElementById('calculadora').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0" aria-label="Ir a la calculadora">
       <span>Calcular huella</span>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </div>
   </section>
 
   <section class="section" id="calculadora" aria-labelledby="calc-title">
     <div class="calculator">
-      <h2 id="calc-title"><span>Calculadora</span> de CO₂e</h2>
-      <p class="calculator-sub">Estimación puerta a puerta: tu origen → nevado → tu casa</p>
+      <h2 id="calc-title"><span>Calculadora</span> de huella completa</h2>
+      <p class="calculator-sub">Tu viaje de principio a fin: trayecto, lo que comes, dónde duermes y lo que compras.</p>
 
       <form id="calcForm" onsubmit="calcularHuella(event)" novalidate>
+
+        <div class="form-section-title">🚗 Trayecto</div>
         <div class="form-grid">
           <div class="form-group">
             <label for="origen">Ciudad de origen</label>
             <select id="origen" required>
               <option value="">Selecciona…</option>
               <optgroup label="Principales">
-                <option value="bogota">Bogotá (662 km a Cocuy)</option>
-                <option value="medellin">Medellín (520 km a Ruiz)</option>
-                <option value="cali">Cali (310 km a Huila)</option>
-                <option value="bucaramanga">Bucaramanga (380 km a Cocuy)</option>
-                <option value="manizales">Manizales (30 km a Ruiz)</option>
-                <option value="pereira">Pereira (50 km a Santa Isabel)</option>
-                <option value="ibague">Ibagué (80 km a Tolima)</option>
-                <option value="neiva">Neiva (170 km a Huila)</option>
+                <option value="bogota">Bogotá</option>
+                <option value="medellin">Medellín</option>
+                <option value="cali">Cali</option>
+                <option value="bucaramanga">Bucaramanga</option>
+                <option value="manizales">Manizales</option>
+                <option value="pereira">Pereira</option>
+                <option value="ibague">Ibagué</option>
+                <option value="neiva">Neiva</option>
               </optgroup>
             </select>
           </div>
@@ -335,11 +372,11 @@ body {
             <label for="nevado">Nevado destino</label>
             <select id="nevado" required>
               <option value="">Selecciona…</option>
-              <option value="cocuy" data-dist-bogota="662" data-dist-bucaramanga="380" data-dist-manizales="680" data-dist-pereira="610" data-dist-ibague="550" data-dist-neiva="700" data-dist-medellin="750" data-dist-cali="850">Sierra Nevada del Cocuy</option>
-              <option value="ruiz" data-dist-bogota="320" data-dist-medellin="230" data-dist-cali="280" data-dist-bucaramanga="580" data-dist-manizales="30" data-dist-pereira="45" data-dist-ibague="120" data-dist-neiva="320">Nevado del Ruiz</option>
-              <option value="santa_isabel" data-dist-bogota="340" data-dist-medellin="250" data-dist-cali="300" data-dist-bucaramanga="600" data-dist-manizales="50" data-dist-pereira="50" data-dist-ibague="130" data-dist-neiva="340">Nevado de Santa Isabel</option>
-              <option value="tolima" data-dist-bogota="300" data-dist-medellin="270" data-dist-cali="260" data-dist-bucaramanga="560" data-dist-manizales="90" data-dist-pereira="80" data-dist-ibague="80" data-dist-neiva="280">Nevado del Tolima</option>
-              <option value="huila" data-dist-bogota="520" data-dist-medellin="520" data-dist-cali="310" data-dist-bucaramanga="720" data-dist-manizales="330" data-dist-pereira="350" data-dist-ibague="250" data-dist-neiva="170">Nevado del Huila</option>
+              <option value="cocuy">Sierra Nevada del Cocuy</option>
+              <option value="ruiz">Nevado del Ruiz</option>
+              <option value="santa_isabel">Nevado de Santa Isabel</option>
+              <option value="tolima">Nevado del Tolima</option>
+              <option value="huila">Nevado del Huila</option>
             </select>
           </div>
 
@@ -351,7 +388,7 @@ body {
               <option value="bus">🚌 Bus / flota</option>
               <option value="van">🚐 Van / camioneta compartida</option>
               <option value="moto">🏍️ Moto</option>
-              <option value="avion">✈️ Avión (solo trayecto aéreo)</option>
+              <option value="avion">✈️ Avión (trayecto aéreo)</option>
             </select>
           </div>
 
@@ -361,9 +398,55 @@ body {
           </div>
         </div>
 
-        <div class="form-group form-full" style="margin-top:1rem">
+        <div class="form-section-title">📅 Estadía</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="dias">Días del viaje</label>
+            <input type="number" id="dias" min="1" max="30" value="3" required>
+            <span class="field-hint">Define comida y noches de alojamiento</span>
+          </div>
+          <div class="form-group">
+            <label for="alojamiento">Alojamiento</label>
+            <select id="alojamiento" required>
+              <option value="camping">⛺ Camping / refugio</option>
+              <option value="posada">🏡 Posada / hostal campesino</option>
+              <option value="hotel">🏨 Hotel</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section-title">🍽️ Comida</div>
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label for="comida">¿Qué comes en el viaje?</label>
+            <select id="comida" required>
+              <option value="vegano">🌱 Vegano (sin productos animales)</option>
+              <option value="vegetariano">🥗 Vegetariano (con lácteos/huevo)</option>
+              <option value="pollo" selected>🍗 Pollo y pescado</option>
+              <option value="mixto">🍖 Mixto (algo de carne roja)</option>
+              <option value="carne">🥩 Carne roja frecuente</option>
+            </select>
+            <span class="field-hint">Por persona, durante todos los días del viaje</span>
+          </div>
+        </div>
+
+        <div class="form-section-title">🛍️ Compras</div>
+        <div class="form-grid">
+          <div class="form-group form-full">
+            <label for="compras">¿Qué compraste para el viaje?</label>
+            <select id="compras" required>
+              <option value="nada" selected>Nada / casi nada</option>
+              <option value="artesanias">🧶 Artesanías y recuerdos (~$50k)</option>
+              <option value="provisiones">🥫 Provisiones y mercado (~$100k)</option>
+              <option value="equipo">🥾 Ropa o equipo outdoor (~$300k)</option>
+            </select>
+            <span class="field-hint">Por persona. Lo nuevo que compraste para esta salida</span>
+          </div>
+        </div>
+
+        <div class="form-group form-full" style="margin-top:1.5rem">
           <button type="submit" class="btn btn-primary" style="width:100%">
-            Calcular mi huella
+            Calcular mi huella completa
           </button>
         </div>
       </form>
@@ -372,7 +455,12 @@ body {
     </div>
 
     <div class="disclaimer">
-      <strong>Factores de emisión provisionales</strong> (kg CO₂e/km, en revisión por DR-HUELLA-CARBONO-VIAJE-2026-06-17): carro 0.17, bus 0.03/pax-km, van 0.10, moto 0.10, avión 0.25. Distancias estimadas por ruta terrestre. <a href="https://github.com/guatoc-ecohub/chagra-landing" target="_blank" rel="noopener">Código abierto</a>.
+      <strong>Factores de emisión provisionales</strong> (en revisión, ref. DR-HUELLA-CARBONO-VIAJE-2026-06-17).
+      Transporte (kg CO₂e/km): carro 0.17, bus 0.03/pax, van 0.10/pax, moto 0.10, avión 0.25/pax.
+      Comida (kg CO₂e/persona·día): vegano 2.9, vegetariano 3.8, pollo/pescado 4.7, mixto 5.6, carne roja 7.2.
+      Alojamiento (kg CO₂e/persona·noche): camping 1.5, posada 6, hotel 15.
+      Compras (kg CO₂e/persona): artesanías 5, provisiones 12, equipo 40.
+      Distancias estimadas por ruta terrestre. <a href="https://github.com/guatoc-ecohub/chagra-landing" target="_blank" rel="noopener">Código abierto</a>.
     </div>
   </section>
 </main>
@@ -381,20 +469,44 @@ body {
   <div class="footer-logos">
     <span>🏔️ La Cordada</span>
     <span style="color:var(--brand-gold)">×</span>
-    <span>🌱 Chagra</span>
+    <span>🌿 Guatoc</span>
   </div>
-  <p>Compensa tu huella sembrando árboles nativos con <a href="https://chagra.bio" target="_blank" rel="noopener">Chagra</a> — cultivando en la diversidad para remediar el suelo.</p>
+  <p>Compensa tu huella sembrando árboles nativos con <a href="https://guatoc.co" target="_blank" rel="noopener">Guatoc</a> — restaurando páramo y bosque andino junto a comunidades campesinas.</p>
   <p style="margin-top:0.5rem">© 2026 — Hecho en los Andes colombianos.</p>
 </footer>
 
 <script>
-// ── Datos ──
+// ── Factores ──
 const FACTORES_EMISION = {
-  carro:   { kgCO2e_km: 0.17, label: 'Carro particular' },
-  bus:     { kgCO2e_km: 0.03, label: 'Bus / flota',     perPax: true },
-  van:     { kgCO2e_km: 0.10, label: 'Van / camioneta',  perPax: true },
-  moto:    { kgCO2e_km: 0.10, label: 'Moto' },
-  avion:   { kgCO2e_km: 0.25, label: 'Avión',           perPax: true },
+  carro: { kgCO2e_km: 0.17, label: 'Carro particular' },
+  bus:   { kgCO2e_km: 0.03, label: 'Bus / flota',    perPax: true },
+  van:   { kgCO2e_km: 0.10, label: 'Van / camioneta', perPax: true },
+  moto:  { kgCO2e_km: 0.10, label: 'Moto' },
+  avion: { kgCO2e_km: 0.25, label: 'Avión',          perPax: true },
+};
+
+// kg CO₂e por persona y día (dieta diaria completa, 3 comidas)
+const FACTOR_COMIDA = {
+  vegano:      { v: 2.9, label: 'Vegano' },
+  vegetariano: { v: 3.8, label: 'Vegetariano' },
+  pollo:       { v: 4.7, label: 'Pollo y pescado' },
+  mixto:       { v: 5.6, label: 'Mixto' },
+  carne:       { v: 7.2, label: 'Carne roja frecuente' },
+};
+
+// kg CO₂e por persona y noche
+const FACTOR_ALOJAMIENTO = {
+  camping: { v: 1.5, label: 'Camping / refugio' },
+  posada:  { v: 6,   label: 'Posada / hostal' },
+  hotel:   { v: 15,  label: 'Hotel' },
+};
+
+// kg CO₂e por persona (compra puntual para el viaje)
+const FACTOR_COMPRAS = {
+  nada:        { v: 0,  label: 'Sin compras' },
+  artesanias:  { v: 5,  label: 'Artesanías y recuerdos' },
+  provisiones: { v: 12, label: 'Provisiones y mercado' },
+  equipo:      { v: 40, label: 'Ropa / equipo outdoor' },
 };
 
 const DISTANCIAS = {
@@ -415,21 +527,19 @@ const NOMBRES = {
   manizales: 'Manizales', pereira: 'Pereira', ibague: 'Ibagué', neiva: 'Neiva',
 };
 
-const FACTOR_SIEMBRA = { kgCO2e_por_arbol: 21, label: 'kg CO₂e capturados por árbol en 10 años' };
+const CO2E_POR_ARBOL = 21; // kg CO₂e capturados por árbol nativo en ~10 años (bosque andino)
+const fmt = (n) => Math.round(n).toLocaleString('es-CO');
 
 function toggleTheme() {
   const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   document.getElementById('themeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
   try { localStorage.setItem('chagra:theme', next); } catch(_){}
 }
-
 (function() {
   try {
-    const saved = localStorage.getItem('chagra:theme');
-    if (saved === 'light') {
+    if (localStorage.getItem('chagra:theme') === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
       document.getElementById('themeIcon').textContent = '🌙';
     }
@@ -442,59 +552,78 @@ function calcularHuella(e) {
   const nevado = document.getElementById('nevado').value;
   const modo = document.getElementById('transporte').value;
   const personas = parseInt(document.getElementById('personas').value, 10);
+  const dias = parseInt(document.getElementById('dias').value, 10);
+  const dietaKey = document.getElementById('comida').value;
+  const alojKey = document.getElementById('alojamiento').value;
+  const comprasKey = document.getElementById('compras').value;
 
-  if (!origen || !nevado || !modo || !personas || personas < 1) return;
-
-  const km = DISTANCIAS[origen]?.[nevado];
-  if (!km) {
-    alert('No tenemos datos de distancia para esa ruta. Usa el campo manual o contáctanos.');
+  if (!origen || !nevado || !modo || !personas || personas < 1 || !dias || dias < 1) {
+    alert('Completa origen, nevado, transporte, personas y días.');
     return;
   }
+  const km = DISTANCIAS[origen]?.[nevado];
+  if (!km) { alert('No tenemos datos de distancia para esa ruta. Escríbenos y la agregamos.'); return; }
 
+  // ── Cálculos por categoría ──
   const factor = FACTORES_EMISION[modo];
   const kmTotal = km * 2;
-  let kgCO2e = kmTotal * factor.kgCO2e_km;
-  if (factor.perPax) { kgCO2e = kgCO2e * personas; }
+  let co2Transporte = kmTotal * factor.kgCO2e_km;
+  if (factor.perPax) co2Transporte *= personas; // bus/van/avión: por pasajero
 
-  const kgPorPersona = factor.perPax ? factor.kgCO2e_km * kmTotal : kgCO2e / personas;
-  const diasLuz = Math.round(kgCO2e / 3.6);
-  const kmCarroEquiv = Math.round(kgCO2e / 0.12);
-  const arboles = Math.max(1, Math.round(kgCO2e / FACTOR_SIEMBRA.kgCO2e_por_arbol));
+  const noches = Math.max(1, dias - 1); // un viaje de N días ≈ N-1 noches fuera
+  const co2Comida = dias * personas * FACTOR_COMIDA[dietaKey].v;
+  const co2Aloj = noches * personas * FACTOR_ALOJAMIENTO[alojKey].v;
+  const co2Compras = personas * FACTOR_COMPRAS[comprasKey].v;
+
+  const total = co2Transporte + co2Comida + co2Aloj + co2Compras;
+  const porPersona = total / personas;
+  const arboles = Math.max(1, Math.round(total / CO2E_POR_ARBOL));
+  const diasLuz = Math.round(total / 3.6);
+  const kmCarroEquiv = Math.round(total / 0.12);
+
+  const cats = [
+    { nombre: 'Transporte', icon: '🚗', val: co2Transporte, color: 'var(--c-transporte)' },
+    { nombre: 'Comida',     icon: '🍽️', val: co2Comida,     color: 'var(--c-comida)' },
+    { nombre: 'Alojamiento',icon: '🛏️', val: co2Aloj,       color: 'var(--c-alojamiento)' },
+    { nombre: 'Compras',    icon: '🛍️', val: co2Compras,    color: 'var(--c-compras)' },
+  ].filter(c => c.val > 0).sort((a, b) => b.val - a.val);
+
+  const maxVal = Math.max(...cats.map(c => c.val), 1);
+  const barras = cats.map(c => {
+    const pct = total > 0 ? Math.round((c.val / total) * 100) : 0;
+    const width = Math.round((c.val / maxVal) * 100);
+    return `
+      <div class="bd-row">
+        <div class="bd-head">
+          <span class="bd-name"><span class="bd-dot" style="background:${c.color}"></span>${c.icon} ${c.nombre}</span>
+          <span class="bd-val">${fmt(c.val)} kg<span>${pct}%</span></span>
+        </div>
+        <div class="bd-track"><div class="bd-fill" style="width:${width}%;background:${c.color}"></div></div>
+      </div>`;
+  }).join('');
 
   const resultado = document.getElementById('resultado');
   resultado.className = 'result';
   resultado.innerHTML = `
     <div class="result-card">
-      <div class="result-number">${kgCO2e.toLocaleString('es-CO', {maximumFractionDigits:0})}</div>
-      <div class="result-label">kg CO₂e total · ida y vuelta</div>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.3rem">
-        ${NOMBRES[origen]} → ${NOMBRES[nevado]} (${km} km × 2 = ${kmTotal} km) · ${personas} ${personas === 1 ? 'persona' : 'personas'} · ${factor.label}
-      </p>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem">
-        ${kgPorPersona.toLocaleString('es-CO', {maximumFractionDigits:0})} kg CO₂e por persona
-      </p>
+      <div class="result-number">${fmt(total)}</div>
+      <div class="result-label">kg CO₂e — huella completa del viaje</div>
+      <p class="result-route">${NOMBRES[origen]} → ${NOMBRES[nevado]} · ${dias} día${dias !== 1 ? 's' : ''} · ${personas} ${personas === 1 ? 'persona' : 'personas'}</p>
+      <p class="result-perperson">${fmt(porPersona)} kg CO₂e por persona</p>
+      <div class="breakdown">${barras}</div>
     </div>
     <div class="result-comparisons">
-      <div class="result-comp">
-        <strong>${diasLuz.toLocaleString('es-CO')}</strong>
-        días de luz eléctrica en tu casa
-      </div>
-      <div class="result-comp">
-        <strong>${kmCarroEquiv.toLocaleString('es-CO')} km</strong>
-        equivalentes en carro promedio
-      </div>
+      <div class="result-comp"><strong>${fmt(diasLuz)}</strong>días de luz en una casa colombiana</div>
+      <div class="result-comp"><strong>${fmt(kmCarroEquiv)} km</strong>equivalentes en carro promedio</div>
     </div>
     <div class="cta-compensate">
-      <p>Tu viaje generó ${kgCO2e.toLocaleString('es-CO', {maximumFractionDigits:0})} kg CO₂e</p>
-      <a href="https://chagra.bio" target="_blank" rel="noopener" class="btn btn-gold">
-        🌱 Compénsalo sembrando ${arboles} árbol${arboles !== 1 ? 'es' : ''} nativo${arboles !== 1 ? 's' : ''} con Chagra
+      <p>Compensa tu impacto y deja huella positiva en el páramo</p>
+      <a href="https://guatoc.co" target="_blank" rel="noopener" class="btn btn-gold">
+        🌿 Siembra ${arboles} árbol${arboles !== 1 ? 'es' : ''} nativo${arboles !== 1 ? 's' : ''} con Guatoc
       </a>
-      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem">
-        Cada árbol captura ~${FACTOR_SIEMBRA.kgCO2e_por_arbol} kg CO₂e en 10 años en bosque andino.
-      </p>
+      <p class="cta-note">Cada árbol nativo captura ~${CO2E_POR_ARBOL} kg CO₂e en 10 años en bosque andino.</p>
     </div>
   `;
-
   resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 </script>
