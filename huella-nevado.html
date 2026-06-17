@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es-CO" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Calcula la huella de carbono de tu viaje a los nevados de Colombia y compénsala sembrando árboles nativos con comunidades campesinas.">
+<meta name="theme-color" content="#1a472a">
+
+<meta property="og:title" content="Huella de tu visita al nevado — La Cordada × Chagra">
+<meta property="og:description" content="Viaja a los nevados colombianos con conciencia. Mide tu impacto, compénsalo sembrando.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://chagra.bio/og-image.svg">
+
+<title>Huella de tu visita al nevado — La Cordada × Chagra</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand-green: #1a472a;
+  --brand-gold: #d4af37;
+  --brand-gold-light: #f0d878;
+  --bg-deep: #0a0f0c;
+  --bg-card: rgba(26, 71, 42, 0.15);
+  --bg-card-hover: rgba(26, 71, 42, 0.28);
+  --border-subtle: rgba(212, 175, 55, 0.15);
+  --text-primary: #f0efe8;
+  --text-secondary: #a8b5a2;
+  --text-muted: #6b7a65;
+  --glass-bg: rgba(10, 15, 12, 0.7);
+  --glass-border: rgba(212, 175, 55, 0.12);
+  --glass-blur: 20px;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+[data-theme="light"] {
+  --bg-deep: #f5f3ec;
+  --bg-card: rgba(26, 71, 42, 0.06);
+  --bg-card-hover: rgba(26, 71, 42, 0.12);
+  --text-primary: #1a1f1c;
+  --text-secondary: #4a5548;
+  --text-muted: #7a8576;
+  --glass-bg: rgba(245, 243, 236, 0.85);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #0a1a10 0%, #14281c 30%, var(--bg-deep) 100%);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 35%, rgba(26,71,42,0.5) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 50% at 80% 20%, rgba(212,175,55,0.08) 0%, transparent 60%);
+  z-index: 0;
+}
+.hero-mountain {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, transparent 0%, rgba(26,71,42,0.3) 40%, rgba(20,40,28,0.6) 70%, var(--bg-deep) 100%);
+  z-index: 0;
+}
+.hero-mountain::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M0 400 L200 200 L350 280 L500 120 L650 220 L800 80 L950 250 L1100 150 L1200 300 L1200 400Z' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='2'/%3E%3C/svg%3E") no-repeat bottom/cover;
+  opacity: 0.5;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 720px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(212,175,55,0.12);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 100px;
+  padding: 6px 18px 6px 10px;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--brand-gold-light);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+.hero-badge-dot {
+  width: 8px; height: 8px; background: var(--brand-gold);
+  border-radius: 50%; box-shadow: 0 0 8px var(--brand-gold);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:0.5; transform:scale(1.5) } }
+
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #f0efe8 0%, #d4af37 40%, #f0d878 70%, #d4af37 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+}
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.06em;
+  text-transform: uppercase; cursor: pointer; z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100% { transform: translate(-50%, 0) } 50% { transform: translate(-50%, 8px) } }
+
+/* ── Calculator ── */
+.section { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.calculator {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.calculator h2 {
+  font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem;
+}
+.calculator h2 span { color: var(--brand-gold-light); }
+.calculator-sub { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.form-group select, .form-group input {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-family: inherit; font-size: 0.95rem;
+  transition: var(--transition);
+  -webkit-appearance: none; appearance: none;
+}
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4af37' fill='none' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.form-group select:focus, .form-group input:focus {
+  outline: none; border-color: var(--brand-gold); background: var(--bg-card-hover);
+}
+.form-group select:hover, .form-group input:hover { border-color: rgba(212,175,55,0.3); }
+.form-full { grid-column: 1 / -1; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0.85rem 2rem;
+  font-family: inherit; font-size: 0.95rem; font-weight: 600;
+  border: none; border-radius: var(--radius-sm);
+  cursor: pointer; transition: var(--transition);
+}
+.btn-primary {
+  background: linear-gradient(135deg, #1a472a 0%, #236b3a 100%);
+  color: #f0efe8;
+  box-shadow: 0 4px 20px rgba(26,71,42,0.4);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(26,71,42,0.5); }
+.btn-primary:active { transform: translateY(0); }
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #c49b2c 100%);
+  color: #1a1f1c;
+  font-weight: 700;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(212,175,55,0.45); }
+
+/* ── Results ── */
+.result { margin-top: 2rem; animation: fadeUp 0.5s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }
+.result-hidden { display: none; }
+.result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.result-number {
+  font-size: 3.5rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.result-label { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; }
+.result-comparisons { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+.result-comp {
+  background: rgba(10,15,12,0.4);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  font-size: 0.82rem;
+  text-align: center;
+}
+.result-comp strong { display: block; font-size: 1.2rem; color: var(--brand-gold-light); }
+
+.cta-compensate {
+  margin-top: 1.5rem; text-align: center;
+}
+.cta-compensate p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem; }
+.cta-compensate a { color: var(--brand-gold); font-weight: 600; text-decoration: none; }
+.cta-compensate a:hover { text-decoration: underline; }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  position: fixed; top: 1rem; right: 1rem; z-index: 10;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: var(--transition);
+}
+.theme-toggle:hover { background: var(--bg-card-hover); }
+
+/* ── Footer ── */
+.footer {
+  text-align: center; padding: 3rem 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted); font-size: 0.8rem;
+}
+.footer a { color: var(--brand-gold); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.footer-logos { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+
+/* ── Disclaimer ── */
+.disclaimer {
+  font-size: 0.72rem; color: var(--text-muted);
+  margin-top: 1.5rem; padding: 0.75rem;
+  border-left: 2px solid var(--brand-gold);
+  background: rgba(10,15,12,0.3); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.disclaimer a { color: var(--brand-gold); }
+
+/* ── a11y ── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 2px solid var(--brand-gold); outline-offset: 2px; }
+
+@media (max-width: 500px) {
+  .calculator { padding: 1.25rem; }
+  .result-number { font-size: 2.5rem; }
+  .result-comparisons { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar modo claro/oscuro" title="Modo claro/oscuro" id="themeBtn">
+  <span id="themeIcon">☀️</span>
+</button>
+
+<main>
+  <section class="hero" aria-label="Hero principal">
+    <div class="hero-mountain" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge" aria-hidden="true">
+        <span class="hero-badge-dot"></span>
+        La Cordada · Xperiencia
+      </div>
+      <h1>Huella de tu visita al nevado</h1>
+      <p>Viaja a los nevados colombianos con conciencia. Mide el CO₂e de tu trayecto puerta a puerta y compénsalo sembrando árboles nativos con comunidades campesinas de páramo.</p>
+    </div>
+    <div class="hero-scroll" onclick="document.getElementById('calculadora').scrollIntoView({behavior:'smooth'})" role="button" tabindex="0" aria-label="Ir a la calculadora">
+      <span>Calcular huella</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <section class="section" id="calculadora" aria-labelledby="calc-title">
+    <div class="calculator">
+      <h2 id="calc-title"><span>Calculadora</span> de CO₂e</h2>
+      <p class="calculator-sub">Estimación puerta a puerta: tu origen → nevado → tu casa</p>
+
+      <form id="calcForm" onsubmit="calcularHuella(event)" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="origen">Ciudad de origen</label>
+            <select id="origen" required>
+              <option value="">Selecciona…</option>
+              <optgroup label="Principales">
+                <option value="bogota">Bogotá (662 km a Cocuy)</option>
+                <option value="medellin">Medellín (520 km a Ruiz)</option>
+                <option value="cali">Cali (310 km a Huila)</option>
+                <option value="bucaramanga">Bucaramanga (380 km a Cocuy)</option>
+                <option value="manizales">Manizales (30 km a Ruiz)</option>
+                <option value="pereira">Pereira (50 km a Santa Isabel)</option>
+                <option value="ibague">Ibagué (80 km a Tolima)</option>
+                <option value="neiva">Neiva (170 km a Huila)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="nevado">Nevado destino</label>
+            <select id="nevado" required>
+              <option value="">Selecciona…</option>
+              <option value="cocuy" data-dist-bogota="662" data-dist-bucaramanga="380" data-dist-manizales="680" data-dist-pereira="610" data-dist-ibague="550" data-dist-neiva="700" data-dist-medellin="750" data-dist-cali="850">Sierra Nevada del Cocuy</option>
+              <option value="ruiz" data-dist-bogota="320" data-dist-medellin="230" data-dist-cali="280" data-dist-bucaramanga="580" data-dist-manizales="30" data-dist-pereira="45" data-dist-ibague="120" data-dist-neiva="320">Nevado del Ruiz</option>
+              <option value="santa_isabel" data-dist-bogota="340" data-dist-medellin="250" data-dist-cali="300" data-dist-bucaramanga="600" data-dist-manizales="50" data-dist-pereira="50" data-dist-ibague="130" data-dist-neiva="340">Nevado de Santa Isabel</option>
+              <option value="tolima" data-dist-bogota="300" data-dist-medellin="270" data-dist-cali="260" data-dist-bucaramanga="560" data-dist-manizales="90" data-dist-pereira="80" data-dist-ibague="80" data-dist-neiva="280">Nevado del Tolima</option>
+              <option value="huila" data-dist-bogota="520" data-dist-medellin="520" data-dist-cali="310" data-dist-bucaramanga="720" data-dist-manizales="330" data-dist-pereira="350" data-dist-ibague="250" data-dist-neiva="170">Nevado del Huila</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="transporte">Modo de transporte</label>
+            <select id="transporte" required>
+              <option value="">Selecciona…</option>
+              <option value="carro">🚗 Carro particular</option>
+              <option value="bus">🚌 Bus / flota</option>
+              <option value="van">🚐 Van / camioneta compartida</option>
+              <option value="moto">🏍️ Moto</option>
+              <option value="avion">✈️ Avión (solo trayecto aéreo)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="personas">Número de personas</label>
+            <input type="number" id="personas" min="1" max="50" value="1" required>
+          </div>
+        </div>
+
+        <div class="form-group form-full" style="margin-top:1rem">
+          <button type="submit" class="btn btn-primary" style="width:100%">
+            Calcular mi huella
+          </button>
+        </div>
+      </form>
+
+      <div id="resultado" class="result result-hidden" aria-live="polite" role="status"></div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Factores de emisión provisionales</strong> (kg CO₂e/km, en revisión por DR-HUELLA-CARBONO-VIAJE-2026-06-17): carro 0.17, bus 0.03/pax-km, van 0.10, moto 0.10, avión 0.25. Distancias estimadas por ruta terrestre. <a href="https://github.com/guatoc-ecohub/chagra-landing" target="_blank" rel="noopener">Código abierto</a>.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-logos">
+    <span>🏔️ La Cordada</span>
+    <span style="color:var(--brand-gold)">×</span>
+    <span>🌱 Chagra</span>
+  </div>
+  <p>Compensa tu huella sembrando árboles nativos con <a href="https://chagra.bio" target="_blank" rel="noopener">Chagra</a> — cultivando en la diversidad para remediar el suelo.</p>
+  <p style="margin-top:0.5rem">© 2026 — Hecho en los Andes colombianos.</p>
+</footer>
+
+<script>
+// ── Datos ──
+const FACTORES_EMISION = {
+  carro:   { kgCO2e_km: 0.17, label: 'Carro particular' },
+  bus:     { kgCO2e_km: 0.03, label: 'Bus / flota',     perPax: true },
+  van:     { kgCO2e_km: 0.10, label: 'Van / camioneta',  perPax: true },
+  moto:    { kgCO2e_km: 0.10, label: 'Moto' },
+  avion:   { kgCO2e_km: 0.25, label: 'Avión',           perPax: true },
+};
+
+const DISTANCIAS = {
+  bogota:      { cocuy: 662, ruiz: 320, santa_isabel: 340, tolima: 300, huila: 520 },
+  medellin:    { cocuy: 750, ruiz: 230, santa_isabel: 250, tolima: 270, huila: 520 },
+  cali:        { cocuy: 850, ruiz: 280, santa_isabel: 300, tolima: 260, huila: 310 },
+  bucaramanga: { cocuy: 380, ruiz: 580, santa_isabel: 600, tolima: 560, huila: 720 },
+  manizales:   { cocuy: 680, ruiz: 30,  santa_isabel: 50,  tolima: 90,  huila: 330 },
+  pereira:     { cocuy: 610, ruiz: 45,  santa_isabel: 50,  tolima: 80,  huila: 350 },
+  ibague:      { cocuy: 550, ruiz: 120, santa_isabel: 130, tolima: 80,  huila: 250 },
+  neiva:       { cocuy: 700, ruiz: 320, santa_isabel: 340, tolima: 280, huila: 170 },
+};
+
+const NOMBRES = {
+  cocuy: 'Sierra Nevada del Cocuy', ruiz: 'Nevado del Ruiz',
+  santa_isabel: 'Nevado de Santa Isabel', tolima: 'Nevado del Tolima', huila: 'Nevado del Huila',
+  bogota: 'Bogotá', medellin: 'Medellín', cali: 'Cali', bucaramanga: 'Bucaramanga',
+  manizales: 'Manizales', pereira: 'Pereira', ibague: 'Ibagué', neiva: 'Neiva',
+};
+
+const FACTOR_SIEMBRA = { kgCO2e_por_arbol: 21, label: 'kg CO₂e capturados por árbol en 10 años' };
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.getElementById('themeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
+  try { localStorage.setItem('chagra:theme', next); } catch(_){}
+}
+
+(function() {
+  try {
+    const saved = localStorage.getItem('chagra:theme');
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.getElementById('themeIcon').textContent = '🌙';
+    }
+  } catch(_){}
+})();
+
+function calcularHuella(e) {
+  e.preventDefault();
+  const origen = document.getElementById('origen').value;
+  const nevado = document.getElementById('nevado').value;
+  const modo = document.getElementById('transporte').value;
+  const personas = parseInt(document.getElementById('personas').value, 10);
+
+  if (!origen || !nevado || !modo || !personas || personas < 1) return;
+
+  const km = DISTANCIAS[origen]?.[nevado];
+  if (!km) {
+    alert('No tenemos datos de distancia para esa ruta. Usa el campo manual o contáctanos.');
+    return;
+  }
+
+  const factor = FACTORES_EMISION[modo];
+  const kmTotal = km * 2;
+  let kgCO2e = kmTotal * factor.kgCO2e_km;
+  if (factor.perPax) { kgCO2e = kgCO2e * personas; }
+
+  const kgPorPersona = factor.perPax ? factor.kgCO2e_km * kmTotal : kgCO2e / personas;
+  const diasLuz = Math.round(kgCO2e / 3.6);
+  const kmCarroEquiv = Math.round(kgCO2e / 0.12);
+  const arboles = Math.max(1, Math.round(kgCO2e / FACTOR_SIEMBRA.kgCO2e_por_arbol));
+
+  const resultado = document.getElementById('resultado');
+  resultado.className = 'result';
+  resultado.innerHTML = `
+    <div class="result-card">
+      <div class="result-number">${kgCO2e.toLocaleString('es-CO', {maximumFractionDigits:0})}</div>
+      <div class="result-label">kg CO₂e total · ida y vuelta</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.3rem">
+        ${NOMBRES[origen]} → ${NOMBRES[nevado]} (${km} km × 2 = ${kmTotal} km) · ${personas} ${personas === 1 ? 'persona' : 'personas'} · ${factor.label}
+      </p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem">
+        ${kgPorPersona.toLocaleString('es-CO', {maximumFractionDigits:0})} kg CO₂e por persona
+      </p>
+    </div>
+    <div class="result-comparisons">
+      <div class="result-comp">
+        <strong>${diasLuz.toLocaleString('es-CO')}</strong>
+        días de luz eléctrica en tu casa
+      </div>
+      <div class="result-comp">
+        <strong>${kmCarroEquiv.toLocaleString('es-CO')} km</strong>
+        equivalentes en carro promedio
+      </div>
+    </div>
+    <div class="cta-compensate">
+      <p>Tu viaje generó ${kgCO2e.toLocaleString('es-CO', {maximumFractionDigits:0})} kg CO₂e</p>
+      <a href="https://chagra.bio" target="_blank" rel="noopener" class="btn btn-gold">
+        🌱 Compénsalo sembrando ${arboles} árbol${arboles !== 1 ? 'es' : ''} nativo${arboles !== 1 ? 's' : ''} con Chagra
+      </a>
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.5rem">
+        Cada árbol captura ~${FACTOR_SIEMBRA.kgCO2e_por_arbol} kg CO₂e en 10 años en bosque andino.
+      </p>
+    </div>
+  `;
+
+  resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+</body>
+</html>
