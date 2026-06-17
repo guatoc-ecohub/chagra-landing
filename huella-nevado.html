@@ -6,12 +6,12 @@
 <meta name="description" content="Calcula la huella de carbono completa de tu viaje a los nevados de Colombia —transporte, comida, alojamiento y compras— y compénsala sembrando árboles nativos con comunidades campesinas.">
 <meta name="theme-color" content="#1a472a">
 
-<meta property="og:title" content="Huella de tu visita al nevado — La Cordada × Guatoc">
+<meta property="og:title" content="Huella de tu visita al nevado — Xperiencia × Guatoc">
 <meta property="og:description" content="Viaja a los nevados colombianos con conciencia. Mide tu impacto completo y compénsalo sembrando.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://chagra.bio/og-image.svg">
 
-<title>Huella de tu visita al nevado — La Cordada × Guatoc</title>
+<title>Huella de tu visita al nevado — Xperiencia × Guatoc</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,6 +209,23 @@ body {
 .form-full { grid-column: 1 / -1; }
 .field-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
 
+/* ── Checkboxes de compras (multi-selección) ── */
+.check-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+.check-card {
+  display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;
+  background-color: var(--field-bg); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 0.8rem 1rem; transition: var(--transition);
+}
+.check-card:hover { border-color: rgba(212,175,55,0.5); }
+.check-card:has(input:checked) { border-color: var(--brand-gold); background-color: var(--field-bg-focus); }
+.check-card input { position: absolute; opacity: 0; width: 0; height: 0; }
+.check-box { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border-subtle); margin-top: 1px; position: relative; transition: var(--transition); }
+.check-card input:checked ~ .check-box { background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-light)); border-color: var(--brand-gold); }
+.check-card input:checked ~ .check-box::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #14100a; font-weight: 800; font-size: 14px; }
+.check-card input:focus-visible ~ .check-box { outline: 2px solid var(--brand-gold); outline-offset: 2px; }
+.check-txt { display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; font-size: 0.92rem; }
+.check-txt small { font-weight: 400; color: var(--text-muted); font-size: 0.74rem; margin-top: 2px; }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 0.85rem 2rem;
@@ -351,7 +368,7 @@ body {
     <div class="hero-content">
       <div class="hero-badge">
         <span class="hero-badge-dot" aria-hidden="true"></span>
-        La Cordada × Guatoc
+        Xperiencia × Guatoc
       </div>
       <h1>Huella de tu visita al nevado</h1>
       <p>Viaja a los nevados colombianos con conciencia. Mide el CO₂e completo de tu viaje —transporte, comida, alojamiento y compras— y compénsalo sembrando árboles nativos con comunidades campesinas de páramo.</p>
@@ -450,18 +467,24 @@ body {
           </div>
         </div>
 
-        <div class="form-section-title">🛍️ Compras</div>
-        <div class="form-grid">
-          <div class="form-group form-full">
-            <label for="compras">¿Qué compraste para el viaje?</label>
-            <select id="compras" required>
-              <option value="nada" selected>Nada / casi nada</option>
-              <option value="artesanias">🧶 Artesanías y recuerdos (~$50k)</option>
-              <option value="provisiones">🥫 Provisiones y mercado (~$100k)</option>
-              <option value="equipo">🥾 Ropa o equipo outdoor (~$300k)</option>
-            </select>
-            <span class="field-hint">Por persona. Lo nuevo que compraste para esta salida</span>
-          </div>
+        <div class="form-section-title">🛍️ Compras para el viaje</div>
+        <p class="field-hint" style="margin:-0.3rem 0 0.65rem">Marca lo que compraste — puedes elegir varias (lo común en una expedición).</p>
+        <div class="check-grid">
+          <label class="check-card">
+            <input type="checkbox" id="c_equipo">
+            <span class="check-box" aria-hidden="true"></span>
+            <span class="check-txt">🥾 Equipo / ropa outdoor<small>capas, calzado · se amortiza en muchas salidas</small></span>
+          </label>
+          <label class="check-card">
+            <input type="checkbox" id="c_provisiones">
+            <span class="check-box" aria-hidden="true"></span>
+            <span class="check-txt">🥫 Provisiones del camino<small>snacks, mercado para la ruta</small></span>
+          </label>
+          <label class="check-card">
+            <input type="checkbox" id="c_recuerdo">
+            <span class="check-box" aria-hidden="true"></span>
+            <span class="check-txt">🧶 Recuerdo / artesanía<small>hecho a mano, local</small></span>
+          </label>
         </div>
 
         <div class="form-group form-full" style="margin-top:1.5rem">
@@ -479,7 +502,7 @@ body {
       Transporte (kg CO₂e/km): carro 0.17, bus 0.03/pax, van 0.10/pax, moto 0.10, avión 0.25/pax.
       Comida (kg CO₂e/persona·día): vegano 2.9, vegetariano 3.8, pollo/pescado 4.7, mixto 5.6, carne roja 7.2.
       Alojamiento (kg CO₂e/persona·noche): camping 1.5, posada 6, hotel 15.
-      Compras (kg CO₂e/persona): artesanías 5, provisiones 12, equipo 40.
+      Compras (kg CO₂e/persona, se suman): equipo 5 (amortizado, se usa en muchas salidas), provisiones del camino 6, recuerdo/artesanía 3.
       Distancias estimadas por ruta terrestre. <a href="https://github.com/guatoc-ecohub/chagra-landing" target="_blank" rel="noopener">Código abierto</a>.
     </div>
   </section>
@@ -487,11 +510,11 @@ body {
 
 <footer class="footer">
   <div class="footer-logos">
-    <span>🏔️ La Cordada</span>
+    <span>🏔️ Xperiencia</span>
     <span style="color:var(--brand-gold)">×</span>
     <span>🌿 Guatoc</span>
   </div>
-  <p>Compensa tu huella sembrando árboles nativos con <a href="https://guatoc.co" target="_blank" rel="noopener">Guatoc</a> — restaurando páramo y bosque andino junto a comunidades campesinas.</p>
+  <p>Compensa tu huella sembrando árboles nativos con <a href="https://chagra.app" target="_blank" rel="noopener">Guatoc</a> — restaurando páramo y bosque andino junto a comunidades campesinas.</p>
   <p style="margin-top:0.5rem">© 2026 — Hecho en los Andes colombianos.</p>
 </footer>
 
@@ -521,12 +544,11 @@ const FACTOR_ALOJAMIENTO = {
   hotel:   { v: 15,  label: 'Hotel' },
 };
 
-// kg CO₂e por persona (compra puntual para el viaje)
+// kg CO₂e por persona. El equipo va AMORTIZADO: dura muchas salidas, no se carga entero a un viaje.
 const FACTOR_COMPRAS = {
-  nada:        { v: 0,  label: 'Sin compras' },
-  artesanias:  { v: 5,  label: 'Artesanías y recuerdos' },
-  provisiones: { v: 12, label: 'Provisiones y mercado' },
-  equipo:      { v: 40, label: 'Ropa / equipo outdoor' },
+  equipo:      { v: 5, label: 'Equipo / ropa outdoor (amortizado)' },
+  provisiones: { v: 6, label: 'Provisiones del camino' },
+  recuerdo:    { v: 3, label: 'Recuerdo / artesanía' },
 };
 
 const DISTANCIAS = {
@@ -575,7 +597,7 @@ function calcularHuella(e) {
   const dias = parseInt(document.getElementById('dias').value, 10);
   const dietaKey = document.getElementById('comida').value;
   const alojKey = document.getElementById('alojamiento').value;
-  const comprasKey = document.getElementById('compras').value;
+  const comprasSel = ['equipo','provisiones','recuerdo'].filter(k => { const el = document.getElementById('c_' + k); return el && el.checked; });
 
   if (!origen || !nevado || !modo || !personas || personas < 1 || !dias || dias < 1) {
     alert('Completa origen, nevado, transporte, personas y días.');
@@ -593,7 +615,7 @@ function calcularHuella(e) {
   const noches = Math.max(1, dias - 1); // un viaje de N días ≈ N-1 noches fuera
   const co2Comida = dias * personas * FACTOR_COMIDA[dietaKey].v;
   const co2Aloj = noches * personas * FACTOR_ALOJAMIENTO[alojKey].v;
-  const co2Compras = personas * FACTOR_COMPRAS[comprasKey].v;
+  const co2Compras = personas * comprasSel.reduce((s, k) => s + FACTOR_COMPRAS[k].v, 0);
 
   const total = co2Transporte + co2Comida + co2Aloj + co2Compras;
   const porPersona = total / personas;
@@ -638,7 +660,7 @@ function calcularHuella(e) {
     </div>
     <div class="cta-compensate">
       <p>Compensa tu impacto y deja huella positiva en el páramo</p>
-      <a href="https://guatoc.co" target="_blank" rel="noopener" class="btn btn-gold">
+      <a href="https://chagra.app" target="_blank" rel="noopener" class="btn btn-gold">
         🌿 Siembra ${arboles} árbol${arboles !== 1 ? 'es' : ''} nativo${arboles !== 1 ? 's' : ''} con Guatoc
       </a>
       <p class="cta-note">Cada árbol nativo captura ~${CO2E_POR_ARBOL} kg CO₂e en 10 años en bosque andino.</p>
