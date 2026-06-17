@@ -226,6 +226,27 @@ body {
 .check-txt { display: flex; flex-direction: column; color: var(--text-primary); font-weight: 600; font-size: 0.92rem; }
 .check-txt small { font-weight: 400; color: var(--text-muted); font-size: 0.74rem; margin-top: 2px; }
 
+/* ── Tramos / switch / caminata ── */
+.tramos-zone { margin-top: 1.1rem; }
+.switch-row { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.86rem; color: var(--text-secondary); font-weight: 500; }
+.switch-row input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch-ui { width: 42px; height: 24px; border-radius: 100px; background: var(--field-bg); border: 1px solid var(--border-subtle); position: relative; flex-shrink: 0; transition: var(--transition); }
+.switch-ui::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--text-muted); transition: var(--transition); }
+.switch-row input:checked ~ .switch-ui { background: linear-gradient(135deg, var(--brand-green), #2a7a47); border-color: var(--brand-gold); }
+.switch-row input:checked ~ .switch-ui::after { transform: translateX(18px); background: var(--brand-gold-light); }
+.switch-row input:focus-visible ~ .switch-ui { outline: 2px solid var(--brand-gold); outline-offset: 2px; }
+.tramos-list { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.85rem 0; }
+.tramo-row { display: grid; grid-template-columns: 1fr 92px 40px; gap: 0.5rem; align-items: center; }
+.tramo-row select, .tramo-row input { background-color: var(--field-bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); padding: 0.6rem 0.7rem; font-family: inherit; font-size: 0.9rem; -webkit-appearance: none; appearance: none; }
+.tramo-del { background: none; border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer; padding: 0.6rem 0; font-size: 0.95rem; transition: var(--transition); }
+.tramo-del:hover { color: #e07a6b; border-color: #e07a6b; }
+.btn-add { background: none; border: 1px dashed var(--border-subtle); color: var(--brand-gold-light); border-radius: var(--radius-sm); padding: 0.55rem 1rem; cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
+.btn-add:hover { border-color: var(--brand-gold); background: var(--bg-card); }
+.result-clean { font-size: 0.85rem; color: var(--c-alojamiento); font-weight: 600; margin-top: 0.35rem; }
+[data-theme="light"] .result-clean { color: #1e6e3f; }
+.btn-share { background: var(--field-bg); border: 1px solid var(--border-subtle); color: var(--text-primary); margin-top: 0.75rem; width: 100%; padding: 0.8rem; font-weight: 600; }
+.btn-share:hover { border-color: var(--brand-gold); background: var(--bg-card-hover); }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 0.85rem 2rem;
@@ -417,11 +438,12 @@ body {
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" id="transporteGroup">
             <label for="transporte">Modo de transporte</label>
             <select id="transporte" required>
               <option value="">Selecciona…</option>
               <option value="carro">🚗 Carro particular</option>
+              <option value="jeep">🚙 Jeep / Willys</option>
               <option value="bus">🚌 Bus / flota</option>
               <option value="van">🚐 Van / camioneta compartida</option>
               <option value="moto">🏍️ Moto</option>
@@ -432,6 +454,24 @@ body {
           <div class="form-group">
             <label for="personas">Número de personas</label>
             <input type="number" id="personas" min="1" max="50" value="1" required>
+          </div>
+        </div>
+
+        <div class="tramos-zone">
+          <label class="switch-row">
+            <input type="checkbox" id="modoTramos" onchange="toggleTramos()">
+            <span class="switch-ui" aria-hidden="true"></span>
+            <span>Mi viaje fue en varios tramos (ingresar km a mano)</span>
+          </label>
+          <div id="tramosBox" hidden>
+            <div id="tramosList" class="tramos-list"></div>
+            <button type="button" class="btn-add" onclick="addTramo()">+ Agregar tramo</button>
+            <span class="field-hint" style="display:block;margin-top:7px">Ingresa el total de km recorridos (ida y vuelta) por cada medio. Cada tramo usa su propio factor.</span>
+          </div>
+          <div class="form-group form-full" style="margin-top:0.9rem">
+            <label for="caminata">🥾 Caminata en el viaje (km a pie)</label>
+            <input type="number" id="caminata" min="0" max="500" value="0">
+            <span class="field-hint">La caminata no emite CO₂ — premia el tramo limpio de tu viaje.</span>
           </div>
         </div>
 
@@ -522,6 +562,7 @@ body {
 // ── Factores ──
 const FACTORES_EMISION = {
   carro: { kgCO2e_km: 0.17, label: 'Carro particular' },
+  jeep:  { kgCO2e_km: 0.20, label: 'Jeep / Willys' },
   bus:   { kgCO2e_km: 0.03, label: 'Bus / flota',    perPax: true },
   van:   { kgCO2e_km: 0.10, label: 'Van / camioneta', perPax: true },
   moto:  { kgCO2e_km: 0.10, label: 'Moto' },
@@ -588,6 +629,37 @@ function toggleTheme() {
   } catch(_){}
 })();
 
+function tramoOptionsHtml() {
+  return Object.keys(FACTORES_EMISION).map(function(k){ return '<option value="' + k + '">' + FACTORES_EMISION[k].label + '</option>'; }).join('');
+}
+let _tramoSeq = 0;
+function addTramo() {
+  const list = document.getElementById('tramosList');
+  const row = document.createElement('div');
+  row.className = 'tramo-row';
+  row.id = 'tr' + (_tramoSeq++);
+  row.innerHTML = '<select class="tramo-modo" aria-label="Medio del tramo">' + tramoOptionsHtml() + '</select>'
+    + '<input type="number" class="tramo-km" min="0" max="2000" placeholder="km" aria-label="Kilómetros del tramo">'
+    + '<button type="button" class="tramo-del" aria-label="Quitar tramo">✕</button>';
+  row.querySelector('.tramo-del').addEventListener('click', function(){ row.remove(); });
+  list.appendChild(row);
+}
+function toggleTramos() {
+  const on = document.getElementById('modoTramos').checked;
+  document.getElementById('tramosBox').hidden = !on;
+  const sel = document.getElementById('transporte');
+  document.getElementById('transporteGroup').style.opacity = on ? '0.45' : '1';
+  sel.disabled = on;
+  if (on && document.querySelectorAll('#tramosList .tramo-row').length === 0) { addTramo(); addTramo(); }
+}
+function compartir(total, arboles) {
+  const texto = 'Mi viaje al nevado generó ' + total.toLocaleString('es-CO') + ' kg CO₂e; lo compenso sembrando ' + arboles + ' árbol(es) nativo(s). Calcula la tuya:';
+  const url = 'https://chagra-landing.pages.dev/huella-nevado';
+  if (navigator.share) { navigator.share({ title: 'Mi huella de viaje al nevado', text: texto, url: url }).catch(function(){}); }
+  else if (navigator.clipboard) { navigator.clipboard.writeText(texto + ' ' + url).then(function(){ alert('Copiado para compartir ✓'); }).catch(function(){}); }
+  else { alert(texto + ' ' + url); }
+}
+
 function calcularHuella(e) {
   e.preventDefault();
   const origen = document.getElementById('origen').value;
@@ -599,18 +671,38 @@ function calcularHuella(e) {
   const alojKey = document.getElementById('alojamiento').value;
   const comprasSel = ['equipo','provisiones','recuerdo'].filter(k => { const el = document.getElementById('c_' + k); return el && el.checked; });
 
-  if (!origen || !nevado || !modo || !personas || personas < 1 || !dias || dias < 1) {
+  const tramosOn = document.getElementById('modoTramos').checked;
+  const caminataKm = Math.max(0, parseFloat(document.getElementById('caminata').value) || 0);
+
+  if (!origen || !nevado || !personas || personas < 1 || !dias || dias < 1 || (!tramosOn && !modo)) {
     alert('Completa origen, nevado, transporte, personas y días.');
     return;
   }
-  const km = DISTANCIAS[origen]?.[nevado];
-  if (!km) { alert('No tenemos datos de distancia para esa ruta. Escríbenos y la agregamos.'); return; }
 
-  // ── Cálculos por categoría ──
-  const factor = FACTORES_EMISION[modo];
-  const kmTotal = km * 2;
-  let co2Transporte = kmTotal * factor.kgCO2e_km;
-  if (factor.perPax) co2Transporte *= personas; // bus/van/avión: por pasajero
+  // ── Transporte: modo simple (auto-distancia) o por tramos (km a mano) ──
+  let co2Transporte = 0;
+  let kmMotor = 0;
+  if (tramosOn) {
+    document.querySelectorAll('#tramosList .tramo-row').forEach(function(r) {
+      const m = r.querySelector('.tramo-modo').value;
+      const tkm = Math.max(0, parseFloat(r.querySelector('.tramo-km').value) || 0);
+      const f = FACTORES_EMISION[m];
+      if (tkm > 0 && f) {
+        let c = tkm * f.kgCO2e_km;
+        if (f.perPax) c *= personas;
+        co2Transporte += c;
+        kmMotor += tkm;
+      }
+    });
+    if (kmMotor === 0 && caminataKm === 0) { alert('Agrega al menos un tramo con kilómetros (o registra la caminata).'); return; }
+  } else {
+    const km = DISTANCIAS[origen]?.[nevado];
+    if (!km) { alert('No tenemos esa ruta. Activa "varios tramos" e ingresa los km a mano.'); return; }
+    const factor = FACTORES_EMISION[modo];
+    kmMotor = km * 2;
+    co2Transporte = kmMotor * factor.kgCO2e_km;
+    if (factor.perPax) co2Transporte *= personas; // bus/van/avión: por pasajero
+  }
 
   const noches = Math.max(1, dias - 1); // un viaje de N días ≈ N-1 noches fuera
   const co2Comida = dias * personas * FACTOR_COMIDA[dietaKey].v;
@@ -622,6 +714,8 @@ function calcularHuella(e) {
   const arboles = Math.max(1, Math.round(total / CO2E_POR_ARBOL));
   const diasLuz = Math.round(total / 3.6);
   const kmCarroEquiv = Math.round(total / 0.12);
+  const kmViaje = kmMotor + caminataKm;
+  const pctLimpio = kmViaje > 0 ? Math.round((caminataKm / kmViaje) * 100) : 0;
 
   const cats = [
     { nombre: 'Transporte', icon: '🚗', val: co2Transporte, color: 'var(--c-transporte)' },
@@ -652,6 +746,7 @@ function calcularHuella(e) {
       <div class="result-label">kg CO₂e — huella completa del viaje</div>
       <p class="result-route">${NOMBRES[origen]} → ${NOMBRES[nevado]} · ${dias} día${dias !== 1 ? 's' : ''} · ${personas} ${personas === 1 ? 'persona' : 'personas'}</p>
       <p class="result-perperson">${fmt(porPersona)} kg CO₂e por persona</p>
+      ${caminataKm > 0 ? `<p class="result-clean">🥾 ${fmt(caminataKm)} km a pie · 0 kg · ${pctLimpio}% de tu trayecto sin motor</p>` : ''}
       <div class="breakdown">${barras}</div>
     </div>
     <div class="result-comparisons">
@@ -665,6 +760,7 @@ function calcularHuella(e) {
       </a>
       <p class="cta-note">Cada árbol nativo captura ~${CO2E_POR_ARBOL} kg CO₂e en 10 años en bosque andino.</p>
     </div>
+    <button type="button" class="btn btn-share" onclick="compartir(${Math.round(total)}, ${arboles})">📤 Compartir mi huella</button>
   `;
   resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
