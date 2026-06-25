@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#020617">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Chagra — Agente Agroecológico Colombiano">
-<meta property="og:description" content="684 especies verificadas, una IA local que no inventa, 100% energía solar off-grid. Asesor agroecológico que funciona sin internet. Open source AGPL-3.0. Construido en Choachí, Colombia.">
+<meta property="og:description" content="721 especies verificadas conectadas en un grafo de conocimiento, una IA local que no inventa, 100% energía solar off-grid. Asesor agroecológico que funciona sin internet. Open source AGPL-3.0. Construido en Choachí, Colombia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chagra.app">
 <meta property="og:image" content="https://chagra.bio/assets/hero-chagra.webp">
@@ -130,8 +130,8 @@
 </div>
 </div>
 <div class="stats-bar" role="region" aria-label="Estadísticas principales">
-<div class="stat"><span class="stat-num" data-target="684">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies del catálogo</span><span lang="en" data-lang-block="en" hidden>Catalogued species</span></span></div>
-<div class="stat"><span class="stat-num" data-target="60">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies de páramo</span><span lang="en" data-lang-block="en" hidden>Páramo species</span></span></div>
+<div class="stat"><span class="stat-num" data-target="721">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies del catálogo</span><span lang="en" data-lang-block="en" hidden>Catalogued species</span></span></div>
+<div class="stat"><span class="stat-num">12.325</span><span class="stat-label"><span lang="es" data-lang-block="es">Relaciones del grafo</span><span lang="en" data-lang-block="en" hidden>Knowledge-graph relations</span></span></div>
 <div class="stat"><span class="stat-num" data-target="74">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Biopreparados y fermentos</span><span lang="en" data-lang-block="en" hidden>Bio-preparations &amp; ferments</span></span></div>
 <div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Pueblos referenciados</span><span lang="en" data-lang-block="en" hidden>Indigenous peoples cited</span></span></div>
 </div>
@@ -214,7 +214,16 @@
 </div>
 </section>
 
-<!-- ======== CAPACIDADES ======== -->
+<!-- ======== CAPACIDADES ========
+     MANTENIMIENTO: esta lista de tarjetas es el espejo público de las
+     capacidades VIVAS descritas en Chagra-strategy/ops/CAPABILITIES_STATUS.md
+     (§1 SHIPPED + §2 "Lo que Chagra TIENE — vivo"). Cuando se desbloquee o
+     mueva una capacidad allí, reflejarla acá (una tarjeta cap-card por
+     capacidad). NO listar items de roadmap (§6) como si ya existieran.
+     ANTI-LEAK (repo público): cero infra/hosts/modelos internos; las cifras
+     del grafo (721 especies / 12.325 relaciones) sí son de producto.
+     Orden: 1) agente grounded · 2) gestión de finca · 3) explorar/planear ·
+            4) aprender/jugar · 5) clima/territorio. -->
 <section id="capacidades" class="agente-section">
 <div class="section-inner">
 <header class="section-header">
@@ -223,51 +232,133 @@
 <p class="section-desc"><span lang="es" data-lang-block="es">Cada capacidad está construida y funcionando en la app — no es promesa de roadmap.</span><span lang="en" data-lang-block="en" hidden>Every capability is built and working in the app — not a roadmap promise.</span></p>
 </header>
 <div class="cap-grid">
+
+<!-- 1 · AGENTE GROUNDED (CAPABILITIES_STATUS §2 "AGENTE EN VIVO" + §4 backbone) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="10" y="8" width="28" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 30l-4 8 10-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 17h14M17 23h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".7"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Agente conversacional groundeado</span><span lang="en" data-lang-block="en" hidden>Grounded conversational agent</span></h3>
+<p><span lang="es" data-lang-block="es">Pregúntale por texto, por voz o con una foto. Entiende tu intención y consulta el catálogo agroecológico antes de responder, con la fuente a la vista.</span><span lang="en" data-lang-block="en" hidden>Ask it by text, by voice or with a photo. It understands your intent and queries the agroecology catalogue before answering, with the source on display.</span></p>
+</article>
+
+<!-- 1b · GRAFO DE CONOCIMIENTO (cifras de producto 721 / 12.325) -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14l16 1M14 16l8 16M34 18L26 33" stroke="currentColor" stroke-width="1.5" opacity=".55"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Grafo de conocimiento</span><span lang="en" data-lang-block="en" hidden>Knowledge graph</span></h3>
-<p><span lang="es" data-lang-block="es">Sabe qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas — todo conectado en un grafo consultable.</span><span lang="en" data-lang-block="en" hidden>It knows which plant pairs with which, which bio-preparation controls which pest and which species are antagonists — all connected in a queryable graph.</span></p>
+<h3><span lang="es" data-lang-block="es">Grafo de conocimiento (721 especies)</span><span lang="en" data-lang-block="en" hidden>Knowledge graph (721 species)</span></h3>
+<p><span lang="es" data-lang-block="es"><strong>721 especies y 12.325 relaciones</strong> conectadas: qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas — todo consultable por el agente.</span><span lang="en" data-lang-block="en" hidden><strong>721 species and 12,325 relations</strong> linked together: which plant pairs with which, which bio-preparation controls which pest and which species are antagonists — all queryable by the agent.</span></p>
 </article>
+
+<!-- 1c · ANTI-ALUCINACIÓN VERIFICADA (DOI vs literatura) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+<h3><span lang="es" data-lang-block="es">No inventa — verificado con DOI</span><span lang="en" data-lang-block="en" hidden>It doesn't make things up — DOI-verified</span></h3>
+<p><span lang="es" data-lang-block="es">Las relaciones de control de plagas se contrastan contra literatura científica real, citando el DOI del artículo. Si un dato no está verificado, <strong>lo dice en vez de inventarlo</strong>.</span><span lang="en" data-lang-block="en" hidden>Pest-control relations are cross-checked against real scientific literature, citing the paper's DOI. If a fact isn't verified, it <strong>says so instead of inventing it</strong>.</span></p>
+</article>
+
+<!-- 1d · IDENTIFICA POR FOTO (visión en chat, §1 #1851 foto→live) -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="12" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 12l3-5h6l3 5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity=".4"/></svg></div>
 <h3><span lang="es" data-lang-block="es">Identifica por foto</span><span lang="en" data-lang-block="en" hidden>Identifies by photo</span></h3>
-<p><span lang="es" data-lang-block="es">Toma una foto de la planta o la plaga y el agente la reconoce y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</span><span lang="en" data-lang-block="en" hidden>Take a photo of the plant or pest and the agent recognizes it and suggests agroecological management. The image is processed on-device, never uploaded.</span></p>
+<p><span lang="es" data-lang-block="es">Toma una foto de la planta o la plaga en el chat y el agente la reconoce y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</span><span lang="en" data-lang-block="en" hidden>Take a photo of the plant or pest in the chat and the agent recognizes it and suggests agroecological management. The image is processed on-device, never uploaded.</span></p>
 </article>
+
+<!-- 2 · REGISTRO POR VOZ (§2 GESTIONAR: agregar planta por voz) -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="19" y="6" width="10" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 22a12 12 0 0024 0M24 34v6M18 40h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Habla y escucha</span><span lang="en" data-lang-block="en" hidden>Speaks and listens</span></h3>
-<p><span lang="es" data-lang-block="es">Pregúntale en voz alta y te responde leyendo en español colombiano. Pensado para quien prefiere hablar antes que escribir.</span><span lang="en" data-lang-block="en" hidden>Ask out loud and it reads its answer back in Colombian Spanish. Built for those who'd rather talk than type.</span></p>
+<h3><span lang="es" data-lang-block="es">Registro por voz</span><span lang="en" data-lang-block="en" hidden>Voice logging</span></h3>
+<p><span lang="es" data-lang-block="es">Háblale en español del campo para registrar plantas, observaciones y labores, y te responde leyendo en voz alta. Pensado para quien prefiere hablar antes que escribir.</span><span lang="en" data-lang-block="en" hidden>Speak to it in rural Spanish to log plants, observations and tasks, and it reads its answer back out loud. Built for those who'd rather talk than type.</span></p>
 </article>
+
+<!-- 2b · GESTIÓN DE FINCA (§2 GESTIONAR: plantas/animales/zonas/bitácora/tareas) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Gestión de finca y cuaderno</span><span lang="en" data-lang-block="en" hidden>Farm management &amp; notebook</span></h3>
+<p><span lang="es" data-lang-block="es">Plantas, animales, zonas, tareas y bitácora en un solo lugar; exporta un informe ordenado — útil para procesos de certificación orgánica y para tu propia memoria de la finca.</span><span lang="en" data-lang-block="en" hidden>Plants, animals, zones, tasks and a logbook in one place; export a tidy report — useful for organic-certification processes and for your own farm records.</span></p>
+</article>
+
+<!-- 2c · CUIDADO ANIMAL (§2 GESTIONAR: gallinas/abejas/vacas/cerdos) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 28c0-6 4-10 8-10 2-4 8-4 10 0 4 0 6 3 6 7M8 30c-2 4 2 8 6 8h16c5 0 8-5 5-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="30" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Cuidado animal (no solo plantas)</span><span lang="en" data-lang-block="en" hidden>Animal care (not just plants)</span></h3>
+<p><span lang="es" data-lang-block="es">Lleva gallinas, abejas, vacas y cerdos, con orientación de diagnóstico anclada a evidencia y aviso de cuándo consultar un veterinario.</span><span lang="en" data-lang-block="en" hidden>Track chickens, bees, cattle and pigs, with evidence-grounded diagnostic guidance and clear advice on when to see a vet.</span></p>
+</article>
+
+<!-- 3 · CALENDARIO DE FINCA (§1 #1853) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="7" y="10" width="34" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 18h34M16 6v8M32 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 26h6v6h-6zM27 26h6v6h-6z" fill="currentColor" opacity=".25"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Calendario de finca</span><span lang="en" data-lang-block="en" hidden>Farm calendar</span></h3>
+<p><span lang="es" data-lang-block="es">Fenología, nutrición, siembra y cosecha unificados por especie y piso térmico — incluye cultivos perennes y manejo integrado de plagas, no solo fechas sueltas.</span><span lang="en" data-lang-block="en" hidden>Phenology, nutrition, sowing and harvest unified by species and thermal floor — including perennial crops and integrated pest management, not just loose dates.</span></p>
+</article>
+
+<!-- 3b · DIRECTORIO DE ESPECIES (§1 #1855) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h22a4 4 0 014 4v32l-13-6-13 6V10a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 14c-4 4-6 8-6 12M24 14c4 4 6 8 6 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Directorio de especies</span><span lang="en" data-lang-block="en" hidden>Species directory</span></h3>
+<p><span lang="es" data-lang-block="es">Ficha por especie con foto, piso térmico, asociaciones, plagas y biopreparados — toda la información del grafo, navegable sin tener que preguntarle al agente.</span><span lang="en" data-lang-block="en" hidden>A profile per species with photo, thermal floor, companion plantings, pests and bio-preparations — everything in the graph, browsable without having to ask the agent.</span></p>
+</article>
+
+<!-- 3c · MARKETPLACE AGROECOLÓGICO (§1 #1854) — SIN claim de precio real (SIPSA roadmap §6) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M8 16h32l-3 22a3 3 0 01-3 3H14a3 3 0 01-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 16a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 26h12M18 32h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Marketplace agroecológico</span><span lang="en" data-lang-block="en" hidden>Agroecological marketplace</span></h3>
+<p><span lang="es" data-lang-block="es">Publica tu cosecha y conecta por circuitos cortos con compradores locales — vender directo, sin intermediarios, desde la misma app.</span><span lang="en" data-lang-block="en" hidden>List your harvest and connect through short circuits with local buyers — sell direct, with no middlemen, from the same app.</span></p>
+</article>
+
+<!-- 3d · FAQ GROUNDEADO (§1 #1856) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 18a6 6 0 0111-3c1 2 0 4-3 6-1.5 1-2 2-2 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="34" r="1.8" fill="currentColor"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Preguntas frecuentes guiadas</span><span lang="en" data-lang-block="en" hidden>Guided FAQ</span></h3>
+<p><span lang="es" data-lang-block="es">Respuestas a las dudas más comunes que además te muestran <strong>dónde está esa función en la app</strong>, para que descubras lo que Chagra puede hacer por ti.</span><span lang="en" data-lang-block="en" hidden>Answers to the most common questions that also show you <strong>where that feature lives in the app</strong>, so you discover what Chagra can do for you.</span></p>
+</article>
+
+<!-- 4 · APRENDER CON EL AGENTE (§2 APRENDER: lecciones con DOI + guía proactiva) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 10L6 18l18 8 18-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 22v10c0 2 4.5 5 10 5s10-3 10-5V22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M42 18v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Aprende con el agente</span><span lang="en" data-lang-block="en" hidden>Learn with the agent</span></h3>
+<p><span lang="es" data-lang-block="es">Lecciones agroecológicas que citan su fuente y un agente que te guía en el camino: del 15-15-15 al suelo vivo, asociaciones, fermentos y toxicología.</span><span lang="en" data-lang-block="en" hidden>Agroecology lessons that cite their source and an agent that guides you through them: from 15-15-15 to living soil, companion planting, ferments and toxicology.</span></p>
+</article>
+
+<!-- 4b · JUEGO MI FINCA VIVA (§2 JUGAR) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="16" width="36" height="20" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 23v6M11 26h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="32" cy="24" r="2.2" fill="currentColor"/><circle cx="37" cy="29" r="2.2" fill="currentColor"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Juego «Mi Finca Viva»</span><span lang="en" data-lang-block="en" hidden>"Mi Finca Viva" game</span></h3>
+<p><span lang="es" data-lang-block="es">Aprende jugando: arma una finca agroecológica viva y descubre asociaciones, plagas y defensores de forma divertida. Pensado para toda la familia.</span><span lang="en" data-lang-block="en" hidden>Learn by playing: build a living agroecological farm and discover companion plantings, pests and natural defenders in a fun way. Made for the whole family.</span></p>
+</article>
+
+<!-- 5 · OFFLINE-FIRST (PWA) -->
+<article class="cap-card">
+<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="14" y="4" width="20" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 4h8M22 38h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20a10 10 0 0112 0M21 25a5 5 0 016 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 8l20 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></svg></div>
+<h3><span lang="es" data-lang-block="es">Funciona sin internet</span><span lang="en" data-lang-block="en" hidden>Works offline</span></h3>
+<p><span lang="es" data-lang-block="es">App web instalable (PWA) offline-first: responde en la finca aunque no haya señal y tus datos nunca salen del celular.</span><span lang="en" data-lang-block="en" hidden>Installable offline-first web app (PWA): it answers in the field even with no signal and your data never leaves the phone.</span></p>
+</article>
+
+<!-- 5b · CLIMA EXTENDIDO POR FINCA -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M14 30a8 8 0 010-16 10 10 0 0119-3 7 7 0 013 13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 36l-2 6M26 36l-2 6M34 36l-2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
 <h3><span lang="es" data-lang-block="es">Clima extendido por finca</span><span lang="en" data-lang-block="en" hidden>Extended per-farm climate</span></h3>
 <p><span lang="es" data-lang-block="es">Pronóstico y alertas de heladas, sequías y fenómeno del Niño según tu piso térmico, con datos públicos del IDEAM y validación cruzada de varios modelos.</span><span lang="en" data-lang-block="en" hidden>Forecasts and alerts for frost, drought and El Niño tuned to your thermal floor, using public IDEAM data and cross-validation across several models.</span></p>
 </article>
+
+<!-- 5c · RESTAURACIÓN POR PISO TÉRMICO -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42l8-18 7 10 6-22 5 14 4-6 6 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 42h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
 <h3><span lang="es" data-lang-block="es">Restauración por piso térmico</span><span lang="en" data-lang-block="en" hidden>Restoration by thermal floor</span></h3>
 <p><span lang="es" data-lang-block="es">Sugiere especies nativas para restaurar según la altura y la etapa de sucesión (pioneras, intermedias, clímax), del valle cálido al páramo. Con referencias de MinAmbiente, IAvH y la UICN.</span><span lang="en" data-lang-block="en" hidden>Suggests native species for restoration by altitude and succession stage (pioneer, intermediate, climax), from warm valley to páramo. Referenced to MinAmbiente, IAvH and IUCN.</span></p>
 </article>
+
+<!-- 5d · MONITOREO PARTICIPATIVO DE GLACIARES -->
 <article class="cap-card cap-glaciar">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 40l10-20 6 9 5-14 4 9 11 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 20l-3 6h6zM26 15l-2.5 5h5z" fill="currentColor" opacity=".3"/><path d="M6 40h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><circle cx="38" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/></svg></div>
 <h3><span lang="es" data-lang-block="es">Monitoreo participativo de glaciares</span><span lang="en" data-lang-block="en" hidden>Participatory glacier monitoring</span></h3>
 <p><span lang="es" data-lang-block="es">Una guía de campo para reportar el estado de un punto glaciar (tipo de superficie, dureza de la nieve, peligros) con método y escala creíbles — pensada para alimentar el monitoreo de la criosfera colombiana (IDEAM).</span><span lang="en" data-lang-block="en" hidden>A field guide to report the state of a glacier point (surface type, snow hardness, hazards) with a credible method and scale — designed to feed Colombia's cryosphere monitoring (IDEAM).</span></p>
 </article>
+
+<!-- 5e · PROTECCIÓN ECONÓMICA (bonos de carbono / PSA) -->
 <article class="cap-card">
 <div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 6c-7 5-12 6-12 6v10c0 9 5 14 12 18 7-4 12-9 12-18V12s-5-1-12-6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v8M24 30h.02" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
 <h3><span lang="es" data-lang-block="es">Te protege en lo económico</span><span lang="en" data-lang-block="en" hidden>It protects you economically</span></h3>
 <p><span lang="es" data-lang-block="es">Explica el Pago por Servicios Ambientales del Estado y <strong>alerta sobre contratos abusivos de bonos de carbono</strong> (plazos de décadas, intermediarios, cláusulas de reversión). Antes de firmar nada, te dice a quién consultar gratis.</span><span lang="en" data-lang-block="en" hidden>It explains the State's Payment for Ecosystem Services and <strong>warns about abusive carbon-credit contracts</strong> (multi-decade terms, middlemen, reversion clauses). Before you sign anything, it tells you who to consult for free.</span></p>
 </article>
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 28c0-6 4-10 8-10 2-4 8-4 10 0 4 0 6 3 6 7M8 30c-2 4 2 8 6 8h16c5 0 8-5 5-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="30" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Cuidado animal (no solo plantas)</span><span lang="en" data-lang-block="en" hidden>Animal care (not just plants)</span></h3>
-<p><span lang="es" data-lang-block="es">Orientación de diagnóstico para animales de finca — incluye cerdos, bovinos y aves — bajo el mismo principio: anclado a evidencia, con aviso de cuándo consultar un veterinario.</span><span lang="en" data-lang-block="en" hidden>Diagnostic guidance for farm animals — including pigs, cattle and poultry — under the same principle: grounded in evidence, with clear advice on when to see a vet.</span></p>
-</article>
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Cuaderno de campo</span><span lang="en" data-lang-block="en" hidden>Field notebook</span></h3>
-<p><span lang="es" data-lang-block="es">Registra cultivos, observaciones y labores, y exporta un PDF ordenado — útil para procesos de certificación orgánica y para tu propia memoria de la finca.</span><span lang="en" data-lang-block="en" hidden>Log crops, observations and tasks, and export a tidy PDF — useful for organic-certification processes and for your own farm records.</span></p>
-</article>
+
 </div>
 </div>
 </section>
