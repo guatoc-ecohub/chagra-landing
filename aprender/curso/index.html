@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Curso guiado gratuito para aprender a usar la app Chagra en tu finca: registrar siembras, hablar por voz, leer tu suelo, cuidar sin veneno, asociar cultivos y vender mejor. Con video-manuales cortos.">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<title>Aprende a usar Chagra — Curso guiado</title>
+<link rel="stylesheet" href="/styles.css?v=2026-07-04-curso">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10L20 30v30c0 25 30 40 30 40s30-15 30-40V30L50 10z' fill='none' stroke='%2310b981' stroke-width='5'/%3E%3Cpath d='M35 45l10 10 20-20' fill='none' stroke='%2306b6d4' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* ===== Hero del curso ===== */
+.curso-hero{padding:3rem 1.5rem 2.5rem;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at top,rgba(16,185,129,.09),transparent 62%);margin-bottom:2.5rem}
+.curso-hero .breadcrumb{font-size:.9rem;color:#64748b;margin-bottom:1rem;display:flex;gap:.5rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.curso-hero .breadcrumb a{color:#94a3b8;text-decoration:none;transition:color .15s ease}
+.curso-hero .breadcrumb a:hover{color:#34d399}
+.curso-hero .breadcrumb .sep{color:#475569}
+.curso-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#f8fafc;margin-bottom:.5rem;letter-spacing:-.02em}
+.curso-hero .subtitle{font-size:1.15rem;color:var(--fg-muted);max-width:640px;margin:0 auto 1.5rem;line-height:1.6}
+.curso-hero .stats{display:flex;justify-content:center;gap:1.75rem;font-size:.9rem;color:var(--fg-dim);flex-wrap:wrap;margin-bottom:1.75rem}
+.curso-hero .stat{display:flex;align-items:center;gap:.4rem}
+.curso-hero .stat svg{width:18px;height:18px;color:var(--accent)}
+
+/* ===== Barra de progreso (hero) ===== */
+.progreso-wrap{max-width:520px;margin:0 auto}
+.progreso-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;font-size:.85rem;color:var(--fg-dim)}
+.progreso-count{font-weight:700;color:var(--accent-hover)}
+.progreso-bar{height:10px;border-radius:999px;background:rgba(148,163,184,.18);overflow:hidden;border:1px solid var(--border)}
+.progreso-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .5s cubic-bezier(.4,0,.2,1)}
+.progreso-reset{margin-top:.6rem;font-size:.78rem;color:#64748b;background:none;border:none;text-decoration:underline;cursor:pointer}
+.progreso-reset:hover{color:#94a3b8}
+
+/* ===== Intro + riel de 5 pasos ===== */
+.curso-intro{max-width:900px;margin:0 auto 2.5rem;padding:0 1.5rem;text-align:center}
+.curso-intro p{color:var(--fg-muted);font-size:1.05rem;line-height:1.65;max-width:720px;margin:0 auto 2rem}
+.step-rail{display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:nowrap;max-width:760px;margin:0 auto;overflow-x:auto;padding:.25rem .25rem 1rem}
+.step-rail-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:0 0 auto;width:clamp(96px,20vw,140px);position:relative}
+.step-rail-item:not(:last-child)::after{content:"";position:absolute;top:19px;left:calc(50% + 22px);right:calc(-50% + 22px);height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.4}
+.step-dot{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent);color:var(--accent-hover);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;position:relative;z-index:1;transition:all var(--transition)}
+.step-rail-item.done .step-dot{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;box-shadow:0 2px 14px rgba(16,185,129,.35)}
+.step-label{font-size:.78rem;color:var(--fg-dim);line-height:1.25;text-align:center}
+.step-rail-item.done .step-label{color:var(--fg-muted)}
+
+/* ===== Rejilla de módulos (reusa lenguaje del mini-curso) ===== */
+.module-grid{display:grid;gap:2rem;max-width:1000px;margin:0 auto;padding:0 1.5rem 4rem}
+.module-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;position:relative;transition:border-color var(--transition),box-shadow var(--transition)}
+.module-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.module-card:hover{border-color:var(--accent);box-shadow:var(--glow)}
+.module-card.completado{border-color:rgba(16,185,129,.45)}
+.module-header{display:flex;gap:1rem;margin-bottom:1.25rem;align-items:flex-start}
+.module-number{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:var(--bg-elevated);border:2px solid var(--accent);color:var(--accent-hover);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;position:relative;transition:all var(--transition)}
+.module-card.completado .module-number{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
+.module-number .check-badge{position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#022c22;display:none;align-items:center;justify-content:center;border:2px solid var(--bg-card)}
+.module-card.completado .module-number .check-badge{display:flex}
+.module-number .check-badge svg{width:12px;height:12px}
+.module-content{flex:1;min-width:0}
+.module-content h2{font-size:1.55rem;color:#f8fafc;margin-bottom:.4rem;line-height:1.25}
+.module-content .module-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(16,185,129,.12);padding:.25rem .6rem;border-radius:999px;margin-bottom:.6rem;font-weight:700}
+.module-content .module-tag svg{width:13px;height:13px}
+.module-lema{color:var(--accent-hover);font-weight:600;font-size:1.02rem;margin-bottom:.9rem;font-style:italic}
+.module-desc{color:var(--fg-muted);line-height:1.65;margin-bottom:1.25rem}
+.module-source{font-size:.82rem;color:var(--fg-dim);line-height:1.5;margin-bottom:1.25rem;padding-left:.9rem;border-left:2px solid var(--border-strong)}
+.module-source strong{color:var(--fg-muted)}
+
+/* ===== Fila de teléfonos con video ===== */
+.video-row{display:flex;gap:1.25rem;flex-wrap:wrap;overflow-x:auto;padding:.25rem .1rem 1rem;margin-bottom:.75rem;scrollbar-width:thin}
+.phone-frame{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:.6rem;width:clamp(220px,64vw,272px)}
+.phone-caption{font-size:.85rem;font-weight:600;color:var(--fg-muted);text-align:center;order:2}
+.phone-screen{width:100%;aspect-ratio:9/16;border-radius:26px;border:1px solid var(--border-strong);background:#000;overflow:hidden;position:relative;box-shadow:0 10px 34px rgba(6,182,212,.16),0 0 0 6px rgba(15,23,42,.9),0 0 44px rgba(16,185,129,.12);order:1}
+.phone-screen::after{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:70px;height:5px;border-radius:999px;background:rgba(148,163,184,.35);z-index:2;pointer-events:none}
+.phone-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;pointer-events:none}
+.video-note{font-size:.85rem;color:var(--fg-dim);font-style:italic;display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem}
+.video-note svg{width:16px;height:16px;color:var(--accent-2);flex-shrink:0}
+
+/* ===== Tarjeta ilustrada (módulos sin video) ===== */
+.module-illus{display:flex;align-items:center;gap:1rem;padding:1.25rem;background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem}
+.module-illus .illus-icon{flex-shrink:0;width:64px;height:64px;color:var(--accent)}
+.module-illus .illus-icon svg{width:100%;height:100%}
+.module-illus p{font-size:.92rem;color:var(--fg-muted);line-height:1.55;margin:0}
+
+/* ===== Pie del módulo: deep-links + marcar visto ===== */
+.module-footer{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.module-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.app-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.35rem;border-radius:100px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;font-size:.92rem;box-shadow:0 4px 20px rgba(16,185,129,.28);transition:transform var(--transition),box-shadow var(--transition)}
+.app-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(16,185,129,.4);text-decoration:none}
+.app-btn svg{width:16px;height:16px}
+.app-btn.secondary{background:transparent;border:1px solid var(--accent);color:var(--accent-hover);box-shadow:none}
+.app-btn.secondary:hover{background:rgba(16,185,129,.1);box-shadow:none}
+.mark-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.2rem;border-radius:100px;border:1px solid var(--border-strong);background:rgba(15,23,42,.6);color:var(--fg-muted);font-weight:600;font-size:.9rem;transition:all var(--transition)}
+.mark-btn:hover{border-color:var(--accent);color:var(--fg)}
+.mark-btn .mark-icon{width:18px;height:18px;border-radius:50%;border:2px solid var(--fg-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--transition)}
+.mark-btn .mark-icon svg{width:11px;height:11px;opacity:0;color:#022c22}
+.module-card.completado .mark-btn{border-color:var(--accent);color:var(--accent-hover);background:rgba(16,185,129,.1)}
+.module-card.completado .mark-btn .mark-icon{background:var(--accent);border-color:var(--accent)}
+.module-card.completado .mark-btn .mark-icon svg{opacity:1}
+
+/* ===== Cierre / CTA ===== */
+.curso-cierre{max-width:760px;margin:0 auto 4rem;padding:2rem 1.5rem;text-align:center}
+.curso-cierre .cierre-card{background:linear-gradient(140deg,rgba(16,185,129,.12),rgba(6,182,212,.07));border:1px solid rgba(16,185,129,.3);border-radius:var(--radius-lg);padding:2rem}
+.curso-cierre h2{font-size:1.5rem;color:#f8fafc;margin-bottom:.6rem}
+.curso-cierre p{color:var(--fg-muted);margin-bottom:1.5rem;line-height:1.6}
+
+@media(max-width:640px){
+  .curso-hero .stats{gap:1rem}
+  .module-card{padding:1.5rem}
+  .module-header{gap:.75rem}
+  .module-number{width:42px;height:42px;font-size:1.2rem}
+  .module-content h2{font-size:1.3rem}
+  .module-footer{flex-direction:column;align-items:stretch}
+  .module-links{justify-content:flex-start}
+  .mark-btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+<div class="header-inner">
+<a href="/" class="logo" aria-label="Chagra — Inicio">
+<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
+<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
+<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
+</svg>
+<span class="logo-text">Chagra</span>
+</a>
+<nav class="primary-nav">
+<ul role="menubar">
+<li role="none"><a href="/" role="menuitem">Inicio</a></li>
+<li role="none"><a href="/#agente" role="menuitem">Qué hace</a></li>
+<li role="none"><a href="/aprender/" role="menuitem" class="active">Aprender</a></li>
+<li role="none"><a href="/#equipo" role="menuitem">Equipo</a></li>
+<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+<div class="curso-hero">
+<p class="breadcrumb"><a href="/">Inicio</a> <span class="sep">›</span> <a href="/aprender/">Aprender</a> <span class="sep">›</span> Curso</p>
+<h1>🎓 Aprende a usar Chagra</h1>
+<p class="subtitle">Un curso guiado para manejar la app en tu propia finca — antes de siquiera entrar. Cinco pasos, del primer registro hasta la venta, con video-manuales cortos que se ven como se verá en tu celular.</p>
+<div class="stats">
+<span class="stat">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+5 módulos
+</span>
+<span class="stat">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+4 video-manuales
+</span>
+<span class="stat">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+100% gratis
+</span>
+</div>
+<div class="progreso-wrap">
+<div class="progreso-top">
+<span>Tu progreso</span>
+<span class="progreso-count"><span data-curso-count>0</span> de 5 completados</span>
+</div>
+<div class="progreso-bar" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-label="Módulos completados">
+<div class="progreso-fill" data-curso-fill></div>
+</div>
+<button type="button" class="progreso-reset" data-curso-reset hidden>Reiniciar progreso</button>
+</div>
+</div>
+
+<div class="curso-intro">
+<p>Un camino de 5 pasos, del primer registro a la venta. Sigue el orden o salta al que necesites. Cada módulo trae un video corto y algo para probar en tu finca de una vez.</p>
+<div class="step-rail" aria-hidden="true">
+<div class="step-rail-item" data-step="m1"><span class="step-dot">1</span><span class="step-label">Empieza tu finca</span></div>
+<div class="step-rail-item" data-step="m2"><span class="step-dot">2</span><span class="step-label">Conoce tu suelo</span></div>
+<div class="step-rail-item" data-step="m3"><span class="step-dot">3</span><span class="step-label">Cuida sin veneno</span></div>
+<div class="step-rail-item" data-step="m4"><span class="step-dot">4</span><span class="step-label">Asocia y aprovecha</span></div>
+<div class="step-rail-item" data-step="m5"><span class="step-dot">5</span><span class="step-label">Cosecha y vende</span></div>
+</div>
+</div>
+
+<div class="module-grid">
+
+<!-- ===== MÓDULO 1 ===== -->
+<section class="module-card" id="m1" data-module="m1" aria-labelledby="m1-title">
+<div class="module-header">
+<div class="module-number">1<span class="check-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+<div class="module-content">
+<span class="module-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20h10M12 20V10M12 10c0-3-2-5-5-5 0 3 2 5 5 5zM12 10c0-4 3-6 6-6 0 4-3 6-6 6z"/></svg>Primeros pasos</span>
+<h2 id="m1-title">Empieza tu finca</h2>
+<p class="module-lema">"Anota lo que ya tienes sembrado — a mano o hablando."</p>
+</div>
+</div>
+
+<div class="video-row">
+<figure class="phone-frame">
+<figcaption class="phone-caption">Registrar una siembra</figcaption>
+<div class="phone-screen"><iframe src="/manual/mv-siembra.html" loading="lazy" scrolling="no" title="Video-manual: cómo registrar una siembra en la app Chagra"></iframe></div>
+</figure>
+<figure class="phone-frame">
+<figcaption class="phone-caption">Agregar una mata por voz</figcaption>
+<div class="phone-screen"><iframe src="/manual/mv-voz-registro.html" loading="lazy" scrolling="no" title="Video-manual: cómo agregar una mata hablando por voz en la app Chagra"></iframe></div>
+</figure>
+</div>
+<p class="video-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>Los videos se reproducen solos. Míralos en el celular como se verá en la app.</p>
+
+<p class="module-desc">Chagra guarda tu finca en tu propio celular, sin internet y sin nube extranjera. Lo primero es contarle qué tienes: registra una siembra tocando la pantalla, o —con las manos sucias— dícelo por voz y él lo anota.</p>
+
+<div class="module-footer">
+<div class="module-links">
+<a href="https://chagra.app/#agente" class="app-btn" rel="noopener">Abrir en la app<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="https://chagra.app/#voz" class="app-btn secondary" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>Registrar por voz</a>
+</div>
+<button type="button" class="mark-btn" data-mark="m1" aria-pressed="false"><span class="mark-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="mark-text">Marcar como visto</span></button>
+</div>
+</section>
+
+<!-- ===== MÓDULO 2 ===== -->
+<section class="module-card" id="m2" data-module="m2" aria-labelledby="m2-title">
+<div class="module-header">
+<div class="module-number">2<span class="check-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+<div class="module-content">
+<span class="module-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>Diagnóstico</span>
+<h2 id="m2-title">Conoce tu suelo y tus matas</h2>
+<p class="module-lema">"Lee tu tierra y sigue el calendario de cada mata."</p>
+</div>
+</div>
+
+<div class="module-illus">
+<div class="illus-icon" aria-hidden="true">
+<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 44 C 20 40 44 40 56 44 L 56 56 L 8 56 Z" fill="rgba(16,185,129,.15)" stroke="#10b981"/>
+<path d="M32 44 C 30 34 30 26 32 18" stroke="#34d399"/>
+<path d="M32 26 C 26 24 22 20 22 14 C 28 15 32 19 32 26 Z" fill="rgba(6,182,212,.2)" stroke="#06b6d4"/>
+<path d="M32 30 C 38 28 42 24 42 18 C 36 19 32 23 32 30 Z" fill="rgba(6,182,212,.2)" stroke="#06b6d4"/>
+<circle cx="18" cy="50" r="1.6" fill="#94a3b8"/><circle cx="46" cy="51" r="1.6" fill="#94a3b8"/><circle cx="32" cy="52" r="1.6" fill="#94a3b8"/>
+</svg>
+</div>
+<p>El suelo no es solo tierra: es un mundo vivo de hongos, bacterias y lombrices. Aprende a leerlo sin laboratorio (color, olor, tacto, la prueba de la mostaza) y a seguir la fenología —el calendario natural de cada cultivo— para saber cuándo abonar, podar y cosechar.</p>
+</div>
+
+<p class="module-source"><strong>Fuente:</strong> DR-SUELOS (triple-validado DeepSeek + Gemini + Meta) · Agrosavia.</p>
+
+<div class="module-footer">
+<div class="module-links">
+<a href="https://chagra.app/#suelo" class="app-btn" rel="noopener">Cómo está mi tierra<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="https://chagra.app/#calendario" class="app-btn secondary" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendario de finca</a>
+</div>
+<button type="button" class="mark-btn" data-mark="m2" aria-pressed="false"><span class="mark-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="mark-text">Marcar como visto</span></button>
+</div>
+</section>
+
+<!-- ===== MÓDULO 3 ===== -->
+<section class="module-card" id="m3" data-module="m3" aria-labelledby="m3-title">
+<div class="module-header">
+<div class="module-number">3<span class="check-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+<div class="module-content">
+<span class="module-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v5l-5 9a2 2 0 001.8 3h10.4a2 2 0 001.8-3l-5-9V3"/><path d="M7.5 14h9"/></svg>Manejo sano</span>
+<h2 id="m3-title">Cuida sin veneno</h2>
+<p class="module-lema">"Remedios caseros y manejo de plagas sin químicos."</p>
+</div>
+</div>
+
+<div class="module-illus">
+<div class="illus-icon" aria-hidden="true">
+<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M26 8h12M28 8v9l-8 15a3 3 0 002.7 4.4h18.6A3 3 0 0056 32l-8-15V8" fill="rgba(6,182,212,.12)" stroke="#06b6d4"/>
+<path d="M23 26h18" stroke="#06b6d4"/>
+<circle cx="30" cy="34" r="2" fill="#10b981"/><circle cx="37" cy="38" r="1.6" fill="#10b981"/><circle cx="32" cy="40" r="1.4" fill="#34d399"/>
+<path d="M46 46 C 50 44 54 46 54 52 C 48 52 46 50 46 46 Z" fill="rgba(16,185,129,.2)" stroke="#10b981"/>
+</svg>
+</div>
+<p>Antes del veneno hay muchas herramientas. Los biopreparados (caldos, purines, extractos) se hacen en la finca con lo que hay. Y el Manejo Integrado de Plagas (MIP) combina prevención, monitoreo y control biológico: primero identificar, después actuar con la medida más suave que funcione.</p>
+</div>
+
+<p class="module-source"><strong>Fuente:</strong> catálogo de biopreparados y control biológico verificado del grafo Chagra.</p>
+
+<div class="module-footer">
+<div class="module-links">
+<a href="https://chagra.app/#biopreparados" class="app-btn" rel="noopener">Biopreparados<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="https://chagra.app/#sanidad" class="app-btn secondary" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>Mi mata está enferma</a>
+</div>
+<button type="button" class="mark-btn" data-mark="m3" aria-pressed="false"><span class="mark-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="mark-text">Marcar como visto</span></button>
+</div>
+</section>
+
+<!-- ===== MÓDULO 4 ===== -->
+<section class="module-card" id="m4" data-module="m4" aria-labelledby="m4-title">
+<div class="module-header">
+<div class="module-number">4<span class="check-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+<div class="module-content">
+<span class="module-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8M12 8c0-3 1.5-6 5-6 0 3-1.5 6-5 6zM12 12c0-3-1.5-6-5-6 0 3 1.5 6 5 6zM7 12c-2 0-4 2-4 5 2 0 4-2 4-5zM17 12c2 0 4 2 4 5-2 0-4-2-4-5z"/></svg>Policultivo</span>
+<h2 id="m4-title">Asocia y aprovecha</h2>
+<p class="module-lema">"Siembra en compañía: la milpa y los asocios que se ayudan."</p>
+</div>
+</div>
+
+<div class="video-row">
+<figure class="phone-frame">
+<figcaption class="phone-caption">La milpa / asocios</figcaption>
+<div class="phone-screen"><iframe src="/manual/mv-milpa.html" loading="lazy" scrolling="no" title="Video-manual: la milpa y los asocios de cultivos en la app Chagra"></iframe></div>
+</figure>
+</div>
+<p class="video-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>El video se reproduce solo. Míralo en el celular como se verá en la app.</p>
+
+<p class="module-desc">Ninguna mata vive sola. La milpa —maíz, fríjol y calabaza juntos— es el ejemplo clásico: el maíz da soporte, el fríjol fija nitrógeno, la calabaza tapa el suelo. Chagra te muestra qué plantas se ayudan y cuáles no se llevan.</p>
+
+<div class="module-footer">
+<div class="module-links">
+<a href="https://chagra.app/#milpa" class="app-btn" rel="noopener">Armar una milpa<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="https://chagra.app/#directorio" class="app-btn secondary" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Qué puedo sembrar</a>
+</div>
+<button type="button" class="mark-btn" data-mark="m4" aria-pressed="false"><span class="mark-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="mark-text">Marcar como visto</span></button>
+</div>
+</section>
+
+<!-- ===== MÓDULO 5 ===== -->
+<section class="module-card" id="m5" data-module="m5" aria-labelledby="m5-title">
+<div class="module-header">
+<div class="module-number">5<span class="check-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></div>
+<div class="module-content">
+<span class="module-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11l1.5 9a2 2 0 002 1.7h7a2 2 0 002-1.7L19 11M3 11h18M8 11l2-6M16 11l-2-6"/></svg>Poscosecha</span>
+<h2 id="m5-title">Cosecha y vende</h2>
+<p class="module-lema">"Recoge, guarda bien y mira el precio antes de vender."</p>
+</div>
+</div>
+
+<div class="video-row">
+<figure class="phone-frame">
+<figcaption class="phone-caption">Precios y mercado (SIPSA)</figcaption>
+<div class="phone-screen"><iframe src="/manual/mv-sipsa.html" loading="lazy" scrolling="no" title="Video-manual: consultar precios y mercado SIPSA en la app Chagra"></iframe></div>
+</figure>
+</div>
+<p class="video-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>El video se reproduce solo. Míralo en el celular como se verá en la app.</p>
+
+<p class="module-desc">La plata se gana —o se pierde— después de cosechar. Recoge en el punto justo, maneja bien la poscosecha (sombra, ventilación, sin golpes) para que el producto dure, y consulta el precio de referencia (SIPSA/DANE) antes de vender para no rematar tu trabajo.</p>
+
+<p class="module-source"><strong>Fuente:</strong> buenas prácticas de poscosecha (SENA/Agrosavia); precios de referencia SIPSA-DANE (públicos).</p>
+
+<div class="module-footer">
+<div class="module-links">
+<a href="https://chagra.app/#poscosecha" class="app-btn" rel="noopener">Registrar cosecha<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<a href="https://chagra.app/#mercado" class="app-btn secondary" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>Ver el mercado</a>
+</div>
+<button type="button" class="mark-btn" data-mark="m5" aria-pressed="false"><span class="mark-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><span class="mark-text">Marcar como visto</span></button>
+</div>
+</section>
+
+</div>
+
+<div class="curso-cierre">
+<div class="cierre-card">
+<h2>Listo para tu finca de verdad</h2>
+<p>Ya viste cómo funciona. Ahora abre Chagra en tu celular y registra tu primera mata — funciona sin internet y todo se guarda en tu propio dispositivo.</p>
+<a href="https://chagra.app" class="app-btn" rel="noopener">Abrir Chagra<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+<div class="footer-inner">
+<div class="footer-bottom">
+<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> &middot; DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
+<p>Hecho desde Guatoc &middot; Choachí &middot; Cundinamarca &middot; Colombia</p>
+<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
+</div>
+</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var KEY = "chagra_curso_progreso";
+  var IDS = ["m1","m2","m3","m4","m5"];
+
+  function load(){
+    try{
+      var raw = window.localStorage.getItem(KEY);
+      if(!raw) return [];
+      var arr = JSON.parse(raw);
+      if(!Array.isArray(arr)) return [];
+      return arr.filter(function(x){ return IDS.indexOf(x) !== -1; });
+    }catch(e){ return []; }
+  }
+  function save(arr){
+    try{ window.localStorage.setItem(KEY, JSON.stringify(arr)); }catch(e){}
+  }
+
+  var done = load();
+
+  function isDone(id){ return done.indexOf(id) !== -1; }
+
+  function render(){
+    // Cards + step rail
+    IDS.forEach(function(id){
+      var card = document.querySelector('[data-module="'+id+'"]');
+      var btn  = document.querySelector('[data-mark="'+id+'"]');
+      var rail = document.querySelector('[data-step="'+id+'"]');
+      var on = isDone(id);
+      if(card) card.classList.toggle("completado", on);
+      if(rail) rail.classList.toggle("done", on);
+      if(btn){
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        var txt = btn.querySelector(".mark-text");
+        if(txt) txt.textContent = on ? "Visto" : "Marcar como visto";
+      }
+    });
+    // Counter + bar
+    var n = done.length;
+    var count = document.querySelector("[data-curso-count]");
+    var fill = document.querySelector("[data-curso-fill]");
+    var bar = document.querySelector(".progreso-bar");
+    var reset = document.querySelector("[data-curso-reset]");
+    if(count) count.textContent = String(n);
+    if(fill) fill.style.width = (n/IDS.length*100) + "%";
+    if(bar) bar.setAttribute("aria-valuenow", String(n));
+    if(reset) reset.hidden = (n === 0);
+  }
+
+  function toggle(id){
+    var i = done.indexOf(id);
+    if(i === -1) done.push(id);
+    else done.splice(i,1);
+    save(done);
+    render();
+  }
+
+  document.querySelectorAll("[data-mark]").forEach(function(btn){
+    btn.addEventListener("click", function(){ toggle(btn.getAttribute("data-mark")); });
+  });
+
+  var resetBtn = document.querySelector("[data-curso-reset]");
+  if(resetBtn){
+    resetBtn.addEventListener("click", function(){
+      done = [];
+      save(done);
+      render();
+    });
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>
