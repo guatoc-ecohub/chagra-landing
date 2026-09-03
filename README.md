@@ -1,7 +1,8 @@
-# Chagra · landing page (chagra.app + chagra.bio)
+# Chagra · landing page (chagra.bio)
 
-Landing estática minimalista para presentar la PWA Chagra en
-`chagra.app` y `chagra.bio`. Pensada para deploy a **Cloudflare Pages**.
+Landing estática minimalista para presentar la PWA Chagra, que vive en
+`chagra.app` (canónico de producción). Desplegada en **Cloudflare
+Pages** y servida en `chagra.bio` — estado medido 2026-09-03, ver §4.1.
 
 - **Sin Google Fonts**, sin Tailwind CDN, sin analítica de Big Tech.
 - **CSP estricta**: `default-src 'self'`.
@@ -76,46 +77,46 @@ Verificar en DevTools (Network tab):
 
 ## 4. Deploy a Cloudflare Pages
 
-### 4.1 Registrar los dominios
+### 4.1 Estado de los dominios (verificado 2026-09-03)
 
-`chagra.app` y `chagra.bio` no están registrados todavía. Opciones
-recomendadas (no requieren cuenta corporativa, aceptan tarjeta CO):
+Ambos dominios están **registrados y activos** — la compra ya se hizo.
+(En qué registrar y precio de renovación: sin verificar, WHOIS no
+disponible desde este entorno.) `chagra.app` es el canónico de
+producción de la PWA: `chagra.guatoc.co` responde `301 → https://chagra.app/`.
 
-| Registrar | `.app` aprox | `.bio` aprox | Notas |
-|---|---|---|---|
-| **Cloudflare Registrar** | ~14 USD/año | ~50 USD/año | At-cost, sin markup. Ideal si los DNS ya están en CF. |
-| **Porkbun** | ~12 USD/año | ~45 USD/año | UX simple, WHOIS privacy gratis. |
-| **Namecheap** | ~14 USD/año | ~50 USD/año | Conocido en LATAM. |
+| Dominio | Qué sirve (medido 2026-09-03) | Verificación |
+|---|---|---|
+| `chagra.app` | La **PWA** de producción, no esta landing | `curl -s -o /dev/null -w '%{http_code}' https://chagra.app` → `200` |
+| `chagra.bio` | **Esta landing** (HTML idéntico a `chagra-landing.pages.dev` salvo la ofuscación de emails que Cloudflare inyecta) | `curl -s -o /dev/null -w '%{http_code}' https://chagra.bio` → `200` |
 
-**Recomendación:** comprar `chagra.app` ya (más fácil de recordar
-para usuarios y aliados). `chagra.bio` puede esperar 24-48h si presupuesto justo.
+Para re-medir en vez de creerle a este archivo:
 
-### 4.2 Apuntar DNS a Cloudflare
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://chagra.app   # 200
+curl -s -o /dev/null -w '%{http_code}\n' https://chagra.bio   # 200
+curl -sI https://chagra.guatoc.co | grep -i '^location'       # location: https://chagra.app/
+```
 
-Si compras en **Cloudflare Registrar**: los nameservers ya quedan en
-CF; salta al paso 4.3.
+### 4.2 DNS en Cloudflare — ya hecho
 
-Si compras en **Porkbun / Namecheap**:
-
-1. Crear cuenta gratis en https://dash.cloudflare.com
-2. *Add Site* → escribir `chagra.app` → plan Free.
-3. CF te dará 2 nameservers tipo `xxx.ns.cloudflare.com`.
-4. En el registrar, panel DNS → cambiar nameservers por los dos de CF.
-5. Esperar 5–30 minutos (a veces hasta 4h) para propagación.
-6. Repetir para `chagra.bio`.
-
-Verificar:
+Ambas zonas ya viven en Cloudflare, cada dominio en su propia zona
+(pares de NS distintos). Medido 2026-09-03:
 
 ```bash
 dig +short NS chagra.app
+# kurt.ns.cloudflare.com.
+# tia.ns.cloudflare.com.
 dig +short NS chagra.bio
+# paige.ns.cloudflare.com.
+# sri.ns.cloudflare.com.
 ```
-
-Ambos deben mostrar los nameservers de Cloudflare.
 
 ### 4.3 Crear el proyecto en Cloudflare Pages
 
-Hay dos vías. Elegir una:
+**Ya ejecutado (Vía A):** este repo (`guatoc-ecohub/chagra-landing`,
+ver `git remote -v`) está conectado, y `chagra-landing.pages.dev`
+sirve el `index.html` de `main` idéntico byte a byte (sha256
+comparado 2026-09-03). Lo que sigue queda como referencia:
 
 #### Vía A — Conectar repo Git (recomendada, auto-deploy en cada push)
 
@@ -143,18 +144,23 @@ wrangler pages deploy . --project-name=chagra-landing
 
 Útil para iteración rápida hoy/mañana, pero perdés auto-deploy.
 
-### 4.4 Asociar los dominios custom
+### 4.4 Dominios custom — estado real (verificado 2026-09-03)
 
-Una vez el proyecto `chagra-landing` esté creado:
+El plan original (ambos dominios apuntando a esta landing) no se
+aplicó así:
 
-1. Pages → proyecto `chagra-landing` → *Custom domains*.
-2. *Set up a custom domain* → `chagra.app` → CF crea automáticamente
-   el registro `CNAME chagra.app → chagra-landing.pages.dev` (porque
-   los NS ya están en CF).
-3. Esperar el SSL (Let's Encrypt vía CF, suele tardar 1–3 min).
-4. Repetir para `chagra.bio`.
-5. Opcional: redirigir `www.chagra.app` → `chagra.app` con un Page
-   Rule o Bulk Redirect.
+- `chagra.bio` **sí** sirve esta landing (HTML idéntico al de
+  `chagra-landing.pages.dev`; solo difiere la ofuscación de emails
+  que Cloudflare inyecta al vuelo).
+- `chagra.app` sirve la **PWA** de producción, no esta landing: no
+  apunta a `chagra-landing.pages.dev`.
+- `www` sigue sin funcionar: `dig www.chagra.app` → `NXDOMAIN`, y
+  `www.chagra.bio` resuelve pero responde `522` (Cloudflare no llega
+  al origen). La redirección www → apex queda pendiente.
+
+(El registro CNAME exacto de cada dominio no es observable desde
+fuera — el proxy de Cloudflare oculta el origen. Lo anterior se midió
+comparando el HTML y los headers servidos por cada dominio.)
 
 ### 4.5 Verificación post-deploy
 
@@ -163,11 +169,11 @@ Una vez el proyecto `chagra-landing` esté creado:
 curl -I https://chagra.app
 curl -I https://chagra.bio
 
-# CSP y headers de seguridad activos
-curl -sI https://chagra.app | grep -iE 'content-security|x-frame|strict-transport'
+# CSP y headers de seguridad activos (en la landing: chagra.bio)
+curl -sI https://chagra.bio | grep -iE 'content-security|x-frame|strict-transport'
 
-# CTA apuntando a la PWA
-curl -s https://chagra.app | grep -o 'href="https://chagra.guatoc.co"'
+# CTA apuntando a la PWA (la landing vive en chagra.bio)
+curl -s https://chagra.bio | grep -c 'href="https://chagra.app"'   # → 2
 
 # Lighthouse desde CLI (opcional)
 npx lighthouse https://chagra.app --only-categories=performance,accessibility,seo
@@ -182,9 +188,12 @@ imágenes grandes hasta que entren los screenshots reales).
 
 - **Antes de mergear** cualquier copy nuevo, probar local con
   `python3 -m http.server 8080` y revisar en móvil emulado.
-- **URL de la PWA** (`https://chagra.guatoc.co`) es placeholder.
-  Cuando esté la URL final (ej. `https://app.chagra.app`), buscar y
-  reemplazar en `index.html` (3 ocurrencias).
+- **URL de la PWA:** ya resuelta — `https://chagra.app` es producción
+  y `chagra.guatoc.co` hace `301` hacia ella (medido 2026-09-03).
+  `index.html` ya apunta ahí: 3 ocurrencias de `https://chagra.app`,
+  0 de `chagra.guatoc.co`. Pendiente menor (fuera de esta corrección
+  de docs): `_redirects` sigue mandando `/app` → `chagra.guatoc.co`
+  (cadena 302 → 301, indirecta).
 - **Logo oficial**: reemplazar `assets/chagra-logo.svg` manteniendo
   el viewbox 64×64 para no romper el header.
 
@@ -195,7 +204,8 @@ imágenes grandes hasta que entren los screenshots reales).
 Cualquier PR a esta landing debe seguir cumpliendo:
 
 - [ ] 0 dominios externos en HTML/CSS (`grep -E 'https?://' index.html`
-      sólo debe mostrar URLs hacia `chagra.guatoc.co`, GitHub, AGPL).
+      sólo debe mostrar URLs hacia `chagra.app`, `guatoc.co`,
+      `chagra.bio` (assets) y GitHub — inventario medido 2026-09-03).
 - [ ] 0 `<script>` en runtime (excepto la inline `onerror` de imágenes).
 - [ ] CSP en `_headers` permanece `default-src 'self'`.
 - [ ] Peso total `< 200 KB` con los 3 PNG de screenshots ya optimizados.
