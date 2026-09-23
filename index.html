@@ -107,10 +107,12 @@ a.puerta:hover{border-color:rgba(167,201,87,.6);transform:translateY(-2px)}
 .puerta .ir{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--acento)}
 .puerta.edu{grid-row:span 2;background:linear-gradient(180deg,#223018 0%,#1a2413 46%,#141a10 100%)}
 .puerta.edu svg{width:100%;height:auto;max-height:260px;margin:6px 0 14px;display:block}
-.hermanas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.hermanas{display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:10px;margin:14px 0 4px}
 .hermana{border:1px solid var(--linea);border-radius:12px;padding:10px 12px;font-size:.86rem;color:var(--tinta-2)}
 .hermana b{display:block;font-family:var(--serif);font-weight:400;font-size:1.05rem;color:var(--tinta)}
-.hermana.pronto{border-style:dashed}
+a.hermana{text-decoration:none;transition:border-color .2s ease}
+a.hermana:hover{border-color:rgba(167,201,87,.6)}
+.puerta.edu .ir{text-decoration:none}
 .modulos{list-style:none;padding:0;margin:12px 0 0;counter-reset:m;display:grid;gap:4px}
 .modulos li{counter-increment:m;font-size:.9rem;color:var(--tinta-2);display:flex;gap:10px}
 .modulos li::before{content:counter(m);font-family:var(--mono);color:var(--acento);min-width:1ch}
@@ -326,7 +328,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
     <p class="entrada" data-t="apr-ent">Chagra enseña lo que sabe con la misma regla con que responde: cada afirmación trae su fuente, y lo que es ilustrativo se dice ilustrativo.</p>
 
     <div class="puertas">
-      <a class="puerta edu" href="https://edu.chagra.bio">
+      <div class="puerta edu">
         <span class="rotulo">edu.chagra.bio</span>
         <svg viewBox="0 0 400 220" role="img" aria-label="Una hoja de café que se abre en una doble hélice">
           <defs><linearGradient id="gHoja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f9a3e"/><stop offset="1" stop-color="#2f5a24"/></linearGradient></defs>
@@ -344,14 +346,17 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
           </g>
           <path d="M232 62 C 244 56, 254 50, 262 44" stroke="#c9dca0" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
         </svg>
-        <h3 data-t="edu-tit">Descenso: de la hoja de café a su ADN</h3>
-        <p data-t="edu-txt">Una sola toma, sin cortes: de una mata de café al sol hasta la doble hélice, pasando por los estomas, la célula y el núcleo. Doce fuentes con DOI; escalas rotuladas como aproximadas.</p>
+        <h3 data-t="edu-tit">De la finca a la célula</h3>
+        <p data-t="edu-txt">Piezas que bajan de lo que usted ve en la finca hasta lo que pasa dentro de la célula, y cursos para el trabajo de cada día. Todo en una sola toma y con ciencia citada.</p>
         <div class="hermanas">
-          <div class="hermana"><b data-t="edu-cafe">Café</b><span data-t="edu-cafe-d">abierto</span></div>
-          <div class="hermana pronto"><b data-t="edu-milpa">Milpa</b><span data-t="edu-milpa-d">próximamente: micorrizas y el nódulo del fríjol</span></div>
+          <a class="hermana" href="https://edu.chagra.bio/cafe/"><b data-t="edu-cafe">Café</b><span data-t="edu-cafe-d">de la mata a su ADN</span></a>
+          <a class="hermana" href="https://edu.chagra.bio/milpa/"><b data-t="edu-milpa">Milpa</b><span data-t="edu-milpa-d">el fríjol y sus dos socios</span></a>
+          <a class="hermana" href="https://edu.chagra.bio/cursos/aprende-a-usar-chagra/"><b data-t="edu-c1">Un día en la finca</b><span data-t="edu-c1-d">curso para usar la app</span></a>
+          <a class="hermana" href="https://edu.chagra.bio/cursos/transicion-15-15-15/"><b data-t="edu-c2">Del bulto a la raíz</b><span data-t="edu-c2-d">del 15-15-15 a la agroecología</span></a>
+          <a class="hermana" href="https://edu.chagra.bio/cursos/bioseguridad/"><b data-t="edu-c3">La ruta de una gota</b><span data-t="edu-c3-d">bioseguridad en el campo</span></a>
         </div>
-        <span class="ir" data-t="edu-ir">Entrar a edu.chagra.bio →</span>
-      </a>
+        <a class="ir" href="https://edu.chagra.bio" data-t="edu-ir">Entrar a edu.chagra.bio →</a>
+      </div>
 
       <a class="puerta" href="/aprender/curso/">
         <span class="rotulo" data-t="cur-rot">Curso guiado · para usar la app</span>
@@ -378,10 +383,10 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
 
     <div class="notas">
       <a class="puerta" href="/aprender/transicion-15-15-15">
-        <span class="rotulo" data-t="n1-rot">Suelos · nutrición</span>
+        <span class="rotulo" data-t="n1-rot">Lectura · suelos y nutrición</span>
         <h3 data-t="n1-tit">Del 15-15-15 a la agroecología</h3>
-        <p data-t="n1-txt">Qué pasa en el suelo con el abono de síntesis, y un plan de transición de tres años para quien lleva décadas con él.</p>
-        <span class="ir" data-t="n-ir">Abrir la unidad →</span>
+        <p data-t="n1-txt">Qué trae el bulto, qué le pasa en la tierra y qué dice la ciencia de pasarse a lo orgánico, con la fuente de cada cifra.</p>
+        <span class="ir" data-t="n-ir">Leer →</span>
       </a>
       <a class="puerta" href="/aprender/bioseguridad">
         <span class="rotulo" data-t="n2-rot">Salud · bioseguridad</span>
@@ -550,14 +555,14 @@ const EN = {
   'btn-app': 'Open the app', 'btn-cursos': 'See the app', 'btn-bajar': 'Down ↓',
   'apr-ante': 'Learn · free', 'apr-tit': 'Three doors to start',
   'apr-ent': 'Chagra teaches what it knows under the same rule it answers with: every claim carries its source, and what is illustrative is labelled illustrative.',
-  'edu-tit': 'Descent: from a coffee leaf to its DNA',
-  'edu-txt': 'One continuous shot: from a coffee plant in the sun down to the double helix, through stomata, cell and nucleus. Twelve sources with DOI; scales labelled as approximate.',
-  'edu-cafe': 'Coffee', 'edu-cafe-d': 'open', 'edu-milpa': 'Milpa', 'edu-milpa-d': 'coming soon: mycorrhizae and the bean nodule', 'edu-ir': 'Enter edu.chagra.bio →',
+  'edu-tit': 'From the farm to the cell',
+  'edu-txt': 'Pieces that go down from what you see on the farm to what happens inside the cell, and courses for everyday work. Each one a single shot, with cited science.',
+  'edu-cafe': 'Coffee', 'edu-cafe-d': 'from the plant to its DNA', 'edu-milpa': 'Milpa', 'edu-milpa-d': 'the bean and its two partners', 'edu-c1': 'A day on the farm', 'edu-c1-d': 'course on using the app', 'edu-c2': 'From the bag to the root', 'edu-c2-d': 'from 15-15-15 to agroecology', 'edu-c3': 'The path of a drop', 'edu-c3-d': 'biosafety in the field', 'edu-ir': 'Enter edu.chagra.bio →',
   'cur-rot': 'Guided course · using the app', 'cur-tit': 'Learn to use Chagra',
   'cur-txt': 'From your first record to your first sale, with short videos that look like your phone and links to try each step in the app.',
   'm1': 'Start your farm', 'm2': 'Know your soil and plants', 'm3': 'Care without poison', 'm4': 'Associate and make the most of it', 'm5': 'Harvest and sell', 'm6': 'Ready for your real farm', 'cur-ir': 'Start the course →',
   'mini-rot': 'Mini-course · 3 modules', 'mini-tit': 'First steps in agroecology', 'mini-txt': 'Introduction to Chagra, basic biopreparations and ecological pest management, in thirteen short lessons.', 'mini-ir': 'See the mini-course →',
-  'n1-rot': 'Soils · nutrition', 'n1-tit': 'From 15-15-15 to agroecology', 'n1-txt': 'What synthetic fertiliser does in the soil, and a three-year transition plan for those who have used it for decades.', 'n-ir': 'Open the unit →',
+  'n1-rot': 'Reading · soils and nutrition', 'n1-tit': 'From 15-15-15 to agroecology', 'n1-txt': 'What the bag contains, what happens to it in the soil, and what science says about going organic, with the source of every figure.', 'n-ir': 'Read →',
   'n2-rot': 'Health · biosafety', 'n2-tit': 'Biosafety in the field', 'n2-txt': 'Pesticides and the body, minimum protective equipment, and the risks some biopreparations also carry.', 'n-ir2': 'Open the unit →',
   'n3-rot': 'All notes', 'n3-tit': 'Technical field notes', 'n3-txt': 'First in plain words, then with peer-reviewed evidence.', 'n-ir3': 'Go to Learn →',
   'hace-ante': 'The app, today', 'hace-tit': 'What Chagra already does',
