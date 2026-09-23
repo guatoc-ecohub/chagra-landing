@@ -75,7 +75,7 @@ function saveProgress(){
     const totalCorrect = quizzes.reduce((a,q)=>a+q.correct,0);
     const totalQ = quizzes.reduce((a,q)=>a+q.total,0);
     s.promedio_quizzes = totalQ>0 ? Math.round((totalCorrect/totalQ)*1000)/1000 : 0;
-    s.certificate_eligible = s.promedio_quizzes >= 0.70;
+    s.certificate_eligible = s.promedio_quizzes >= (70/100);
   }
   localStorage.setItem(LS_KEY, JSON.stringify(s));
   updatePreviousProgress(s);
@@ -158,40 +158,31 @@ document.querySelectorAll('.quiz-wrap').forEach(wrap=>{
   });
 });
 
-// ===== CALCULATOR: EPP RISK =====
+// ===== CALCULATOR: EPA BACKPACK HANDLER EXPOSURE =====
 function calcEpp(){
-  const items = {
-    'epp-gafas':95,'epp-mascara':80,'epp-guantes':70,'epp-overol':60,'epp-botas':50,'epp-jabon':40
-  };
-  let totalProtection = 0;
-  let checkedCount = 0;
-  for(const[id,prot] of Object.entries(items)){
-    if(document.getElementById(id).checked){ totalProtection+=prot; checkedCount++; }
-  }
-  // Compound protection (multiplicative approximation)
-  const checked = Object.keys(items).filter(id=>document.getElementById(id).checked);
-  let remaining = 100;
-  checked.forEach(id=>{
-    const prot = items[id];
-    remaining *= (1 - prot/100);
-  });
-  const absorption = Math.round(remaining);
-
+  const concentration = Number(document.getElementById('eppConcentration').value);
+  const litersPerHa = Number(document.getElementById('eppRate').value);
+  const hectares = Number(document.getElementById('eppArea').value);
   const result = document.getElementById('eppResult');
-  if(checkedCount===0){
-    result.innerHTML = '<span class="result-num">100%</span> de absorcion de químico - sin protección alguna. Marca los items arriba.';
-    result.style.borderColor = '#f87171';
-  }else if(absorption<10){
-    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#10b981">Excelente protección.</strong> Con este EPP reduce drasticamente el riesgo.';
-    result.style.borderColor = '#10b981';
-  }else if(absorption<40){
-    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#fbbf24">Proteccion parcial.</strong> Considere completar el kit.';
-    result.style.borderColor = '#fbbf24';
-  }else{
-    result.innerHTML = '<span class="result-num">~'+absorption+'%</span> de absorcion estimada. <strong style="color:#f87171">Proteccion insuficiente.</strong> Su cuerpo sigue absorbiendo mucho químico.';
-    result.style.borderColor = '#f87171';
+  if(!Number.isFinite(concentration*litersPerHa*hectares) || concentration<0 || litersPerHa<0 || hectares<0){
+    result.textContent = 'Ingrese valores válidos, iguales o mayores que cero.';
+    return;
   }
-  trackCalc('epp_riesgo');
+  const activeIngredientGrams = concentration * litersPerHa * hectares;
+  const poundsHandled = activeIngredientGrams / 453.59237;
+  const clothing = document.getElementById('eppClothing').value;
+  const dermalUnit = clothing==='double' ? 6230 : clothing==='gloves' ? 11200 : 13200;
+  const inhalationUnit = document.getElementById('eppRespirator').checked ? 14 : 140;
+  const dermalMg = poundsHandled * dermalUnit / 1000;
+  const inhalationMg = poundsHandled * inhalationUnit / 1000;
+  const dermalReduction = (1 - dermalUnit / 13200) * 100;
+  const inhalationReduction = (1 - inhalationUnit / 140) * 100;
+  const fmt = n => n.toFixed(1);
+  result.innerHTML = '<strong>Exposición estimada por día (ingrediente activo):</strong><br>' +
+    'A la piel: <strong>' + fmt(dermalMg) + ' mg</strong> (' + fmt(dermalReduction) + ' % menos que con una capa sin guantes).<br>' +
+    'A los pulmones: <strong>' + inhalationMg.toFixed(2) + ' mg</strong> (' + fmt(inhalationReduction) + ' % menos con el respirador elegido).<br>' +
+    '<small>Estimación de exposición externa, no de cantidad absorbida ni probabilidad de enfermedad.</small>';
+  trackCalc('epp_epa');
 }
 
 // ===== CALCULATOR: BIO RISK DETECTOR =====
@@ -311,39 +302,10 @@ function checkMix(){
   trackCalc('mezclas_peligrosas');
 }
 
-// ===== CALCULATOR: COST EPP VS DISEASE =====
-const RISK_TABLE = {
-  glifosato:{risk:0.5,disease:'linfoma no Hodgkin',costLow:50000000,costHigh:200000000},
-  paraquat:{risk:1.5,disease:'enfermedad de Parkinson',costLow:5000000,costHigh:20000000},
-  clorpirifos:{risk:0.3,disease:'trastorno neurologico',costLow:30000000,costHigh:100000000},
-  mancozeb:{risk:0.4,disease:'cáncer tiroideo',costLow:30000000,costHigh:100000000}
-};
-
+// ===== CALCULATOR: EVIDENCE FREQUENCIES, NOT PERSONAL RISK =====
 function calcCost(){
-  const years = parseFloat(document.getElementById('workYears').value)||0;
-  const chem = document.getElementById('chemicalType').value;
-  const data = RISK_TABLE[chem];
   const result = document.getElementById('costResult');
-
-  if(!data || years<=0){
-    result.innerHTML = '<span class="result-num">0%</span> riesgo &middot; Ingrese años y químico arriba.';
-    return;
-  }
-
-  const accumRisk = Math.min(years * data.risk, 99);
-  const avgCost = Math.round((data.costLow + data.costHigh)/2);
-  const projectedCost = Math.round(avgCost * (accumRisk/100));
-  const kitCostPerYear = 150000;
-  const totalKitCost = kitCostPerYear * years;
-  const ratio = totalKitCost>0 ? Math.round(projectedCost/totalKitCost) : 0;
-
-  let html = '<span class="result-num">'+accumRisk.toFixed(1)+'%</span> riesgo acumulado de '+data.disease+'<br>';
-  html += 'Costo proyectado si enferma: <strong>$'+projectedCost.toLocaleString('es-CO')+' COP</strong><br>';
-  html += 'Costo total kit EPP ('+years+' años): <strong>$'+totalKitCost.toLocaleString('es-CO')+' COP</strong><br>';
-  if(ratio>0) html += '<strong style="color:#10b981">$1 en EPP = ~$'+ratio.toLocaleString('es-CO')+' ahorrado en salud</strong>';
-
-  result.innerHTML = html;
-  trackCalc('epp_vs_enfermedad');
+  result.innerHTML = 'De 1.000 personas en Colombia, unas <strong>6</strong> tendrán linfoma no Hodgkin antes de los 75 años. Entre quienes más glifosato aplicaron, algunos estudios encuentran unas <strong>9</strong>; otros estudios grandes no encuentran diferencia. <strong>Esto no es su probabilidad personal.</strong><br><small>Fuente: GLOBOCAN 2022 (línea base); Zhang et al. 2019 y Andreotti et al. 2018 (exposición alta/cohorte).</small>';
 }
 
 // ===== ROUTINE GAME (step ordering) =====
@@ -482,6 +444,7 @@ function trackCalc(name){
 
 // ===== INIT =====
 function init(){
+  calcCost();
   const s = getState();
   // If returning user, show where they left off (but allow restart)
   if(s.screens_visited && s.screens_visited.length>0){
