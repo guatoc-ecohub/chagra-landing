@@ -2,379 +2,217 @@
 <html lang="es-CO">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Del 15-15-15 a la agroecología — lo que descubrió la ciencia en los últimos 30 años. Por qué Chagra no usa NPK ni cal viva, qué propone y plan de transición de 3 años.">
-<meta name="theme-color" content="#0f172a">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Del 15-15-15 a la agroecología — lectura · Chagra</title>
+<meta name="description" content="Qué trae el bulto de 15-15-15, qué le pasa en la tierra y qué dice la ciencia de pasarse a lo orgánico. Sin demonizar, con la fuente de cada cifra.">
+<meta name="theme-color" content="#15110c">
 <meta name="color-scheme" content="dark">
-<meta property="og:title" content="Del 15-15-15 a la agroecología — Chagra Aprender">
-<meta property="og:description" content="Lo que descubrió la ciencia sobre NPK y cal viva en los últimos 30 años. Plan de transición de 3 años para quien viene del paquete sintético.">
+<meta property="og:title" content="Del 15-15-15 a la agroecología — Chagra">
+<meta property="og:description" content="Qué trae el bulto, qué le pasa en la tierra y qué dice la ciencia de pasarse a lo orgánico, con la fuente de cada cifra.">
 <meta property="og:type" content="article">
-<title>Del 15-15-15 a la agroecología — Chagra · Aprender</title>
-<link rel="stylesheet" href="/styles.css?v=2026-05-21-v3">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%2310b981'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%2306b6d4' opacity='.7'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23f8fafc' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://chagra.bio/aprender/articulo/transicion-15-15-15">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%23a7c957'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%235f8a3a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --tinta:#f3f1e8; --tinta-2:rgba(243,241,232,.78); --tinta-3:rgba(243,241,232,.55);
+  --acento:#a7c957; --tierra:#15110c; --tierra-2:#1d1710; --linea:rgba(243,241,232,.14); --aviso:#e9c46a;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","Noto Serif",Georgia,serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--tierra)}
+body{margin:0;background:var(--tierra);color:var(--tinta);font-family:var(--serif);font-size:1.12rem;line-height:1.62;overflow-x:hidden}
+a{color:var(--acento)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;border-radius:4px}
+.barra{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:44rem;margin:0 auto;padding:18px 16px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em}
+.barra a{color:var(--tinta-2);text-decoration:none}
+.barra a:hover{color:var(--tinta)}
+main{max-width:44rem;margin:0 auto;padding:12px 16px 64px}
+.ante{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);margin:24px 0 .6em}
+h1{font-weight:400;font-size:clamp(2.3rem,7vw,3.6rem);line-height:1.02;margin:0 0 .3em;letter-spacing:-.01em}
+.bajada{font-size:1.25rem;line-height:1.45;color:var(--tinta-2);margin:0 0 1em}
+.meta{font-family:var(--mono);font-size:.72rem;color:var(--tinta-3);letter-spacing:.04em;margin:0 0 28px}
+.aviso{border:1px solid rgba(233,196,106,.45);background:rgba(233,196,106,.07);border-radius:14px;padding:16px 18px;margin:0 0 32px;font-family:var(--sans);font-size:.95rem;line-height:1.55;color:var(--tinta-2)}
+.aviso b{color:var(--aviso);font-weight:600}
+.curso{display:flex;gap:14px;align-items:center;border:1px solid var(--linea);border-radius:14px;padding:14px 16px;margin:0 0 40px;background:var(--tierra-2);text-decoration:none;color:var(--tinta);font-family:var(--sans);font-size:.95rem}
+.curso:hover{border-color:rgba(167,201,87,.6)}
+.curso b{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.curso span{color:var(--tinta-2)}
+.curso i{font-style:normal;font-family:var(--mono);color:var(--acento);margin-left:auto;white-space:nowrap}
+h2{font-weight:400;font-size:clamp(1.6rem,4.4vw,2.1rem);line-height:1.15;margin:48px 0 .5em;padding-top:28px;border-top:1px solid var(--linea)}
+h2 small{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);margin-bottom:.6em}
+p{margin:0 0 1em}
+.cifra{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.95em;color:var(--tinta)}
+sup{line-height:0}
+sup a{font-family:var(--mono);font-size:.68em;text-decoration:none;padding:0 .12em}
+.ojo{border-left:2px solid var(--aviso);padding:.2em 0 .2em 1em;color:var(--tinta-2);font-size:1.02rem}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.9rem;line-height:1.45;margin:8px 0 12px}
+th,td{text-align:left;vertical-align:top;padding:10px 10px 10px 0;border-bottom:1px solid var(--linea)}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3);font-weight:400}
+td:first-child{color:var(--tinta-3);text-decoration:line-through;text-decoration-color:rgba(224,122,95,.7);width:46%}
+td:last-child{color:var(--tinta-2)}
+ol.fuentes{font-family:var(--sans);font-size:.86rem;line-height:1.5;color:var(--tinta-2);padding-left:1.6em}
+ol.fuentes li{margin:0 0 .7em;overflow-wrap:anywhere}
+ol.fuentes li:target{background:rgba(167,201,87,.12);border-radius:6px}
+ol.fuentes a{font-family:var(--mono);font-size:.8rem}
+footer{max-width:44rem;margin:0 auto;padding:24px 16px 48px;border-top:1px solid var(--linea);font-family:var(--sans);font-size:.82rem;color:var(--tinta-3);line-height:1.55}
+footer a{color:var(--tinta-2)}
+@media (max-width:560px){
+  body{font-size:1.06rem}
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tr{border-bottom:1px solid var(--linea);padding:10px 0}
+  td{border:0;padding:2px 0;width:auto!important}
+  .curso{flex-wrap:wrap}
+  .curso i{margin-left:0}
+}
+</style>
 </head>
 <body>
 
-<header class="site-header" role="banner">
-<div class="header-inner">
-<a href="/" class="logo">
-<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
-<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
-</svg>
-<span class="logo-text">Chagra</span>
-</a>
-<nav class="primary-nav">
-<ul role="menubar">
-<li role="none"><a href="/" role="menuitem">Inicio</a></li>
-<li role="none"><a href="/aprender/" role="menuitem">Aprender</a></li>
-<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
-</ul>
-</nav>
-</div>
-</header>
-
-<main class="article-page">
-<p class="breadcrumb"><a href="/">Inicio</a> <span class="sep">›</span> <a href="/aprender/">Aprender</a> <span class="sep">›</span> Del 15-15-15 a la agroecología</p>
-
-<article class="long-form">
-
-<!-- HERO -->
-<header class="article-hero">
-<div class="article-hero-illustration" aria-hidden="true">
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet">
-<defs><linearGradient id="heroT" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M32 6 C26 14 22 22 22 30 C22 38 26 44 32 50 C38 44 42 38 42 30 C42 22 38 14 32 6 Z" fill="url(#heroT)" fill-opacity=".15" stroke="url(#heroT)"/>
-<path d="M32 14 C30 20 28 26 28 32 C28 38 30 42 32 46" stroke="url(#heroT)" stroke-opacity=".6"/>
-<path d="M32 14 C34 20 36 26 36 32 C36 38 34 42 32 46" stroke="url(#heroT)" stroke-opacity=".6"/>
-</svg>
-</div>
-<h1>Del 15-15-15 a la agroecología</h1>
-<p class="article-subtitle">Lo que descubrió la ciencia en los últimos 30 años — para quien lleva décadas con el paquete sintético.</p>
-<div class="article-meta-row">
-<span class="meta-pill">⏱ Lectura ~18 min</span>
-<span class="meta-pill">📚 Referencias peer-review</span>
-<span class="meta-pill">👨‍🌾 Productores con experiencia NPK + cal</span>
-</div>
-</header>
-
-<!-- KEY TAKEAWAYS -->
-<div class="key-takeaways">
-<h2>Lo importante en 1 minuto</h2>
-<ul>
-<li>El suelo no es un sustrato inerte: 1 gramo contiene <strong>10⁹-10¹⁰ microbios</strong> que solubilizan nutrientes para la planta.</li>
-<li>El NPK 15-15-15 tiene <strong>30-50% eficiencia real</strong>; el resto se lixivia, volatiliza o se fija en óxidos.</li>
-<li><strong>Cal viva (CaO) y cal hidratada (Ca(OH)₂) NO se usan en suelo agrícola</strong>: queman raíces, esterilizan microbiota, precipitan P. Solo cal dolomítica (CaMg(CO₃)₂), <strong>únicamente bajo análisis</strong>.</li>
-<li>Chagra propone <strong>transición de 3 años</strong>: bocashi + abonos verdes + biopreparados, con manejo de suelo vivo en lugar de fertilización aguda.</li>
-<li>No te prometo cero pérdida de rendimiento año 1 (-10 a -25% típico). Año 3+ suele igualar o superar al paquete sintético con costos 40-60% menores.</li>
-</ul>
-</div>
-
-<!-- PARTE 1 -->
-<div class="parte-separator">
-<div class="parte-numero">1</div>
-<div class="parte-titulo">El suelo no es un sustrato inerte</div>
-</div>
-
-<p>Durante 60 años la agronomía industrial enseñó implícitamente que el suelo es <strong>una matriz física que sostiene la planta</strong> y que la nutrición se reduce a tres macronutrientes solubles (N, P, K). Si la planta crece, todo está bien.</p>
-
-<p>Esa visión tiene un nombre: <strong>reduccionismo nutricional</strong>. Funcionó. Aumentó rendimientos. Y al mismo tiempo, los suelos del mundo perdieron entre <strong>30% y 75% de su carbono orgánico</strong> (Lal 2004 <em>Science</em> 304:1623). En Colombia, cuantificar los cambios de materia orgánica requiere mediciones comparables para cada zona.</p>
-
-<p>La materia orgánica puede disminuir con determinados manejos; cuantificar ese cambio requiere mediciones comparables.</p>
-
-<!-- PARTE 2 -->
-<div class="parte-separator">
-<div class="parte-numero">2</div>
-<div class="parte-titulo">Por qué el suelo necesita más que NPK</div>
-</div>
-
-<h3>2.1 El suelo vivo</h3>
-
-<p>Un gramo de suelo agrícola sano contiene entre <strong>10⁹ y 10¹⁰ células microbianas</strong> (Fierer &amp; Jackson 2006 <em>PNAS</em> 103:626). Esta microbiota:</p>
-<ul>
-<li><strong>Solubiliza nutrientes</strong> atrapados en minerales (P en apatitas, micros en óxidos de Fe/Al)</li>
-<li><strong>Fija nitrógeno atmosférico</strong> vía <em>Rhizobium</em>, <em>Azotobacter</em>, cianobacterias (40-200 kg N/ha/año sin fertilizante)</li>
-<li><strong>Forma redes micorrícicas</strong> que multiplican la zona efectiva de absorción radicular hasta 100 veces (van der Heijden et al. 2015 <em>New Phytol</em> 205:1406)</li>
-<li><strong>Defiende contra patógenos</strong> por exclusión competitiva</li>
-<li><strong>Genera estructura agregada estable</strong> que retiene agua y resiste compactación</li>
-</ul>
-
-<div class="section-illustration" aria-hidden="true">
-<svg viewBox="0 0 380 180" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<defs><linearGradient id="micoGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<!-- Raíz central -->
-<path d="M 190 20 L 190 90" stroke="url(#micoGrad)" stroke-width="3"/>
-<path d="M 190 90 Q 180 100 175 115" stroke="url(#micoGrad)" stroke-width="2"/>
-<path d="M 190 90 Q 200 100 205 115" stroke="url(#micoGrad)" stroke-width="2"/>
-<!-- Red micorrizas: hilos finos -->
-<g stroke="url(#micoGrad)" stroke-width="1" stroke-opacity=".5">
-<path d="M 190 50 Q 130 60 80 80 Q 50 100 30 130"/>
-<path d="M 190 50 Q 250 60 300 80 Q 330 100 350 130"/>
-<path d="M 190 80 Q 140 95 100 130"/>
-<path d="M 190 80 Q 240 95 280 130"/>
-<path d="M 175 115 Q 130 130 90 155"/>
-<path d="M 205 115 Q 250 130 290 155"/>
-<path d="M 60 100 Q 100 110 130 135"/>
-<path d="M 320 100 Q 280 110 250 135"/>
-</g>
-<!-- Nodos / hifas -->
-<g fill="url(#micoGrad)" fill-opacity=".7">
-<circle cx="80" cy="80" r="3"/>
-<circle cx="300" cy="80" r="3"/>
-<circle cx="100" cy="130" r="3"/>
-<circle cx="280" cy="130" r="3"/>
-<circle cx="50" cy="100" r="2"/>
-<circle cx="330" cy="100" r="2"/>
-<circle cx="30" cy="130" r="2.5"/>
-<circle cx="350" cy="130" r="2.5"/>
-<circle cx="90" cy="155" r="2"/>
-<circle cx="290" cy="155" r="2"/>
-<circle cx="130" cy="135" r="2"/>
-<circle cx="250" cy="135" r="2"/>
-</g>
-<!-- Hojas top -->
-<ellipse cx="180" cy="12" rx="10" ry="5" transform="rotate(-30 180 12)" fill="url(#micoGrad)" fill-opacity=".4" stroke="url(#micoGrad)"/>
-<ellipse cx="200" cy="12" rx="10" ry="5" transform="rotate(30 200 12)" fill="url(#micoGrad)" fill-opacity=".4" stroke="url(#micoGrad)"/>
-</svg>
-</div>
-
-<p>En un metaanálisis de estudios sobre adición de nitrógeno, la biomasa microbiana disminuyó en promedio 15%, con variación entre condiciones y duración (Treseder 2008). El resultado no predice el efecto de toda aplicación de NPK.</p>
-
-<h3>2.2 La eficiencia oculta del NPK</h3>
-
-<p>El productor paga el bulto de 15-15-15 esperando que toda esa nutrición llegue al cultivo. La realidad medida:</p>
-
-<table>
-<thead><tr><th>Nutriente</th><th>Eficiencia real en Andes tropicales</th></tr></thead>
-<tbody>
-<tr><td>Nitrógeno (N)</td><td><strong>30-50%</strong> — el resto se volatiliza (NH₃, N₂O) o se lixivia al subsuelo y aguas</td></tr>
-<tr><td>Fósforo (P)</td><td><strong>15-25%</strong> — el resto se fija en hierro/aluminio formando precipitados</td></tr>
-<tr><td>Potasio (K)</td><td><strong>40-60%</strong> — se lixivia rápido en suelos arcillosos pobres</td></tr>
-</tbody>
-</table>
-
-<blockquote class="pull-quote">
-Usted paga 100% del bulto y la planta usa entre 25% y 50%. El resto contamina aguas, libera gases de efecto invernadero, o acidifica el suelo.
-<cite>— Cassman et al. 2002 <em>Ambio</em> 31:132</cite>
-</blockquote>
-
-<!-- PARTE 3 -->
-<div class="parte-separator">
-<div class="parte-numero">3</div>
-<div class="parte-titulo">La cal — el insumo más malentendido</div>
-</div>
-
-<p>Veo en campo gente que aplica "cal" como si fuera todas la misma cosa. <strong>No lo es</strong>. La química es diferente y la consecuencia agronómica también. Esta sección es la más importante del artículo si usted piensa encalar este ciclo.</p>
-
-<h3>3.1 Las tres "cales"</h3>
-
-<table>
-<thead><tr><th>Producto</th><th>Fórmula</th><th>Reacción al agua</th><th>Uso correcto</th></tr></thead>
-<tbody>
-<tr><td><strong>Cal viva</strong></td><td>CaO</td><td>Exotérmica violenta: calor + pH &gt;12</td><td>Industria, construcción. <strong>NO en suelo agrícola.</strong></td></tr>
-<tr><td><strong>Cal hidratada</strong></td><td>Ca(OH)₂</td><td>Alcalina inmediata pH ~12</td><td>Construcción. <strong>NO en suelo agrícola orgánico.</strong></td></tr>
-<tr><td><strong>Cal agrícola / dolomítica</strong></td><td>CaCO₃ o CaMg(CO₃)₂</td><td>Reacción lenta con H⁺ del suelo</td><td>Enmienda agrícola, <strong>con análisis de suelo previo</strong></td></tr>
-</tbody>
-</table>
-
-<div class="danger-block">
-<h3 style="margin-top:0;color:#f87171">Por qué la cal viva/hidratada destruye el suelo</h3>
-<p>Cuando usted aplica cal viva o hidratada al suelo, lo que sucede en las primeras 24-72 horas:</p>
-<ol>
-<li><strong>Reacción exotérmica</strong>: quemaduras radiculares directas en cultivos sensibles (Sumner &amp; Yamada 2002).</li>
-<li><strong>Cal viva</strong>: es cáustica y puede elevar el pH local. No se dispone aquí de una fuente verificada para afirmar una reducción microbiana del 60–80% en los primeros 5 cm.</li>
-<li><strong>Precipitación de fósforo</strong>: a pH &gt;7.5 el P-PO₄ disponible precipita como Ca₃(PO₄)₂ insoluble.</li>
-<li><strong>Saponificación de materia orgánica</strong>: degrada ácidos húmicos. Pierde su carbono orgánico construido por décadas en una aplicación.</li>
-<li><strong>Volatilización de N</strong>: NH₄⁺ (urea, gallinaza) se va como NH₃ gaseoso. Pérdida hasta 30% del N aplicado el mismo día.</li>
-</ol>
-<p>Sebastião Pinheiro Machado y Jairo Restrepo Rivera <strong>lo prohíben explícitamente</strong> en sus manuales desde los años 1990. La evidencia experimental peer-review confirma esa prohibición.</p>
-</div>
-
-<h3>3.2 Cuándo SÍ se puede usar cal dolomítica</h3>
-
-<p>La cal dolomítica (CaMg(CO₃)₂) libera Ca²⁺ y Mg²⁺ lentamente sin choque de pH inmediato. Pero <strong>incluso ésta se debe usar solo bajo criterios estrictos</strong>.</p>
-
-<div class="warn-block">
-<p><strong>Regla Cochrane 1980</strong> (validada por la agronomía tropical moderna):</p>
-<p>Aplicar cal dolomítica SOLO cuando:</p>
-<ol>
-<li>pH del suelo &lt; 5.5 (medido en análisis de laboratorio acreditado, no kit casero)</li>
-<li>Saturación de aluminio intercambiable &gt; 30% (análisis Al³⁺ por extracción KCl)</li>
-</ol>
-<p>Si NO se cumplen las dos condiciones, <strong>encalar es daño neto</strong>: precipita P, calcina microbiota, antagoniza absorción de micros (Zn, Fe, Mn, B, Cu).</p>
-<p><strong>Fórmula</strong>: t/ha = 1.5 × Al intercambiable (cmol/kg). Nunca más de 3 t/ha por aplicación.</p>
-</div>
-
-<h3>3.3 Alternativas a la cal en orgánico</h3>
-<table>
-<thead><tr><th>Problema</th><th>Alternativa</th><th>Cuándo</th></tr></thead>
-<tbody>
-<tr><td>Necesita Ca sin subir pH</td><td><strong>Yeso agrícola</strong> (CaSO₄·2H₂O)</td><td>Suelos sódicos, pH ya alto</td></tr>
-<tr><td>Necesita Ca + MO</td><td><strong>Bocashi con ceniza 5-10%</strong></td><td>Mantenimiento anual</td></tr>
-<tr><td>Necesita subir pH suavemente</td><td><strong>Compost 3-5 kg/m²</strong> + ceniza limpia 50-100 g/m²</td><td>pH 5.5-6.0 con baja MO</td></tr>
-<tr><td>Aluminio bloqueado sin encalar</td><td><strong>Biocarbón</strong> 1-2 t/ha</td><td>Andisoles ácidos con MO alta</td></tr>
-</tbody>
-</table>
-
-<!-- PARTE 4 -->
-<div class="parte-separator">
-<div class="parte-numero">4</div>
-<div class="parte-titulo">Lo que descubrió la ciencia en los últimos 30 años</div>
-</div>
-
-<h3>4.1 Las raíces no son solo bocas — son ecosistemas</h3>
-<p>Las raíces sanas liberan <strong>15-40% del carbono fotosintetizado</strong> como exudados a la rizosfera (Bardgett et al. 2014). Esos exudados alimentan la microbiota que solubiliza nutrientes. Es una <strong>economía de intercambio</strong>, no un sistema de bombeo unidireccional. Cuando aplica NPK soluble, la planta <strong>deja de invertir en exudados</strong>. La microbiota colapsa. Quedan dependientes del fertilizante para siempre.</p>
-
-<div class="stat-callout">
-<div class="stat-number">100×</div>
-<div class="stat-context">Multiplicación de la <strong>zona efectiva de absorción radicular</strong> gracias a las redes micorrícicas. El fósforo soluble del DAP/MAP <strong>suprime la formación de micorrizas</strong> (Treseder &amp; Allen 2002).</div>
-</div>
-
-<h3>4.2 El N orgánico es mejor a largo plazo</h3>
-<p>Estudios isotópicos (¹⁵N marcado) muestran que cultivos sanos absorben <strong>aminoácidos completos</strong> directamente del suelo, no solo NO₃⁻/NH₄⁺ inorgánico (Näsholm et al. 2009 <em>New Phytol</em> 182:31).</p>
-
-<h3>4.3 El monocultivo + NPK acidifica el suelo permanentemente</h3>
-<p>Aplicación continua de urea/sulfato de amonio acidifica <strong>0.1-0.3 unidades pH por año</strong> (Guo et al. 2010 <em>Science</em> 327:1008). En 15 años, suelo de pH 6.0 puede bajar a 4.5-5.0.</p>
-
-<h3>4.4 La diversidad cultivada estabiliza rendimiento</h3>
-<p>Renard y Tilman encontraron una asociación entre diversidad de cultivos y estabilidad interanual de la cosecha nacional. Su estudio no cuantifica la ventaja de esta rotación en una finca.</p>
-
-<!-- PARTE 5 -->
-<div class="parte-separator">
-<div class="parte-numero">5</div>
-<div class="parte-titulo">Qué propone Chagra</div>
-</div>
-
-<h3>5.1 Pirámide nutricional agroecológica</h3>
-<table>
-<thead><tr><th>Pilar</th><th>% nutrición</th><th>Frecuencia</th></tr></thead>
-<tbody>
-<tr><td><strong>Bocashi + compost + abonos verdes</strong> (base)</td><td>50-70%</td><td>Anual obligatoria</td></tr>
-<tr><td><strong>Enmiendas minerales</strong> (roca P, ceniza, cal dolomítica)</td><td>15-25%</td><td>Una por ciclo según análisis</td></tr>
-<tr><td><strong>Biopreparados</strong> (caldos, supermagro)</td><td>15-20%</td><td>Solo correctivos puntuales</td></tr>
-</tbody>
-</table>
-
-<h3>5.2 Lo que reemplaza cada cosa del paquete sintético</h3>
-<table>
-<thead><tr><th>Lo que usaba</th><th>Lo que Chagra propone</th><th>Por qué</th></tr></thead>
-<tbody>
-<tr><td>Urea / sulfato amonio</td><td>Bocashi + biol + leguminosas asociadas</td><td>N orgánico no se lixivia ni acidifica</td></tr>
-<tr><td>DAP / MAP</td><td>Roca fosfórica co-compostada + micorrizas</td><td>P sostenido, no suprime AMF</td></tr>
-<tr><td>KCl</td><td>Ceniza limpia + lixiviado frutas</td><td>K + Ca + micros sin Cl⁻</td></tr>
-<tr><td>15-15-15</td><td>Bocashi enriquecido + supermagro</td><td>Nutrición balanceada con MO</td></tr>
-<tr><td>Cal hidratada / viva</td><td>Cal dolomítica con análisis O bocashi+ceniza</td><td>Sin choque alcalino</td></tr>
-<tr><td>Glifosato / 2,4-D</td><td>Cobertura permanente + selección manual</td><td>Sin residuos, mejora suelo</td></tr>
-<tr><td>Mancozeb / clorotalonil</td><td>Bordelés + sulfocálcico + <em>Trichoderma</em></td><td>Selectivos, no destruyen biocontrol</td></tr>
-</tbody>
-</table>
-
-<h3>5.3 Las 4 reglas duras de Chagra</h3>
-<ol>
-<li><strong>Análisis de suelo cada 2-3 años</strong>. Costo Colombia 2026: $35.000-80.000 COP.</li>
-<li><strong>Cobertura permanente del suelo</strong>. Nunca suelo desnudo.</li>
-<li><strong>Diversidad genética + funcional</strong>. Mínimo 3 especies por era; 3 estratos verticales en perennes.</li>
-<li><strong>Mantenimiento anual de microbiota</strong>. Bocashi 2-5 kg/m² anual + biol foliar trimestral.</li>
-</ol>
-
-<!-- PARTE 6 -->
-<div class="parte-separator">
-<div class="parte-numero">6</div>
-<div class="parte-titulo">Plan de transición — 3 años</div>
-</div>
-
-<h3>Año 1 — Preparación</h3>
-<ul>
-<li><strong>Análisis de suelo</strong> al inicio (línea base)</li>
-<li><strong>Empezar a producir bocashi</strong> en finca (1 m³ por 1000 m²)</li>
-<li><strong>Reducir herbicidas 50%</strong> (cortar manual o guadaña)</li>
-<li><strong>Sembrar abonos verdes</strong> en lotes en descanso (mucuna, crotalaria, vigna)</li>
-<li><strong>Mantener fertilización NPK actual</strong> — NO eliminar todavía</li>
-<li><strong>Aplicar bocashi 1 kg/m²</strong> complementario al NPK</li>
-</ul>
-
-<h3>Año 2 — Sustitución parcial</h3>
-<ul>
-<li>Reducir NPK al <strong>50%</strong>, complementar con bocashi 2 kg/m²</li>
-<li>Aplicar roca fosfórica + ceniza según análisis</li>
-<li>Empezar caldos minerales (bordelés preventivo, sulfocálcico)</li>
-<li>Inoculantes biológicos: <em>Trichoderma harzianum</em> + <em>Bacillus velezensis</em></li>
-<li>Análisis de suelo de medio año</li>
-</ul>
-
-<h3>Año 3 — Cierre transición</h3>
-<ul>
-<li>NPK al <strong>25%</strong> o cero según respuesta</li>
-<li>Bocashi 3-5 kg/m² anual como base</li>
-<li>Diversificar cultivos: leguminosas asociadas, estratos verticales</li>
-<li>Manejo plagas vía MIP: <em>Trichogramma</em> + Bt + neem</li>
-<li>Análisis de suelo final + comparación con línea base</li>
-</ul>
-
-<h3>Indicadores que debe ver mejorar</h3>
-<table>
-<thead><tr><th>Indicador</th><th>Año 0</th><th>Año 3</th><th>Cómo medir</th></tr></thead>
-<tbody>
-<tr><td>Materia orgánica suelo</td><td>1-2%</td><td>3-5%</td><td>Análisis laboratorio</td></tr>
-<tr><td>pH suelo</td><td>4.5-5.5 (bajando)</td><td>5.5-6.5 (estable)</td><td>Análisis laboratorio</td></tr>
-<tr><td>Lombrices por m²</td><td>5-15</td><td>50-150</td><td>Conteo directo</td></tr>
-<tr><td>Costo insumos</td><td>100%</td><td>40-60%</td><td>Contabilidad finca</td></tr>
-<tr><td>Rendimiento</td><td>100%</td><td>90-110% (varianza menor)</td><td>Registro cosechas</td></tr>
-<tr><td>Resiliencia a sequía</td><td>Baja</td><td>Alta</td><td>Observación campo</td></tr>
-</tbody>
-</table>
-
-<!-- PARTE 7 -->
-<div class="parte-separator">
-<div class="parte-numero">7</div>
-<div class="parte-titulo">Lo que NO le voy a prometer</div>
-</div>
-
-<ol>
-<li>La diferencia de rendimiento depende del cultivo, el sitio y el manejo. Seufert et al. (2012) no permiten prometer recuperación en el año 2 ni superar el rendimiento convencional en los años 3–4. Si su finca no tiene margen, pruebe primero en una porción.</li>
-<li><strong>La agroecología requiere más tiempo de manejo activo</strong> que el monocultivo NPK. Más decisiones por hectárea, más observación.</li>
-<li><strong>El precio del producto orgánico/agroecológico en Colombia tiene mercado limitado fuera de Bogotá-Medellín-Cali</strong>. Considere los beneficios en salud del suelo y costo de insumos, no de prima en venta.</li>
-<li><strong>No toda la "agroecología" que se vende es ciencia</strong>. Hay charlatanería: "biodinámica lunar con cuernos enterrados", "agua estructurada", "biomagnetismo". Chagra se queda con lo que tiene evidencia revisada.</li>
-</ol>
-
-<div class="references">
-<h2>Referencias citadas (peer-review verificables)</h2>
-<ol>
-<li>Bardgett RD et al. 2014. Belowground biodiversity and ecosystem functioning. <em>Trends Ecol Evol</em> 29:692-699.</li>
-
-<li>Cassman KG et al. 2002. Agroecosystems, nitrogen-use efficiency, and nitrogen management. <em>Ambio</em> 31:132-140.</li>
-<li>Cochrane TT 1980. <em>Aluminum saturation as a guide to liming acid Oxisols</em>. CIAT, Cali.</li>
-<li>Fierer N &amp; Jackson RB 2006. The diversity and biogeography of soil bacterial communities. <em>PNAS</em> 103:626-631.</li>
-<li>Guo JH et al. 2010. Significant acidification in major Chinese croplands. <em>Science</em> 327:1008-1010.</li>
-<li>Lal R 2004. Soil carbon sequestration impacts on global climate change. <em>Science</em> 304:1623-1627.</li>
-<li>Näsholm T et al. 2009. Uptake of organic nitrogen by plants. <em>New Phytol</em> 182:31-48.</li>
-<li>Renard D &amp; Tilman D 2019. National food production stabilized by crop diversity. <em>Nature</em> 571:257-260.</li>
-<li>Seufert V et al. 2012. Comparing the yields of organic and conventional agriculture. <em>Nature</em> 485:229-232.</li>
-<li>Sumner ME &amp; Yamada T 2002. Farming with acidity. <em>Commun Soil Sci Plant Anal</em> 33:2467-2496.</li>
-<li>Treseder KK 2008. Nitrogen additions and microbial biomass: a meta-analysis. <em>Ecol Lett</em> 11:1111-1120.</li>
-<li>Treseder KK &amp; Allen MF 2002. Direct nitrogen and phosphorus limitation of arbuscular mycorrhizal fungi. <em>New Phytol</em> 155:507-515.</li>
-<li>van der Heijden MGA et al. 2015. Mycorrhizal ecology and evolution. <em>New Phytol</em> 205:1406-1423.</li>
-<li>Restrepo Rivera J 2007. <em>El ABC de la agricultura orgánica y harina de rocas — Vol. 2 Caldos Minerales</em>. ISBN 978-958-44-1280-5.</li>
-</ol>
-</div>
-
-<nav class="article-nav">
-<a href="/aprender/">← Volver a Aprender</a>
-<a href="/aprender/bioseguridad">Siguiente: Bioseguridad →</a>
+<nav class="barra" aria-label="Ruta">
+  <a href="/">Chagra</a>
+  <a href="/aprender/">← Aprender</a>
 </nav>
 
-</article>
+<main>
+  <p class="ante">Lectura · suelos y nutrición</p>
+  <h1>Del 15-15-15 a la agroecología</h1>
+  <p class="bajada">Qué trae el bulto, qué le pasa en la tierra y qué dice la ciencia de pasarse a lo orgánico. Sin demonizar a nadie y con la fuente de cada cifra.</p>
+  <p class="meta">Unos 12 minutos · 29 fuentes · reescrita el 23 de septiembre de 2026</p>
+
+  <div class="aviso">
+    <b>Esta lectura se reescribió.</b> La versión anterior citaba un artículo que no existe, daba cifras que no tienen fuente
+    y decía que con el abono de síntesis la vida del suelo «colapsa». La ciencia no dice eso. Aquí queda solo lo que tiene una
+    fuente leída; al final está la lista de lo que se quitó y por qué.
+  </div>
+
+  <a class="curso" href="https://edu.chagra.bio/cursos/transicion-15-15-15/">
+    <span><b>¿Prefiere verlo?</b>El mismo recorrido, dibujado: del bulto a la raíz, en el curso de edu.chagra.bio.</span>
+    <i>Abrir el curso →</i>
+  </a>
+
+  <h2><small>1 · El bulto</small>Qué trae un bulto de 15-15-15</h2>
+  <p>Los tres 15 son porcentajes: nitrógeno (N), fósforo contado como P₂O₅ y potasio contado como K₂O, en ese orden. Un bulto de
+  50 kg trae <span class="cifra">7,5 kg</span> de cada uno<sup><a href="#f-fao2000">1</a></sup>. La etiqueta cuenta el fósforo y el
+  potasio como óxidos; como elementos, el bulto trae unos <span class="cifra">3,3 kg</span> de fósforo y
+  <span class="cifra">6,2 kg</span> de potasio.</p>
+  <p>El nitrógeno que se fabrica en la industria ayuda a alimentar a casi la mitad de la humanidad<sup><a href="#f-erisman2008">2</a></sup>.
+  No es un enemigo: es una herramienta, y como toda herramienta tiene costos. Colombia no fabrica urea, DAP ni cloruro de potasio:
+  los compra afuera<sup><a href="#f-minagri2019">3</a></sup>.</p>
+
+  <h2><small>2 · En la tierra</small>Qué le pasa al gránulo cuando llueve</h2>
+  <p>Con el agua, el abono se disuelve, y la raíz solo puede tomar lo que está disuelto<sup><a href="#f-fao2000">1</a></sup>. Desde ahí,
+  cada nutriente sigue su camino.</p>
+  <p><b>El nitrógeno se escapa.</b> Una parte baja con el agua y otra se va al aire como gas<sup><a href="#f-raun1999">4</a>,<a href="#f-shcherbak2014">5</a></sup>.
+  En cereales, de cada <span class="cifra">3 kg</span> de nitrógeno que se echan, la planta aprovecha más o menos
+  <span class="cifra">1</span><sup><a href="#f-raun1999">4</a></sup>; es el promedio mundial en cereales, no un dato medido en papa ni en
+  café. Y si se echa más de lo que la mata necesita, el gas que se escapa crece más que en proporción<sup><a href="#f-shcherbak2014">5</a></sup>.</p>
+  <p><b>El fósforo se queda pegado.</b> Casi no camina: se pega cerca de donde cae<sup><a href="#f-syers2008">6</a></sup>. La arcilla que
+  lo agarra es tan fina que 500 granitos caben en un milímetro<sup><a href="#f-fao2000">1</a></sup>. El año en que se echa, la mata toma
+  entre <span class="cifra">10</span> y <span class="cifra">25</span> de cada 100 partes, según ensayos clásicos que empezaron en Canadá en
+  1947<sup><a href="#f-syers2008">6</a></sup>. Pero ese fósforo no se pierde: la tierra lo va soltando despacio, durante años<sup><a href="#f-syers2008">6</a></sup>.</p>
+  <p><b>El potasio se lava en tierra suelta.</b> En un suelo arenoso de Brasil, el agua se llevó por debajo de un metro entre
+  <span class="cifra">16</span> y <span class="cifra">52</span> de cada 100 partes del potasio<sup><a href="#f-rosolem2017">7</a></sup>.
+  En tierra arcillosa se lava menos, no más.</p>
+
+  <h2><small>3 · Junto a la raíz</small>La vida que ayuda a comer a la mata</h2>
+  <p>Los pelos de la raíz miden como una centésima de milímetro de grueso y pueden crecer un milímetro o más; son parte de cómo la
+  planta toma sus nutrientes<sup><a href="#f-grierson2014">8</a></sup>. A su alrededor hay una multitud: en un gramo de tierra viven
+  cien millones de bacterias o más<sup><a href="#f-raynaud2014">9</a></sup>, y la mayoría mide cerca de una milésima de
+  milímetro<sup><a href="#f-portillo2013">10</a></sup>.</p>
+  <p>La raíz no solo toma: también da. En promedio, cerca de una sexta parte del carbono que la planta fabrica con el sol sale por las
+  raíces al suelo<sup><a href="#f-nguyen2003">11</a></sup>, y con eso alimenta a sus socios. Los más conocidos son los hongos de las
+  micorrizas: le llevan a la planta nitrógeno y fósforo —en algunos casos, hasta el 80 % de lo que toma— y reciben azúcar a
+  cambio<sup><a href="#f-vdh2015">12</a>,<a href="#f-leake2004">13</a></sup>. Sus hilos suman decenas de metros por cada gramo de
+  tierra<sup><a href="#f-leake2004">13</a></sup>.</p>
+  <p>Con mucho fósforo de bulto, esos hongos bajaron en promedio casi una tercera parte (32 %)<sup><a href="#f-treseder2004">14</a></sup>.
+  Pero no en todas partes: en suelos pobres, abonar los aumentó<sup><a href="#f-treseder2002">15</a></sup>.</p>
+  <p class="ojo">El abono de bulto no mata la vida del suelo. En cultivos, usado por años, la aumentó un poco (15 % en promedio) frente
+  a no abonar; tiende a bajar cuando la tierra se vuelve muy ácida, por debajo de pH 5<sup><a href="#f-geisseler2014">16</a></sup>.</p>
+
+  <h2><small>4 · La materia orgánica</small>Lo que aporta lo orgánico</h2>
+  <p>El estiércol aumentó en promedio un <span class="cifra">35 %</span> el carbono que guarda el suelo; hay pocos estudios hechos en
+  el trópico<sup><a href="#f-gross2021">17</a></sup>. Con abono orgánico hay en promedio un <span class="cifra">36 %</span> más de vida
+  microbiana que solo con abono mineral<sup><a href="#f-kallenbach2011">18</a></sup>. La materia orgánica también guarda algo más de
+  agua, aunque el efecto es pequeño<sup><a href="#f-minasny2018">19</a></sup>.</p>
+  <p>¿Y el bocashi? La ciencia apenas lo empieza a medir<sup><a href="#f-quiroz2019">20</a></sup>. Por eso esta lectura no da recetas:
+  las que circulan se contradicen entre sí.</p>
+
+  <h2><small>5 · Coberturas</small>Lombrices y leguminosas</h2>
+  <p>Con lombrices, la cosecha subió en promedio una cuarta parte; el efecto fue menor donde ya sobraba
+  nitrógeno<sup><a href="#f-vangroenigen2014">21</a></sup>.</p>
+  <p>Una crotalaria sembrada como abono verde sacó del aire entre <span class="cifra">40</span> y <span class="cifra">80 kg</span> de
+  nitrógeno por hectárea, y entre el 39 y el 49 % de ese nitrógeno puede quedar bajo tierra para el cultivo
+  siguiente<sup><a href="#f-ramos2001">22</a></sup>.</p>
+  <p class="ojo">Cuidado: las crotalarias pueden ser tóxicas para los animales. No las deje donde pasta el ganado<sup><a href="#f-pitanga2012">23</a></sup>.</p>
+
+  <h2><small>6 · El camino</small>Combinar, medir y no volverse dogmático</h2>
+  <p>Juntar abono orgánico y abono de bulto suele rendir más que cualquiera de los dos solo; en maíz en África, la ventaja vino sobre
+  todo del nitrógeno extra<sup><a href="#f-chivenge2011">24</a></sup>.</p>
+  <p>Sin abono de síntesis se cosecha en promedio una cuarta parte menos, entre 5 y 34 % según el cultivo y el
+  manejo<sup><a href="#f-seufert2012">25</a></sup>. Con rotación o policultivo, esa diferencia se achica a 8–9 %<sup><a href="#f-ponisio2015">26</a></sup>.
+  Cuánto se pierde al principio, y por cuánto tiempo, depende de cada finca: ningún estudio sostiene que «al tercer año se iguala».</p>
+  <p><b>La cal, con análisis.</b> Se echa según el aluminio del análisis de suelo y lo que tolere el cultivo, y solo hasta que el
+  aluminio deje de estorbar<sup><a href="#f-cochrane1980">27</a></sup>. Por encima de pH 5,5–5,8 los cultivos dejan de responder, y encalar
+  de más hace daño<sup><a href="#f-sumner2002">28</a></sup>.</p>
+  <p class="ojo">La cal viva reacciona con el agua soltando calor: quema la piel y lastima los ojos. Guantes, gafas y
+  manga larga<sup><a href="#f-niosh">29</a></sup>.</p>
+
+  <h2><small>7 · Lo que se quitó</small>Lo que decía la versión anterior y por qué ya no está</h2>
+  <table>
+    <thead><tr><th>Decía</th><th>Por qué se quitó</th></tr></thead>
+    <tbody>
+      <tr><td>«La cal viva reduce la biomasa microbiana 60–80 % (Bezdicek 2003, <i>J Prod Agric</i> 16:267)»</td><td>La cita no existe: esa revista dejó de publicarse en 1999, en el volumen 12.</td></tr>
+      <tr><td>«Los suelos cafeteros perdieron el 50 % de su materia orgánica (CENICAFÉ)»</td><td>No aparece en la fuente que se le atribuía.</td></tr>
+      <tr><td>«Con NPK la microbiota colapsa y queda dependiente para siempre»</td><td>Falso: en cultivos, el abono mineral usado por años aumentó un poco la vida del suelo<sup><a href="#f-geisseler2014">16</a></sup>.</td></tr>
+      <tr><td>«El potasio se lava rápido en suelos arcillosos»</td><td>Al revés: se lava en los arenosos<sup><a href="#f-rosolem2017">7</a></sup>.</td></tr>
+      <tr><td>Cifras atribuidas a Treseder 2008, Guo 2010, Renard y Tilman 2019 y Bardgett 2014</td><td>Esos artículos existen, pero no dicen lo que se les hacía decir.</td></tr>
+      <tr><td>«Las micorrizas multiplican 100 veces la zona de absorción»</td><td>Sin fuente.</td></tr>
+      <tr><td>«Año 1 cae 10–25 %, en el año 3 se iguala, costos 40–60 % menores»</td><td>Sin fuente para la trayectoria ni para los costos.</td></tr>
+      <tr><td>La fórmula de encalado «t/ha = 1,5 × Al»</td><td>Recorta el método de Cochrane, Salinas y Sánchez, que descuenta la saturación de aluminio que tolera cada cultivo<sup><a href="#f-cochrane1980">27</a></sup>; sin ese descuento, la cuenta sirve solo para quitar todo el aluminio, y eso es encalar de más. Se pide análisis de suelo.</td></tr>
+      <tr><td>Los fertilizantes se rigen por la «Res. ICA 698/2011»</td><td>Esa resolución es de bioinsumos, no de fertilizantes.</td></tr>
+    </tbody>
+  </table>
+
+  <h2><small>Fuentes</small>De dónde sale cada cifra</h2>
+  <ol class="fuentes">
+    <li id="f-fao2000">FAO, IFA (2000). <i>Fertilizers and their use</i>, 4.ª ed. Roma: FAO/IFA.</li>
+    <li id="f-erisman2008">Erisman JW, Sutton MA, Galloway J, Klimont Z, Winiwarter W (2008). How a century of ammonia synthesis changed the world. <i>Nature Geoscience</i> 1: 636–639. <a href="https://doi.org/10.1038/ngeo325">doi:10.1038/ngeo325</a></li>
+    <li id="f-minagri2019">Ministerio de Agricultura y Desarrollo Rural (2019). Documento de Política No. 6 — Insumos agropecuarios. Bogotá.</li>
+    <li id="f-raun1999">Raun WR, Johnson GV (1999). Improving nitrogen use efficiency for cereal production. <i>Agronomy Journal</i> 91: 357–363. <a href="https://doi.org/10.2134/agronj1999.00021962009100030001x">doi:10.2134/agronj1999.00021962009100030001x</a></li>
+    <li id="f-shcherbak2014">Shcherbak I, Millar N, Robertson GP (2014). Global metaanalysis of the nonlinear response of soil nitrous oxide (N₂O) emissions to fertilizer nitrogen. <i>PNAS</i> 111: 9199–9204. <a href="https://doi.org/10.1073/pnas.1322434111">doi:10.1073/pnas.1322434111</a></li>
+    <li id="f-syers2008">Syers JK, Johnston AE, Curtin D (2008). Efficiency of soil and fertilizer phosphorus use. <i>FAO Fertilizer and Plant Nutrition Bulletin</i> 18. Roma: FAO.</li>
+    <li id="f-rosolem2017">Rosolem CA, Steiner F (2017). Effects of soil texture and rates of K input on potassium balance in tropical soil. <i>European Journal of Soil Science</i> 68: 658–666. <a href="https://doi.org/10.1111/ejss.12460">doi:10.1111/ejss.12460</a></li>
+    <li id="f-grierson2014">Grierson C, Nielsen E, Ketelaar T, Schiefelbein J (2014). Root hairs. <i>The Arabidopsis Book</i> 12: e0172. <a href="https://doi.org/10.1199/tab.0172">doi:10.1199/tab.0172</a></li>
+    <li id="f-raynaud2014">Raynaud X, Nunan N (2014). Spatial ecology of bacteria at the microscale in soil. <i>PLoS ONE</i> 9: e87217. <a href="https://doi.org/10.1371/journal.pone.0087217">doi:10.1371/journal.pone.0087217</a></li>
+    <li id="f-portillo2013">Portillo MC, Leff JW, Lauber CL, Fierer N (2013). Cell size distributions of soil bacterial and archaeal taxa. <i>Applied and Environmental Microbiology</i> 79: 7610–7617. <a href="https://doi.org/10.1128/aem.02710-13">doi:10.1128/aem.02710-13</a></li>
+    <li id="f-nguyen2003">Nguyen C (2003). Rhizodeposition of organic C by plants: mechanisms and controls. <i>Agronomie</i> 23: 375–396. <a href="https://doi.org/10.1051/agro:2003011">doi:10.1051/agro:2003011</a></li>
+    <li id="f-vdh2015">van der Heijden MGA, Martin FM, Selosse M-A, Sanders IR (2015). Mycorrhizal ecology and evolution: the past, the present, and the future. <i>New Phytologist</i> 205: 1406–1423. <a href="https://doi.org/10.1111/nph.13288">doi:10.1111/nph.13288</a></li>
+    <li id="f-leake2004">Leake J, Johnson D, Donnelly D y otros (2004). Networks of power and influence: the role of mycorrhizal mycelium in controlling plant communities and agroecosystem functioning. <i>Canadian Journal of Botany</i> 82: 1016–1045. <a href="https://doi.org/10.1139/b04-060">doi:10.1139/b04-060</a></li>
+    <li id="f-treseder2004">Treseder KK (2004). A meta-analysis of mycorrhizal responses to nitrogen, phosphorus, and atmospheric CO₂ in field studies. <i>New Phytologist</i> 164: 347–355. <a href="https://doi.org/10.1111/j.1469-8137.2004.01159.x">doi:10.1111/j.1469-8137.2004.01159.x</a></li>
+    <li id="f-treseder2002">Treseder KK, Allen MF (2002). Direct nitrogen and phosphorus limitation of arbuscular mycorrhizal fungi: a model and field test. <i>New Phytologist</i> 155: 507–515. <a href="https://doi.org/10.1046/j.1469-8137.2002.00470.x">doi:10.1046/j.1469-8137.2002.00470.x</a></li>
+    <li id="f-geisseler2014">Geisseler D, Scow KM (2014). Long-term effects of mineral fertilizers on soil microorganisms — a review. <i>Soil Biology and Biochemistry</i> 75: 54–63. <a href="https://doi.org/10.1016/j.soilbio.2014.03.023">doi:10.1016/j.soilbio.2014.03.023</a></li>
+    <li id="f-gross2021">Gross A, Glaser B (2021). Meta-analysis on how manure application changes soil organic carbon storage. <i>Scientific Reports</i> 11: 5516. <a href="https://doi.org/10.1038/s41598-021-82739-7">doi:10.1038/s41598-021-82739-7</a></li>
+    <li id="f-kallenbach2011">Kallenbach C, Grandy AS (2011). Controls over soil microbial biomass responses to carbon amendments in agricultural systems: a meta-analysis. <i>Agriculture, Ecosystems &amp; Environment</i> 144: 241–252. <a href="https://doi.org/10.1016/j.agee.2011.08.020">doi:10.1016/j.agee.2011.08.020</a></li>
+    <li id="f-minasny2018">Minasny B, McBratney AB (2018). Limited effect of organic matter on soil available water capacity. <i>European Journal of Soil Science</i> 69: 39–47. <a href="https://doi.org/10.1111/ejss.12475">doi:10.1111/ejss.12475</a></li>
+    <li id="f-quiroz2019">Quiroz M, Céspedes C (2019). Bokashi as an amendment and source of nitrogen in sustainable agricultural systems: a review. <i>Journal of Soil Science and Plant Nutrition</i> 19: 237–248. <a href="https://doi.org/10.1007/s42729-019-0009-9">doi:10.1007/s42729-019-0009-9</a></li>
+    <li id="f-vangroenigen2014">van Groenigen JW, Lubbers IM, Vos HMJ y otros (2014). Earthworms increase plant production: a meta-analysis. <i>Scientific Reports</i> 4: 6365. <a href="https://doi.org/10.1038/srep06365">doi:10.1038/srep06365</a></li>
+    <li id="f-ramos2001">Ramos MG, Villatoro MA, Urquiaga S, Alves BJ, Boddey RM (2001). Quantification of the contribution of biological nitrogen fixation to tropical green manure crops and the residual benefit to a subsequent maize crop using ¹⁵N-isotope techniques. <i>Journal of Biotechnology</i> 91: 105–115. <a href="https://doi.org/10.1016/S0168-1656(01)00335-2">doi:10.1016/S0168-1656(01)00335-2</a></li>
+    <li id="f-pitanga2012">Pitanga BPS, Nascimento RP, Silva VDA, Costa SL (2012). The role of astrocytes in metabolism and neurotoxicity of the pyrrolizidine alkaloid monocrotaline, the main toxin of Crotalaria genus. <i>Frontiers in Pharmacology</i> 3: 144. <a href="https://doi.org/10.3389/fphar.2012.00144">doi:10.3389/fphar.2012.00144</a></li>
+    <li id="f-chivenge2011">Chivenge P, Vanlauwe B, Six J (2011). Does the combined application of organic and mineral nutrient sources influence maize productivity? A meta-analysis. <i>Plant and Soil</i> 342: 1–30. <a href="https://doi.org/10.1007/s11104-010-0626-5">doi:10.1007/s11104-010-0626-5</a></li>
+    <li id="f-seufert2012">Seufert V, Ramankutty N, Foley JA (2012). Comparing the yields of organic and conventional agriculture. <i>Nature</i> 485: 229–232. <a href="https://doi.org/10.1038/nature11069">doi:10.1038/nature11069</a></li>
+    <li id="f-ponisio2015">Ponisio LC, M'Gonigle LK, Mace KC y otros (2015). Diversification practices reduce organic to conventional yield gap. <i>Proceedings of the Royal Society B</i> 282: 20141396. <a href="https://doi.org/10.1098/rspb.2014.1396">doi:10.1098/rspb.2014.1396</a></li>
+    <li id="f-cochrane1980">Cochrane TT, Salinas JG, Sánchez PA (1980). An equation for liming acid mineral soils to compensate crop aluminium tolerance. <i>Tropical Agriculture (Trinidad)</i> 57(2).</li>
+    <li id="f-sumner2002">Sumner ME, Yamada T (2002). Farming with acidity. <i>Communications in Soil Science and Plant Analysis</i> 33: 2467–2496. <a href="https://doi.org/10.1081/CSS-120014461">doi:10.1081/CSS-120014461</a></li>
+    <li id="f-niosh">NIOSH. <i>Pocket Guide to Chemical Hazards: Calcium oxide</i>. CDC, Estados Unidos.</li>
+  </ol>
 </main>
 
-<footer class="site-footer" role="contentinfo">
-<div class="footer-inner">
-<div class="footer-bottom">
-<p class="legal-footer">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales. <a href="/legal/">Términos y condiciones</a> &middot; DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
-<p>Hecho desde Guatoc &middot; Choachí &middot; Cundinamarca &middot; Colombia</p>
-<p>Una iniciativa de <a href="https://guatoc.co">Guatoc-EcoHub</a> &middot; AGPL-3.0 &middot; 2026</p>
-</div>
-</div>
+<footer>
+  Chagra · lectura de referencia basada en literatura revisada por pares. No reemplaza el análisis de suelo ni la asesoría de un
+  agrónomo para su finca. <a href="/legal/">Términos y privacidad</a> · Datos personales: <a href="mailto:dpo@chagra.bio">dpo@chagra.bio</a>
 </footer>
-
 </body>
 </html>
