@@ -730,7 +730,7 @@ function pintarSuelo() {
     encarsia: [m ? W * 0.12 : W * 0.46, G + ys[2]],
     beauveria: [m ? W * 0.60 : W * 0.70, G + ys[2] + S * 0.12],
     f1: [m ? W * 0.10 : W * 0.45, G + ys[3]],
-    f2: [m ? W * 0.56 : W * 0.68, G + ys[3] + S * 0.1]
+    f2: [m ? W * 0.50 : W * 0.68, G + ys[3] + S * 0.1]
   };
   return c;
 }
@@ -748,7 +748,9 @@ function crearEtiquetas() {
   burbuja = document.createElement('div'); burbuja.id = 'burbuja'; capaEt.appendChild(burbuja);
 }
 function textos() {
-  for (const k of Object.keys(CAMINO)) { const [t, s, rol] = CAMINO[k][lang]; const c = etq[k].children; c[0].textContent = rol; c[1].textContent = t; c[2].textContent = s; }
+  // En pantallas angostas la fuente se rotula con apellido y año, sin «et al.».
+  const corto = { f1: 'Vet 1980', f2: 'Quesada-Moraga 2006' };
+  for (const k of Object.keys(CAMINO)) { const [t, s, rol] = CAMINO[k][lang]; const c = etq[k].children; c[0].textContent = rol; c[1].textContent = W < 640 && corto[k] ? corto[k] : t; c[2].textContent = s; }
   BANDAS.forEach((b, i) => { const d = bandEt[i]; d.textContent = b[lang]; const s = document.createElement('span'); s.textContent = b.n.toLocaleString(lang === 'es' ? 'es-CO' : 'en-US'); d.appendChild(s); });
   burbuja.textContent = ''; const sm = document.createElement('small'); sm.textContent = PREGUNTA[lang][0]; burbuja.append(sm, PREGUNTA[lang][1]);
 }
@@ -786,16 +788,24 @@ function dibujar() {
     const d = etq[k], [nx, ny] = nodosCamino[k], ver = q >= LLEGA[k];
     d.classList.toggle('ver', ver);
     d.classList.toggle('corta', grupoDe[k] !== grupo || (k[0] === 'f' && W < 640));
-    if (ver) { const lx = clamp(nx + 12, 12, W - d.offsetWidth - 12), ly = k[0] === 'f' ? ny - camY - d.offsetHeight / 2 : ny - camY + 12; d.style.transform = 'translate(' + lx + 'px,' + ly + 'px)'; }
+    if (ver) {
+      const w = d.offsetWidth, h = d.offsetHeight, cabe = nx + 12 + w <= W - 12;
+      // Las fuentes van al lado del nodo; si no caben, debajo, para no tapar su propio nodo.
+      const lado = k[0] === 'f' && cabe;
+      const lx = lado ? nx + 12 : clamp(k[0] === 'f' ? nx - w / 2 : nx + 12, 12, W - w - 12);
+      const ly = lado ? ny - camY - h / 2 : ny - camY + 12;
+      d.style.transform = 'translate(' + lx + 'px,' + ly + 'px)';
+    }
   }
-  const verBandas = p >= 0.34 && q < 0.36;
+  const verBandas = p >= 0.34 && q < LLEGA.mosca;
   BANDAS.forEach((b, i) => { const y = bandasY[i] - camY - S * 0.42, d = bandEt[i]; d.style.transform = 'translate(' + (W - d.offsetWidth - 16) + 'px,' + y + 'px)'; d.style.opacity = verBandas && y > 150 && y < H - 120 ? '1' : '0'; });
   const verB = p > 0.10 && p < 0.42;
   burbuja.classList.toggle('ver', verB);
   if (verB) burbuja.style.transform = 'translate(' + clamp(xTomate() - 20, 12, W - burbuja.offsetWidth - 12) + 'px,' + (G - 150 * K - burbuja.offsetHeight - camY) + 'px)';
   titulo.style.opacity = String(clamp(1 - p / 0.1, 0, 1));
   titulo.style.visibility = p > 0.1 ? 'hidden' : 'visible';
-  const paso = p < 0.12 ? 0 : p < 0.34 ? 1 : q < 0.36 ? 2 : q < 0.64 ? 3 : 4;
+  // Cada texto entra cuando el camino llega a su nodo: la mosca en q=0,40; las fuentes empiezan en q=0,66.
+  const paso = p < 0.12 ? 0 : p < 0.34 ? 1 : q < LLEGA.mosca ? 2 : q < 0.66 ? 3 : 4;
   if (paso !== pasoUlt) { pasoUlt = paso; frase(paso); }
   $('#fBarra').style.width = (p * 100).toFixed(1) + '%';
 }
@@ -816,7 +826,7 @@ function reloj() {
   $('#vCielo').textContent = CIELOS[cielo][lang];
   capaFinca = pintarFinca(); pedir();
 }
-function construir() { medir(); capaFinca = pintarFinca(); capaSuelo = pintarSuelo(); pedir(); }
+function construir() { medir(); capaFinca = pintarFinca(); capaSuelo = pintarSuelo(); if (burbuja) textos(); pedir(); }
 
 function ponerIdioma(l) {
   lang = l;
