@@ -20,7 +20,7 @@
     { "id": "pinus_patula",           "nombre_cientifico": "Pinus patula Schiede ex Schltdl. & Cham.",       "nombre_comun": "Pino patula" },
     { "id": "pistia_stratiotes",      "nombre_cientifico": "Pistia stratiotes L.",                           "nombre_comun": "Lechuga de agua" },
     { "id": "pteridium_aquilinum",    "nombre_cientifico": "Pteridium aquilinum (L.) Kuhn",                  "nombre_comun": "Helecho marranero" },
-    { "id": "pueraria_phaseoloides",  "nombre_cientifico": "Pueraria phaseoloides (Roxb.) Benth.",           "nombre_comun": "Kudzu tropical" },
+    { "id": "pueraria_phaseoloides",  "nombre_cientifico": "Neustanthus phaseoloides (sin. Pueraria phaseoloides)",           "nombre_comun": "Kudzu tropical" },
     { "id": "rubus_alceifolius",      "nombre_cientifico": "Rubus alceifolius Poir.",                        "nombre_comun": "Mora silvestre asiatica" },
     { "id": "thunbergia_alata",       "nombre_cientifico": "Thunbergia alata Bojer ex Sims",                 "nombre_comun": "Ojo de poeta" },
     { "id": "ulex_europaeus",         "nombre_cientifico": "Ulex europaeus L.",                              "nombre_comun": "Retamo espinoso" }

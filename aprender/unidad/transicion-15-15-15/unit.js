@@ -104,12 +104,12 @@ const QUIZ_CONFIG = {
 
 const QUIZ_EXPLANATIONS = {
   '1_1_c':'Correcto. 1 gramo de suelo sano contiene entre mil millones y diez mil millones de celulas microbianas (Fierer & Jackson 2006).',
-  '1_2_b':'Correcto. Los suelos cafeteros colombianos perdieron aproximadamente el 50% de su materia orgánica entre 1970 y 2010 según CENICAFE.',
+  '1_2_b':'Correcto. Para cuantificar cambios de materia orgánica se necesitan mediciones comparables de cada zona.',
   '1_3_d':'Correcto. El bocashi anual APORTA materia orgánica. Las causas de perdida son laboreo profundo, ausencia de cobertura e insumos solubles continuos.',
   '2_1_b':'Correcto. En Andes tropicales, el nitrogeno aplicado como urea tiene solo 30-50% de eficiencia real (Cassman et al. 2002).',
   '2_2_b':'Correcto. Solo 15-25% del fosforo aplicado como DAP/MAP es absorbido; el resto se fija en oxidos de hierro y aluminio.',
   '2_3_c':'Correcto. La fijación biológica de nitrogeno en suelos sanos puede aportar 40-200 kg N/ha/año sin usar fertilizante.',
-  '2_4_b':'Correcto. El uso continuo de NPK sin enmienda orgánica reduce la biomasa microbiana del suelo entre 30-50% (Treseder 2008).',
+  '2_4_b':'Treseder (2008) encontró una disminución promedio del 15% en estudios de adición de nitrógeno, con variación entre condiciones y duración; no es una predicción para toda aplicación de NPK.',
   '3_1_c':'Correcto. Solo la cal dolomitica (CaMg(CO3)2) es una enmienda agricola valida, y siempre bajo análisis previo de suelo.',
   '3_2_b':'Correcto. La Regla Cochrane establece dos condiciones simultaneas: pH < 5.5 Y saturacion de aluminio > 30%.',
   '3_3_b':'Correcto. La cal viva genera un choque de pH de 5 a 11 que esteriliza la microbiota, precipita fosforo, saponifica materia orgánica y volatiliza nitrogeno.',
@@ -123,7 +123,7 @@ const QUIZ_EXPLANATIONS = {
   '6_1_c':'Correcto. En el Año 1 NO se elimina el NPK. Se mantiene la dosis actual y se agrega bocashi como transición.',
   '6_2_b':'Correcto. En el Año 2 se reduce el NPK al 50% de la dosis original, aumentando el bocashi a 2 kg/m2.',
   '6_3_c':'Correcto. Un indicador de exito es pasar de 5-15 lombrices/m2 en el Año 0 a 50-150 lombrices/m2 en el Año 3.',
-  '7_1_b':'Correcto. En el primer año de transición agroecológica, una caida de rendimiento del 10-25% es tipica y esperada (Seufert 2012).',
+  '7_1_b':'La diferencia de rendimiento depende del cultivo, el sitio y el manejo. Seufert et al. (2012) no permiten afirmar una caída típica ni una recuperación universal por año.',
   '7_2_d':'Correcto. Los cuernos de vaca enterrados en luna llena son una práctica de la biodinamica, no de la agroecología basada en evidencia científica que promueve Chagra.'
 };
 
@@ -388,25 +388,6 @@ function init(){
     if(saved) saved.classList.add('active');
   }
 
-  // Trigger carbon animation when visible
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting && entry.target.id === 'svgCarbono'){
-        animateCarbono();
-        observer.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.5});
-  const svgC = document.getElementById('svgCarbono');
-  if(svgC) observer.observe(svgC);
-}
-
-function animateCarbono(){
-  // Simple animation: reduce bar height and update text
-  const bar2010 = document.getElementById('bar2010');
-  const txt2010 = document.getElementById('txt2010');
-  if(bar2010) bar2010.setAttribute('height','75');
-  if(txt2010) txt2010.textContent = '~50%';
 }
 
 // Initialize calculator defaults on load — defensivo: si el DOM ya esta listo
