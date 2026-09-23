@@ -1,649 +1,992 @@
 <!DOCTYPE html>
-<html lang="es-CO" data-lang="es" data-aud="campesino">
+<html lang="es-CO" data-lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chagra — Conocimiento agroecológico verificado en el celular del campesino colombiano. Sin internet, sin nube extranjera, 100% energía solar off-grid. Una IA local que no inventa. Open source AGPL-3.0.">
-<meta name="theme-color" content="#020617">
-<meta name="color-scheme" content="dark">
-<meta property="og:title" content="Chagra — Agente Agroecológico Colombiano">
-<meta property="og:description" content="721 especies verificadas conectadas en un grafo de conocimiento, una IA local que no inventa, 100% energía solar off-grid. Asesor agroecológico que funciona sin internet. Open source AGPL-3.0. Construido en Choachí, Colombia.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chagra — el agente agroecológico colombiano</title>
+<meta name="description" content="Usted le pregunta a Chagra por su finca y Chagra busca en un grafo de 743 especies y 13 906 relaciones antes de responder, con la fuente a la vista. Servidor propio con energía solar en Choachí, sin nube de terceros. Código abierto AGPL-3.0.">
+<meta name="theme-color" content="#15110c">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Chagra — el agente agroecológico colombiano">
+<meta property="og:description" content="Una pregunta sobre su finca baja a la raíz: 743 especies, 404 plagas y 13 906 relaciones, y vuelve con el artículo que la respalda. Cursos gratuitos en edu.chagra.bio.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://chagra.app">
+<meta property="og:url" content="https://chagra.bio/">
 <meta property="og:image" content="https://chagra.bio/assets/hero-chagra.webp">
-<meta property="og:image:alt" content="Chagra — agente agroecológico colombiano, ilustración de chagra agroforestal de múltiples estratos">
+<meta property="og:image:alt" content="Ilustración de una chagra agroforestal colombiana con varios estratos de vegetación">
 <meta name="twitter:card" content="summary_large_image">
-<title>Chagra — Agente Agroecológico Colombiano</title>
+<link rel="canonical" href="https://chagra.bio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%23a7c957'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%235f8a3a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --tinta:#f3f1e8; --tinta-2:rgba(243,241,232,.74); --tinta-3:rgba(243,241,232,.52);
+  --vidrio:rgba(14,14,12,.5); --vidrio-borde:rgba(255,255,255,.15);
+  --acento:#a7c957; --acento-osc:#10210f;
+  --tierra:#15110c; --tierra-2:#1d1710; --linea:rgba(243,241,232,.14);
+  --especie:#a7c957; --plaga:#e07a5f; --benefico:#8fb8de; --biopre:#e9c46a; --fuente:#efe6d2;
+  --titulo:#17311d; --titulo-2:#26452b;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","Noto Serif",Georgia,serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --gut:16px;
+}
+/* Tokens por ESTADO del cielo de Choachí: la tinta del título sigue a la luz real de la hora. */
+body[data-cielo="noche"],body[data-cielo="madrugada"],body[data-cielo="atardecer"]{--titulo:#f3f1e8;--titulo-2:rgba(243,241,232,.82)}
+*{box-sizing:border-box}
+html{background:var(--tierra)}
+body{margin:0;background:var(--tierra);color:var(--tinta);font-family:var(--sans);overflow-x:hidden;-webkit-tap-highlight-color:transparent;line-height:1.5}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;border-radius:6px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-<link rel="preload" href="assets/hero-chagra.webp" as="image" type="image/webp">
-<link rel="stylesheet" href="styles.css?v=2026-06-14b">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%2310b981'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%2306b6d4' opacity='.7'/%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23f8fafc' stroke-width='4'/%3E%3C/svg%3E">
+/* ───────── Héroe: una sola toma, de la finca a la roca madre ───────── */
+#heroe{position:relative;height:340vh}
+#escena{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#lienzo{position:absolute;inset:0;width:100%;height:100%;display:block}
+#etiquetas{position:absolute;inset:0;pointer-events:none}
+.et{position:absolute;left:0;top:0;opacity:0;transition:opacity .35s ease;font-family:var(--mono);font-size:.72rem;line-height:1.3;color:var(--tinta);background:rgba(10,8,6,.66);border:1px solid var(--vidrio-borde);border-radius:8px;padding:5px 8px;max-width:15rem;white-space:normal}
+.et b{display:block;font-family:var(--serif);font-weight:400;font-size:.95rem;font-style:italic}
+.et i{font-style:normal;color:var(--tinta-3);letter-spacing:.06em;text-transform:uppercase;font-size:.62rem}
+.et span{overflow-wrap:anywhere}
+.et.ver{opacity:1}
+.et.corta{padding:3px 7px}
+.et.corta i,.et.corta span{display:none}
+.et.corta b{font-size:.82rem}
+.banda{position:absolute;left:0;top:0;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);white-space:nowrap}
+.banda span{font-size:.95rem;letter-spacing:0;color:var(--tinta);margin-left:.4em;font-variant-numeric:tabular-nums}
+#burbuja{position:absolute;left:0;top:0;max-width:17rem;background:#fbf8ef;color:#1d2a1a;border-radius:16px 16px 16px 4px;padding:10px 13px;font-family:var(--serif);font-size:1rem;line-height:1.35;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transition:opacity .35s ease;pointer-events:none}
+#burbuja small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#5b6a52;margin-bottom:3px}
+#burbuja.ver{opacity:1}
+
+#titulo{position:absolute;left:max(var(--gut),4vw);top:max(22px,7vh);z-index:2;max-width:min(36rem,calc(100vw - 2*var(--gut)));color:var(--titulo)}
+#titulo .marca{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--titulo-2);margin:0 0 .6em}
+#titulo h1{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,8vw,6rem);line-height:.92;margin:0;letter-spacing:-.01em}
+#titulo p.lema{font-family:var(--serif);font-size:clamp(1.08rem,2vw,1.4rem);line-height:1.35;margin:.55em 0 0;color:var(--titulo-2);max-width:30rem}
+#titulo p.lema em{color:var(--titulo);font-style:italic}
+#titulo .pista{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--titulo-2);margin-top:1.2em}
+
+#medidor{position:absolute;top:var(--gut);right:var(--gut);z-index:3;background:var(--vidrio);backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);border:1px solid var(--vidrio-borde);border-radius:14px;padding:12px 14px 10px;width:17rem;max-width:calc(100vw - 2*var(--gut));font-family:var(--mono);font-variant-numeric:tabular-nums;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+#medidor h2{margin:0 0 6px;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3);font-weight:400}
+#medidor .fila{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#medidor .rot{font-size:.66rem;letter-spacing:.08em;color:var(--tinta-2);white-space:nowrap}
+#medidor .val{font-size:1.25rem;line-height:1.2;white-space:nowrap}
+#medidor .val small{font-size:.72rem;color:var(--tinta-3)}
+#medidor .cielo{margin-top:8px;padding-top:7px;border-top:1px solid var(--vidrio-borde);font-size:.68rem;color:var(--tinta-2);display:flex;justify-content:space-between;gap:10px}
+#medidor .nota{margin-top:5px;font-size:.6rem;line-height:1.35;color:var(--tinta-3);font-family:var(--sans)}
+
+#frase{position:absolute;left:max(var(--gut),3vw);bottom:max(var(--gut),4vh);z-index:3;width:min(31rem,calc(100vw - 2*var(--gut)));background:var(--vidrio);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--vidrio-borde);border-radius:14px;padding:14px 16px 12px}
+#frase .paso{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3)}
+#frase h2{font-family:var(--serif);font-weight:400;font-size:1.35rem;margin:.15em 0 .3em;line-height:1.15}
+#frase p{font-family:var(--serif);font-size:1.02rem;line-height:1.45;margin:0;overflow-wrap:break-word;hyphens:auto}
+#frase p.sub{font-family:var(--sans);font-size:.78rem;color:var(--tinta-3);margin-top:.6em}
+#frase p.sub:empty{display:none}
+#frase .barra{height:3px;border-radius:2px;background:rgba(255,255,255,.14);margin-top:10px;overflow:hidden}
+#frase .barra i{display:block;height:100%;width:0;background:var(--acento)}
+
+#controles{position:absolute;right:var(--gut);bottom:max(var(--gut),4vh);z-index:4;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 2*var(--gut))}
+.btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--vidrio-borde);background:var(--vidrio);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--tinta);border-radius:999px;padding:10px 16px;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;cursor:pointer;min-height:44px;white-space:nowrap;text-decoration:none;transition:background .2s ease,border-color .2s ease,transform .12s ease}
+.btn:hover{background:rgba(30,30,24,.66);border-color:rgba(255,255,255,.32)}
+.btn:active{transform:scale(.97)}
+.btn.prim{background:rgba(167,201,87,.94);color:var(--acento-osc);border-color:transparent;font-weight:600}
+.btn.prim:hover{background:#b7d86a}
+
+/* ───────── Secciones: seguimos bajo tierra ───────── */
+.seccion{max-width:70rem;margin:0 auto;padding:clamp(56px,9vw,112px) max(var(--gut),4vw)}
+.seccion+.seccion{border-top:1px solid var(--linea)}
+.antetitulo{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);margin:0 0 .8em}
+.seccion h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;margin:0 0 .4em;max-width:44rem}
+.seccion .entrada{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.5;color:var(--tinta-2);max-width:42rem;margin:0 0 2.2em}
+
+/* Puertas */
+.puertas{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+.puerta{position:relative;display:flex;flex-direction:column;border:1px solid var(--linea);border-radius:18px;padding:22px;background:var(--tierra-2);text-decoration:none;min-width:0;transition:border-color .2s ease,transform .2s ease}
+a.puerta:hover{border-color:rgba(167,201,87,.6);transform:translateY(-2px)}
+.puerta .rotulo{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3)}
+.puerta h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;line-height:1.1;margin:.35em 0 .35em}
+.puerta p{margin:0;color:var(--tinta-2);font-size:.98rem}
+.puerta .ir{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;color:var(--acento)}
+.puerta.edu{grid-row:span 2;background:linear-gradient(180deg,#223018 0%,#1a2413 46%,#141a10 100%)}
+.puerta.edu svg{width:100%;height:auto;max-height:260px;margin:6px 0 14px;display:block}
+.hermanas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.hermana{border:1px solid var(--linea);border-radius:12px;padding:10px 12px;font-size:.86rem;color:var(--tinta-2)}
+.hermana b{display:block;font-family:var(--serif);font-weight:400;font-size:1.05rem;color:var(--tinta)}
+.hermana.pronto{border-style:dashed}
+.modulos{list-style:none;padding:0;margin:12px 0 0;counter-reset:m;display:grid;gap:4px}
+.modulos li{counter-increment:m;font-size:.9rem;color:var(--tinta-2);display:flex;gap:10px}
+.modulos li::before{content:counter(m);font-family:var(--mono);color:var(--acento);min-width:1ch}
+.notas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+
+/* Lo que hace */
+.hace{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px}
+.hace h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:0 0 .35em}
+.hace p{margin:0;color:var(--tinta-2);font-size:.95rem}
+.hace .marca-h{display:block;width:28px;height:2px;background:var(--acento);margin-bottom:12px}
+
+/* Cuentas claras */
+.cuentas{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--linea);border-radius:16px;overflow:hidden;margin-bottom:28px}
+.cuenta{padding:18px 18px 16px;border-right:1px solid var(--linea);min-width:0}
+.cuenta:last-child{border-right:0}
+.cuenta .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1.05;display:block}
+.cuenta .n small{font-size:.5em;color:var(--tinta-3)}
+.cuenta .d{font-size:.84rem;color:var(--tinta-2);display:block;margin-top:.35em}
+.cuenta .punto{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.4em;vertical-align:.05em}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
+.dos h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:0 0 .3em}
+.dos p{margin:0;color:var(--tinta-2);font-size:.95rem}
+.ejemplo{margin-top:34px;padding-top:24px;border-top:1px solid var(--linea)}
+.ejemplo h3{font-family:var(--serif);font-weight:400;font-size:1.2rem;margin:0 0 .5em}
+.ejemplo ol{margin:0;padding-left:1.4em;display:grid;gap:8px;font-size:.86rem;color:var(--tinta-2)}
+.ejemplo a{color:var(--acento);font-family:var(--mono);font-size:.8rem;overflow-wrap:anywhere}
+.medido{font-family:var(--mono);font-size:.7rem;color:var(--tinta-3);margin-top:22px}
+
+/* Para quién + fundador */
+.quien{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.quien h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:0 0 .3em}
+.quien p{margin:0;color:var(--tinta-2);font-size:.95rem}
+.fundador{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--linea)}
+.fundador img{width:200px;height:200px;border-radius:50%;object-fit:cover;display:block;background:var(--tierra-2)}
+.fundador h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0}
+.fundador .rol{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--acento);margin:.3em 0 .8em}
+.fundador p{margin:0 0 1em;color:var(--tinta-2)}
+
+/* ───────── La app, por dentro: capturas reales en un escenario que gira con el scroll ───────── */
+#app{border-bottom:1px solid var(--linea);background:radial-gradient(120% 80% at 70% 40%,#2a2416 0%,var(--tierra) 62%)}
+.app-pista{position:relative;height:360vh}
+.app-fijo{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(18rem,26rem) 1fr;gap:clamp(16px,4vw,56px);align-items:center;max-width:78rem;margin:0 auto;padding:0 max(var(--gut),4vw);overflow:hidden}
+.app-texto h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3.1rem);line-height:1.05;margin:0 0 .35em}
+.app-texto .entrada{font-family:var(--serif);font-size:1.08rem;line-height:1.5;color:var(--tinta-2);margin:0 0 1.6em}
+.app-pie{border-top:1px solid var(--linea);padding-top:18px;min-height:12.5rem}
+.app-pie .n{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acento)}
+.app-pie h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.1;margin:.25em 0 .35em}
+.app-pie p{margin:0;color:var(--tinta-2);font-size:1rem;max-width:24rem}
+.app-pie.cambia{animation:aparece .45s ease both}
+@keyframes aparece{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.app-puntos{display:flex;gap:8px;margin-top:18px}
+.app-puntos i{width:22px;height:3px;border-radius:2px;background:rgba(243,241,232,.2);transition:background .25s ease}
+.app-puntos i.on{background:var(--acento)}
+.app-nota{font-family:var(--mono);font-size:.66rem;color:var(--tinta-3);margin-top:18px;line-height:1.5}
+.carrusel{position:relative;height:100%;perspective:1400px;perspective-origin:50% 45%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.fono{position:absolute;left:50%;top:50%;width:clamp(210px,19vw,280px);margin:0;transform-style:preserve-3d;will-change:transform}
+.fono .marco{position:relative;border-radius:38px;padding:26px 9px 14px;background:linear-gradient(145deg,#2c2c2a,#0d0d0c 60%);box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.fono .marco::before{content:"";position:absolute;top:8px;left:50%;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#050505;z-index:2;box-shadow:0 0 0 2px #151515}
+.fono img{display:block;width:100%;height:auto;border-radius:22px;background:#0b1120}
+.fono figcaption{display:none}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .app-pista{height:auto}
+  .app-fijo{position:static;height:auto;display:block;padding:clamp(56px,9vw,96px) 0;overflow:visible}
+  .app-texto{padding:0 max(var(--gut),4vw)}
+  .app-pie,.app-puntos{display:none}
+  .carrusel{-webkit-mask-image:none;mask-image:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px max(var(--gut),4vw) 24px;perspective:none;height:auto;scrollbar-width:thin}
+  .fono{position:static;flex:0 0 min(68vw,260px);scroll-snap-align:center;transform:none!important;opacity:1!important}
+  .fono figcaption{display:block;margin-top:12px}
+  .fono figcaption b{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+  .fono figcaption span{display:block;font-size:.86rem;color:var(--tinta-2);line-height:1.45}
+}
+
+/* Pie */
+footer{border-top:1px solid var(--linea);background:#100d09}
+footer .seccion{padding-top:48px;padding-bottom:40px}
+.pie{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.pie h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3);font-weight:400;margin:0 0 .8em}
+.pie ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:.92rem}
+.pie a{color:var(--tinta-2);text-decoration:none}
+.pie a:hover{color:var(--tinta)}
+.pie p{margin:0 0 .6em;font-size:.86rem;color:var(--tinta-2)}
+.saberes{margin-top:32px;padding-top:24px;border-top:1px solid var(--linea);font-size:.8rem;color:var(--tinta-3);line-height:1.55}
+.saberes b{color:var(--tinta-2);font-weight:500}
+
+@media (max-width:900px){
+  .puertas{grid-template-columns:1fr}
+  .puerta.edu{grid-row:auto}
+  .notas,.hace,.quien{grid-template-columns:1fr 1fr}
+  .cuentas{grid-template-columns:1fr 1fr}
+  .cuenta:nth-child(2){border-right:0}
+  .cuenta:nth-child(-n+2){border-bottom:1px solid var(--linea)}
+  .pie{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  #medidor{left:var(--gut);right:var(--gut);width:auto;padding:9px 12px 8px;display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:10px}
+  #medidor h2{grid-column:1 / -1;margin-bottom:3px}
+  #medidor .fila{flex-direction:column;align-items:flex-start;gap:0}
+  #medidor .rot{font-size:.58rem}
+  #medidor .val{font-size:1.02rem}
+  #medidor .cielo{grid-column:1 / -1;margin-top:5px;padding-top:5px}
+  #medidor .nota{display:none}
+  #titulo{top:calc(var(--gut) + 118px)}
+  #titulo h1{font-size:3.3rem}
+  #frase{left:var(--gut);right:var(--gut);width:auto;bottom:calc(var(--gut) + 56px);padding:11px 13px 9px}
+  #frase h2{font-size:1.12rem}
+  #frase p{font-size:.93rem}
+  #controles{left:var(--gut);right:var(--gut);bottom:var(--gut);justify-content:space-between;flex-wrap:nowrap}
+  .btn{padding:10px 12px;font-size:.72rem}
+  .notas,.hace,.quien,.dos,.pie,.hermanas{grid-template-columns:1fr}
+  .fundador{grid-template-columns:1fr;gap:18px}
+  .fundador img{width:132px;height:132px}
+  .et{max-width:12.5rem;font-size:.66rem}
+  .et b{font-size:.86rem}
+  #burbuja{max-width:14rem;font-size:.92rem}
+}
+@media (max-width:640px) and (max-height:800px){
+  #titulo{top:calc(var(--gut) + 108px)}
+  #titulo h1{font-size:2.7rem}
+  #titulo p.lema{font-size:1rem}
+  #titulo .pista{display:none}
+}
+@media (max-width:370px){ .btn{padding:10px 9px;font-size:.68rem} #controles .opc{display:none} }
+@media (prefers-reduced-motion:reduce){
+  .et,#burbuja{transition:none}
+  a.puerta:hover{transform:none}
+}
+</style>
 </head>
-<body>
+<body data-cielo="manana">
 
-<!-- HEADER -->
-<header class="site-header" role="banner">
-<div class="header-inner">
-<a href="#" class="logo" aria-label="Chagra — Inicio">
-<svg class="logo-icon" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
-<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
-<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
-<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
-<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
-</svg>
-<span class="logo-text">Chagra</span>
-</a>
+<section id="heroe" aria-label="Presentación: una pregunta baja de la finca al grafo de Chagra">
+  <div id="escena">
+    <canvas id="lienzo" role="img" aria-label="Una chagra andina sobre el suelo; bajo tierra, el grafo de Chagra como una red de raíces: especies, plagas, organismos benéficos y biopreparados, y al fondo las fuentes. Una pregunta sobre un tomate con mosca blanca baja por esa red hasta los artículos que respaldan la respuesta."></canvas>
+    <div id="etiquetas" aria-hidden="true"></div>
 
-<div class="header-controls">
-<!-- AUDIENCE TOGGLE -->
-<div class="seg-toggle" role="group" aria-label="Seleccionar audiencia" data-toggle="aud">
-<button type="button" class="seg-btn is-active" data-aud-set="campesino" aria-pressed="true">
-<span lang="es" data-lang-block="es">Soy campesino</span><span lang="en" data-lang-block="en" hidden>I'm a farmer</span>
-</button>
-<button type="button" class="seg-btn" data-aud-set="institucion" aria-pressed="false">
-<span lang="es" data-lang-block="es">Soy institución</span><span lang="en" data-lang-block="en" hidden>I'm an institution</span>
-</button>
-</div>
-<!-- LANGUAGE TOGGLE -->
-<div class="seg-toggle seg-lang" role="group" aria-label="Idioma / Language" data-toggle="lang">
-<button type="button" class="seg-btn is-active" data-lang-set="es" aria-pressed="true" lang="es">ES</button>
-<button type="button" class="seg-btn" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
-</div>
-</div>
+    <header id="titulo">
+      <p class="marca">Guatoc · Chagra</p>
+      <h1>Chagra</h1>
+      <p class="lema" data-t="lema">El agente agroecológico colombiano. Usted le pregunta por su finca; <em>Chagra baja a la raíz</em> y le responde con la fuente.</p>
+      <p class="pista" data-t="pista">Deslice hacia abajo · o pulse «Bajar»</p>
+    </header>
 
-<button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
-<span></span><span></span><span></span>
-</button>
-<nav id="primary-nav" class="primary-nav" aria-label="Navegación principal">
-<ul role="menubar">
-<li role="none"><a href="#pilares" role="menuitem"><span lang="es" data-lang-block="es">Qué es</span><span lang="en" data-lang-block="en" hidden>What it is</span></a></li>
-<li role="none"><a href="#capacidades" role="menuitem"><span lang="es" data-lang-block="es">Qué hace</span><span lang="en" data-lang-block="en" hidden>What it does</span></a></li>
-<li role="none"><a href="#como-piensa" role="menuitem"><span lang="es" data-lang-block="es">No inventa</span><span lang="en" data-lang-block="en" hidden>No hallucinations</span></a></li>
-<li role="none"><a href="#soberania" role="menuitem"><span lang="es" data-lang-block="es">Soberanía</span><span lang="en" data-lang-block="en" hidden>Sovereignty</span></a></li>
-<li role="none"><a href="#audiencias" role="menuitem"><span lang="es" data-lang-block="es">Para quién</span><span lang="en" data-lang-block="en" hidden>Who it's for</span></a></li>
-<li role="none"><a href="#aprender" role="menuitem"><span lang="es" data-lang-block="es">Aprender</span><span lang="en" data-lang-block="en" hidden>Learn</span></a></li>
-<li role="none"><a href="/legal/" role="menuitem">Legal</a></li>
-</ul>
-</nav>
-</div>
-</header>
+    <aside id="medidor" aria-label="Cifras del grafo de Chagra">
+      <h2 data-t="med-tit">Grafo de Chagra · medido</h2>
+      <div class="fila"><span class="rot" data-t="med-esp">Especies</span><span class="val">743</span></div>
+      <div class="fila"><span class="rot" data-t="med-rel">Relaciones</span><span class="val">13 906</span></div>
+      <div class="fila"><span class="rot" data-t="med-doi">Control con artículo</span><span class="val">447<small>/873</small></span></div>
+      <div class="cielo"><span id="vHora">Choachí · --:--</span><span id="vCielo">—</span></div>
+      <div class="nota" data-t="med-nota">Medido el 23-sep-2026. Capa colombiana del grafo. El cielo se calcula para la hora de Choachí: es aproximado.</div>
+    </aside>
+
+    <section id="frase" aria-live="polite">
+      <div class="paso" id="fPaso">1 de 5</div>
+      <h2 id="fTit">La finca</h2>
+      <p id="fCuerpo">Una chagra: árboles de sombra, plátano, maíz con fríjol, ahuyama y tomate en un mismo lote.</p>
+      <p class="sub" id="fSub"></p>
+      <div class="barra" aria-hidden="true"><i id="fBarra"></i></div>
+    </section>
+
+    <div id="controles">
+      <a class="btn prim" href="https://chagra.app" data-t="btn-app">Entrar a la app</a>
+      <a class="btn opc" href="#app" data-t="btn-cursos">Ver la app</a>
+      <button class="btn" id="bBajar" type="button" data-t="btn-bajar">Bajar ↓</button>
+      <button class="btn" id="bLang" type="button" aria-label="Change language to English">EN</button>
+    </div>
+  </div>
+</section>
 
 <main>
+  <section id="app" aria-labelledby="t-app">
+    <div class="app-pista">
+      <div class="app-fijo">
+        <div class="app-texto">
+          <p class="antetitulo" data-t="app-ante">La app, por dentro</p>
+          <h2 id="t-app" data-t="app-tit">Así se ve Chagra en el celular</h2>
+          <p class="entrada" data-t="app-ent">Capturas reales de chagra.app, tomadas el 23 de septiembre en un teléfono con la finca de ejemplo. Nada de maquetas.</p>
+          <div class="app-pie" id="appPie" aria-live="polite"><div class="n" id="appN">1 / 6</div><h3 id="appT"></h3><p id="appP"></p></div>
+          <div class="app-puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="app-nota" data-t="app-nota">Deslice para pasar de pantalla.</p>
+        </div>
+        <div class="carrusel" id="carrusel">
+      <figure class="fono" data-i="0">
+        <div class="marco"><img src="assets/app/finca-viva.webp" alt="Captura de la app: Su finca, viva" width="560" height="1255" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono1-t">Su finca, viva</b><span data-t="fono1-p">La pantalla de inicio es su finca dibujada, con raíces y todo. Toque una puerta para entrar, o toque el corazón de la finca y pregúntele a Chagra hablando.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="1">
+        <div class="marco"><img src="assets/app/agente.webp" alt="Captura de la app: El agente" width="560" height="1196" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono2-t">El agente</b><span data-t="fono2-p">Chagra le saluda con el estado de su finca y la temporada de lluvias. Se le pregunta por texto, por voz o mandándole la foto de una mata enferma.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="2">
+        <div class="marco"><img src="assets/app/ficha-tomate.webp" alt="Captura de la app: Una ficha por especie" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono3-t">Una ficha por especie</b><span data-t="fono3-p">El tomate cherry: piso térmico templado y frío, de 18 a 26 °C, con su foto de licencia abierta y el número de fuentes de donde sale la ficha.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="3">
+        <div class="marco"><img src="assets/app/mercado.webp" alt="Captura de la app: Mercado sin intermediarios" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono4-t">Mercado sin intermediarios</b><span data-t="fono4-p">Publique su cosecha y el comprador le escribe directo. Chagra no cobra comisión ni procesa pagos. En la captura, ofertas de ejemplo.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="4">
+        <div class="marco"><img src="assets/app/mi-finca-viva.webp" alt="Captura de la app: Mi Finca Viva" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono5-t">Mi Finca Viva</b><span data-t="fono5-p">Un juego que sigue la etapa real de su finca: la tierra viva, los defensores que controlan las plagas, la milpa de las tres hermanas.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="5">
+        <div class="marco"><img src="assets/app/sala-juegos.webp" alt="Captura de la app: Aprender jugando" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono6-t">Aprender jugando</b><span data-t="fono6-p">Nueve juegos que enseñan prácticas reales —control biológico, suelo vivo, milpa, restauración— y el curso guiado de la app.</span></figcaption>
+      </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="seccion" id="aprender" aria-labelledby="t-aprender">
+    <p class="antetitulo" data-t="apr-ante">Aprender · gratis</p>
+    <h2 id="t-aprender" data-t="apr-tit">Tres puertas para empezar</h2>
+    <p class="entrada" data-t="apr-ent">Chagra enseña lo que sabe con la misma regla con que responde: cada afirmación trae su fuente, y lo que es ilustrativo se dice ilustrativo.</p>
 
-<!-- ======== HERO ======== -->
-<section class="hero" aria-label="Presentación">
-<div class="hero-media" aria-hidden="true">
-<img src="assets/hero-chagra.webp" alt="Ilustración de una chagra agroforestal colombiana con múltiples estratos verticales de vegetación" loading="eager" decoding="async" fetchpriority="high" width="1344" height="768">
-<div class="hero-overlay"></div>
-<div class="hero-grid" aria-hidden="true"></div>
-</div>
-<div class="hero-content">
-<div class="badge-ver">
-<span class="badge-dot"></span>
-<span lang="es" data-lang-block="es">v1.0 · AGPL-3.0 · Construido en Choachí con energía solar</span>
-<span lang="en" data-lang-block="en" hidden>v1.0 · AGPL-3.0 · Built in Choachí, solar-powered</span>
-</div>
-<h1 class="hero-title"><span class="hero-brand">Chagra</span></h1>
-<p class="hero-tagline">
-<span lang="es" data-lang-block="es">El agente agroecológico colombiano</span>
-<span lang="en" data-lang-block="en" hidden>The Colombian agroecology agent</span>
-</p>
-<p class="hero-desc">
-<span lang="es" data-lang-block="es" data-aud-show="campesino">Ciencia revisada + saberes documentados + una IA local en el celular del campesino. <strong class="soberania">Sin internet. Sin nube extranjera. Sin agroquímicos. Con energía del sol.</strong></span>
-<span lang="es" data-lang-block="es" data-aud-show="institucion" hidden>Inteligencia agroecológica soberana: conocimiento agropecuario colombiano verificado + una IA local que no inventa. Funciona sin internet, sin nube y <strong class="soberania">100% con energía solar off-grid</strong>. Código abierto AGPL-3.0.</span>
-<span lang="en" data-lang-block="en" data-aud-show="campesino" hidden>Peer-reviewed science + documented knowledge + a local AI in the farmer's phone. <strong class="soberania">Offline. No foreign cloud. No agrochemicals. Solar-powered.</strong></span>
-<span lang="en" data-lang-block="en" data-aud-show="institucion" hidden>Sovereign agroecological intelligence: verified Colombian agronomic knowledge + an on-device AI that does not hallucinate. Runs offline, with no cloud and <strong class="soberania">100% on off-grid solar</strong>. Open source, AGPL-3.0.</span>
-</p>
-<div class="hero-cta">
-<a href="https://chagra.app" class="btn btn-primary" rel="noopener">
-<span lang="es" data-lang-block="es">Entrar a la app</span><span lang="en" data-lang-block="en" hidden>Open the app</span>
-<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10h10m-4-4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-</a>
-<a href="https://github.com/guatoc-ecohub/Chagra" class="btn btn-secondary" rel="noopener">
-<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-<span lang="es" data-lang-block="es">Ver código</span><span lang="en" data-lang-block="en" hidden>View code</span>
-</a>
-</div>
-<!-- SELLO DE SOBERANÍA -->
-<div class="hero-seal" role="img" aria-label="Sello: sin nube, 100% local, energía solar off-grid">
-<svg viewBox="0 0 120 120" width="92" height="92" aria-hidden="true">
-<defs>
-<linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
-<path id="sealArc" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0" fill="none"/>
-</defs>
-<circle cx="60" cy="60" r="56" fill="none" stroke="url(#sealGrad)" stroke-width="2"/>
-<circle cx="60" cy="60" r="46" fill="none" stroke="url(#sealGrad)" stroke-width="1" opacity=".4"/>
-<text font-size="9.2" font-weight="700" letter-spacing="2.1" fill="#e2f5ef">
-<textPath href="#sealArc" startOffset="0%">· SIN NUBE · 100% LOCAL · ENERGÍA SOLAR </textPath>
-</text>
-<circle cx="60" cy="48" r="9" fill="url(#sealGrad)"/>
-<g stroke="#10b981" stroke-width="1.6" stroke-linecap="round">
-<path d="M60 33v5M60 58v5M45 48h5M70 48h5M49.4 37.4l3.5 3.5M67.1 54.6l3.5 3.5M70.6 37.4l-3.5 3.5M52.9 54.6l-3.5 3.5"/>
-</g>
-<g transform="translate(48,68)" fill="none" stroke="#06b6d4" stroke-width="1.7" stroke-linejoin="round">
-<path d="M2 14L6 2h12l4 12z"/>
-<path d="M4.3 9.5h17.4M12 2v12" stroke-opacity=".7"/>
-<path d="M9 18h6M12 14v4" stroke-linecap="round"/>
-</g>
-</svg>
-</div>
-</div>
-<div class="stats-bar" role="region" aria-label="Estadísticas principales">
-<div class="stat"><span class="stat-num" data-target="721">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Especies del catálogo</span><span lang="en" data-lang-block="en" hidden>Catalogued species</span></span></div>
-<div class="stat"><span class="stat-num">12.325</span><span class="stat-label"><span lang="es" data-lang-block="es">Relaciones del grafo</span><span lang="en" data-lang-block="en" hidden>Knowledge-graph relations</span></span></div>
-<div class="stat"><span class="stat-num" data-target="74">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Biopreparados y fermentos</span><span lang="en" data-lang-block="en" hidden>Bio-preparations &amp; ferments</span></span></div>
-<div class="stat"><span class="stat-num" data-target="8">0</span><span class="stat-label"><span lang="es" data-lang-block="es">Pueblos referenciados</span><span lang="en" data-lang-block="en" hidden>Indigenous peoples cited</span></span></div>
-</div>
-</section>
+    <div class="puertas">
+      <a class="puerta edu" href="https://edu.chagra.bio">
+        <span class="rotulo">edu.chagra.bio</span>
+        <svg viewBox="0 0 400 220" role="img" aria-label="Una hoja de café que se abre en una doble hélice">
+          <defs><linearGradient id="gHoja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f9a3e"/><stop offset="1" stop-color="#2f5a24"/></linearGradient></defs>
+          <path d="M40 170 C 70 70, 170 40, 230 60 C 200 120, 130 175, 40 170 Z" fill="url(#gHoja)"/>
+          <path d="M40 170 C 110 130, 170 95, 230 60" stroke="#c9dca0" stroke-width="2" fill="none"/>
+          <path d="M92 142 C 100 120, 104 108, 104 96 M128 124 C 138 104, 144 92, 146 80 M164 104 C 176 90, 184 80, 190 70 M84 148 C 110 150, 130 146, 146 138 M120 128 C 144 130, 162 124, 176 116" stroke="#c9dca0" stroke-width="1.1" fill="none" opacity=".7"/>
+          <g fill="none" stroke-width="3" stroke-linecap="round">
+            <path d="M262 30 C 302 50, 302 80, 262 100 C 222 120, 222 150, 262 170 C 302 190, 302 205, 282 214" stroke="#a7c957"/>
+            <path d="M302 30 C 262 50, 262 80, 302 100 C 342 120, 342 150, 302 170 C 262 190, 262 205, 282 214" stroke="#8fb8de"/>
+          </g>
+          <g stroke="#efe6d2" stroke-width="1.6" opacity=".75">
+            <path d="M270 42 H294"/><path d="M268 58 H296"/><path d="M270 74 H294"/><path d="M276 88 H288"/>
+            <path d="M250 112 H282"/><path d="M244 128 H280"/><path d="M246 144 H278"/><path d="M254 158 H270"/>
+            <path d="M270 182 H294"/><path d="M274 196 H290"/>
+          </g>
+          <path d="M232 62 C 244 56, 254 50, 262 44" stroke="#c9dca0" stroke-width="1.2" stroke-dasharray="3 4" fill="none"/>
+        </svg>
+        <h3 data-t="edu-tit">Descenso: de la hoja de café a su ADN</h3>
+        <p data-t="edu-txt">Una sola toma, sin cortes: de una mata de café al sol hasta la doble hélice, pasando por los estomas, la célula y el núcleo. Doce fuentes con DOI; escalas rotuladas como aproximadas.</p>
+        <div class="hermanas">
+          <div class="hermana"><b data-t="edu-cafe">Café</b><span data-t="edu-cafe-d">abierto</span></div>
+          <div class="hermana pronto"><b data-t="edu-milpa">Milpa</b><span data-t="edu-milpa-d">próximamente: micorrizas y el nódulo del fríjol</span></div>
+        </div>
+        <span class="ir" data-t="edu-ir">Entrar a edu.chagra.bio →</span>
+      </a>
 
-<!-- ======== 4 PILARES (lo nuevo a destacar) ======== -->
-<section id="pilares" class="pilares-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Qué es Chagra</span><span lang="en" data-lang-block="en" hidden>What Chagra is</span></p>
-<h2 class="section-title">
-<span lang="es" data-lang-block="es">Cuatro razones para confiar en Chagra</span>
-<span lang="en" data-lang-block="en" hidden>Four reasons to trust Chagra</span>
-</h2>
-<p class="section-desc">
-<span lang="es" data-lang-block="es">No es una app de plantas más. Es una plataforma agroclimática soberana, honesta y construida con respeto por el campesino.</span>
-<span lang="en" data-lang-block="en" hidden>Not just another plant app. It is a sovereign agroclimatic platform, honest by design, built with respect for the smallholder farmer.</span>
-</p>
-</header>
-<div class="pilares-grid">
-<!-- Pilar A: soberanía -->
-<article class="pilar-card pilar-soberania">
-<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="18" r="7" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".8"><path d="M24 6v3M24 27v3M11 18h3M34 18h3M15 9l2 2M31 25l2 2M33 9l-2 2M17 25l-2 2"/></g><path d="M10 42l5-12h18l5 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13 36h22M24 30v12" stroke="currentColor" stroke-width="1.4" opacity=".6"/></svg></div>
-<span class="pilar-num">01</span>
-<h3><span lang="es" data-lang-block="es">Soberanía total</span><span lang="en" data-lang-block="en" hidden>Full sovereignty</span></h3>
-<p><span lang="es" data-lang-block="es">Sin nube extranjera y <strong>100% energía solar off-grid</strong>. La IA corre en un servidor propio, alimentado por el sol. Cero nube, cero red. Tu dato nunca sale del celular.</span><span lang="en" data-lang-block="en" hidden>No foreign cloud and <strong>100% off-grid solar power</strong>. The AI runs on our own server, powered by the sun. Zero cloud, zero grid. Your data never leaves the phone.</span></p>
-</article>
-<!-- Pilar B: asesor offline + voz -->
-<article class="pilar-card">
-<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="14" y="4" width="20" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 4h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 14a5 5 0 0110 0v6a5 5 0 01-10 0z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 20a8 8 0 0016 0M24 28v4M21 32h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-<span class="pilar-num">02</span>
-<h3><span lang="es" data-lang-block="es">Asesor sin internet, por voz</span><span lang="en" data-lang-block="en" hidden>Offline advisor, by voice</span></h3>
-<p><span lang="es" data-lang-block="es">PWA offline-first: responde en la finca aunque no haya señal. Pregúntale hablando y te contesta en voz alta, en español del campo.</span><span lang="en" data-lang-block="en" hidden>Offline-first PWA: it answers in the field even with no signal. Ask out loud and it replies by voice, in rural Colombian Spanish.</span></p>
-</article>
-<!-- Pilar C: conocimiento verificado + anti-alucinación -->
-<article class="pilar-card">
-<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-<span class="pilar-num">03</span>
-<h3><span lang="es" data-lang-block="es">Conocimiento verificado</span><span lang="en" data-lang-block="en" hidden>Verified knowledge</span></h3>
-<p><span lang="es" data-lang-block="es">Cada respuesta se ancla a un catálogo verificado con fuentes a la vista (AGROSAVIA, ICA, IDEAM, Humboldt). Si un dato no está, <strong>lo dice en vez de inventarlo</strong>.</span><span lang="en" data-lang-block="en" hidden>Every answer is grounded in a verified catalogue with sources shown (AGROSAVIA, ICA, IDEAM, Humboldt). If a fact is missing, it <strong>says so instead of making it up</strong>.</span></p>
-</article>
-<!-- Pilar D: módulos + impacto climático -->
-<article class="pilar-card">
-<div class="pilar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 40L18 16l7 12 5-8 8 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 40h36" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".5"/><circle cx="36" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M36 4v3M36 17v3M28 12h3M41 12h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".7"/></svg></div>
-<span class="pilar-num">04</span>
-<h3><span lang="es" data-lang-block="es">Módulos e impacto climático</span><span lang="en" data-lang-block="en" hidden>Modules &amp; climate impact</span></h3>
-<p><span lang="es" data-lang-block="es">Restauración por piso térmico, clima extendido, monitoreo participativo de glaciares y protección frente a contratos abusivos de bonos de carbono.</span><span lang="en" data-lang-block="en" hidden>Restoration by thermal floor, extended climate, participatory glacier monitoring, and protection against abusive carbon-credit contracts.</span></p>
-</article>
-</div>
-<aside class="mision-etimologia">
-<svg class="mision-etimologia-icon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-<p><span lang="es" data-lang-block="es">La palabra <em>chagra</em> viene de las comunidades indígenas amazónicas y andinas — un sistema agroforestal donde plantas de distintos estratos crecen juntas, en armonía con el bosque. No es monocultivo. Es agricultura como conversación con el ecosistema.</span><span lang="en" data-lang-block="en" hidden>The word <em>chagra</em> comes from Amazonian and Andean Indigenous communities — an agroforestry system where plants of different strata grow together, in harmony with the forest. Not monoculture. Farming as a conversation with the ecosystem.</span></p>
-</aside>
-</div>
-</section>
+      <a class="puerta" href="/aprender/curso/">
+        <span class="rotulo" data-t="cur-rot">Curso guiado · para usar la app</span>
+        <h3 data-t="cur-tit">Aprenda a usar Chagra</h3>
+        <p data-t="cur-txt">Del primer registro a la venta, con videos cortos que se ven como en su celular y enlaces para probar cada paso en la app.</p>
+        <ol class="modulos">
+          <li data-t="m1">Empiece su finca</li>
+          <li data-t="m2">Conozca su suelo y sus matas</li>
+          <li data-t="m3">Cuide sin veneno</li>
+          <li data-t="m4">Asocie y aproveche</li>
+          <li data-t="m5">Coseche y venda</li>
+          <li data-t="m6">Listo para su finca de verdad</li>
+        </ol>
+        <span class="ir" data-t="cur-ir">Empezar el curso →</span>
+      </a>
 
-<!-- ======== CAPACIDADES ========
-     MANTENIMIENTO: esta lista de tarjetas es el espejo público de las
-     capacidades VIVAS de la app. Cuando se desbloquee o mueva una
-     capacidad, reflejarla aquí (una tarjeta cap-card por capacidad).
-     NO listar items de roadmap como si ya existieran.
-     ANTI-LEAK (repo público): cero infra/hosts/modelos internos; las cifras
-     del grafo (721 especies / 12.325 relaciones) sí son de producto.
-     Orden: 1) agente grounded · 2) gestión de finca · 3) explorar/planear ·
-            4) aprender/jugar · 5) clima/territorio. -->
-<section id="capacidades" class="agente-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Capacidades</span><span lang="en" data-lang-block="en" hidden>Capabilities</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Lo que Chagra ya hace hoy</span><span lang="en" data-lang-block="en" hidden>What Chagra already does today</span></h2>
-<p class="section-desc"><span lang="es" data-lang-block="es">Cada capacidad está construida y funcionando en la app — no es promesa de roadmap.</span><span lang="en" data-lang-block="en" hidden>Every capability is built and working in the app — not a roadmap promise.</span></p>
-</header>
-<div class="cap-grid">
+      <a class="puerta" href="/aprender/mini-curso/">
+        <span class="rotulo" data-t="mini-rot">Mini-curso · 3 módulos</span>
+        <h3 data-t="mini-tit">Primeros pasos en agroecología</h3>
+        <p data-t="mini-txt">Introducción a Chagra, biopreparados básicos y manejo ecológico de plagas, en trece lecciones cortas.</p>
+        <span class="ir" data-t="mini-ir">Ver el mini-curso →</span>
+      </a>
+    </div>
 
-<!-- 1 · AGENTE GROUNDED (CAPABILITIES_STATUS §2 "AGENTE EN VIVO" + §4 backbone) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="10" y="8" width="28" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 30l-4 8 10-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 17h14M17 23h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".7"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Agente conversacional groundeado</span><span lang="en" data-lang-block="en" hidden>Grounded conversational agent</span></h3>
-<p><span lang="es" data-lang-block="es">Pregúntale por texto, por voz o con una foto. Entiende tu intención y consulta el catálogo agroecológico antes de responder, con la fuente a la vista.</span><span lang="en" data-lang-block="en" hidden>Ask it by text, by voice or with a photo. It understands your intent and queries the agroecology catalogue before answering, with the source on display.</span></p>
-</article>
+    <div class="notas">
+      <a class="puerta" href="/aprender/transicion-15-15-15">
+        <span class="rotulo" data-t="n1-rot">Suelos · nutrición</span>
+        <h3 data-t="n1-tit">Del 15-15-15 a la agroecología</h3>
+        <p data-t="n1-txt">Qué pasa en el suelo con el abono de síntesis, y un plan de transición de tres años para quien lleva décadas con él.</p>
+        <span class="ir" data-t="n-ir">Abrir la unidad →</span>
+      </a>
+      <a class="puerta" href="/aprender/bioseguridad">
+        <span class="rotulo" data-t="n2-rot">Salud · bioseguridad</span>
+        <h3 data-t="n2-tit">Bioseguridad en el campo</h3>
+        <p data-t="n2-txt">Plaguicidas y cuerpo, equipo de protección mínimo, y los riesgos que también tienen algunos biopreparados.</p>
+        <span class="ir" data-t="n-ir2">Abrir la unidad →</span>
+      </a>
+      <a class="puerta" href="/aprender/">
+        <span class="rotulo" data-t="n3-rot">Todas las notas</span>
+        <h3 data-t="n3-tit">Notas técnicas del campo</h3>
+        <p data-t="n3-txt">Primero en lenguaje simple, después con la evidencia revisada por pares.</p>
+        <span class="ir" data-t="n-ir3">Ir a Aprender →</span>
+      </a>
+    </div>
+  </section>
 
-<!-- 1b · GRAFO DE CONOCIMIENTO (cifras de producto 721 / 12.325) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="36" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 14l16 1M14 16l8 16M34 18L26 33" stroke="currentColor" stroke-width="1.5" opacity=".55"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Grafo de conocimiento (721 especies)</span><span lang="en" data-lang-block="en" hidden>Knowledge graph (721 species)</span></h3>
-<p><span lang="es" data-lang-block="es"><strong>721 especies y 12.325 relaciones</strong> conectadas: qué planta acompaña a cuál, qué biopreparado controla qué plaga y qué especies son antagonistas — todo consultable por el agente.</span><span lang="en" data-lang-block="en" hidden><strong>721 species and 12,325 relations</strong> linked together: which plant pairs with which, which bio-preparation controls which pest and which species are antagonists — all queryable by the agent.</span></p>
-</article>
+  <section class="seccion" id="hace" aria-labelledby="t-hace">
+    <p class="antetitulo" data-t="hace-ante">La app, hoy</p>
+    <h2 id="t-hace" data-t="hace-tit">Lo que Chagra ya hace</h2>
+    <p class="entrada" data-t="hace-ent">Una app web que se instala en el celular y sigue funcionando sin señal. Cuando vuelve la conexión, sincroniza con el servidor propio de Chagra.</p>
+    <div class="hace">
+      <div><span class="marca-h"></span><h3 data-t="h1-t">Preguntar</h3><p data-t="h1-p">Por texto, por voz o con una foto de la mata o de la plaga. Antes de responder consulta el catálogo y muestra la fuente.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="h2-t">Llevar la finca</h3><p data-t="h2-p">Plantas, animales, zonas, tareas y bitácora, también por voz. Exporta un informe ordenado, útil para la certificación orgánica.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="h3-t">Conocer las especies</h3><p data-t="h3-p">Una ficha por especie con piso térmico, asociaciones, plagas y biopreparados, y un calendario de siembra, nutrición y cosecha.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="h4-t">Leer el clima</h3><p data-t="h4-p">Alertas de heladas, sequías y fenómeno de El Niño según el piso térmico de su finca, con datos públicos del IDEAM.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="h5-t">Restaurar y cuidar</h3><p data-t="h5-p">Especies nativas para restaurar según la altura y la sucesión, y una guía de campo para reportar el estado de un glaciar.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="h6-t">Vender y protegerse</h3><p data-t="h6-p">Publicar la cosecha para compradores locales, consultar precios, y entender los pagos por servicios ambientales antes de firmar un contrato de bonos de carbono.</p></div>
+    </div>
+  </section>
 
-<!-- 1c · ANTI-ALUCINACIÓN VERIFICADA (DOI vs literatura) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l5 5 11-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-<h3><span lang="es" data-lang-block="es">No inventa — verificado con DOI</span><span lang="en" data-lang-block="en" hidden>It doesn't make things up — DOI-verified</span></h3>
-<p><span lang="es" data-lang-block="es">Las relaciones de control de plagas se contrastan contra literatura científica real, citando el DOI del artículo. Si un dato no está verificado, <strong>lo dice en vez de inventarlo</strong>.</span><span lang="en" data-lang-block="en" hidden>Pest-control relations are cross-checked against real scientific literature, citing the paper's DOI. If a fact isn't verified, it <strong>says so instead of inventing it</strong>.</span></p>
-</article>
+  <section class="seccion" id="honesta" aria-labelledby="t-honesta">
+    <p class="antetitulo" data-t="hon-ante">Dónde corre y qué tan verificado está</p>
+    <h2 id="t-honesta" data-t="hon-tit">Las cuentas claras</h2>
+    <p class="entrada" data-t="hon-ent">Estas son las cifras del grafo que usa el agente, medidas una por una. El catálogo está en revisión: la mayoría de las fichas todavía no tiene validación agronómica externa, y así lo decimos.</p>
+    <div class="cuentas">
+      <div class="cuenta"><span class="n num">743</span><span class="d"><span class="punto" style="background:var(--especie)"></span><span data-t="c1">especies catalogadas</span></span></div>
+      <div class="cuenta"><span class="n num">404</span><span class="d"><span class="punto" style="background:var(--plaga)"></span><span data-t="c2">plagas y enfermedades</span></span></div>
+      <div class="cuenta"><span class="n num">243</span><span class="d"><span class="punto" style="background:var(--benefico)"></span><span data-t="c3">organismos benéficos, biopreparados y fermentos</span></span></div>
+      <div class="cuenta"><span class="n num">447<small>/873</small></span><span class="d"><span class="punto" style="background:var(--fuente)"></span><span data-t="c4">relaciones de control con su artículo (DOI)</span></span></div>
+    </div>
+    <div class="dos">
+      <div><h3 data-t="d1-t">Servidor propio, con el sol</h3><p data-t="d1-p">El agente y la visión por computador corren en un servidor de Chagra en Choachí, Cundinamarca, alimentado con energía solar fuera de la red. Sus preguntas y sus fotos van a ese servidor, no a una nube de terceros.</p></div>
+      <div><h3 data-t="d2-t">Modelos abiertos, código abierto</h3><p data-t="d2-p">Modelos de lenguaje abiertos y locales, y todo el código bajo licencia AGPL-3.0, auditable en GitHub. Los datos de la finca se guardan en farmOS, un sistema libre de registros agrícolas.</p></div>
+      <div><h3 data-t="d3-t">Si no sabe, lo dice</h3><p data-t="d3-p">El agente responde anclado al catálogo. Cuando el dato no está, lo dice en vez de inventarlo; nunca recomienda dosis peligrosas ni mezclas tóxicas.</p></div>
+      <div><h3 data-t="d4-t">Sin señal también</h3><p data-t="d4-p">La app guarda lo que usted registra en el celular y lo envía cuando vuelve la conexión. En la finca, sin internet, sigue sirviendo.</p></div>
+    </div>
+    <div class="ejemplo">
+      <h3 data-t="ej-t">El ejemplo del comienzo, con su respaldo</h3>
+      <ol>
+        <li><span data-t="ej-1">Vet, L. E. M., van Lenteren, J. C. y Woets, J. (1980). The parasite-host relationship between <i>Encarsia formosa</i> (Hymenoptera: Aphelinidae) and <i>Trialeurodes vaporariorum</i> (Homoptera: Aleyrodidae). <i>Zeitschrift für Angewandte Entomologie</i>, 90, 26–51.</span> <a href="https://doi.org/10.1111/j.1439-0418.1980.tb03499.x">doi:10.1111/j.1439-0418.1980.tb03499.x</a></li>
+        <li><span data-t="ej-2">Quesada-Moraga, E., Maranhao, E. A. A., Valverde-García, P. y Santiago-Álvarez, C. (2006). Selection of <i>Beauveria bassiana</i> isolates for control of the whiteflies <i>Bemisia tabaci</i> and <i>Trialeurodes vaporariorum</i> on the basis of their virulence, thermal requirements, and toxicogenic activity. <i>Biological Control</i>, 36, 274–287.</span> <a href="https://doi.org/10.1016/j.biocontrol.2005.09.022">doi:10.1016/j.biocontrol.2005.09.022</a></li>
+      </ol>
+    </div>
+    <p class="medido" data-t="hon-med">Medido en el grafo AGE de Chagra el 23-sep-2026 a las 03:05. «Relaciones» cuenta la capa colombiana; no incluye registros técnicos internos.</p>
+  </section>
 
-<!-- 1d · IDENTIFICA POR FOTO (visión en chat, §1 #1851 foto→live) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="12" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 12l3-5h6l3 5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="26" r="3" fill="currentColor" opacity=".4"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Identifica por foto</span><span lang="en" data-lang-block="en" hidden>Identifies by photo</span></h3>
-<p><span lang="es" data-lang-block="es">Toma una foto de la planta o la plaga en el chat y el agente la reconoce y sugiere manejo agroecológico. La imagen se procesa en el dispositivo, no se sube a ninguna nube.</span><span lang="en" data-lang-block="en" hidden>Take a photo of the plant or pest in the chat and the agent recognizes it and suggests agroecological management. The image is processed on-device, never uploaded.</span></p>
-</article>
-
-<!-- 2 · REGISTRO POR VOZ (§2 GESTIONAR: agregar planta por voz) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="19" y="6" width="10" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 22a12 12 0 0024 0M24 34v6M18 40h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Registro por voz</span><span lang="en" data-lang-block="en" hidden>Voice logging</span></h3>
-<p><span lang="es" data-lang-block="es">Háblale en español del campo para registrar plantas, observaciones y labores, y te responde leyendo en voz alta. Pensado para quien prefiere hablar antes que escribir.</span><span lang="en" data-lang-block="en" hidden>Speak to it in rural Spanish to log plants, observations and tasks, and it reads its answer back out loud. Built for those who'd rather talk than type.</span></p>
-</article>
-
-<!-- 2b · GESTIÓN DE FINCA (§2 GESTIONAR: plantas/animales/zonas/bitácora/tareas) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h18l8 8v28H12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M30 6v8h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 24h14M18 30h14M18 36h9" stroke="currentColor" stroke-width="1.5" opacity=".6" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Gestión de finca y cuaderno</span><span lang="en" data-lang-block="en" hidden>Farm management &amp; notebook</span></h3>
-<p><span lang="es" data-lang-block="es">Plantas, animales, zonas, tareas y bitácora en un solo lugar; exporta un informe ordenado — útil para procesos de certificación orgánica y para tu propia memoria de la finca.</span><span lang="en" data-lang-block="en" hidden>Plants, animals, zones, tasks and a logbook in one place; export a tidy report — useful for organic-certification processes and for your own farm records.</span></p>
-</article>
-
-<!-- 2c · CUIDADO ANIMAL (§2 GESTIONAR: gallinas/abejas/vacas/cerdos) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 28c0-6 4-10 8-10 2-4 8-4 10 0 4 0 6 3 6 7M8 30c-2 4 2 8 6 8h16c5 0 8-5 5-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="30" cy="40" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Cuidado animal (no solo plantas)</span><span lang="en" data-lang-block="en" hidden>Animal care (not just plants)</span></h3>
-<p><span lang="es" data-lang-block="es">Lleva gallinas, abejas, vacas y cerdos, con orientación de diagnóstico anclada a evidencia y aviso de cuándo consultar un veterinario.</span><span lang="en" data-lang-block="en" hidden>Track chickens, bees, cattle and pigs, with evidence-grounded diagnostic guidance and clear advice on when to see a vet.</span></p>
-</article>
-
-<!-- 3 · CALENDARIO DE FINCA (§1 #1853) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="7" y="10" width="34" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 18h34M16 6v8M32 6v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 26h6v6h-6zM27 26h6v6h-6z" fill="currentColor" opacity=".25"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Calendario de finca</span><span lang="en" data-lang-block="en" hidden>Farm calendar</span></h3>
-<p><span lang="es" data-lang-block="es">Fenología, nutrición, siembra y cosecha unificados por especie y piso térmico — incluye cultivos perennes y manejo integrado de plagas, no solo fechas sueltas.</span><span lang="en" data-lang-block="en" hidden>Phenology, nutrition, sowing and harvest unified by species and thermal floor — including perennial crops and integrated pest management, not just loose dates.</span></p>
-</article>
-
-<!-- 3b · DIRECTORIO DE ESPECIES (§1 #1855) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M12 6h22a4 4 0 014 4v32l-13-6-13 6V10a4 4 0 014-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 14c-4 4-6 8-6 12M24 14c4 4 6 8 6 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Directorio de especies</span><span lang="en" data-lang-block="en" hidden>Species directory</span></h3>
-<p><span lang="es" data-lang-block="es">Ficha por especie con foto, piso térmico, asociaciones, plagas y biopreparados — toda la información del grafo, navegable sin tener que preguntarle al agente.</span><span lang="en" data-lang-block="en" hidden>A profile per species with photo, thermal floor, companion plantings, pests and bio-preparations — everything in the graph, browsable without having to ask the agent.</span></p>
-</article>
-
-<!-- 3c · MARKETPLACE AGROECOLÓGICO (§1 #1854) — SIN claim de precio real (SIPSA roadmap §6) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M8 16h32l-3 22a3 3 0 01-3 3H14a3 3 0 01-3-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 16a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 26h12M18 32h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Marketplace agroecológico</span><span lang="en" data-lang-block="en" hidden>Agroecological marketplace</span></h3>
-<p><span lang="es" data-lang-block="es">Publica tu cosecha y conecta por circuitos cortos con compradores locales — vender directo, sin intermediarios, desde la misma app.</span><span lang="en" data-lang-block="en" hidden>List your harvest and connect through short circuits with local buyers — sell direct, with no middlemen, from the same app.</span></p>
-</article>
-
-<!-- 3d · FAQ GROUNDEADO (§1 #1856) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 18a6 6 0 0111-3c1 2 0 4-3 6-1.5 1-2 2-2 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="34" r="1.8" fill="currentColor"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Preguntas frecuentes guiadas</span><span lang="en" data-lang-block="en" hidden>Guided FAQ</span></h3>
-<p><span lang="es" data-lang-block="es">Respuestas a las dudas más comunes que además te muestran <strong>dónde está esa función en la app</strong>, para que descubras lo que Chagra puede hacer por ti.</span><span lang="en" data-lang-block="en" hidden>Answers to the most common questions that also show you <strong>where that feature lives in the app</strong>, so you discover what Chagra can do for you.</span></p>
-</article>
-
-<!-- 4 · APRENDER CON EL AGENTE (§2 APRENDER: lecciones con DOI + guía proactiva) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 10L6 18l18 8 18-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 22v10c0 2 4.5 5 10 5s10-3 10-5V22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M42 18v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Aprende con el agente</span><span lang="en" data-lang-block="en" hidden>Learn with the agent</span></h3>
-<p><span lang="es" data-lang-block="es">Lecciones agroecológicas que citan su fuente y un agente que te guía en el camino: del 15-15-15 al suelo vivo, asociaciones, fermentos y toxicología.</span><span lang="en" data-lang-block="en" hidden>Agroecology lessons that cite their source and an agent that guides you through them: from 15-15-15 to living soil, companion planting, ferments and toxicology.</span></p>
-</article>
-
-<!-- 4b · JUEGO MI FINCA VIVA (§2 JUGAR) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="16" width="36" height="20" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 23v6M11 26h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="32" cy="24" r="2.2" fill="currentColor"/><circle cx="37" cy="29" r="2.2" fill="currentColor"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Juego «Mi Finca Viva»</span><span lang="en" data-lang-block="en" hidden>"Mi Finca Viva" game</span></h3>
-<p><span lang="es" data-lang-block="es">Aprende jugando: arma una finca agroecológica viva y descubre asociaciones, plagas y defensores de forma divertida. Pensado para toda la familia.</span><span lang="en" data-lang-block="en" hidden>Learn by playing: build a living agroecological farm and discover companion plantings, pests and natural defenders in a fun way. Made for the whole family.</span></p>
-</article>
-
-<!-- 5 · OFFLINE-FIRST (PWA) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="14" y="4" width="20" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 4h8M22 38h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20a10 10 0 0112 0M21 25a5 5 0 016 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 8l20 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Funciona sin internet</span><span lang="en" data-lang-block="en" hidden>Works offline</span></h3>
-<p><span lang="es" data-lang-block="es">App web instalable (PWA) offline-first: responde en la finca aunque no haya señal y tus datos nunca salen del celular.</span><span lang="en" data-lang-block="en" hidden>Installable offline-first web app (PWA): it answers in the field even with no signal and your data never leaves the phone.</span></p>
-</article>
-
-<!-- 5b · CLIMA EXTENDIDO POR FINCA -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M14 30a8 8 0 010-16 10 10 0 0119-3 7 7 0 013 13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 36l-2 6M26 36l-2 6M34 36l-2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Clima extendido por finca</span><span lang="en" data-lang-block="en" hidden>Extended per-farm climate</span></h3>
-<p><span lang="es" data-lang-block="es">Pronóstico y alertas de heladas, sequías y fenómeno del Niño según tu piso térmico, con datos públicos del IDEAM y validación cruzada de varios modelos.</span><span lang="en" data-lang-block="en" hidden>Forecasts and alerts for frost, drought and El Niño tuned to your thermal floor, using public IDEAM data and cross-validation across several models.</span></p>
-</article>
-
-<!-- 5c · RESTAURACIÓN POR PISO TÉRMICO -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42l8-18 7 10 6-22 5 14 4-6 6 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 42h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Restauración por piso térmico</span><span lang="en" data-lang-block="en" hidden>Restoration by thermal floor</span></h3>
-<p><span lang="es" data-lang-block="es">Sugiere especies nativas para restaurar según la altura y la etapa de sucesión (pioneras, intermedias, clímax), del valle cálido al páramo. Con referencias de MinAmbiente, IAvH y la UICN.</span><span lang="en" data-lang-block="en" hidden>Suggests native species for restoration by altitude and succession stage (pioneer, intermediate, climax), from warm valley to páramo. Referenced to MinAmbiente, IAvH and IUCN.</span></p>
-</article>
-
-<!-- 5d · MONITOREO PARTICIPATIVO DE GLACIARES -->
-<article class="cap-card cap-glaciar">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 40l10-20 6 9 5-14 4 9 11 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 20l-3 6h6zM26 15l-2.5 5h5z" fill="currentColor" opacity=".3"/><path d="M6 40h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><circle cx="38" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Monitoreo participativo de glaciares</span><span lang="en" data-lang-block="en" hidden>Participatory glacier monitoring</span></h3>
-<p><span lang="es" data-lang-block="es">Una guía de campo para reportar el estado de un punto glaciar (tipo de superficie, dureza de la nieve, peligros) con método y escala creíbles — pensada para alimentar el monitoreo de la criosfera colombiana (IDEAM).</span><span lang="en" data-lang-block="en" hidden>A field guide to report the state of a glacier point (surface type, snow hardness, hazards) with a credible method and scale — designed to feed Colombia's cryosphere monitoring (IDEAM).</span></p>
-</article>
-
-<!-- 5e · PROTECCIÓN ECONÓMICA (bonos de carbono / PSA) -->
-<article class="cap-card">
-<div class="cap-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 6c-7 5-12 6-12 6v10c0 9 5 14 12 18 7-4 12-9 12-18V12s-5-1-12-6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v8M24 30h.02" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Te protege en lo económico</span><span lang="en" data-lang-block="en" hidden>It protects you economically</span></h3>
-<p><span lang="es" data-lang-block="es">Explica el Pago por Servicios Ambientales del Estado y <strong>alerta sobre contratos abusivos de bonos de carbono</strong> (plazos de décadas, intermediarios, cláusulas de reversión). Antes de firmar nada, te dice a quién consultar gratis.</span><span lang="en" data-lang-block="en" hidden>It explains the State's Payment for Ecosystem Services and <strong>warns about abusive carbon-credit contracts</strong> (multi-decade terms, middlemen, reversion clauses). Before you sign anything, it tells you who to consult for free.</span></p>
-</article>
-
-</div>
-</div>
-</section>
-
-<!-- ======== UNA IA QUE NO INVENTA ======== -->
-<section id="como-piensa" class="mision-section">
-<div class="mision-deco" aria-hidden="true"></div>
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">El agente por dentro</span><span lang="en" data-lang-block="en" hidden>Inside the agent</span></p>
-<h2 class="section-title mision-title"><span lang="es" data-lang-block="es">Una IA que no inventa</span><span lang="en" data-lang-block="en" hidden>An AI that doesn't make things up</span></h2>
-<p class="section-desc"><span lang="es" data-lang-block="es">El agente conversa, escucha y aconseja — pero siempre anclado al catálogo verificado. Si no sabe algo, lo dice.</span><span lang="en" data-lang-block="en" hidden>The agent talks, listens and advises — but always grounded in the verified catalogue. If it doesn't know, it says so.</span></p>
-</header>
-
-<!-- recorrido de una pregunta — 3 pasos iconográficos -->
-<ol class="flow3" aria-label="Cómo funciona en tres pasos">
-<li class="flow3-step">
-<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="16" y="4" width="16" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 12a4 4 0 018 0v5a4 4 0 01-8 0z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M17 17a7 7 0 0014 0M24 24v4M21 28h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M36 22c3 1 6 4 6 8M40 18c4 2 6 6 6 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/></svg></div>
-<span class="flow3-badge">1</span>
-<h3><span lang="es" data-lang-block="es">Preguntas por voz</span><span lang="en" data-lang-block="en" hidden>You ask by voice</span></h3>
-<p><span lang="es" data-lang-block="es">«¿Qué le echo a la mata de tomate que tiene un bicho blanco?» En español del campo, por voz o por texto.</span><span lang="en" data-lang-block="en" hidden>"What do I put on my tomato plant with a little white bug?" In rural Spanish, by voice or text.</span></p>
-<span class="flow3-arrow" aria-hidden="true">→</span>
-</li>
-<li class="flow3-step">
-<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="10" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="38" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="34" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="14" r="4" fill="currentColor" opacity=".25" stroke="currentColor" stroke-width="2"/><path d="M14 12h6M28 14h6M13 15l9 16M35 17l-9 16" stroke="currentColor" stroke-width="1.5" opacity=".6"/></svg></div>
-<span class="flow3-badge">2</span>
-<h3><span lang="es" data-lang-block="es">Busca en su catálogo</span><span lang="en" data-lang-block="en" hidden>It searches its catalogue</span></h3>
-<p><span lang="es" data-lang-block="es">Entiende la intención y consulta el catálogo agroecológico colombiano: la especie, su plaga y el biopreparado para esa altura.</span><span lang="en" data-lang-block="en" hidden>It understands the intent and queries the Colombian agroecology catalogue: the species, its pest and the bio-preparation for that altitude.</span></p>
-<span class="flow3-arrow" aria-hidden="true">→</span>
-</li>
-<li class="flow3-step">
-<div class="flow3-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M10 8h28a2 2 0 012 2v22a2 2 0 01-2 2H20l-8 8v-8h-2a2 2 0 01-2-2V10a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 17l4 4 10-10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 26h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/></svg></div>
-<span class="flow3-badge">3</span>
-<h3><span lang="es" data-lang-block="es">Responde con su fuente</span><span lang="en" data-lang-block="en" hidden>It answers with its source</span></h3>
-<p><span lang="es" data-lang-block="es">Una respuesta clara y aplicable, citando la fuente. Si no tiene el dato verificado, lo dice en vez de inventar.</span><span lang="en" data-lang-block="en" hidden>A clear, actionable answer, citing the source. If it lacks a verified fact, it says so instead of inventing one.</span></p>
-</li>
-</ol>
-
-<!-- conversación de ejemplo -->
-<div class="como-demo-wrap">
-<div class="como-demo" role="img" aria-label="Ejemplo de conversación: el campesino describe un bicho blanco en su mata de tomate y Chagra responde que parece mosca blanca, sugiere un biopreparado a base de plantas aplicado en horas frescas cubriendo el envés de la hoja, y cita una entidad agropecuaria nacional como fuente.">
-<p class="como-demo-label"><span lang="es" data-lang-block="es">Así se ve en el celular</span><span lang="en" data-lang-block="en" hidden>This is how it looks on the phone</span></p>
-<div class="como-bubble como-user"><span lang="es" data-lang-block="es">Tengo la mata de tomate con un bicho blanco que vuela. ¿Qué le echo?</span><span lang="en" data-lang-block="en" hidden>My tomato plant has a little white flying bug. What do I put on it?</span></div>
-<div class="como-bubble como-ai"><span lang="es" data-lang-block="es">Eso suena a mosca blanca. Para el tomate puede preparar un biopreparado a base de plantas y aplicarlo en las horas frescas del día, cubriendo bien el envés de la hoja.</span><span lang="en" data-lang-block="en" hidden>That sounds like whitefly. For tomato you can prepare a plant-based bio-preparation and apply it in the cool hours of the day, covering the underside of the leaf well.</span></div>
-<div class="como-bubble como-ai"><span lang="es" data-lang-block="es">Le doy la dosis y el paso a paso, con su respaldo.</span><span lang="en" data-lang-block="en" hidden>I'll give you the dose and step-by-step, with its backing.</span><span class="como-src"><span lang="es" data-lang-block="es">Fuente: entidad agropecuaria nacional</span><span lang="en" data-lang-block="en" hidden>Source: national agricultural agency</span></span></div>
-</div>
-<p class="como-demo-note"><span lang="es" data-lang-block="es">Ejemplo ilustrativo. La respuesta real cita la entidad específica de donde sale cada dato.</span><span lang="en" data-lang-block="en" hidden>Illustrative example. The real answer cites the specific entity each fact comes from.</span></p>
-</div>
-
-<!-- guardas + IA local + fuentes (consolidado) -->
-<div class="confianza-grid">
-<article class="confianza-card">
-<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v8c0 9 6 16 16 22 10-6 16-13 16-22v-8L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16v12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="34" r="2" fill="currentColor"/></svg></div>
-<h4><span lang="es" data-lang-block="es">Guardas de seguridad</span><span lang="en" data-lang-block="en" hidden>Safety guards</span></h4>
-<p><span lang="es" data-lang-block="es">Nunca recomienda dosis peligrosas ni mezclas tóxicas. Conoce la toxicidad de las plantas y avisa cuando una pregunta parte de una premisa equivocada.</span><span lang="en" data-lang-block="en" hidden>It never recommends dangerous doses or toxic mixes. It knows plant toxicity and flags when a question rests on a wrong premise.</span></p>
-</article>
-<article class="confianza-card">
-<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><rect x="6" y="20" width="36" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 20v-6a10 10 0 0120 0v6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="31" r="3" fill="currentColor"/></svg></div>
-<h4><span lang="es" data-lang-block="es">IA local en el dispositivo</span><span lang="en" data-lang-block="en" hidden>On-device local AI</span></h4>
-<p><span lang="es" data-lang-block="es">El agente conversa con un modelo de lenguaje abierto y local, y lee las fotos con visión por computador. Sin nube de terceros.</span><span lang="en" data-lang-block="en" hidden>The agent runs on an open, local language model and reads photos with on-device computer vision. No third-party cloud.</span></p>
-</article>
-<article class="confianza-card">
-<div class="confianza-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 4L8 12v12c0 9.94 6.84 18.95 16 21 9.16-2.05 16-11.06 16-21V12L24 4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 22h12M18 28h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-<h4><span lang="es" data-lang-block="es">Fuentes institucionales</span><span lang="en" data-lang-block="en" hidden>Institutional sources</span></h4>
-<p><span lang="es" data-lang-block="es">Construido sobre conocimiento agropecuario colombiano de entidades de investigación y control oficiales (AGROSAVIA, ICA, IDEAM, Humboldt), con la fuente a la vista.</span><span lang="en" data-lang-block="en" hidden>Built on Colombian agronomic knowledge from official research and regulatory bodies (AGROSAVIA, ICA, IDEAM, Humboldt), with the source on display.</span></p>
-</article>
-</div>
-</div>
-</section>
-
-<!-- ======== SOBERANÍA (digital + energética) ======== -->
-<section id="soberania" class="soberania-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Soberanía digital y energética</span><span lang="en" data-lang-block="en" hidden>Digital &amp; energy sovereignty</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Cero nube, cero red. Soberanía completa.</span><span lang="en" data-lang-block="en" hidden>Zero cloud, zero grid. Complete sovereignty.</span></h2>
-</header>
-<div class="soberania-grid">
-<div class="soberania-visual" aria-hidden="true">
-<svg class="escudo" viewBox="0 0 200 240" width="220" height="264">
-<defs><linearGradient id="escudoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981" stop-opacity=".3"/><stop offset="100%" stop-color="#06b6d4" stop-opacity=".1"/></linearGradient></defs>
-<path d="M100 4L12 48v60c0 56 38 108 88 128 50-20 88-72 88-128V48L100 4z" fill="url(#escudoGrad)"/>
-<path d="M100 4L12 48v60c0 56 38 108 88 128 50-20 88-72 88-128V48L100 4z" fill="none" stroke="currentColor" stroke-width="2.5"/>
-<circle cx="100" cy="92" r="15" fill="#10b981" opacity=".85"/>
-<g stroke="#10b981" stroke-width="2.4" stroke-linecap="round"><path d="M100 64v9M100 111v9M72 92h9M119 92h9M80.2 72.2l6.4 6.4M113.4 105.4l6.4 6.4M119.8 72.2l-6.4 6.4M86.6 105.4l-6.4 6.4"/></g>
-<g transform="translate(78,128)" fill="none" stroke="#06b6d4" stroke-width="2.6" stroke-linejoin="round"><path d="M4 30L12 4h20l8 26z"/><path d="M8 17h28M22 4v26" stroke-opacity=".7"/></g>
-<path d="M88 196l8 8 18-18" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>
-<div class="soberania-bullets">
-<div class="bullet bullet-solar">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="9" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.2M12 13.8V16M4.5 9h2.2M17.3 9h2.2M6.7 3.7l1.5 1.5M15.8 12.8l1.5 1.5M17.3 3.7l-1.5 1.5M8.2 12.8l-1.5 1.5"/></g><path d="M5 22l1.8-4h10.4L19 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6.4 19.4h11.2M12 18v4" stroke="currentColor" stroke-width="1.3" opacity=".6"/></svg></div>
-<div><h4><span lang="es" data-lang-block="es">100% energía solar off-grid</span><span lang="en" data-lang-block="en" hidden>100% off-grid solar power</span></h4><p><span lang="es" data-lang-block="es">Chagra no solo evita la nube extranjera: evita la red eléctrica. El servidor que sirve la IA corre con energía solar autogenerada en la finca. Una herramienta para el clima, construida con energía limpia.</span><span lang="en" data-lang-block="en" hidden>Chagra avoids more than the foreign cloud: it avoids the power grid. The server that runs the AI is powered by solar energy generated on the farm. A tool for the climate, built with clean energy.</span></p></div>
-</div>
-<div class="bullet">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<div><h4><span lang="es" data-lang-block="es">IA local groundeada</span><span lang="en" data-lang-block="en" hidden>Grounded local AI</span></h4><p><span lang="es" data-lang-block="es">El agente conversa con un modelo abierto y local anclado al catálogo: si un dato no está en las fichas, no se lo inventa. Visión por computador en el dispositivo, sin nube de terceros.</span><span lang="en" data-lang-block="en" hidden>The agent uses an open, local model grounded in the catalogue: if a fact isn't in the records, it won't invent it. On-device computer vision, no third-party cloud.</span></p></div>
-</div>
-<div class="bullet">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<div><h4><span lang="es" data-lang-block="es">Código abierto e interoperable</span><span lang="en" data-lang-block="en" hidden>Open source &amp; interoperable</span></h4><p><span lang="es" data-lang-block="es">Licencia AGPL-3.0, auditable en GitHub: cualquiera puede revisar, copiar y mejorar. Interoperable con farmOS, el estándar internacional de la FAO para gestión de datos agrícolas.</span><span lang="en" data-lang-block="en" hidden>AGPL-3.0 licensed and auditable on GitHub: anyone can review, copy and improve it. Interoperable with farmOS, the FAO's international standard for agricultural data.</span></p></div>
-</div>
-<div class="bullet">
-<div class="bullet-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div><h4><span lang="es" data-lang-block="es">Construido en Choachí, Colombia</span><span lang="en" data-lang-block="en" hidden>Built in Choachí, Colombia</span></h4><p><span lang="es" data-lang-block="es">A 2.538 metros sobre el nivel del mar, en la vertiente oriental de la Cordillera Oriental. Con código limpio y respeto profundo por el campesino.</span><span lang="en" data-lang-block="en" hidden>At 2,538 metres above sea level, on the eastern slope of Colombia's Eastern Cordillera. Built with clean code and deep respect for the smallholder farmer.</span></p></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ======== COMPARATIVA ======== -->
-<section class="comparativa-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Diferencial</span><span lang="en" data-lang-block="en" hidden>What sets it apart</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Chagra frente a lo que ya existe</span><span lang="en" data-lang-block="en" hidden>Chagra versus what already exists</span></h2>
-</header>
-<div class="comparison-table" role="table" aria-label="Comparación entre Chagra y aplicaciones comerciales">
-<div class="comparison-row header" role="row">
-<div class="comparison-cell feature" role="columnheader"><span lang="es" data-lang-block="es">Característica</span><span lang="en" data-lang-block="en" hidden>Feature</span></div>
-<div class="comparison-cell chagra" role="columnheader">Chagra</div>
-<div class="comparison-cell comercial" role="columnheader"><span lang="es" data-lang-block="es">Apps comerciales</span><span lang="en" data-lang-block="en" hidden>Commercial apps</span></div>
-</div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Código y licencia</span><span lang="en" data-lang-block="en" hidden>Code &amp; license</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok">Open source AGPL-3.0</span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Propietario · de pago</span><span lang="en" data-lang-block="en" hidden>Proprietary · paid</span></span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Funciona sin internet</span><span lang="en" data-lang-block="en" hidden>Works offline</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Sí — PWA offline</span><span lang="en" data-lang-block="en" hidden>Yes — offline PWA</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Requiere conexión</span><span lang="en" data-lang-block="en" hidden>Needs a connection</span></span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Inteligencia artificial</span><span lang="en" data-lang-block="en" hidden>Artificial intelligence</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Local en el dispositivo</span><span lang="en" data-lang-block="en" hidden>Local, on-device</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Nube de terceros</span><span lang="en" data-lang-block="en" hidden>Third-party cloud</span></span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Energía</span><span lang="en" data-lang-block="en" hidden>Energy</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">100% solar off-grid</span><span lang="en" data-lang-block="en" hidden>100% off-grid solar</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Centros de datos</span><span lang="en" data-lang-block="en" hidden>Data centres</span></span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Enfoque agronómico</span><span lang="en" data-lang-block="en" hidden>Agronomic focus</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Agroecológico · campesino</span><span lang="en" data-lang-block="en" hidden>Agroecological · smallholder</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Agricultura industrial</span><span lang="en" data-lang-block="en" hidden>Industrial agriculture</span></span></div></div>
-<div class="comparison-row" role="row"><div class="comparison-cell feature" role="cell"><span lang="es" data-lang-block="es">Datos del usuario</span><span lang="en" data-lang-block="en" hidden>User data</span></div><div class="comparison-cell chagra" role="cell"><span class="tag tag-ok"><span lang="es" data-lang-block="es">Nunca salen del celular</span><span lang="en" data-lang-block="en" hidden>Never leave the phone</span></span></div><div class="comparison-cell comercial" role="cell"><span class="tag tag-warn"><span lang="es" data-lang-block="es">Captura y monetización</span><span lang="en" data-lang-block="en" hidden>Captured &amp; monetised</span></span></div></div>
-</div>
-</div>
-</section>
-
-<!-- ======== AUDIENCIAS ======== -->
-<section id="audiencias" class="audiencias-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Para quién construimos</span><span lang="en" data-lang-block="en" hidden>Who we build for</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Chagra es para ti</span><span lang="en" data-lang-block="en" hidden>Chagra is for you</span></h2>
-</header>
-<div class="audiencia-cards">
-<article class="audiencia-card" data-aud-card="campesino">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="currentColor" opacity=".1"/><path d="M24 28c-6.6 0-12-5.4-12-12S17.4 4 24 4s12 5.4 12 12-5.4 12-12 12z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 44c0-8.8 7.2-14 16-14s16 5.2 16 14" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Campesino y campesina pequeña</span><span lang="en" data-lang-block="en" hidden>Smallholder farmers</span></h3>
-<p><span lang="es" data-lang-block="es">Para ti que cultivas menos de 5 hectáreas para tu familia y el mercado local. Para ti que sabes más de la tierra que cualquier libro. Chagra es <strong>código libre</strong>, funciona sin internet y habla tu idioma.</span><span lang="en" data-lang-block="en" hidden>For you, farming under 5 hectares for your family and the local market. For you, who knows the land better than any book. Chagra is <strong>free software</strong>, works offline and speaks your language.</span></p>
-<span class="audiencia-tag">Open source · AGPL-3.0</span>
-</article>
-<article class="audiencia-card" data-aud-card="campesino">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M28 28l10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 8v8M12 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Técnico y extensionista</span><span lang="en" data-lang-block="en" hidden>Technicians &amp; extension agents</span></h3>
-<p><span lang="es" data-lang-block="es">Para ti que acompañas procesos campesinos y necesitas una herramienta confiable para validar especies, sugerir biopreparados y registrar observaciones de campo con respaldo científico.</span><span lang="en" data-lang-block="en" hidden>For you, supporting farming communities and needing a reliable tool to validate species, suggest bio-preparations and log field observations with scientific backing.</span></p>
-<span class="audiencia-tag">Open source · AGPL-3.0</span>
-</article>
-<article class="audiencia-card audiencia-inst" data-aud-card="institucion">
-<div class="audiencia-icon" aria-hidden="true"><svg viewBox="0 0 48 48" width="100%" height="100%"><path d="M6 42h36M10 42V20M38 42V20M6 20l18-12 18 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 42V26M24 42V26M31 42V26" stroke="currentColor" stroke-width="1.6" opacity=".7"/></svg></div>
-<h3><span lang="es" data-lang-block="es">Cooperativas, instituciones y aliados</span><span lang="en" data-lang-block="en" hidden>Cooperatives, institutions &amp; partners</span></h3>
-<p><span lang="es" data-lang-block="es">Para organizaciones que adoptan Chagra en sus territorios: catálogo verificado, registro de campo exportable, restauración por piso térmico, monitoreo participativo de glaciares (MRV) y orientación sobre Pago por Servicios Ambientales. Interoperable con farmOS (estándar FAO). Soberano y auditable.</span><span lang="en" data-lang-block="en" hidden>For organizations adopting Chagra in their territories: verified catalogue, exportable field records, restoration by thermal floor, participatory glacier monitoring (MRV) and guidance on Payments for Ecosystem Services. Interoperable with farmOS (FAO standard). Sovereign and auditable.</span></p>
-<span class="audiencia-tag audiencia-tag-inst"><span lang="es" data-lang-block="es">Open source · Interoperable FAO/farmOS · MRV participativo</span><span lang="en" data-lang-block="en" hidden>Open source · FAO/farmOS interoperable · Participatory MRV</span></span>
-</article>
-</div>
-<!-- CTA institucional (resalta para audiencia institución) -->
-<div class="inst-cta" data-aud-show="institucion" hidden>
-<p><span lang="es" data-lang-block="es"><strong>¿Tu institución quiere usar o cofinanciar Chagra?</strong> Soberanía offline, energía solar y MRV participativo, listos para territorio.</span><span lang="en" data-lang-block="en" hidden><strong>Funders &amp; research partners.</strong> Offline sovereignty, solar power and participatory MRV — built for, and with, smallholder farmers.</span></p>
-<a href="mailto:chagra@guatoc.co" class="btn btn-primary"><span lang="es" data-lang-block="es">Escríbenos</span><span lang="en" data-lang-block="en" hidden>Get in touch</span></a>
-</div>
-</div>
-</section>
-
-<!-- ======== APRENDER ======== -->
-<section id="aprender" class="aprender-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Aprender</span><span lang="en" data-lang-block="en" hidden>Learn</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Notas técnicas del campo</span><span lang="en" data-lang-block="en" hidden>Technical notes from the field</span></h2>
-<p class="section-desc"><span lang="es" data-lang-block="es">Textos didácticos para el agricultor, el técnico y el entusiasta. Cada uno se explica primero en lenguaje simple y después con la evidencia científica revisada por pares. Sin promesas vacías, sin marketing.</span><span lang="en" data-lang-block="en" hidden>Educational pieces for farmers, technicians and enthusiasts. Each one is explained first in plain language, then with peer-reviewed scientific evidence. No empty promises, no marketing.</span></p>
-</header>
-<div class="aprender-grid">
-<a class="aprender-card featured-card" href="/aprender/curso/">
-<div class="aprender-card-icon" aria-hidden="true">
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<defs><linearGradient id="aprIconCurso" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<rect x="8" y="16" width="34" height="34" rx="4" fill="url(#aprIconCurso)" fill-opacity=".12" stroke="url(#aprIconCurso)"/>
-<path d="M42 26 L 56 20 L 56 46 L 42 40 Z" fill="url(#aprIconCurso)" fill-opacity=".18" stroke="url(#aprIconCurso)"/>
-<path d="M20 30 L 26 36 L 32 26" stroke="#10b981" stroke-width="2.5"/>
-</svg>
-</div>
-<span class="aprender-tag badge-featured"><span lang="es" data-lang-block="es">CURSO GUIADO · GRATIS</span><span lang="en" data-lang-block="en" hidden>GUIDED COURSE · FREE</span></span>
-<h3>🎓 <span lang="es" data-lang-block="es">Aprende a usar Chagra</span><span lang="en" data-lang-block="en" hidden>Learn to use Chagra</span></h3>
-<p><span lang="es" data-lang-block="es">Un camino de 5 pasos —del primer registro hasta la venta— con video-manuales cortos que se ven como en tu celular. Registrar por voz, leer tu suelo, cuidar sin veneno, asociar cultivos y consultar precios. Con enlaces para probar cada cosa en la app.</span><span lang="en" data-lang-block="en" hidden>A 5-step path —from your first record to selling— with short video-manuals shown just like on your phone. Voice logging, reading your soil, chemical-free care, companion planting and checking prices. With links to try each step in the app.</span></p>
-<span class="aprender-meta"><span lang="es" data-lang-block="es">5 módulos · 4 video-manuales · para usar la app</span><span lang="en" data-lang-block="en" hidden>5 modules · 4 video-manuals · how to use the app</span></span>
-</a>
-<a class="aprender-card" href="/aprender/transición-15-15-15">
-<div class="aprender-card-icon" aria-hidden="true">
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<defs><linearGradient id="aprIcon1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M32 6 C 26 14 22 22 22 30 C 22 38 26 44 32 50 C 38 44 42 38 42 30 C 42 22 38 14 32 6 Z" fill="url(#aprIcon1)" fill-opacity=".15" stroke="url(#aprIcon1)"/>
-<path d="M32 14 C 30 20 28 26 28 32 C 28 38 30 42 32 46" stroke="url(#aprIcon1)" stroke-opacity=".7"/>
-<path d="M32 14 C 34 20 36 26 36 32 C 36 38 34 42 32 46" stroke="url(#aprIcon1)" stroke-opacity=".7"/>
-<circle cx="32" cy="54" r="4" fill="url(#aprIcon1)" fill-opacity=".3"/>
-<path d="M14 56 Q 22 52 32 54 Q 42 52 50 56" stroke="#22d3ee" stroke-opacity=".6"/>
-</svg>
-</div>
-<span class="aprender-tag"><span lang="es" data-lang-block="es">Suelos · Nutrición</span><span lang="en" data-lang-block="en" hidden>Soils · Nutrition</span></span>
-<h3><span lang="es" data-lang-block="es">Del 15-15-15 a la agroecología</span><span lang="en" data-lang-block="en" hidden>From 15-15-15 to agroecology</span></h3>
-<p><span lang="es" data-lang-block="es">Lo que descubrió la ciencia en los últimos 30 años sobre NPK, cal viva y suelo vivo. Plan de transición de 3 años para quien lleva décadas con el paquete sintético.</span><span lang="en" data-lang-block="en" hidden>What science has learned over 30 years about NPK, quicklime and living soil. A 3-year transition plan for those who've spent decades on the synthetic package.</span></p>
-<span class="aprender-meta"><span lang="es" data-lang-block="es">~18 min · referencias peer-review</span><span lang="en" data-lang-block="en" hidden>~18 min · peer-reviewed references</span></span>
-</a>
-<a class="aprender-card" href="/aprender/bioseguridad">
-<div class="aprender-card-icon" aria-hidden="true">
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<defs><linearGradient id="aprIcon2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M32 6 L 12 14 L 12 30 C 12 42 20 52 32 58 C 44 52 52 42 52 30 L 52 14 Z" fill="url(#aprIcon2)" fill-opacity=".12" stroke="url(#aprIcon2)"/>
-<path d="M22 30 L 30 38 L 44 22" stroke="url(#aprIcon2)" stroke-width="3"/>
-<circle cx="32" cy="30" r="20" stroke="url(#aprIcon2)" stroke-opacity=".25" stroke-dasharray="2 4"/>
-</svg>
-</div>
-<span class="aprender-tag"><span lang="es" data-lang-block="es">Salud · Bioseguridad</span><span lang="en" data-lang-block="en" hidden>Health · Biosafety</span></span>
-<h3><span lang="es" data-lang-block="es">Bioseguridad en el campo</span><span lang="en" data-lang-block="en" hidden>Biosafety in the field</span></h3>
-<p><span lang="es" data-lang-block="es">Lo que la ciencia probó sobre glifosato, paraquat y otros químicos. Caso Bayer-Monsanto. EPP mínimo. Riesgos también en biopreparados orgánicos.</span><span lang="en" data-lang-block="en" hidden>What science has shown about glyphosate, paraquat and other chemicals. The Bayer-Monsanto case. Minimum PPE. Risks in organic bio-preparations too.</span></p>
-<span class="aprender-meta"><span lang="es" data-lang-block="es">~25 min · evidencia peer-review</span><span lang="en" data-lang-block="en" hidden>~25 min · peer-reviewed evidence</span></span>
-</a>
-</div>
-<p class="aprender-footer-note"><span lang="es" data-lang-block="es">Próximos artículos: variedades AGROSAVIA · manejo integrado de plagas · suelo vivo y micorrizas.</span><span lang="en" data-lang-block="en" hidden>Coming soon: AGROSAVIA varieties · integrated pest management · living soil and mycorrhizae.</span></p>
-</div>
-</section>
-
-<!-- ======== EQUIPO ======== -->
-<section id="equipo" class="equipo-section">
-<div class="section-inner">
-<header class="section-header">
-<p class="section-eyebrow"><span lang="es" data-lang-block="es">Quiénes están detrás</span><span lang="en" data-lang-block="en" hidden>Who's behind it</span></p>
-<h2 class="section-title"><span lang="es" data-lang-block="es">Una persona, una misión</span><span lang="en" data-lang-block="en" hidden>One person, one mission</span></h2>
-</header>
-<div class="equipo-content">
-<div class="equipo-foto">
-<img src="assets/miguel.webp?v=2026-05-21-foto-correcta" alt="Retrato de Miguel Guerrero, desarrollador de Chagra, en un entorno natural y verde" loading="lazy" decoding="async" width="320" height="320">
-</div>
-<div class="equipo-bio">
-<h3>Miguel Guerrero</h3>
-<p class="equipo-role"><span lang="es" data-lang-block="es">Desarrollador · Agroecólogo aficionado · Operador</span><span lang="en" data-lang-block="en" hidden>Developer · Amateur agroecologist · Operator</span></p>
-<p><span lang="es" data-lang-block="es">Dev solo construyendo Chagra desde <strong>Guatoc, Choachí, Cundinamarca</strong> — a 2.538 msnm en la vertiente oriental de la Cordillera Oriental. Sin equipo corporativo, sin inversionistas de riesgo, sin aceleradoras. Solo código limpio, conocimiento agroecológico validado y un propósito: que el campesino colombiano tenga herramientas digitales que lo respeten.</span><span lang="en" data-lang-block="en" hidden>A solo developer building Chagra from <strong>Guatoc, Choachí, Cundinamarca</strong> — at 2,538 m on the eastern slope of the Eastern Cordillera. No corporate team, no venture investors, no accelerators. Just clean code, validated agroecological knowledge and one purpose: that Colombian smallholder farmers have digital tools that respect them.</span></p>
-<div class="equipo-contacto">
-<p><strong><span lang="es" data-lang-block="es">¿Quieres validar especies, contribuir código o usar Chagra en tu finca?</span><span lang="en" data-lang-block="en" hidden>Want to validate species, contribute code or use Chagra on your farm?</span></strong></p>
-<a href="mailto:chagra@guatoc.co" class="btn btn-primary"><span lang="es" data-lang-block="es">Escríbenos</span><span lang="en" data-lang-block="en" hidden>Get in touch</span></a>
-</div>
-</div>
-</div>
-<div class="aliados-section">
-<h4><span lang="es" data-lang-block="es">Fuentes científicas citadas en el corpus</span><span lang="en" data-lang-block="en" hidden>Scientific sources cited in the corpus</span></h4>
-<div class="aliados-logos">
-<span class="aliado">AGROSAVIA</span>
-<span class="aliado">UNAL Palmira</span>
-<span class="aliado">Instituto Humboldt</span>
-<span class="aliado">IDEAM</span>
-<span class="aliado">FAO Colombia</span>
-</div>
-</div>
-<div class="pueblos-section">
-<h4><span lang="es" data-lang-block="es">Saberes etnobotánicos referenciados desde literatura científica</span><span lang="en" data-lang-block="en" hidden>Ethnobotanical knowledge referenced from scientific literature</span></h4>
-<p class="pueblos-list">Emberá · Wounaan · Tikuna · Bora · Muisca · Wayuu · Kogui · Inga</p>
-<p class="pueblos-agradecimiento"><span lang="es" data-lang-block="es">Las referencias provienen de literatura académica colombiana (Bernal et al. 2015 Catálogo Plantas y Líquenes Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). No representan convenios formales de uso de conocimiento tradicional con las comunidades &mdash; ese trabajo está pendiente bajo Ley 21/1991 (Convenio 169 OIT) y Decreto 1320/1998.</span><span lang="en" data-lang-block="en" hidden>References come from Colombian academic literature (Bernal et al. 2015 Catalogue of Plants and Lichens of Colombia; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; MinSalud Vademecum 2008). They do not represent formal traditional-knowledge agreements with the communities &mdash; that work is pending under Law 21/1991 (ILO Convention 169) and Decree 1320/1998.</span></p>
-</div>
-</div>
-</section>
-
+  <section class="seccion" id="quien" aria-labelledby="t-quien">
+    <p class="antetitulo" data-t="qui-ante">Para quién</p>
+    <h2 id="t-quien" data-t="qui-tit">Hecha para quien siembra</h2>
+    <div class="quien">
+      <div><h3 data-t="q1-t">Campesinas y campesinos</h3><p data-t="q1-p">Para quien cultiva poca tierra para su familia y el mercado de su pueblo, y sabe de la tierra más que cualquier libro. Gratis, en su idioma y sin señal.</p></div>
+      <div><h3 data-t="q2-t">Técnicos y extensionistas</h3><p data-t="q2-p">Para quien acompaña procesos en el territorio y necesita validar especies, sugerir biopreparados y registrar observaciones con respaldo.</p></div>
+      <div><h3 data-t="q3-t">Cooperativas e instituciones</h3><p data-t="q3-p">Para organizaciones que quieran usar o cofinanciar Chagra en sus territorios: registro de campo exportable, restauración por piso térmico y monitoreo participativo.</p></div>
+    </div>
+    <div class="fundador">
+      <img src="assets/miguel.webp?v=2026-05-21-foto-correcta" alt="Retrato de Miguel Guerrero, desarrollador de Chagra, en un entorno natural y verde" loading="lazy" decoding="async" width="200" height="200">
+      <div>
+        <h3>Miguel Guerrero</h3>
+        <p class="rol" data-t="f-rol">Desarrollador · agroecólogo aficionado</p>
+        <p data-t="f-p">Construye Chagra desde Guatoc, en Choachí, Cundinamarca, en la vertiente oriental de la cordillera Oriental. Sin inversionistas de riesgo ni aceleradoras: un propósito, que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
+        <a class="btn prim" href="mailto:chagra@guatoc.co" data-t="f-btn">Escríbanos</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- ======== FOOTER ======== -->
-<footer class="site-footer" role="contentinfo">
-<div class="footer-inner">
-<div class="footer-main">
-<div class="footer-brand">
-<svg class="footer-logo" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
-<defs><linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
-<path d="M20 2C12 8 6 16 6 24c0 8 6 14 14 14s14-6 14-14c0-8-6-16-14-22z" fill="none" stroke="url(#footerGrad)" stroke-width="2"/>
-<path d="M20 10c0 0-4 6-4 12s4 10 4 10" fill="none" stroke="#10b981" stroke-width="1.5" opacity=".7"/>
-<path d="M20 14c-3 2-6 5-6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
-<path d="M20 14c3 2 6 5 6 9" fill="none" stroke="#06b6d4" stroke-width="1" opacity=".5"/>
-</svg>
-<div>
-<p class="footer-nombre">Chagra</p>
-<p class="footer-tag"><span lang="es" data-lang-block="es">Agente agroecológico colombiano</span><span lang="en" data-lang-block="en" hidden>Colombian agroecology agent</span></p>
-</div>
-</div>
-<div class="footer-links">
-<div class="footer-col">
-<h4>Chagra</h4>
-<ul>
-<li><a href="https://chagra.app"><span lang="es" data-lang-block="es">Aplicación web</span><span lang="en" data-lang-block="en" hidden>Web app</span></a></li>
-<li><a href="https://github.com/guatoc-ecohub/Chagra"><span lang="es" data-lang-block="es">Código en GitHub</span><span lang="en" data-lang-block="en" hidden>Code on GitHub</span></a></li>
-<li><a href="#pilares"><span lang="es" data-lang-block="es">Qué es</span><span lang="en" data-lang-block="en" hidden>What it is</span></a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4><span lang="es" data-lang-block="es">Contacto</span><span lang="en" data-lang-block="en" hidden>Contact</span></h4>
-<ul>
-<li><a href="mailto:chagra@guatoc.co">chagra@guatoc.co</a></li>
-<li><a href="https://guatoc.co">Guatoc-EcoHub</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="footer-bottom">
-<p class="legal-footer"><span lang="es" data-lang-block="es">Información referencial basada en literatura académica y resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales.</span><span lang="en" data-lang-block="en" hidden>Reference information based on academic literature and public regulations (ICA, AGROSAVIA, MADS). No formal institutional agreements.</span> <a href="/legal/"><span lang="es" data-lang-block="es">Términos y condiciones</span><span lang="en" data-lang-block="en" hidden>Terms &amp; conditions</span></a> · DPO: <a href="mailto:kortux@gmail.com">kortux@gmail.com</a></p>
-<p><span lang="es" data-lang-block="es">Hecho desde Guatoc · Choachí · Cundinamarca · Colombia · con energía solar</span><span lang="en" data-lang-block="en" hidden>Made in Guatoc · Choachí · Cundinamarca · Colombia · solar-powered</span></p>
-<p><span lang="es" data-lang-block="es">Una iniciativa de</span><span lang="en" data-lang-block="en" hidden>An initiative by</span> <a href="https://guatoc.co">Guatoc-EcoHub</a> · AGPL-3.0 · 2026</p>
-<p class="footer-disclaimer"><em><span lang="es" data-lang-block="es">La palabra «chagra» proviene de las comunidades indígenas amazónicas y andinas. Su uso en este proyecto busca honrar ese legado con responsabilidad.</span><span lang="en" data-lang-block="en" hidden>The word "chagra" comes from Amazonian and Andean Indigenous communities. Its use in this project seeks to honour that legacy responsibly.</span></em></p>
-</div>
-</div>
+<footer>
+  <div class="seccion">
+    <div class="pie">
+      <div>
+        <h4>Chagra</h4>
+        <p data-t="pie-1">Agente agroecológico colombiano. Una iniciativa de Guatoc-EcoHub, hecha en Choachí con energía solar. AGPL-3.0 · 2026.</p>
+        <p data-t="pie-2">Información de referencia basada en literatura académica y en resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales.</p>
+      </div>
+      <div>
+        <h4 data-t="pie-h2">Ir a</h4>
+        <ul>
+          <li><a href="https://chagra.app" data-t="pie-app">La app</a></li>
+          <li><a href="https://edu.chagra.bio">edu.chagra.bio</a></li>
+          <li><a href="/aprender/" data-t="pie-apr">Aprender</a></li>
+          <li><a href="https://github.com/guatoc-ecohub/Chagra" data-t="pie-gh">Código en GitHub</a></li>
+          <li><a href="/legal/" data-t="pie-legal">Términos y privacidad</a></li>
+          <li><a href="mailto:dpo@chagra.bio"><span data-t="pie-dpo">Datos personales (DPO)</span>: dpo@chagra.bio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-t="pie-h3">Contacto</h4>
+        <ul>
+          <li><a href="mailto:chagra@guatoc.co">chagra@guatoc.co</a></li>
+          <li><a href="https://guatoc.co">Guatoc-EcoHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="saberes">
+      <p><b data-t="sab-t">Saberes etnobotánicos citados desde la literatura científica:</b> Emberá · Wounaan · Tikuna · Bora · Muisca · Wayuu · Kogui · Inga.
+      <span data-t="sab-p">Las referencias vienen de literatura académica colombiana (Bernal et al. 2015; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). No son convenios de uso de conocimiento tradicional con las comunidades: ese trabajo está pendiente, según la Ley 21 de 1991 (Convenio 169 de la OIT) y el Decreto 1320 de 1998.</span></p>
+      <p data-t="sab-chagra">La palabra «chagra» viene de pueblos indígenas amazónicos y andinos: un sistema agroforestal donde plantas de distintos estratos crecen juntas. Su uso aquí busca honrar ese legado con responsabilidad.</p>
+    </div>
+  </div>
 </footer>
 
-<script src="main.js?v=2026-06-14"></script>
+<script>
+(() => {
+'use strict';
+// ─── Datos medidos (grafo chagra_kg, 23-sep-2026 03:05 -05). Todo lo que se dibuja en proporción sale de aquí. ───
+const GRAFO = {
+  especies: 743, plagas: 404, beneficos: 136, biopreparados: 107, fuentes: 240,
+  relaciones: 13906, control: 873, controlDoi: 447,
+  nodosPorPunto: 8, relacionesPorHilo: 80
+};
+// Recorrido real del grafo para la pregunta del ejemplo (aristas AFFECTS y CONTROLS; DOI resueltos en Crossref).
+const CAMINO = {
+  tomate: { es: ['Tomate', 'Solanum lycopersicum', 'especie'], en: ['Tomato', 'Solanum lycopersicum', 'species'] },
+  mosca: { es: ['Mosca blanca de invernadero', 'Trialeurodes vaporariorum', 'plaga · afecta al tomate'], en: ['Greenhouse whitefly', 'Trialeurodes vaporariorum', 'pest · affects tomato'] },
+  encarsia: { es: ['Encarsia formosa', 'avispita parasitoide', 'la controla'], en: ['Encarsia formosa', 'parasitoid wasp', 'controls it'] },
+  beauveria: { es: ['Beauveria bassiana', 'hongo entomopatógeno', 'la controla'], en: ['Beauveria bassiana', 'entomopathogenic fungus', 'controls it'] },
+  f1: { es: ['Vet et al., 1980', 'Z. angew. Entomol.', 'artículo'], en: ['Vet et al., 1980', 'Z. angew. Entomol.', 'paper'] },
+  f2: { es: ['Quesada-Moraga et al., 2006', 'Biological Control', 'artículo'], en: ['Quesada-Moraga et al., 2006', 'Biological Control', 'paper'] }
+};
+const BANDAS = [
+  { col: '#a7c957', es: 'Especies', en: 'Species', n: GRAFO.especies },
+  { col: '#e07a5f', es: 'Plagas', en: 'Pests', n: GRAFO.plagas },
+  { col: '#8fb8de', es: 'Benéficos y biopreparados', en: 'Beneficials & biopreparations', n: GRAFO.beneficos + GRAFO.biopreparados },
+  { col: '#efe6d2', es: 'Fuentes · la roca madre', en: 'Sources · the bedrock', n: GRAFO.fuentes }
+];
+const PASOS = {
+  es: [
+    ['La finca', 'Una chagra: árboles de sombra, plátano, maíz con fríjol, ahuyama y tomate en un mismo lote. Así se ve una finca agroecológica en los Andes.', ''],
+    ['La pregunta', 'Una campesina le pregunta a Chagra por voz, por texto o con una foto: «¿Qué le echo al tomate, que tiene un bicho blanco que vuela?»', ''],
+    ['La raíz', 'Chagra no responde de memoria: baja a su grafo. 743 especies, 404 plagas y 13 906 relaciones, medidas el 23 de septiembre.', 'Cada punto son 8 nodos del grafo y cada hilo, 80 relaciones. La disposición es ilustrativa; las cantidades, reales.'],
+    ['Quién la controla', 'Del tomate llega a la mosca blanca de invernadero, y de ella a sus enemigos naturales: la avispita Encarsia formosa y el hongo Beauveria bassiana.', 'Aristas AFFECTS y CONTROLS del grafo, tal como están.'],
+    ['El respaldo', 'Cada relación de control termina en un artículo revisado por pares. De las 873 del grafo, 447 ya llevan su DOI; el resto está en revisión.', 'Recorrido real del grafo, dibujado: no es una respuesta en vivo del agente. Las dos referencias, con su DOI, están más abajo.']
+  ],
+  en: [
+    ['The farm', 'A chagra: shade trees, plantain, maize with beans, squash and tomato in one plot. This is an agroecological farm in the Andes.', ''],
+    ['The question', 'A farmer asks Chagra by voice, text or photo: “What do I put on my tomato? It has a small white bug that flies.”', ''],
+    ['The root', 'Chagra does not answer from memory: it goes down into its graph. 743 species, 404 pests and 13,906 relations, measured on 23 September.', 'Each dot is 8 graph nodes and each thread, 80 relations. The layout is illustrative; the counts are real.'],
+    ['What controls it', 'From the tomato it reaches the greenhouse whitefly, and from there its natural enemies: the tiny wasp Encarsia formosa and the fungus Beauveria bassiana.', 'AFFECTS and CONTROLS edges of the graph, as they are.'],
+    ['The evidence', 'Each control relation ends in a peer-reviewed paper. Of the graph’s 873, 447 already carry their DOI; the rest are under review.', 'A real path through the graph, drawn: not a live answer from the agent. Both references, with their DOI, are further down.']
+  ]
+};
+const PREGUNTA = { es: ['Pregunta', '¿Qué le echo al tomate, que tiene un bicho blanco que vuela?'], en: ['Question', 'What do I put on my tomato? It has a small white bug that flies.'] };
+const EN = {
+  'fono1-t': 'Your farm, alive', 'fono1-p': 'The home screen is your farm, drawn down to the roots. Tap a door to go in, or tap the heart of the farm and ask Chagra out loud.',
+  'fono2-t': 'The agent', 'fono2-p': 'Chagra greets you with the state of your farm and the rainy season. You ask it by text, by voice or by sending a photo of a sick plant.',
+  'fono3-t': 'One card per species', 'fono3-p': 'Cherry tomato: temperate and cold altitude bands, 18 to 26 °C, with an openly licensed photo and the number of sources the card comes from.',
+  'fono4-t': 'Market without middlemen', 'fono4-p': 'List your harvest and buyers contact you directly. Chagra takes no commission and handles no payments. The listings shown are examples.',
+  'fono5-t': 'My Living Farm', 'fono5-p': 'A game that follows your farm’s real stage: living soil, the defenders that control pests, the three-sisters milpa.',
+  'fono6-t': 'Learn by playing', 'fono6-p': 'Nine games that teach real practices —biological control, living soil, milpa, restoration— plus the app’s guided course.',
+  'app-ante': 'The app, inside', 'app-tit': 'This is Chagra on a phone', 'app-ent': 'Real screenshots of chagra.app, taken on 23 September on a phone with the example farm. No mock-ups.', 'app-nota': 'Scroll to move between screens.',
+  'pie-dpo': 'Personal data (DPO)',
+  'lema': 'The Colombian agroecology agent. You ask about your farm; <em>Chagra goes down to the root</em> and answers with the source.',
+  'pista': 'Scroll down · or press “Down”',
+  'med-tit': 'Chagra graph · measured', 'med-esp': 'Species', 'med-rel': 'Relations', 'med-doi': 'Control with paper',
+  'med-nota': 'Measured on 23 Sep 2026. Colombian layer of the graph. The sky is computed for Choachí time: approximate.',
+  'btn-app': 'Open the app', 'btn-cursos': 'See the app', 'btn-bajar': 'Down ↓',
+  'apr-ante': 'Learn · free', 'apr-tit': 'Three doors to start',
+  'apr-ent': 'Chagra teaches what it knows under the same rule it answers with: every claim carries its source, and what is illustrative is labelled illustrative.',
+  'edu-tit': 'Descent: from a coffee leaf to its DNA',
+  'edu-txt': 'One continuous shot: from a coffee plant in the sun down to the double helix, through stomata, cell and nucleus. Twelve sources with DOI; scales labelled as approximate.',
+  'edu-cafe': 'Coffee', 'edu-cafe-d': 'open', 'edu-milpa': 'Milpa', 'edu-milpa-d': 'coming soon: mycorrhizae and the bean nodule', 'edu-ir': 'Enter edu.chagra.bio →',
+  'cur-rot': 'Guided course · using the app', 'cur-tit': 'Learn to use Chagra',
+  'cur-txt': 'From your first record to your first sale, with short videos that look like your phone and links to try each step in the app.',
+  'm1': 'Start your farm', 'm2': 'Know your soil and plants', 'm3': 'Care without poison', 'm4': 'Associate and make the most of it', 'm5': 'Harvest and sell', 'm6': 'Ready for your real farm', 'cur-ir': 'Start the course →',
+  'mini-rot': 'Mini-course · 3 modules', 'mini-tit': 'First steps in agroecology', 'mini-txt': 'Introduction to Chagra, basic biopreparations and ecological pest management, in thirteen short lessons.', 'mini-ir': 'See the mini-course →',
+  'n1-rot': 'Soils · nutrition', 'n1-tit': 'From 15-15-15 to agroecology', 'n1-txt': 'What synthetic fertiliser does in the soil, and a three-year transition plan for those who have used it for decades.', 'n-ir': 'Open the unit →',
+  'n2-rot': 'Health · biosafety', 'n2-tit': 'Biosafety in the field', 'n2-txt': 'Pesticides and the body, minimum protective equipment, and the risks some biopreparations also carry.', 'n-ir2': 'Open the unit →',
+  'n3-rot': 'All notes', 'n3-tit': 'Technical field notes', 'n3-txt': 'First in plain words, then with peer-reviewed evidence.', 'n-ir3': 'Go to Learn →',
+  'hace-ante': 'The app, today', 'hace-tit': 'What Chagra already does',
+  'hace-ent': 'A web app you install on your phone that keeps working without signal. When the connection returns, it syncs with Chagra’s own server.',
+  'h1-t': 'Ask', 'h1-p': 'By text, by voice or with a photo of the plant or the pest. Before answering it checks the catalogue and shows the source.',
+  'h2-t': 'Keep the farm', 'h2-p': 'Plants, animals, zones, tasks and logbook, also by voice. Exports a tidy report, useful for organic certification.',
+  'h3-t': 'Know the species', 'h3-p': 'One card per species with altitude band, associations, pests and biopreparations, plus a planting, nutrition and harvest calendar.',
+  'h4-t': 'Read the weather', 'h4-p': 'Frost, drought and El Niño alerts for your farm’s altitude band, with public IDEAM data.',
+  'h5-t': 'Restore and care', 'h5-p': 'Native species for restoration by altitude and succession stage, and a field guide to report the state of a glacier.',
+  'h6-t': 'Sell and stay safe', 'h6-p': 'Offer your harvest to local buyers, check prices, and understand payments for environmental services before signing a carbon-credit contract.',
+  'hon-ante': 'Where it runs and how verified it is', 'hon-tit': 'Honest numbers',
+  'hon-ent': 'These are the counts of the graph the agent uses, measured one by one. The catalogue is under review: most species cards do not yet have external agronomic validation, and we say so.',
+  'c1': 'catalogued species', 'c2': 'pests and diseases', 'c3': 'beneficial organisms, biopreparations and ferments', 'c4': 'control relations with their paper (DOI)',
+  'd1-t': 'Own server, powered by the sun', 'd1-p': 'The agent and the computer vision run on a Chagra server in Choachí, Cundinamarca, on off-grid solar power. Your questions and photos go to that server, not to a third-party cloud.',
+  'd2-t': 'Open models, open code', 'd2-p': 'Open, local language models, and all the code under AGPL-3.0, auditable on GitHub. Farm records are kept in farmOS, a free agricultural record-keeping system.',
+  'd3-t': 'If it doesn’t know, it says so', 'd3-p': 'The agent answers anchored to the catalogue. When the data isn’t there, it says so instead of making it up; it never recommends dangerous doses or toxic mixtures.',
+  'd4-t': 'Without signal, too', 'd4-p': 'The app stores what you record on the phone and sends it when the connection returns. On the farm, without internet, it keeps working.',
+  'ej-t': 'The opening example, with its evidence',
+  'ej-1': 'Vet, L. E. M., van Lenteren, J. C. & Woets, J. (1980). The parasite-host relationship between <i>Encarsia formosa</i> (Hymenoptera: Aphelinidae) and <i>Trialeurodes vaporariorum</i> (Homoptera: Aleyrodidae). <i>Zeitschrift für Angewandte Entomologie</i>, 90, 26–51.',
+  'ej-2': 'Quesada-Moraga, E., Maranhao, E. A. A., Valverde-García, P. & Santiago-Álvarez, C. (2006). Selection of <i>Beauveria bassiana</i> isolates for control of the whiteflies <i>Bemisia tabaci</i> and <i>Trialeurodes vaporariorum</i> on the basis of their virulence, thermal requirements, and toxicogenic activity. <i>Biological Control</i>, 36, 274–287.',
+  'hon-med': 'Measured on Chagra’s AGE graph on 23 Sep 2026 at 03:05. “Relations” counts the Colombian layer; internal technical records are not included.',
+  'qui-ante': 'Who it is for', 'qui-tit': 'Made for those who sow',
+  'q1-t': 'Smallholder farmers', 'q1-p': 'For those who farm a little land for their family and the town market, and know more about the soil than any book. Free, in their language, without signal.',
+  'q2-t': 'Technicians and extension workers', 'q2-p': 'For those who accompany farmers in the territory and need to validate species, suggest biopreparations and record observations with evidence.',
+  'q3-t': 'Cooperatives and institutions', 'q3-p': 'For organisations that want to use or co-fund Chagra in their territories: exportable field records, restoration by altitude band and participatory monitoring.',
+  'f-rol': 'Developer · amateur agroecologist',
+  'f-p': 'Builds Chagra from Guatoc, in Choachí, Cundinamarca, on the eastern slope of the Eastern Cordillera. No venture capital, no accelerators: one purpose, that Colombian farmers have digital tools that respect them.',
+  'f-btn': 'Write to us',
+  'pie-1': 'Colombian agroecology agent. An initiative of Guatoc-EcoHub, made in Choachí with solar power. AGPL-3.0 · 2026.',
+  'pie-2': 'Reference information based on academic literature and public regulations (ICA, AGROSAVIA, MADS). No formal institutional agreements.',
+  'pie-h2': 'Go to', 'pie-app': 'The app', 'pie-apr': 'Learn', 'pie-gh': 'Code on GitHub', 'pie-legal': 'Terms and privacy', 'pie-h3': 'Contact',
+  'sab-t': 'Ethnobotanical knowledge cited from the scientific literature:',
+  'sab-p': 'The references come from Colombian academic literature (Bernal et al. 2015; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). They are not agreements on the use of traditional knowledge with the communities: that work is pending, under Law 21 of 1991 (ILO Convention 169) and Decree 1320 of 1998.',
+  'sab-chagra': 'The word “chagra” comes from Amazonian and Andean Indigenous peoples: an agroforestry system where plants of different strata grow together. Its use here seeks to honour that legacy responsibly.'
+};
+
+const $ = (s) => document.querySelector(s);
+const lienzo = $('#lienzo'), ctx = lienzo.getContext('2d');
+const heroe = $('#heroe'), escena = $('#escena'), capaEt = $('#etiquetas'), titulo = $('#titulo');
+const reducido = matchMedia('(prefers-reduced-motion: reduce)');
+let lang = 'es';
+try { if (localStorage.getItem('chagra-lang') === 'en') lang = 'en'; } catch (e) { /* sin almacenamiento: español */ }
+
+// ─── Utilidades deterministas: la escena es la misma en cada visita (no hay azar en tiempo de ejecución). ───
+function prng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const suave = (t) => t * t * (3 - 2 * t);
+function hex(c) { const n = parseInt(c.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function mezcla(a, b, t) { const x = hex(a), y = hex(b); return 'rgb(' + x.map((v, i) => Math.round(lerp(v, y[i], t))).join(',') + ')'; }
+
+// ─── Cielo de Choachí (UTC−5, 4,5° N): estado por la hora local. A esta latitud el día dura ~12 h todo el año. ───
+const CIELOS = {
+  noche: { alto: '#0b1026', horiz: '#2b2f63', cerro: ['#1c2346', '#161c38', '#10152a'], es: 'noche', en: 'night' },
+  madrugada: { alto: '#2a3a6b', horiz: '#f2b279', cerro: ['#6d6a86', '#4f5270', '#343a55'], es: 'madrugada', en: 'dawn' },
+  manana: { alto: '#7cc4f5', horiz: '#e8f6ff', cerro: ['#a9c7d6', '#7fa3b0', '#5d8190'], es: 'mañana', en: 'morning' },
+  mediodia: { alto: '#5fb2ef', horiz: '#dff1fb', cerro: ['#a2c3d3', '#7a9fae', '#5a7e8e'], es: 'mediodía', en: 'midday' },
+  tarde: { alto: '#6fb0e0', horiz: '#f6e6c4', cerro: ['#b3bfc4', '#8d9ea4', '#6a7f86'], es: 'tarde', en: 'afternoon' },
+  atardecer: { alto: '#3b4f8a', horiz: '#f29a62', cerro: ['#7a6a86', '#5a4f6e', '#3c3852'], es: 'atardecer', en: 'dusk' }
+};
+// ?hora=HH:MM fija la hora (solo para revisar los seis cielos); sin ella manda el reloj.
+const horaFija = (() => { const m = /[?&]hora=(\d{1,2}):(\d{2})/.exec(location.search); return m ? (+m[1] * 60 + +m[2]) % 1440 : null; })();
+function horaChoachi() { if (horaFija !== null) return horaFija; const d = new Date(); return (d.getUTCHours() * 60 + d.getUTCMinutes() - 300 + 1440) % 1440; }
+function estadoCielo(m) {
+  if (m < 290 || m >= 1130) return 'noche';        // antes de 04:50 o desde 18:50
+  if (m < 390) return 'madrugada';                  // 04:50–06:30
+  if (m < 600) return 'manana';                     // 06:30–10:00
+  if (m < 900) return 'mediodia';                   // 10:00–15:00
+  if (m < 1050) return 'tarde';                     // 15:00–17:30
+  return 'atardecer';                               // 17:30–18:50
+}
+const SALE = 345, PONE = 1075; // ~05:45 y ~17:55, aproximado para Choachí
+
+// ─── Geometría (px CSS). Mundo = finca arriba + suelo con el grafo abajo. ───
+let W = 0, H = 0, DPR = 1, G = 0, MUNDO = 0, K = 1, S = 0, CAMFIN = 0, cielo = 'manana', minuto = -1;
+let capaFinca = null, capaSuelo = null, nodosCamino = {}, bandasY = [];
+function medir() {
+  const r = escena.getBoundingClientRect();
+  W = Math.max(320, Math.round(r.width)); H = Math.max(480, Math.round(r.height));
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  lienzo.width = Math.round(W * DPR); lienzo.height = Math.round(H * DPR);
+  K = W < 640 ? clamp(W / 690, 0.48, 0.62) : clamp(Math.min(W / 1000, H / 820), 0.6, 1.35);
+  G = Math.round(H * (W < 640 ? 0.66 : 0.74));    // en el teléfono el suelo queda por encima del panel de texto
+  // Separación entre bandas del grafo. En el teléfono sale del espacio real entre el medidor y el panel de texto
+  // (≈215 px en su paso más largo, más los botones), para que el camino entero quepa al final.
+  const techo = W < 640 ? document.getElementById('medidor').getBoundingClientRect().bottom + 45 : H * 0.20;
+  S = Math.round(W < 640 ? clamp((H - 72 - 215 - techo - 40) / 3, 60, H * 0.13) : H * 0.17);
+  MUNDO = Math.round(G + H * 0.71 + 3 * S);
+  CAMFIN = Math.round(G + H * 0.36 - techo);             // la cámara para con la banda de especies bajo el medidor
+}
+function lienzoFuera(w, h) { const c = document.createElement('canvas'); c.width = Math.round(w * DPR); c.height = Math.round(h * DPR); const x = c.getContext('2d'); x.scale(DPR, DPR); return [c, x]; }
+function cresta(x, s, amp, base) { const u = x * 1440 / Math.max(W, 1100); return base - amp * (0.55 + 0.28 * Math.sin(u * 0.0042 + s) + 0.13 * Math.sin(u * 0.0113 + s * 2.1) + 0.04 * Math.sin(u * 0.037 + s * 3.3)); }
+// La mata de la pregunta y el centro de la chagra.
+function xTomate() { return W < 640 ? W * 0.30 : W * 0.40; }
+function xChagra() { return W < 640 ? W * 0.54 : W * 0.58; }
+
+function pintarFinca() {
+  const [c, x] = lienzoFuera(W, G + 40);
+  const cs = CIELOS[cielo];
+  const g = x.createLinearGradient(0, 0, 0, G);
+  g.addColorStop(0, cs.alto); g.addColorStop(0.78, cs.horiz); g.addColorStop(1, cs.horiz);
+  x.fillStyle = g; x.fillRect(0, 0, W, G + 40);
+  const m = horaChoachi();
+  if (cielo === 'noche') {
+    const r = prng(7);
+    x.fillStyle = 'rgba(255,255,255,.8)';
+    for (let i = 0; i < 90; i++) { const sx = r() * W, sy = r() * G * 0.55, sr = r() < 0.12 ? 1.3 : 0.7; x.beginPath(); x.arc(sx, sy, sr, 0, 7); x.fill(); }
+  } else {
+    const t = clamp((m - SALE) / (PONE - SALE), 0, 1);
+    const sx = W * (0.12 + 0.76 * t), sy = G * 0.82 - Math.sin(Math.PI * t) * G * 0.64;
+    const halo = x.createRadialGradient(sx, sy, 0, sx, sy, 120 * K);
+    halo.addColorStop(0, 'rgba(255,250,225,.95)'); halo.addColorStop(0.18, 'rgba(255,244,200,.75)'); halo.addColorStop(1, 'rgba(255,244,200,0)');
+    x.fillStyle = halo; x.beginPath(); x.arc(sx, sy, 120 * K, 0, 7); x.fill();
+    x.fillStyle = cielo === 'atardecer' || cielo === 'madrugada' ? '#ffd9a0' : '#fffbe9';
+    x.beginPath(); x.arc(sx, sy, 22 * K, 0, 7); x.fill();
+  }
+  // Tres cordones de cerros, del más lejano al más cercano (se aclaran hacia el horizonte).
+  const bases = [G * 0.66, G * 0.78, G * 0.92], amps = W < 640 ? [G * 0.16, G * 0.13, G * 0.1] : [G * 0.26, G * 0.22, G * 0.16];
+  for (let i = 0; i < 3; i++) {
+    x.fillStyle = cs.cerro[i]; x.beginPath(); x.moveTo(0, G + 40);
+    for (let px = 0; px <= W; px += 6) x.lineTo(px, cresta(px, i * 1.7 + 0.4, amps[i], bases[i]));
+    x.lineTo(W, G + 40); x.closePath(); x.fill();
+  }
+  const noche = cielo === 'noche';
+  const pasto = x.createLinearGradient(0, G - 30 * K, 0, G + 40);
+  pasto.addColorStop(0, noche ? '#1f3320' : '#6f9a45'); pasto.addColorStop(1, noche ? '#162516' : '#4d7a33');
+  x.fillStyle = pasto; x.beginPath(); x.moveTo(0, G + 40);
+  for (let px = 0; px <= W; px += 8) x.lineTo(px, G - 12 * K - 8 * K * Math.sin(px / W * 5.2 + 1));
+  x.lineTo(W, G + 40); x.closePath(); x.fill();
+  pintarChagra(x, noche);
+  return c;
+}
+
+function hoja(x, cx, cy, largo, ancho, ang, col, nervio) {
+  x.save(); x.translate(cx, cy); x.rotate(ang);
+  x.fillStyle = col; x.beginPath(); x.moveTo(0, 0);
+  x.quadraticCurveTo(largo * 0.45, -ancho, largo, 0); x.quadraticCurveTo(largo * 0.45, ancho, 0, 0); x.fill();
+  if (nervio) { x.strokeStyle = nervio; x.lineWidth = Math.max(0.6, largo * 0.02); x.beginPath(); x.moveTo(0, 0); x.lineTo(largo * 0.94, 0); x.stroke(); }
+  x.restore();
+}
+
+function pintarChagra(x, noche) {
+  const r = prng(42), k = K, cx = xChagra(), tx = xTomate(), y0 = G - 8 * k;
+  const os = (c) => noche ? mezcla(c, '#0b1026', 0.55) : c;
+  x.lineCap = 'round';
+  // Guamo de sombra (Inga sp.): el estrato alto.
+  const ax = cx + 230 * k;
+  x.strokeStyle = os('#5b4630');
+  x.lineWidth = 16 * k; x.beginPath(); x.moveTo(ax, y0); x.quadraticCurveTo(ax + 6 * k, y0 - 170 * k, ax - 4 * k, y0 - 300 * k); x.stroke();
+  x.lineWidth = 7 * k; x.beginPath(); x.moveTo(ax, y0 - 200 * k); x.quadraticCurveTo(ax - 60 * k, y0 - 250 * k, ax - 110 * k, y0 - 300 * k); x.stroke();
+  x.beginPath(); x.moveTo(ax + 2 * k, y0 - 230 * k); x.quadraticCurveTo(ax + 60 * k, y0 - 270 * k, ax + 100 * k, y0 - 320 * k); x.stroke();
+  const copa = [[0, -350, 92], [-90, -320, 70], [95, -335, 74], [-40, -400, 70], [50, -405, 68], [-140, -300, 52], [140, -300, 54], [0, -300, 80]];
+  x.fillStyle = os('#3f6b2f');
+  for (const [dx, dy, rr] of copa) { x.beginPath(); x.ellipse(ax + dx * k, y0 + dy * k, rr * k, rr * k * 0.82, 0, 0, 7); x.fill(); }
+  x.fillStyle = os('#5a8a3c');
+  for (const [dx, dy, rr] of copa) { x.beginPath(); x.ellipse(ax + dx * k - 0.18 * rr * k, y0 + dy * k - 0.18 * rr * k, rr * k * 0.72, rr * k * 0.6, 0, 0, 7); x.fill(); }
+  // Plátano.
+  const px = cx + 40 * k;
+  x.fillStyle = os('#7c8f45'); x.beginPath(); x.moveTo(px - 11 * k, y0); x.lineTo(px - 7 * k, y0 - 190 * k); x.lineTo(px + 7 * k, y0 - 190 * k); x.lineTo(px + 11 * k, y0); x.fill();
+  for (const [a, l] of [[-2.5, 150], [-2.05, 165], [-1.3, 140], [-0.75, 160], [-0.3, 145], [-1.75, 120]]) hoja(x, px, y0 - 186 * k, l * k, 30 * k, a, os('#6aa243'), os('#c3d98f'));
+  x.fillStyle = os('#5c3a4b'); x.beginPath(); x.ellipse(px + 18 * k, y0 - 140 * k, 9 * k, 17 * k, 0.4, 0, 7); x.fill();
+  // Maíz con fríjol trepador.
+  for (let i = 0; i < 3; i++) {
+    const mx = cx - 70 * k + i * 38 * k, alto = (210 + i * 14) * k;
+    x.strokeStyle = os('#8aa84a'); x.lineWidth = 4.5 * k; x.beginPath(); x.moveTo(mx, y0); x.lineTo(mx + 3 * k, y0 - alto); x.stroke();
+    for (let j = 0; j < 6; j++) {
+      const hy = y0 - alto * (0.2 + j * 0.13), lado = j % 2 ? 1 : -1;
+      x.strokeStyle = os('#7fa846'); x.lineWidth = 5 * k; x.beginPath(); x.moveTo(mx, hy);
+      x.quadraticCurveTo(mx + lado * 40 * k, hy - 22 * k, mx + lado * 70 * k, hy + 10 * k); x.stroke();
+    }
+    x.strokeStyle = os('#d8c27a'); x.lineWidth = 1.6 * k;
+    for (let j = -2; j <= 2; j++) { x.beginPath(); x.moveTo(mx + 3 * k, y0 - alto); x.lineTo(mx + 3 * k + j * 7 * k, y0 - alto - 22 * k); x.stroke(); }
+    x.fillStyle = os('#e8cf7a'); x.beginPath(); x.ellipse(mx + 7 * k, y0 - alto * 0.52, 5 * k, 15 * k, 0.25, 0, 7); x.fill();
+    x.strokeStyle = os('#4f7a2e'); x.lineWidth = 1.2 * k; x.beginPath();
+    for (let s = 0; s <= 1.0001; s += 0.05) { const yy = y0 - alto * 0.9 * s, xx = mx + Math.sin(s * 22) * 6 * k; if (s === 0) x.moveTo(xx, yy); else x.lineTo(xx, yy); }
+    x.stroke();
+    x.fillStyle = os('#5e9a3a');
+    for (let s = 0.1; s < 0.9; s += 0.14) { const yy = y0 - alto * 0.9 * s, xx = mx + Math.sin(s * 22) * 6 * k; x.beginPath(); x.ellipse(xx + 6 * k, yy, 6 * k, 4.2 * k, 0.5, 0, 7); x.fill(); }
+  }
+  // Ahuyama al ras.
+  x.fillStyle = os('#4f8a36');
+  for (let i = 0; i < 5; i++) { x.beginPath(); x.ellipse(cx - 110 * k + i * 55 * k, y0 - 6 * k, 26 * k, 15 * k, (i - 2) * 0.12, 0, 7); x.fill(); }
+  x.fillStyle = os('#e39b3b'); x.beginPath(); x.ellipse(cx - 20 * k, y0 - 4 * k, 14 * k, 10 * k, 0, 0, 7); x.fill();
+  // Tomate con tutor: la mata de la pregunta.
+  x.strokeStyle = os('#9b7b55'); x.lineWidth = 3 * k; x.beginPath(); x.moveTo(tx + 10 * k, y0 + 2 * k); x.lineTo(tx + 10 * k, y0 - 132 * k); x.stroke();
+  x.strokeStyle = os('#4f7d31'); x.lineWidth = 3.2 * k; x.beginPath(); x.moveTo(tx, y0); x.quadraticCurveTo(tx + 6 * k, y0 - 60 * k, tx + 2 * k, y0 - 120 * k); x.stroke();
+  for (let i = 0; i < 16; i++) {
+    const t = i / 15, hy = y0 - 18 * k - t * 98 * k, lado = i % 2 ? 1 : -1;
+    for (let f = 0; f < 3; f++) hoja(x, tx + lado * (4 + f * 11) * k, hy - f * 3 * k, 13 * k, 5.5 * k, lado > 0 ? -0.35 - f * 0.1 : Math.PI + 0.35 + f * 0.1, os(f % 2 ? '#5d9a3b' : '#4d8a31'), null);
+  }
+  for (const [dx, dy, rr] of [[-14, -40, 7], [-6, -30, 6], [16, -52, 7.5], [22, -44, 6], [-18, -78, 6.5], [12, -92, 6]]) {
+    x.fillStyle = os('#d2402e'); x.beginPath(); x.arc(tx + dx * k, y0 + dy * k, rr * k, 0, 7); x.fill();
+    x.fillStyle = 'rgba(255,255,255,.35)'; x.beginPath(); x.arc(tx + dx * k - rr * 0.3 * k, y0 + dy * k - rr * 0.35 * k, rr * 0.28 * k, 0, 7); x.fill();
+  }
+  // Moscas blancas en el envés: pocas, es lo que la campesina ve.
+  x.fillStyle = noche ? 'rgba(235,235,235,.6)' : '#fbfbf7';
+  for (const [dx, dy] of [[-20, -64], [-12, -70], [18, -76], [26, -66], [-4, -102], [8, -58]]) {
+    x.beginPath(); x.ellipse(tx + dx * k - 1.6 * k, y0 + dy * k, 1.9 * k, 1.1 * k, -0.4, 0, 7); x.fill();
+    x.beginPath(); x.ellipse(tx + dx * k + 1.6 * k, y0 + dy * k, 1.9 * k, 1.1 * k, 0.4, 0, 7); x.fill();
+  }
+  x.strokeStyle = os('#3f6a2a'); x.lineWidth = 1.2 * k;
+  for (let i = 0; i < 70; i++) { const gx = r() * W, gy = G - 4 * k - r() * 8 * k; for (let j = -1; j <= 1; j++) { x.beginPath(); x.moveTo(gx, gy + 6 * k); x.lineTo(gx + j * 3 * k, gy - 4 * k - r() * 4 * k); x.stroke(); } }
+}
+
+function pintarSuelo() {
+  const alto = MUNDO - G;
+  const [c, x] = lienzoFuera(W, alto);
+  const g = x.createLinearGradient(0, 0, 0, alto);
+  g.addColorStop(0, '#2b1d12'); g.addColorStop(0.06, '#35241a'); g.addColorStop(0.3, '#3f2c1c');
+  g.addColorStop(0.62, '#4a3521'); g.addColorStop(0.84, '#3b3026'); g.addColorStop(1, '#15110c');
+  x.fillStyle = g; x.fillRect(0, 0, W, alto);
+  const r = prng(99);
+  // Agregados y piedras: más grandes hacia la roca madre.
+  for (let i = 0; i < 220; i++) {
+    const py = Math.pow(r(), 0.7) * alto * 0.96, px = r() * W, rr = (0.8 + r() * 2.2 + py / alto * 3.5) * K;
+    x.fillStyle = 'rgba(' + (120 + r() * 50 | 0) + ',' + (100 + r() * 40 | 0) + ',' + (80 + r() * 30 | 0) + ',' + (0.18 + r() * 0.25).toFixed(2) + ')';
+    x.beginPath(); x.ellipse(px, py, rr * 1.3, rr, r() * 3, 0, 7); x.fill();
+  }
+  // Raíces de la chagra.
+  x.lineCap = 'round';
+  for (const [rx, prof, n] of [[xTomate(), 0.28, 9], [xChagra() - 70 * K, 0.34, 7], [xChagra() + 40 * K, 0.30, 9], [xChagra() + 230 * K, 0.46, 12]]) {
+    for (let i = 0; i < n; i++) {
+      const dx = (r() - 0.5) * 160 * K, py = alto * prof * (0.55 + r() * 0.45);
+      x.strokeStyle = 'rgba(214,196,150,' + (0.22 + r() * 0.25).toFixed(2) + ')'; x.lineWidth = (0.6 + r() * 1.6) * K;
+      x.beginPath(); x.moveTo(rx, 0); x.bezierCurveTo(rx + dx * 0.2, py * 0.3, rx + dx * 0.8, py * 0.6, rx + dx, py); x.stroke();
+    }
+  }
+  // El grafo: cuatro bandas, un punto cada 8 nodos, un hilo cada 80 relaciones.
+  const ys = [0, 1, 2, 3].map((i) => H * 0.36 + i * S);
+  bandasY = ys.map((y) => y + G);
+  const nodos = BANDAS.map((b, i) => {
+    const n = Math.round(b.n / GRAFO.nodosPorPunto), lista = [];
+    for (let j = 0; j < n; j++) lista.push([W * 0.04 + r() * W * 0.92, ys[i] + (r() - 0.5) * S * 0.45]);
+    return lista;
+  });
+  const hilos = Math.round(GRAFO.relaciones / GRAFO.relacionesPorHilo);
+  const pares = [[0, 0, 0.22], [0, 1, 0.3], [1, 2, 0.22], [0, 2, 0.08], [0, 3, 0.1], [1, 3, 0.04], [2, 3, 0.04]];
+  x.lineWidth = 0.8; x.strokeStyle = 'rgba(233,222,196,.16)';
+  for (let h = 0; h < hilos; h++) {
+    let u = r(), p = pares[pares.length - 1];
+    for (const q of pares) { if (u < q[2]) { p = q; break; } u -= q[2]; }
+    const a = nodos[p[0]][r() * nodos[p[0]].length | 0], b = nodos[p[1]][r() * nodos[p[1]].length | 0];
+    x.beginPath(); x.moveTo(a[0], a[1]); x.quadraticCurveTo((a[0] + b[0]) / 2 + (r() - 0.5) * 60, (a[1] + b[1]) / 2 + 18, b[0], b[1]); x.stroke();
+  }
+  x.globalAlpha = 0.6;
+  nodos.forEach((lista, i) => { x.fillStyle = BANDAS[i].col; for (const [nx, ny] of lista) { x.beginPath(); x.arc(nx, ny, 2.6 * Math.max(K, 0.7), 0, 7); x.fill(); } });
+  x.globalAlpha = 1;
+  const m = W < 640;
+  nodosCamino = {
+    raiz: [xTomate(), G + 4],
+    tomate: [xTomate(), G + ys[0]],
+    mosca: [m ? W * 0.46 : W * 0.56, G + ys[1]],
+    encarsia: [m ? W * 0.12 : W * 0.46, G + ys[2]],
+    beauveria: [m ? W * 0.60 : W * 0.70, G + ys[2] + S * 0.12],
+    f1: [m ? W * 0.10 : W * 0.45, G + ys[3]],
+    f2: [m ? W * 0.50 : W * 0.68, G + ys[3] + S * 0.1]
+  };
+  return c;
+}
+
+// Tramos del camino y el avance de la pregunta (q) en que se recorre cada uno.
+const TRAMOS = [['raiz', 'tomate', 0.00, 0.18], ['tomate', 'mosca', 0.18, 0.40], ['mosca', 'encarsia', 0.40, 0.62], ['mosca', 'beauveria', 0.44, 0.66], ['encarsia', 'f1', 0.66, 0.90], ['beauveria', 'f2', 0.70, 0.94]];
+const LLEGA = { tomate: 0.18, mosca: 0.40, encarsia: 0.62, beauveria: 0.66, f1: 0.90, f2: 0.94 };
+
+// ─── Etiquetas en DOM: nítidas a cualquier aumento. ───
+const etq = {}; let bandEt = [], burbuja = null;
+function crearEtiquetas() {
+  capaEt.textContent = '';
+  for (const k of Object.keys(CAMINO)) { const d = document.createElement('div'); d.className = 'et'; d.append(document.createElement('i'), document.createElement('b'), document.createElement('span')); capaEt.appendChild(d); etq[k] = d; }
+  bandEt = BANDAS.map(() => { const d = document.createElement('div'); d.className = 'banda'; capaEt.appendChild(d); return d; });
+  burbuja = document.createElement('div'); burbuja.id = 'burbuja'; capaEt.appendChild(burbuja);
+}
+function textos() {
+  // En pantallas angostas la fuente se rotula con apellido y año, sin «et al.».
+  const corto = { f1: 'Vet 1980', f2: 'Quesada-Moraga 2006' };
+  for (const k of Object.keys(CAMINO)) { const [t, s, rol] = CAMINO[k][lang]; const c = etq[k].children; c[0].textContent = rol; c[1].textContent = W < 640 && corto[k] ? corto[k] : t; c[2].textContent = s; }
+  BANDAS.forEach((b, i) => { const d = bandEt[i]; d.textContent = b[lang]; const s = document.createElement('span'); s.textContent = b.n.toLocaleString(lang === 'es' ? 'es-CO' : 'en-US'); d.appendChild(s); });
+  burbuja.textContent = ''; const sm = document.createElement('small'); sm.textContent = PREGUNTA[lang][0]; burbuja.append(sm, PREGUNTA[lang][1]);
+}
+
+// ─── El scroll dentro del héroe es lo único que mueve la cámara y la pregunta. ───
+function progreso() { const r = heroe.getBoundingClientRect(); return clamp(-r.top / Math.max(1, heroe.offsetHeight - H), 0, 1); }
+let pasoUlt = -1;
+function dibujar() {
+  const p = progreso();
+  const camY = suave(clamp((p - 0.16) / 0.44, 0, 1)) * CAMFIN;
+  const q = clamp((p - 0.30) / 0.62, 0, 1);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  ctx.drawImage(capaFinca, 0, 0, capaFinca.width, capaFinca.height, 0, -camY, W, G + 40);
+  ctx.drawImage(capaSuelo, 0, 0, capaSuelo.width, capaSuelo.height, 0, G - camY, W, MUNDO - G);
+  ctx.lineCap = 'round';
+  for (const [a, b, t0, t1] of TRAMOS) {
+    const f = clamp((q - t0) / (t1 - t0), 0, 1); if (f <= 0) continue;
+    const A = nodosCamino[a], B = nodosCamino[b], bx = lerp(A[0], B[0], f), by = lerp(A[1], B[1], f);
+    ctx.strokeStyle = 'rgba(242,227,160,.28)'; ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(A[0], A[1] - camY); ctx.lineTo(bx, by - camY); ctx.stroke();
+    ctx.strokeStyle = '#f2e3a0'; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(A[0], A[1] - camY); ctx.lineTo(bx, by - camY); ctx.stroke();
+    if (f < 1) { ctx.fillStyle = '#fff6d0'; ctx.beginPath(); ctx.arc(bx, by - camY, 4.5, 0, 7); ctx.fill(); }
+  }
+  for (const k of Object.keys(LLEGA)) {
+    if (q < LLEGA[k]) continue;
+    const [nx, ny] = nodosCamino[k];
+    ctx.fillStyle = k === 'tomate' ? '#a7c957' : k === 'mosca' ? '#e07a5f' : k[0] === 'f' ? '#efe6d2' : '#8fb8de';
+    ctx.strokeStyle = '#15110c'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(nx, ny - camY, 7, 0, 7); ctx.fill(); ctx.stroke();
+  }
+  // Solo el tramo en curso lleva la etiqueta completa; los anteriores quedan con el nombre. Las fuentes van al lado del nodo.
+  const grupo = q >= 0.90 ? 'f' : q >= 0.62 ? 'c' : q >= 0.40 ? 'm' : 't';
+  const grupoDe = { tomate: 't', mosca: 'm', encarsia: 'c', beauveria: 'c', f1: 'f', f2: 'f' };
+  for (const k of Object.keys(CAMINO)) {
+    const d = etq[k], [nx, ny] = nodosCamino[k], ver = q >= LLEGA[k];
+    d.classList.toggle('ver', ver);
+    d.classList.toggle('corta', grupoDe[k] !== grupo || (k[0] === 'f' && W < 640));
+    if (ver) {
+      const w = d.offsetWidth, h = d.offsetHeight, cabe = nx + 12 + w <= W - 12;
+      // Las fuentes van al lado del nodo; si no caben, debajo, para no tapar su propio nodo.
+      const lado = k[0] === 'f' && cabe;
+      const lx = lado ? nx + 12 : clamp(k[0] === 'f' ? nx - w / 2 : nx + 12, 12, W - w - 12);
+      const ly = lado ? ny - camY - h / 2 : ny - camY + 12;
+      d.style.transform = 'translate(' + lx + 'px,' + ly + 'px)';
+    }
+  }
+  const verBandas = p >= 0.34 && q < LLEGA.mosca;
+  BANDAS.forEach((b, i) => { const y = bandasY[i] - camY - S * 0.42, d = bandEt[i]; d.style.transform = 'translate(' + (W - d.offsetWidth - 16) + 'px,' + y + 'px)'; d.style.opacity = verBandas && y > 150 && y < H - 120 ? '1' : '0'; });
+  const verB = p > 0.10 && p < 0.42;
+  burbuja.classList.toggle('ver', verB);
+  if (verB) burbuja.style.transform = 'translate(' + clamp(xTomate() - 20, 12, W - burbuja.offsetWidth - 12) + 'px,' + (G - 150 * K - burbuja.offsetHeight - camY) + 'px)';
+  titulo.style.opacity = String(clamp(1 - p / 0.1, 0, 1));
+  titulo.style.visibility = p > 0.1 ? 'hidden' : 'visible';
+  // Cada texto entra cuando el camino llega a su nodo: la mosca en q=0,40; las fuentes empiezan en q=0,66.
+  const paso = p < 0.12 ? 0 : p < 0.34 ? 1 : q < LLEGA.mosca ? 2 : q < 0.66 ? 3 : 4;
+  if (paso !== pasoUlt) { pasoUlt = paso; frase(paso); }
+  $('#fBarra').style.width = (p * 100).toFixed(1) + '%';
+}
+function frase(i) {
+  const [t, c, s] = PASOS[lang][i];
+  $('#fPaso').textContent = (i + 1) + (lang === 'es' ? ' de ' : ' of ') + '5';
+  $('#fTit').textContent = t; $('#fCuerpo').textContent = c; $('#fSub').textContent = s;
+}
+let pedido = false;
+function pedir() { if (!pedido) { pedido = true; requestAnimationFrame(() => { pedido = false; if (!document.hidden) dibujar(); }); } }
+
+// El sol avanza con la hora: la finca se repinta una vez por minuto, nunca por cuadro.
+function reloj() {
+  const m = horaChoachi();
+  if (m === minuto) return;
+  minuto = m; cielo = estadoCielo(m); document.body.dataset.cielo = cielo;
+  $('#vHora').textContent = 'Choachí · ' + String(m / 60 | 0).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  $('#vCielo').textContent = CIELOS[cielo][lang];
+  capaFinca = pintarFinca(); pedir();
+}
+function construir() { medir(); capaFinca = pintarFinca(); capaSuelo = pintarSuelo(); if (burbuja) textos(); pedir(); }
+
+function ponerIdioma(l) {
+  lang = l;
+  document.documentElement.lang = l === 'es' ? 'es-CO' : 'en';
+  document.documentElement.dataset.lang = l;
+  for (const el of document.querySelectorAll('[data-t]')) {
+    if (el.dataset.es === undefined) el.dataset.es = el.innerHTML;
+    el.innerHTML = l === 'en' && EN[el.dataset.t] ? EN[el.dataset.t] : el.dataset.es;
+  }
+  const b = $('#bLang'); b.textContent = l === 'es' ? 'EN' : 'ES';
+  b.setAttribute('aria-label', l === 'es' ? 'Change language to English' : 'Cambiar el idioma a español');
+  textos(); pasoUlt = -1; minuto = -1; reloj(); pedir();
+  try { localStorage.setItem('chagra-lang', l); } catch (e) { /* sin almacenamiento */ }
+}
+$('#bLang').addEventListener('click', () => ponerIdioma(lang === 'es' ? 'en' : 'es'));
+
+// «Bajar» recorre el héroe en ~14 s. Lo pone en marcha el gesto; tocar, la rueda o una tecla lo detienen.
+let bajando = 0;
+$('#bBajar').addEventListener('click', () => {
+  const inicio = heroe.offsetTop, fin = heroe.offsetTop + heroe.offsetHeight - H;
+  if (reducido.matches) { window.scrollTo(0, fin); return; }
+  const y0 = window.scrollY < fin - 4 ? Math.max(window.scrollY, inicio) : inicio;
+  const dur = 14000 * (fin - y0) / Math.max(1, fin - inicio), t0 = performance.now(), id = ++bajando;
+  const paso = (t) => { if (id !== bajando) return; const f = clamp((t - t0) / Math.max(1, dur), 0, 1); window.scrollTo(0, lerp(y0, fin, f)); if (f < 1) requestAnimationFrame(paso); };
+  requestAnimationFrame(paso);
+});
+const parar = () => { bajando++; };
+window.addEventListener('wheel', parar, { passive: true });
+window.addEventListener('touchstart', parar, { passive: true });
+window.addEventListener('keydown', parar);
+window.addEventListener('scroll', pedir, { passive: true });
+let tRes = 0;
+window.addEventListener('resize', () => { clearTimeout(tRes); tRes = setTimeout(construir, 120); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { minuto = -1; reloj(); } });
+setInterval(() => { if (!document.hidden) reloj(); }, 15000);
+
+crearEtiquetas();
+cielo = estadoCielo(horaChoachi()); document.body.dataset.cielo = cielo;
+construir();
+ponerIdioma(lang);
+
+// ─── «La app, por dentro»: el scroll gira el escenario de teléfonos (solo escritorio y con movimiento permitido). ───
+const pista = document.querySelector('.app-pista'), fonos = [...document.querySelectorAll('.fono')];
+const puntos = [...document.querySelectorAll('.app-puntos i')];
+const plano = matchMedia('(max-width:900px),(prefers-reduced-motion:reduce)');
+let activoUlt = -1, pedidoApp = false;
+function escenario() {
+  pedidoApp = false;
+  if (plano.matches) { activoUlt = -1; return; }
+  const r = pista.getBoundingClientRect(), s = clamp(-r.top / Math.max(1, pista.offsetHeight - innerHeight), 0, 1);
+  const a = s * (fonos.length - 1), paso = Math.min(260, innerWidth * 0.19);
+  fonos.forEach((f, i) => {
+    const d = i - a, ad = Math.abs(d);
+    f.style.transform = 'translate(-50%,-50%) translateX(' + (d * paso).toFixed(1) + 'px) translateZ(' + (-ad * 230).toFixed(1) + 'px) rotateY(' + clamp(-d * 30, -62, 62).toFixed(1) + 'deg)';
+    f.style.opacity = String(clamp(1 - ad * 0.28, 0, 1));
+    f.style.zIndex = String(100 - Math.round(ad * 10));
+  });
+  const act = Math.round(a);
+  if (act !== activoUlt) {
+    activoUlt = act;
+    const pie = document.getElementById('appPie');
+    document.getElementById('appN').textContent = (act + 1) + ' / ' + fonos.length;
+    document.getElementById('appT').textContent = fonos[act].querySelector('b').textContent;
+    document.getElementById('appP').textContent = fonos[act].querySelector('figcaption span').textContent;
+    pie.classList.remove('cambia'); void pie.offsetWidth; pie.classList.add('cambia');
+    puntos.forEach((p, i) => p.classList.toggle('on', i === act));
+  }
+}
+const pedirApp = () => { if (!pedidoApp) { pedidoApp = true; requestAnimationFrame(escenario); } };
+window.addEventListener('scroll', pedirApp, { passive: true });
+window.addEventListener('resize', pedirApp);
+plano.addEventListener('change', () => { fonos.forEach((f) => { f.style.transform = ''; f.style.opacity = ''; }); pedirApp(); });
+document.getElementById('bLang').addEventListener('click', () => { activoUlt = -1; pedirApp(); });
+escenario();
+// Gancho de prueba: fija el progreso del héroe (lo usan las capturas).
+window.__chagra = { fijar: (p) => { window.scrollTo(0, heroe.offsetTop + p * (heroe.offsetHeight - H)); dibujar(); }, app: (v) => { window.scrollTo(0, pista.getBoundingClientRect().top + scrollY + v * (pista.offsetHeight - innerHeight)); escenario(); }, grafo: GRAFO };
+})();
+</script>
 </body>
 </html>
