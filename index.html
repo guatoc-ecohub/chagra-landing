@@ -149,6 +149,40 @@ a.puerta:hover{border-color:rgba(167,201,87,.6);transform:translateY(-2px)}
 .fundador .rol{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--acento);margin:.3em 0 .8em}
 .fundador p{margin:0 0 1em;color:var(--tinta-2)}
 
+/* ───────── La app, por dentro: capturas reales en un escenario que gira con el scroll ───────── */
+#app{border-bottom:1px solid var(--linea);background:radial-gradient(120% 80% at 70% 40%,#2a2416 0%,var(--tierra) 62%)}
+.app-pista{position:relative;height:360vh}
+.app-fijo{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(18rem,26rem) 1fr;gap:clamp(16px,4vw,56px);align-items:center;max-width:78rem;margin:0 auto;padding:0 max(var(--gut),4vw);overflow:hidden}
+.app-texto h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3.1rem);line-height:1.05;margin:0 0 .35em}
+.app-texto .entrada{font-family:var(--serif);font-size:1.08rem;line-height:1.5;color:var(--tinta-2);margin:0 0 1.6em}
+.app-pie{border-top:1px solid var(--linea);padding-top:18px;min-height:12.5rem}
+.app-pie .n{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acento)}
+.app-pie h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.1;margin:.25em 0 .35em}
+.app-pie p{margin:0;color:var(--tinta-2);font-size:1rem;max-width:24rem}
+.app-pie.cambia{animation:aparece .45s ease both}
+@keyframes aparece{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.app-puntos{display:flex;gap:8px;margin-top:18px}
+.app-puntos i{width:22px;height:3px;border-radius:2px;background:rgba(243,241,232,.2);transition:background .25s ease}
+.app-puntos i.on{background:var(--acento)}
+.app-nota{font-family:var(--mono);font-size:.66rem;color:var(--tinta-3);margin-top:18px;line-height:1.5}
+.carrusel{position:relative;height:100%;perspective:1400px;perspective-origin:50% 45%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.fono{position:absolute;left:50%;top:50%;width:clamp(210px,19vw,280px);margin:0;transform-style:preserve-3d;will-change:transform}
+.fono .marco{position:relative;border-radius:38px;padding:26px 9px 14px;background:linear-gradient(145deg,#2c2c2a,#0d0d0c 60%);box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.fono .marco::before{content:"";position:absolute;top:8px;left:50%;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#050505;z-index:2;box-shadow:0 0 0 2px #151515}
+.fono img{display:block;width:100%;height:auto;border-radius:22px;background:#0b1120}
+.fono figcaption{display:none}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  .app-pista{height:auto}
+  .app-fijo{position:static;height:auto;display:block;padding:clamp(56px,9vw,96px) 0;overflow:visible}
+  .app-texto{padding:0 max(var(--gut),4vw)}
+  .app-pie,.app-puntos{display:none}
+  .carrusel{-webkit-mask-image:none;mask-image:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px max(var(--gut),4vw) 24px;perspective:none;height:auto;scrollbar-width:thin}
+  .fono{position:static;flex:0 0 min(68vw,260px);scroll-snap-align:center;transform:none!important;opacity:1!important}
+  .fono figcaption{display:block;margin-top:12px}
+  .fono figcaption b{display:block;font-family:var(--serif);font-weight:400;font-size:1.15rem}
+  .fono figcaption span{display:block;font-size:.86rem;color:var(--tinta-2);line-height:1.45}
+}
+
 /* Pie */
 footer{border-top:1px solid var(--linea);background:#100d09}
 footer .seccion{padding-top:48px;padding-bottom:40px}
@@ -238,7 +272,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
 
     <div id="controles">
       <a class="btn prim" href="https://chagra.app" data-t="btn-app">Entrar a la app</a>
-      <a class="btn opc" href="#aprender" data-t="btn-cursos">Cursos</a>
+      <a class="btn opc" href="#app" data-t="btn-cursos">Ver la app</a>
       <button class="btn" id="bBajar" type="button" data-t="btn-bajar">Bajar ↓</button>
       <button class="btn" id="bLang" type="button" aria-label="Change language to English">EN</button>
     </div>
@@ -246,6 +280,46 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
 </section>
 
 <main>
+  <section id="app" aria-labelledby="t-app">
+    <div class="app-pista">
+      <div class="app-fijo">
+        <div class="app-texto">
+          <p class="antetitulo" data-t="app-ante">La app, por dentro</p>
+          <h2 id="t-app" data-t="app-tit">Así se ve Chagra en el celular</h2>
+          <p class="entrada" data-t="app-ent">Capturas reales de chagra.app, tomadas el 23 de septiembre en un teléfono con la finca de ejemplo. Nada de maquetas.</p>
+          <div class="app-pie" id="appPie" aria-live="polite"><div class="n" id="appN">1 / 6</div><h3 id="appT"></h3><p id="appP"></p></div>
+          <div class="app-puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="app-nota" data-t="app-nota">Deslice para pasar de pantalla.</p>
+        </div>
+        <div class="carrusel" id="carrusel">
+      <figure class="fono" data-i="0">
+        <div class="marco"><img src="assets/app/finca-viva.webp" alt="Captura de la app: Su finca, viva" width="560" height="1255" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono1-t">Su finca, viva</b><span data-t="fono1-p">La pantalla de inicio es su finca dibujada, con raíces y todo. Toque una puerta para entrar, o toque el corazón de la finca y pregúntele a Chagra hablando.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="1">
+        <div class="marco"><img src="assets/app/agente.webp" alt="Captura de la app: El agente" width="560" height="1196" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono2-t">El agente</b><span data-t="fono2-p">Chagra le saluda con el estado de su finca y la temporada de lluvias. Se le pregunta por texto, por voz o mandándole la foto de una mata enferma.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="2">
+        <div class="marco"><img src="assets/app/ficha-tomate.webp" alt="Captura de la app: Una ficha por especie" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono3-t">Una ficha por especie</b><span data-t="fono3-p">El tomate cherry: piso térmico templado y frío, de 18 a 26 °C, con su foto de licencia abierta y el número de fuentes de donde sale la ficha.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="3">
+        <div class="marco"><img src="assets/app/mercado.webp" alt="Captura de la app: Mercado sin intermediarios" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono4-t">Mercado sin intermediarios</b><span data-t="fono4-p">Publique su cosecha y el comprador le escribe directo. Chagra no cobra comisión ni procesa pagos. En la captura, ofertas de ejemplo.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="4">
+        <div class="marco"><img src="assets/app/mi-finca-viva.webp" alt="Captura de la app: Mi Finca Viva" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono5-t">Mi Finca Viva</b><span data-t="fono5-p">Un juego que sigue la etapa real de su finca: la tierra viva, los defensores que controlan las plagas, la milpa de las tres hermanas.</span></figcaption>
+      </figure>
+      <figure class="fono" data-i="5">
+        <div class="marco"><img src="assets/app/sala-juegos.webp" alt="Captura de la app: Aprender jugando" width="560" height="1245" loading="lazy" decoding="async"></div>
+        <figcaption><b data-t="fono6-t">Aprender jugando</b><span data-t="fono6-p">Nueve juegos que enseñan prácticas reales —control biológico, suelo vivo, milpa, restauración— y el curso guiado de la app.</span></figcaption>
+      </figure>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="seccion" id="aprender" aria-labelledby="t-aprender">
     <p class="antetitulo" data-t="apr-ante">Aprender · gratis</p>
     <h2 id="t-aprender" data-t="apr-tit">Tres puertas para empezar</h2>
@@ -400,6 +474,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
           <li><a href="/aprender/" data-t="pie-apr">Aprender</a></li>
           <li><a href="https://github.com/guatoc-ecohub/Chagra" data-t="pie-gh">Código en GitHub</a></li>
           <li><a href="/legal/" data-t="pie-legal">Términos y privacidad</a></li>
+          <li><a href="mailto:dpo@chagra.bio"><span data-t="pie-dpo">Datos personales (DPO)</span>: dpo@chagra.bio</a></li>
         </ul>
       </div>
       <div>
@@ -460,11 +535,19 @@ const PASOS = {
 };
 const PREGUNTA = { es: ['Pregunta', '¿Qué le echo al tomate, que tiene un bicho blanco que vuela?'], en: ['Question', 'What do I put on my tomato? It has a small white bug that flies.'] };
 const EN = {
+  'fono1-t': 'Your farm, alive', 'fono1-p': 'The home screen is your farm, drawn down to the roots. Tap a door to go in, or tap the heart of the farm and ask Chagra out loud.',
+  'fono2-t': 'The agent', 'fono2-p': 'Chagra greets you with the state of your farm and the rainy season. You ask it by text, by voice or by sending a photo of a sick plant.',
+  'fono3-t': 'One card per species', 'fono3-p': 'Cherry tomato: temperate and cold altitude bands, 18 to 26 °C, with an openly licensed photo and the number of sources the card comes from.',
+  'fono4-t': 'Market without middlemen', 'fono4-p': 'List your harvest and buyers contact you directly. Chagra takes no commission and handles no payments. The listings shown are examples.',
+  'fono5-t': 'My Living Farm', 'fono5-p': 'A game that follows your farm’s real stage: living soil, the defenders that control pests, the three-sisters milpa.',
+  'fono6-t': 'Learn by playing', 'fono6-p': 'Nine games that teach real practices —biological control, living soil, milpa, restoration— plus the app’s guided course.',
+  'app-ante': 'The app, inside', 'app-tit': 'This is Chagra on a phone', 'app-ent': 'Real screenshots of chagra.app, taken on 23 September on a phone with the example farm. No mock-ups.', 'app-nota': 'Scroll to move between screens.',
+  'pie-dpo': 'Personal data (DPO)',
   'lema': 'The Colombian agroecology agent. You ask about your farm; <em>Chagra goes down to the root</em> and answers with the source.',
   'pista': 'Scroll down · or press “Down”',
   'med-tit': 'Chagra graph · measured', 'med-esp': 'Species', 'med-rel': 'Relations', 'med-doi': 'Control with paper',
   'med-nota': 'Measured on 23 Sep 2026. Colombian layer of the graph. The sky is computed for Choachí time: approximate.',
-  'btn-app': 'Open the app', 'btn-cursos': 'Courses', 'btn-bajar': 'Down ↓',
+  'btn-app': 'Open the app', 'btn-cursos': 'See the app', 'btn-bajar': 'Down ↓',
   'apr-ante': 'Learn · free', 'apr-tit': 'Three doors to start',
   'apr-ent': 'Chagra teaches what it knows under the same rule it answers with: every claim carries its source, and what is illustrative is labelled illustrative.',
   'edu-tit': 'Descent: from a coffee leaf to its DNA',
@@ -867,8 +950,42 @@ crearEtiquetas();
 cielo = estadoCielo(horaChoachi()); document.body.dataset.cielo = cielo;
 construir();
 ponerIdioma(lang);
+
+// ─── «La app, por dentro»: el scroll gira el escenario de teléfonos (solo escritorio y con movimiento permitido). ───
+const pista = document.querySelector('.app-pista'), fonos = [...document.querySelectorAll('.fono')];
+const puntos = [...document.querySelectorAll('.app-puntos i')];
+const plano = matchMedia('(max-width:900px),(prefers-reduced-motion:reduce)');
+let activoUlt = -1, pedidoApp = false;
+function escenario() {
+  pedidoApp = false;
+  if (plano.matches) { activoUlt = -1; return; }
+  const r = pista.getBoundingClientRect(), s = clamp(-r.top / Math.max(1, pista.offsetHeight - innerHeight), 0, 1);
+  const a = s * (fonos.length - 1), paso = Math.min(260, innerWidth * 0.19);
+  fonos.forEach((f, i) => {
+    const d = i - a, ad = Math.abs(d);
+    f.style.transform = 'translate(-50%,-50%) translateX(' + (d * paso).toFixed(1) + 'px) translateZ(' + (-ad * 230).toFixed(1) + 'px) rotateY(' + clamp(-d * 30, -62, 62).toFixed(1) + 'deg)';
+    f.style.opacity = String(clamp(1 - ad * 0.28, 0, 1));
+    f.style.zIndex = String(100 - Math.round(ad * 10));
+  });
+  const act = Math.round(a);
+  if (act !== activoUlt) {
+    activoUlt = act;
+    const pie = document.getElementById('appPie');
+    document.getElementById('appN').textContent = (act + 1) + ' / ' + fonos.length;
+    document.getElementById('appT').textContent = fonos[act].querySelector('b').textContent;
+    document.getElementById('appP').textContent = fonos[act].querySelector('figcaption span').textContent;
+    pie.classList.remove('cambia'); void pie.offsetWidth; pie.classList.add('cambia');
+    puntos.forEach((p, i) => p.classList.toggle('on', i === act));
+  }
+}
+const pedirApp = () => { if (!pedidoApp) { pedidoApp = true; requestAnimationFrame(escenario); } };
+window.addEventListener('scroll', pedirApp, { passive: true });
+window.addEventListener('resize', pedirApp);
+plano.addEventListener('change', () => { fonos.forEach((f) => { f.style.transform = ''; f.style.opacity = ''; }); pedirApp(); });
+document.getElementById('bLang').addEventListener('click', () => { activoUlt = -1; pedirApp(); });
+escenario();
 // Gancho de prueba: fija el progreso del héroe (lo usan las capturas).
-window.__chagra = { fijar: (p) => { window.scrollTo(0, heroe.offsetTop + p * (heroe.offsetHeight - H)); dibujar(); }, grafo: GRAFO };
+window.__chagra = { fijar: (p) => { window.scrollTo(0, heroe.offsetTop + p * (heroe.offsetHeight - H)); dibujar(); }, app: (v) => { window.scrollTo(0, pista.getBoundingClientRect().top + scrollY + v * (pista.offsetHeight - innerHeight)); escenario(); }, grafo: GRAFO };
 })();
 </script>
 </body>
