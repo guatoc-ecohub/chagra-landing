@@ -6,3 +6,12 @@
 # Artículo standalone movido a /aprender/articulo/<tema> para evitar colisión clean-URL.
 /aprender/bioseguridad         /aprender/unidad/bioseguridad/         301
 /aprender/transicion-15-15-15  /aprender/articulo/transicion-15-15-15  301
+
+# Archivos internos del repo: Cloudflare Pages publica todo el repo, así que se desvían a la portada.
+/README.md     /   302
+/README        /   302
+/.gitignore    /   302
+/.github/*     /   302
+/tests/*       /   302
+/_gate/*       /   302
+/debug/*       /   302

@@ -21,3 +21,17 @@
 
 /assets/*
   Cache-Control: public, max-age=604800
+
+# Si alguna regla de _redirects no alcanza a un archivo interno, que por lo menos no se indexe.
+/README.md
+  X-Robots-Tag: noindex
+/.github/*
+  X-Robots-Tag: noindex
+/tests/*
+  X-Robots-Tag: noindex
+/_gate/*
+  X-Robots-Tag: noindex
+/debug/*
+  X-Robots-Tag: noindex
+/404.html
+  X-Robots-Tag: noindex

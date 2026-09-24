@@ -62,7 +62,7 @@ del `<img>`. **No rompe la página**, sólo se ve "captura pendiente".
 ## 3. Probar localmente
 
 ```bash
-cd /home/kortux/Workspace/Chagra-strategy/landing
+cd chagra-landing
 python3 -m http.server 8080
 # Abrir http://localhost:8080
 ```
@@ -119,10 +119,7 @@ Hay dos vías. Elegir una:
 
 #### Vía A — Conectar repo Git (recomendada, auto-deploy en cada push)
 
-1. Subir esta carpeta `landing/` como repo standalone, por ejemplo
-   `kortux/chagra-landing` (puede ser público o privado). El repo
-   `Chagra-strategy` es privado y NO debería conectarse directo a CF
-   Pages porque expone más de lo necesario.
+1. Tener este repo en GitHub (hoy: `guatoc-ecohub/chagra-landing`, público).
 2. Cloudflare Dashboard → *Workers & Pages* → *Create application* →
    *Pages* → *Connect to Git* → autorizar la cuenta GitHub →
    seleccionar `chagra-landing`.
@@ -137,11 +134,11 @@ Hay dos vías. Elegir una:
 ```bash
 npm install -g wrangler
 wrangler login
-cd /home/kortux/Workspace/Chagra-strategy/landing
+cd chagra-landing
 wrangler pages deploy . --project-name=chagra-landing
 ```
 
-Útil para iteración rápida hoy/mañana, pero perdés auto-deploy.
+Útil para iteración rápida hoy/mañana, pero se pierde el auto-deploy.
 
 ### 4.4 Asociar los dominios custom
 
