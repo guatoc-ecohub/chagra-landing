@@ -3,34 +3,44 @@ name: smoke deploy
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  smoke-test:
+  preview-smoke:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Wait for Cloudflare Pages deploy
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Start Pages preview
+        env:
+          WRANGLER_SEND_METRICS: 'false'
         run: |
-          echo "Cloudflare Pages typically deploys in ~60-90s after push"
-          sleep 120
-
-      - name: Run smoke-css-coverage
-        run: |
-          chmod +x tests/smoke-css-coverage.sh
-          ./tests/smoke-css-coverage.sh https://chagra.bio
-
-      - name: Verify SCORM units load
-        run: |
-          for UNIT in transicion-15-15-15 bioseguridad; do
-            URL="https://chagra.bio/aprender/unidad/$UNIT/"
-            JS_URL="https://chagra.bio/aprender/unidad/$UNIT/unit.js"
-            CODE_HTML=$(curl -sI -o /dev/null -w "%{http_code}" "$URL")
-            CODE_JS=$(curl -sI -o /dev/null -w "%{http_code}" "$JS_URL")
-            echo "$UNIT: HTML=$CODE_HTML JS=$CODE_JS"
-            if [ "$CODE_HTML" != "200" ] || [ "$CODE_JS" != "200" ]; then
-              echo "FAIL: $UNIT no carga correctamente"
-              exit 1
+          python3 tests/prepare-preview.py
+          npx --yes wrangler@4.148.0 pages dev _gate/preview --ip 127.0.0.1 --port 8080 --compatibility-date=2026-10-06 > _gate/preview.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8080/ -o /dev/null; then
+              exit 0
             fi
+            sleep 2
           done
+          cat _gate/preview.log
+          exit 1
+      - name: Verify links, anchors and course redirects
+        run: python3 tests/check-site.py http://127.0.0.1:8080
+      - name: Verify CSS coverage
+        run: bash tests/smoke-css-coverage.sh http://127.0.0.1:8080
+
+  smoke-test:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for Cloudflare Pages deploy
+        run: sleep 120
+      - name: Verify public routes
+        run: python3 tests/check-site.py https://chagra.bio
+      - name: Verify public CSS
+        run: bash tests/smoke-css-coverage.sh https://chagra.bio

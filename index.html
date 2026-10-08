@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chagra — el agente agroecológico colombiano</title>
-<meta name="description" content="Usted le pregunta a Chagra por su finca y Chagra busca en un grafo de 743 especies y 13 906 relaciones antes de responder, con la fuente a la vista. Servidor propio con energía solar en Choachí, sin nube de terceros. Código abierto AGPL-3.0.">
+<meta name="description" content="Usted le pregunta a Chagra por su finca y Chagra busca en un grafo de 743 especies y 13 906 relaciones antes de responder, con la fuente a la vista. Servidor propio con energía solar en Choachí, sin nube de terceros.">
 <meta name="theme-color" content="#15110c">
 <meta name="color-scheme" content="dark light">
 <meta property="og:title" content="Chagra — el agente agroecológico colombiano">
@@ -219,7 +219,9 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
   #frase{left:var(--gut);right:var(--gut);width:auto;bottom:calc(var(--gut) + 56px);padding:11px 13px 9px}
   #frase h2{font-size:1.12rem}
   #frase p{font-size:.93rem}
-  #controles{left:var(--gut);right:var(--gut);bottom:var(--gut);justify-content:space-between;flex-wrap:nowrap}
+  #controles{left:var(--gut);right:var(--gut);bottom:var(--gut);display:grid;grid-template-columns:minmax(0,1fr) auto auto}
+  #controles .opc{display:none}
+  #controles .btn{min-width:0}
   .btn{padding:10px 12px;font-size:.72rem}
   .notas,.hace,.quien,.dos,.pie,.hermanas{grid-template-columns:1fr}
   .fundador{grid-template-columns:1fr;gap:18px}
@@ -233,6 +235,10 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
   #titulo h1{font-size:2.7rem}
   #titulo p.lema{font-size:1rem}
   #titulo .pista{display:none}
+}
+@media (min-width:641px) and (max-width:900px){
+  #frase{bottom:calc(var(--gut) + 56px)}
+  #controles{bottom:var(--gut)}
 }
 @media (max-width:370px){ .btn{padding:10px 9px;font-size:.68rem} #controles .opc{display:none} }
 @media (prefers-reduced-motion:reduce){
@@ -358,41 +364,33 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
         <a class="ir" href="https://edu.chagra.bio" data-t="edu-ir">Entrar a edu.chagra.bio →</a>
       </div>
 
-      <a class="puerta" href="/aprender/curso/">
-        <span class="rotulo" data-t="cur-rot">Curso guiado · para usar la app</span>
+      <a class="puerta" href="https://edu.chagra.bio/cursos/aprende-a-usar-chagra/">
+        <span class="rotulo" data-t="cur-rot">Curso · edu.chagra.bio</span>
         <h3 data-t="cur-tit">Aprenda a usar Chagra</h3>
-        <p data-t="cur-txt">Del primer registro a la venta, con videos cortos que se ven como en su celular y enlaces para probar cada paso en la app.</p>
-        <ol class="modulos">
-          <li data-t="m1">Empiece su finca</li>
-          <li data-t="m2">Conozca su suelo y sus matas</li>
-          <li data-t="m3">Cuide sin veneno</li>
-          <li data-t="m4">Asocie y aproveche</li>
-          <li data-t="m5">Coseche y venda</li>
-          <li data-t="m6">Listo para su finca de verdad</li>
-        </ol>
+        <p data-t="cur-txt">Recorra un día en la finca y aprenda a registrar sus cultivos, consultar el catálogo y organizar las tareas en la app.</p>
         <span class="ir" data-t="cur-ir">Empezar el curso →</span>
       </a>
 
-      <a class="puerta" href="/aprender/mini-curso/">
-        <span class="rotulo" data-t="mini-rot">Mini-curso · 3 módulos</span>
-        <h3 data-t="mini-tit">Primeros pasos en agroecología</h3>
-        <p data-t="mini-txt">Introducción a Chagra, biopreparados básicos y manejo ecológico de plagas, en trece lecciones cortas.</p>
-        <span class="ir" data-t="mini-ir">Ver el mini-curso →</span>
+      <a class="puerta" href="https://edu.chagra.bio/cursos/bioseguridad/">
+        <span class="rotulo" data-t="bio-rot">Curso · bioseguridad</span>
+        <h3 data-t="bio-tit">La ruta de una gota</h3>
+        <p data-t="bio-txt">Reconozca los riesgos de exposición en el campo y las prácticas de protección, con un recorrido ilustrado y fuentes citadas.</p>
+        <span class="ir" data-t="bio-ir">Ver el curso en edu.chagra.bio →</span>
       </a>
     </div>
 
     <div class="notas">
-      <a class="puerta" href="/aprender/transicion-15-15-15">
+      <a class="puerta" href="/aprender/articulo/transicion-15-15-15">
         <span class="rotulo" data-t="n1-rot">Lectura · suelos y nutrición</span>
         <h3 data-t="n1-tit">Del 15-15-15 a la agroecología</h3>
         <p data-t="n1-txt">Qué trae el bulto, qué le pasa en la tierra y qué dice la ciencia de pasarse a lo orgánico, con la fuente de cada cifra.</p>
         <span class="ir" data-t="n-ir">Leer →</span>
       </a>
-      <a class="puerta" href="/aprender/bioseguridad">
+      <a class="puerta" href="/aprender/articulo/bioseguridad">
         <span class="rotulo" data-t="n2-rot">Salud · bioseguridad</span>
         <h3 data-t="n2-tit">Bioseguridad en el campo</h3>
         <p data-t="n2-txt">Plaguicidas y cuerpo, equipo de protección mínimo, y los riesgos que también tienen algunos biopreparados.</p>
-        <span class="ir" data-t="n-ir2">Abrir la unidad →</span>
+        <span class="ir" data-t="n-ir2">Leer →</span>
       </a>
       <a class="puerta" href="/aprender/">
         <span class="rotulo" data-t="n3-rot">Todas las notas</span>
@@ -429,7 +427,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
     </div>
     <div class="dos">
       <div><h3 data-t="d1-t">Servidor propio, con el sol</h3><p data-t="d1-p">El agente y la visión por computador corren en un servidor de Chagra en Choachí, Cundinamarca, alimentado con energía solar fuera de la red. Sus preguntas y sus fotos van a ese servidor, no a una nube de terceros.</p></div>
-      <div><h3 data-t="d2-t">Modelos abiertos, código abierto</h3><p data-t="d2-p">Modelos de lenguaje abiertos y locales, y todo el código bajo licencia AGPL-3.0, auditable en GitHub. Los datos de la finca se guardan en farmOS, un sistema libre de registros agrícolas.</p></div>
+      <div><h3 data-t="d2-t">Modelos locales y registros de la finca</h3><p data-t="d2-p">Chagra utiliza modelos de lenguaje locales. Los datos de la finca se guardan en farmOS, un sistema de registros agrícolas. El repositorio de la aplicación no está disponible para consulta pública.</p></div>
       <div><h3 data-t="d3-t">Si no sabe, lo dice</h3><p data-t="d3-p">El agente responde anclado al catálogo. Cuando el dato no está, lo dice en vez de inventarlo; nunca recomienda dosis peligrosas ni mezclas tóxicas.</p></div>
       <div><h3 data-t="d4-t">Sin señal también</h3><p data-t="d4-p">La app guarda lo que usted registra en el celular y lo envía cuando vuelve la conexión. En la finca, sin internet, sigue sirviendo.</p></div>
     </div>
@@ -477,7 +475,6 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
           <li><a href="https://chagra.app" data-t="pie-app">La app</a></li>
           <li><a href="https://edu.chagra.bio">edu.chagra.bio</a></li>
           <li><a href="/aprender/" data-t="pie-apr">Aprender</a></li>
-          <li><a href="https://github.com/guatoc-ecohub/Chagra" data-t="pie-gh">Código en GitHub</a></li>
           <li><a href="/legal/" data-t="pie-legal">Términos y privacidad</a></li>
           <li><a href="mailto:dpo@chagra.bio"><span data-t="pie-dpo">Datos personales (DPO)</span>: dpo@chagra.bio</a></li>
         </ul>
@@ -559,11 +556,11 @@ const EN = {
   'edu-txt': 'Pieces that go down from what you see on the farm to what happens inside the cell, and courses for everyday work. Each one a single shot, with cited science.',
   'edu-cafe': 'Coffee', 'edu-cafe-d': 'from the plant to its DNA', 'edu-milpa': 'Milpa', 'edu-milpa-d': 'the bean and its two partners', 'edu-c1': 'A day on the farm', 'edu-c1-d': 'course on using the app', 'edu-c2': 'From the bag to the root', 'edu-c2-d': 'from 15-15-15 to agroecology', 'edu-c3': 'The path of a drop', 'edu-c3-d': 'biosafety in the field', 'edu-ir': 'Enter edu.chagra.bio →',
   'cur-rot': 'Guided course · using the app', 'cur-tit': 'Learn to use Chagra',
-  'cur-txt': 'From your first record to your first sale, with short videos that look like your phone and links to try each step in the app.',
+  'cur-txt': 'Follow a day on the farm and learn to record crops, browse the catalogue and organise tasks in the app.',
   'm1': 'Start your farm', 'm2': 'Know your soil and plants', 'm3': 'Care without poison', 'm4': 'Associate and make the most of it', 'm5': 'Harvest and sell', 'm6': 'Ready for your real farm', 'cur-ir': 'Start the course →',
-  'mini-rot': 'Mini-course · 3 modules', 'mini-tit': 'First steps in agroecology', 'mini-txt': 'Introduction to Chagra, basic biopreparations and ecological pest management, in thirteen short lessons.', 'mini-ir': 'See the mini-course →',
+  'bio-rot': 'Course · field safety', 'bio-tit': 'The path of a drop', 'bio-txt': 'Recognise exposure risks in the field and protective practices, through an illustrated journey with cited sources.', 'bio-ir': 'See the course on edu.chagra.bio →',
   'n1-rot': 'Reading · soils and nutrition', 'n1-tit': 'From 15-15-15 to agroecology', 'n1-txt': 'What the bag contains, what happens to it in the soil, and what science says about going organic, with the source of every figure.', 'n-ir': 'Read →',
-  'n2-rot': 'Health · biosafety', 'n2-tit': 'Biosafety in the field', 'n2-txt': 'Pesticides and the body, minimum protective equipment, and the risks some biopreparations also carry.', 'n-ir2': 'Open the unit →',
+  'n2-rot': 'Health · biosafety', 'n2-tit': 'Biosafety in the field', 'n2-txt': 'Pesticides and the body, minimum protective equipment, and the risks some biopreparations also carry.', 'n-ir2': 'Read →',
   'n3-rot': 'All notes', 'n3-tit': 'Technical field notes', 'n3-txt': 'First in plain words, then with peer-reviewed evidence.', 'n-ir3': 'Go to Learn →',
   'hace-ante': 'The app, today', 'hace-tit': 'What Chagra already does',
   'hace-ent': 'A web app you install on your phone that keeps working without signal. When the connection returns, it syncs with Chagra’s own server.',
@@ -577,7 +574,7 @@ const EN = {
   'hon-ent': 'These are the counts of the graph the agent uses, measured one by one. The catalogue is under review: most species cards do not yet have external agronomic validation, and we say so.',
   'c1': 'catalogued species', 'c2': 'pests and diseases', 'c3': 'beneficial organisms, biopreparations and ferments', 'c4': 'control relations with their paper (DOI)',
   'd1-t': 'Own server, powered by the sun', 'd1-p': 'The agent and the computer vision run on a Chagra server in Choachí, Cundinamarca, on off-grid solar power. Your questions and photos go to that server, not to a third-party cloud.',
-  'd2-t': 'Open models, open code', 'd2-p': 'Open, local language models, and all the code under AGPL-3.0, auditable on GitHub. Farm records are kept in farmOS, a free agricultural record-keeping system.',
+  'd2-t': 'Local models and farm records', 'd2-p': 'Chagra uses local language models. Farm records are kept in farmOS, an agricultural record-keeping system. The application repository is not available for public access.',
   'd3-t': 'If it doesn’t know, it says so', 'd3-p': 'The agent answers anchored to the catalogue. When the data isn’t there, it says so instead of making it up; it never recommends dangerous doses or toxic mixtures.',
   'd4-t': 'Without signal, too', 'd4-p': 'The app stores what you record on the phone and sends it when the connection returns. On the farm, without internet, it keeps working.',
   'ej-t': 'The opening example, with its evidence',
@@ -593,7 +590,7 @@ const EN = {
   'f-btn': 'Write to us',
   'pie-1': 'Colombian agroecology agent. An initiative of Guatoc-EcoHub, made in Choachí with solar power. AGPL-3.0 · 2026.',
   'pie-2': 'Reference information based on academic literature and public regulations (ICA, AGROSAVIA, MADS). No formal institutional agreements.',
-  'pie-h2': 'Go to', 'pie-app': 'The app', 'pie-apr': 'Learn', 'pie-gh': 'Code on GitHub', 'pie-legal': 'Terms and privacy', 'pie-h3': 'Contact',
+  'pie-h2': 'Go to', 'pie-app': 'The app', 'pie-apr': 'Learn', 'pie-legal': 'Terms and privacy', 'pie-h3': 'Contact',
   'sab-t': 'Ethnobotanical knowledge cited from the scientific literature:',
   'sab-p': 'The references come from Colombian academic literature (Bernal et al. 2015; García-Barriga; Pérez-Arbeláez 1947; TRAMIL; Vademécum MinSalud 2008). They are not agreements on the use of traditional knowledge with the communities: that work is pending, under Law 21 of 1991 (ILO Convention 169) and Decree 1320 of 1998.',
   'sab-chagra': 'The word “chagra” comes from Amazonian and Andean Indigenous peoples: an agroforestry system where plants of different strata grow together. Its use here seeks to honour that legacy responsibly.'
@@ -889,7 +886,16 @@ function dibujar() {
   BANDAS.forEach((b, i) => { const y = bandasY[i] - camY - S * 0.42, d = bandEt[i]; d.style.transform = 'translate(' + (W - d.offsetWidth - 16) + 'px,' + y + 'px)'; d.style.opacity = verBandas && y > 150 && y < H - 120 ? '1' : '0'; });
   const verB = p > 0.10 && p < 0.42;
   burbuja.classList.toggle('ver', verB);
-  if (verB) burbuja.style.transform = 'translate(' + clamp(xTomate() - 20, 12, W - burbuja.offsetWidth - 12) + 'px,' + (G - 150 * K - burbuja.offsetHeight - camY) + 'px)';
+  if (verB) {
+    const alto = burbuja.offsetHeight;
+    const ancho = burbuja.offsetWidth;
+    const bx = clamp(xTomate() - 20, 12, W - ancho - 12);
+    const medidor = $('#medidor').getBoundingClientRect();
+    const techo = bx < medidor.right && bx + ancho > medidor.left ? medidor.bottom + 12 : 12;
+    const piso = $('#frase').getBoundingClientRect().top - alto - 12;
+    const y = clamp(G - 150 * K - alto - camY, techo, Math.max(techo, piso));
+    burbuja.style.transform = 'translate(' + bx + 'px,' + y + 'px)';
+  }
   titulo.style.opacity = String(clamp(1 - p / 0.1, 0, 1));
   titulo.style.visibility = p > 0.1 ? 'hidden' : 'visible';
   // Cada texto entra cuando el camino llega a su nodo: la mosca en q=0,40; las fuentes empiezan en q=0,66.
