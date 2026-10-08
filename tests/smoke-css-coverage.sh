@@ -17,7 +17,7 @@
 set -euo pipefail
 
 BASE_URL="${1:-https://chagra.bio}"
-REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO_ROOT="${2:-$(cd "$(dirname "$0")/.." && pwd)}"
 
 REQUIRED_CLASSES=(
   "\.aprender-grid"
@@ -62,7 +62,7 @@ fi
 
 echo ""
 echo "3. ¿Cada HTML que use /styles.css tiene cache-bust (?v=)?"
-HTMLS=$(find "$REPO_ROOT" -name "*.html" -not -path "*/.git/*" -not -path "*/.claude/*" -not -path "*/node_modules/*")
+HTMLS=$(find "$REPO_ROOT" -name "*.html" -not -path "*/.git/*" -not -path "*/.claude/*" -not -path "*/node_modules/*" -not -path "*/_gate/*" -not -path "*/.wrangler/*")
 for HTML in $HTMLS; do
   REL=${HTML#$REPO_ROOT/}
   if grep -qE 'href="/?styles\.css"' "$HTML"; then
@@ -82,7 +82,7 @@ with open('$APRENDER_INDEX') as f:
 unsized = []
 for m in re.finditer(r'<svg([^>]*)>', content):
     attrs = m.group(1)
-    if not re.search(r'width=|height=|class=|style=', attrs):
+    if not re.search(r'(?:^|\s)(?:width|height|class|style)=', attrs):
         unsized.append(attrs[:80])
 for u in unsized:
     print(u)
