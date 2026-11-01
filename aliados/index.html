@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aliados — Chagra</title>
+<meta name="description" content="Buscamos aliados para llevar Chagra, con monitoreo de suelo y clima, a 10 fincas campesinas de alta montaña en Choachí. Empresas, hardware y conectividad, academia y sector público.">
+<meta name="theme-color" content="#15110c">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Aliados — Chagra">
+<meta property="og:description" content="Proponemos un piloto con 10 fincas campesinas que miden su suelo y su clima. Buscamos aliados para hacerlo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chagra.bio/aliados/">
+<meta property="og:image" content="https://chagra.bio/assets/hero-chagra.webp">
+<meta property="og:image:alt" content="Ilustración de una chagra agroforestal colombiana con varios estratos de vegetación">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://chagra.bio/aliados/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 95c0-30 20-55 45-65-15 15-25 35-30 55h-15z' fill='%23a7c957'/%3E%3Cpath d='M50 95c0-35-20-60-45-70 15 15 25 35 30 55h15z' fill='%235f8a3a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --tinta:#f3f1e8; --tinta-2:rgba(243,241,232,.74); --tinta-3:rgba(243,241,232,.52);
+  --acento:#a7c957; --acento-osc:#10210f;
+  --tierra:#15110c; --tierra-2:#1d1710; --linea:rgba(243,241,232,.14);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","Noto Serif",Georgia,serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --gut:16px;
+}
+*{box-sizing:border-box}
+html{background:var(--tierra)}
+body{margin:0;background:var(--tierra);color:var(--tinta);font-family:var(--sans);line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px;border-radius:6px}
+.barra-sup{max-width:70rem;margin:0 auto;padding:18px max(var(--gut),4vw);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.barra-sup .marca{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-2);text-decoration:none}
+.barra-sup nav{display:flex;gap:14px;font-family:var(--mono);font-size:.74rem}
+.barra-sup nav a{color:var(--tinta-2);text-decoration:none}
+.barra-sup nav a:hover{color:var(--tinta)}
+.seccion{max-width:70rem;margin:0 auto;padding:clamp(40px,7vw,88px) max(var(--gut),4vw)}
+.seccion+.seccion{border-top:1px solid var(--linea)}
+.antetitulo{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);margin:0 0 .8em}
+h1,.seccion h2{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0 0 .4em;max-width:44rem}
+h1{font-size:clamp(2.3rem,6vw,3.8rem)}
+.seccion h2{font-size:clamp(1.8rem,4vw,2.7rem)}
+.entrada{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.5;color:var(--tinta-2);max-width:42rem;margin:0 0 1.6em}
+.formas{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.forma{border:1px solid var(--linea);border-radius:18px;padding:22px;background:var(--tierra-2);min-width:0}
+.forma .rotulo{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3)}
+.forma h3{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.1;margin:.35em 0 .4em}
+.forma p{margin:0;color:var(--tinta-2);font-size:.97rem}
+.piloto{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px;margin-top:8px}
+.piloto h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:0 0 .3em}
+.piloto p{margin:0;color:var(--tinta-2);font-size:.95rem}
+.piloto .marca-h{display:block;width:28px;height:2px;background:var(--acento);margin-bottom:12px}
+.medido{font-family:var(--mono);font-size:.72rem;color:var(--tinta-3);margin-top:24px;max-width:46rem}
+.contacto{border:1px solid rgba(167,201,87,.45);border-radius:18px;padding:clamp(20px,4vw,32px);background:linear-gradient(180deg,#1f2a15,#171d10)}
+.contacto p{color:var(--tinta-2);margin:0 0 1em;max-width:40rem}
+.contacto .dato{font-family:var(--mono);font-size:1.05rem;color:var(--tinta);overflow-wrap:anywhere}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(14,14,12,.5);color:var(--tinta);text-decoration:none;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em}
+.btn:hover{border-color:rgba(255,255,255,.32)}
+.btn.prim{background:rgba(167,201,87,.94);color:var(--acento-osc);border-color:transparent;font-weight:600}
+.botones{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.lista{margin:0;padding-left:1.2em;color:var(--tinta-2);display:grid;gap:6px;max-width:44rem}
+footer{border-top:1px solid var(--linea);background:#100d09}
+footer .seccion{padding-top:36px;padding-bottom:36px;font-size:.84rem;color:var(--tinta-3)}
+footer a{color:var(--tinta-2)}
+@media (max-width:760px){
+  .formas,.piloto{grid-template-columns:1fr}
+  .barra-sup nav{gap:10px;font-size:.7rem}
+}
+</style>
+</head>
+<body>
+
+<header class="barra-sup">
+  <a class="marca" href="/">Guatoc · Chagra</a>
+  <nav aria-label="Navegación">
+    <a href="/">Inicio</a>
+    <a href="https://chagra.app">La app</a>
+    <a href="https://guatoc.co">Guatoc Lab</a>
+  </nav>
+</header>
+
+<main>
+  <section class="seccion" aria-labelledby="t-ali">
+    <p class="antetitulo">Aliados</p>
+    <h1 id="t-ali">Buscamos aliados para que 10 fincas campesinas midan su suelo y su clima</h1>
+    <p class="entrada">Chagra es una herramienta de finca con un asistente de IA de código abierto: se le habla, responde consultando un grafo de 743 especies con la fuente a la vista y también funciona sin conexión. Los datos son de quien cultiva. Ahora proponemos llevarla, con monitoreo de suelo y clima, a las fincas de una vereda de alta montaña en Choachí, Cundinamarca.</p>
+    <div class="botones">
+      <a class="btn prim" href="#contacto">Escribirnos</a>
+      <a class="btn" href="#piloto">Ver el piloto propuesto</a>
+    </div>
+  </section>
+
+  <section class="seccion" id="piloto" aria-labelledby="t-pil">
+    <p class="antetitulo">El piloto que proponemos</p>
+    <h2 id="t-pil">Fincas que miden</h2>
+    <p class="entrada">Nueve meses, diez fincas campesinas de la vereda El Curí, entre 2.300 y 2.500 metros sobre el nivel del mar, de la mano de la Junta de Acción Comunal de la vereda y acompañadas desde Guatoc Lab.</p>
+    <div class="piloto">
+      <div><span class="marca-h"></span><h3>Medir</h3><p>Estaciones de monitoreo de suelo y clima en las fincas, con sus lecturas en el registro de cada finca en Chagra.</p></div>
+      <div><span class="marca-h"></span><h3>Aprender</h3><p>Nueve talleres abiertos y tres jóvenes de la vereda formados como monitores, para que cada familia lea sus propios datos.</p></div>
+      <div><span class="marca-h"></span><h3>Dejar</h3><p>Un calendario agroclimático y una guía de prácticas de la vereda, construidos con lo medido y con lo que saben quienes la trabajan.</p></div>
+    </div>
+    <p class="medido">Estado hoy: el software para recibir las lecturas de los sensores está listo; todavía no hay ninguna estación instalada en una finca. Esto es una propuesta: buscamos aliados para hacerla.</p>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-formas">
+    <p class="antetitulo">Qué buscamos</p>
+    <h2 id="t-formas">Cuatro formas de sumarse</h2>
+    <div class="formas">
+      <div class="forma"><span class="rotulo">Empresas</span><h3>Patrocine una finca</h3><p>Para empresas con agenda de sostenibilidad o del sector agro: acompañar una finca concreta durante el piloto, con su estación de monitoreo, sus talleres y un informe de lo que se midió.</p></div>
+      <div class="forma"><span class="rotulo">Hardware y conectividad</span><h3>Sensores, equipos y señal</h3><p>Fabricantes y distribuidores de sensores de suelo y clima, equipos de energía solar, y proveedores de conectividad rural que quieran probar su tecnología en fincas de montaña.</p></div>
+      <div class="forma"><span class="rotulo">Academia</span><h3>Investigación y validación</h3><p>Universidades y grupos de investigación en agronomía, suelos, clima o computación: validar el catálogo de especies, analizar los datos del piloto o vincular estudiantes.</p></div>
+      <div class="forma"><span class="rotulo">Sector público y cooperación</span><h3>Territorio y escala</h3><p>Entidades públicas, organizaciones de cooperación y de productores que quieran acompañar el piloto o llevar la experiencia a otras veredas.</p></div>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-quien">
+    <p class="antetitulo">Quién lo hace</p>
+    <h2 id="t-quien">Guatoc Lab, en Choachí</h2>
+    <p class="entrada">Un laboratorio vivo de conservación, restauración de ecosistemas y agroecología en la vereda El Curí, Choachí (Cundinamarca), frente al cañón de La Chorrera. Ahí corre el servidor de Chagra, con energía solar.</p>
+    <ul class="lista">
+      <li>Conferencia magistral «Cómo construir un agente de IA con herramientas open source: Chagra, un agente agroecológico», XVI Congreso Internacional de Computación CICOM 2026, Facultad de Filosofía y Letras, UANL, Monterrey, 8 de octubre de 2026.</li>
+      <li>Software libre bajo licencia AGPL-3.0: <a href="https://github.com/guatoc-ecohub/Chagra">github.com/guatoc-ecohub/Chagra</a>.</li>
+      <li>Cursos abiertos en <a href="https://edu.chagra.bio">edu.chagra.bio</a>.</li>
+      <li>La app: <a href="https://chagra.app">chagra.app</a>. Más sobre el laboratorio en <a href="https://guatoc.co">guatoc.co</a>.</li>
+    </ul>
+  </section>
+
+  <section class="seccion" id="contacto" aria-labelledby="t-contacto">
+    <div class="contacto">
+      <p class="antetitulo">Cómo escribirnos</p>
+      <h2 id="t-contacto">Conversemos</h2>
+      <p>Cuéntenos quién es, cómo le gustaría sumarse y qué necesita saber. Respondemos con una propuesta concreta para su caso.</p>
+      <p class="dato">[[CONTACTO]]</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="seccion">
+    Chagra · una iniciativa de Guatoc Lab, hecha en Choachí con energía solar · AGPL-3.0 · 2026 · <a href="/legal/">Términos y privacidad</a>
+  </div>
+</footer>
+
+</body>
+</html>

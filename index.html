@@ -141,6 +141,12 @@ a.hermana:hover{border-color:rgba(167,201,87,.6)}
 .ejemplo a{color:var(--acento);font-family:var(--mono);font-size:.8rem;overflow-wrap:anywhere}
 .medido{font-family:var(--mono);font-size:.7rem;color:var(--tinta-3);margin-top:22px}
 
+/* Guatoc Lab y piloto propuesto */
+.lab-ir{margin-top:.9em!important}
+.lab-ir a{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--acento);text-decoration:none;overflow-wrap:anywhere}
+.lab-ir a:hover{text-decoration:underline}
+.pil-cta{margin:26px 0 0}
+
 /* Para quién + fundador */
 .quien{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .quien h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:0 0 .3em}
@@ -431,7 +437,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
       <div><h3 data-t="d1-t">Servidor propio, con el sol</h3><p data-t="d1-p">El agente y la visión por computador corren en un servidor de Chagra en Choachí, Cundinamarca, alimentado con energía solar fuera de la red. Sus preguntas y sus fotos van a ese servidor, no a una nube de terceros.</p></div>
       <div><h3 data-t="d2-t">Modelos abiertos, código abierto</h3><p data-t="d2-p">Modelos de lenguaje abiertos y locales, y todo el código bajo licencia AGPL-3.0, auditable en GitHub. Los datos de la finca se guardan en farmOS, un sistema libre de registros agrícolas.</p></div>
       <div><h3 data-t="d3-t">Si no sabe, lo dice</h3><p data-t="d3-p">El agente responde anclado al catálogo. Cuando el dato no está, lo dice en vez de inventarlo; nunca recomienda dosis peligrosas ni mezclas tóxicas.</p></div>
-      <div><h3 data-t="d4-t">Sin señal también</h3><p data-t="d4-p">La app guarda lo que usted registra en el celular y lo envía cuando vuelve la conexión. En la finca, sin internet, sigue sirviendo.</p></div>
+      <div><h3 data-t="d4-t">Sin señal también</h3><p data-t="d4-p">La app guarda en el celular lo que usted registra y lo envía cuando vuelve la señal. También funciona sin conexión.</p></div>
     </div>
     <div class="ejemplo">
       <h3 data-t="ej-t">El ejemplo del comienzo, con su respaldo</h3>
@@ -441,6 +447,29 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
       </ol>
     </div>
     <p class="medido" data-t="hon-med">Medido en el grafo AGE de Chagra el 23-sep-2026 a las 03:05. «Relaciones» cuenta la capa colombiana; no incluye registros técnicos internos.</p>
+  </section>
+
+  <section class="seccion" id="lab" aria-labelledby="t-lab">
+    <p class="antetitulo" data-t="lab-ante">Quién lo hace</p>
+    <h2 id="t-lab" data-t="lab-tit">Guatoc Lab, en Choachí</h2>
+    <p class="entrada" data-t="lab-ent">Chagra se construye y se prueba en Guatoc Lab, un laboratorio vivo de conservación, restauración de ecosistemas y agroecología en la vereda El Curí, Choachí (Cundinamarca). Es alta montaña, entre 2.300 y 2.500 metros sobre el nivel del mar, frente al cañón de La Chorrera.</p>
+    <div class="dos">
+      <div><h3 data-t="lab1-t">El laboratorio</h3><p data-t="lab1-p">Ahí corre el servidor de Chagra, con energía solar, y ahí se prueba la app antes de llevarla a otras fincas.</p><p class="lab-ir"><a href="https://guatoc.co" data-t="lab1-ir">Conocer Guatoc Lab en guatoc.co →</a></p></div>
+      <div><h3 data-t="lab2-t">Conferencia magistral, CICOM 2026</h3><p data-t="lab2-p">«Cómo construir un agente de IA con herramientas open source: Chagra, un agente agroecológico». XVI Congreso Internacional de Computación CICOM 2026, Facultad de Filosofía y Letras de la Universidad Autónoma de Nuevo León (UANL), Monterrey, 8 de octubre de 2026.</p><p class="lab-ir"><a href="https://github.com/guatoc-ecohub/Chagra" data-t="lab2-ir">El código, abierto en GitHub (AGPL-3.0) →</a></p></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="piloto" aria-labelledby="t-piloto">
+    <p class="antetitulo" data-t="pil-ante">Lo que proponemos</p>
+    <h2 id="t-piloto" data-t="pil-tit">Fincas que miden</h2>
+    <p class="entrada" data-t="pil-ent">Proponemos un piloto de nueve meses con 10 fincas campesinas de la vereda, de la mano de su Junta de Acción Comunal. Buscamos aliados para hacerlo realidad.</p>
+    <div class="hace">
+      <div><span class="marca-h"></span><h3 data-t="p1-t">10 fincas</h3><p data-t="p1-p">Cada finca lleva su registro en Chagra: siembras, cosechas, plagas y prácticas, también por voz. Los datos son de quien cultiva.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="p2-t">Suelo y clima, medidos</h3><p data-t="p2-p">Estaciones de monitoreo de suelo y clima en las fincas, con sus lecturas en Chagra, para construir un calendario agroclimático y una guía de prácticas de la vereda.</p></div>
+      <div><span class="marca-h"></span><h3 data-t="p3-t">Jóvenes monitores</h3><p data-t="p3-p">Tres jóvenes de la vereda formados como monitores, y nueve talleres abiertos para que cada familia aprenda a leer sus propios datos.</p></div>
+    </div>
+    <p class="medido" data-t="pil-med">Estado hoy: el software para recibir las lecturas de los sensores está listo; todavía no hay ninguna estación instalada en una finca. El piloto es una propuesta y busca aliados.</p>
+    <p class="pil-cta"><a class="btn prim" href="/aliados/" data-t="pil-btn">Cómo sumarse como aliado</a></p>
   </section>
 
   <section class="seccion" id="quien" aria-labelledby="t-quien">
@@ -456,7 +485,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
       <div>
         <h3>Miguel Guerrero</h3>
         <p class="rol" data-t="f-rol">Desarrollador · agroecólogo aficionado</p>
-        <p data-t="f-p">Construye Chagra desde Guatoc, en Choachí, Cundinamarca, en la vertiente oriental de la cordillera Oriental. Sin inversionistas de riesgo ni aceleradoras: un propósito, que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
+        <p data-t="f-p">Construye Chagra desde Guatoc Lab, en Choachí, Cundinamarca, en la vertiente oriental de la cordillera Oriental. Sin inversionistas de riesgo ni aceleradoras: un propósito, que el campesino colombiano tenga herramientas digitales que lo respeten.</p>
         <a class="btn prim" href="mailto:chagra@guatoc.co" data-t="f-btn">Escríbanos</a>
       </div>
     </div>
@@ -468,7 +497,7 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
     <div class="pie">
       <div>
         <h4>Chagra</h4>
-        <p data-t="pie-1">Agente agroecológico colombiano. Una iniciativa de Guatoc-EcoHub, hecha en Choachí con energía solar. AGPL-3.0 · 2026.</p>
+        <p data-t="pie-1">Agente agroecológico colombiano. Una iniciativa de Guatoc Lab, hecha en Choachí con energía solar. AGPL-3.0 · 2026.</p>
         <p data-t="pie-2">Información de referencia basada en literatura académica y en resoluciones públicas (ICA, AGROSAVIA, MADS). Sin convenios institucionales formales.</p>
       </div>
       <div>
@@ -486,7 +515,8 @@ footer .seccion{padding-top:48px;padding-bottom:40px}
         <h4 data-t="pie-h3">Contacto</h4>
         <ul>
           <li><a href="mailto:chagra@guatoc.co">chagra@guatoc.co</a></li>
-          <li><a href="https://guatoc.co">Guatoc-EcoHub</a></li>
+          <li><a href="/aliados/" data-t="pie-ali">Aliados: cómo sumarse</a></li>
+          <li><a href="https://guatoc.co">Guatoc Lab · guatoc.co</a></li>
         </ul>
       </div>
     </div>
@@ -579,7 +609,7 @@ const EN = {
   'd1-t': 'Own server, powered by the sun', 'd1-p': 'The agent and the computer vision run on a Chagra server in Choachí, Cundinamarca, on off-grid solar power. Your questions and photos go to that server, not to a third-party cloud.',
   'd2-t': 'Open models, open code', 'd2-p': 'Open, local language models, and all the code under AGPL-3.0, auditable on GitHub. Farm records are kept in farmOS, a free agricultural record-keeping system.',
   'd3-t': 'If it doesn’t know, it says so', 'd3-p': 'The agent answers anchored to the catalogue. When the data isn’t there, it says so instead of making it up; it never recommends dangerous doses or toxic mixtures.',
-  'd4-t': 'Without signal, too', 'd4-p': 'The app stores what you record on the phone and sends it when the connection returns. On the farm, without internet, it keeps working.',
+  'd4-t': 'Without signal, too', 'd4-p': 'The app stores what you record on the phone and sends it when the signal returns. It also works offline.',
   'ej-t': 'The opening example, with its evidence',
   'ej-1': 'Vet, L. E. M., van Lenteren, J. C. & Woets, J. (1980). The parasite-host relationship between <i>Encarsia formosa</i> (Hymenoptera: Aphelinidae) and <i>Trialeurodes vaporariorum</i> (Homoptera: Aleyrodidae). <i>Zeitschrift für Angewandte Entomologie</i>, 90, 26–51.',
   'ej-2': 'Quesada-Moraga, E., Maranhao, E. A. A., Valverde-García, P. & Santiago-Álvarez, C. (2006). Selection of <i>Beauveria bassiana</i> isolates for control of the whiteflies <i>Bemisia tabaci</i> and <i>Trialeurodes vaporariorum</i> on the basis of their virulence, thermal requirements, and toxicogenic activity. <i>Biological Control</i>, 36, 274–287.',
@@ -589,9 +619,20 @@ const EN = {
   'q2-t': 'Technicians and extension workers', 'q2-p': 'For those who accompany farmers in the territory and need to validate species, suggest biopreparations and record observations with evidence.',
   'q3-t': 'Cooperatives and institutions', 'q3-p': 'For organisations that want to use or co-fund Chagra in their territories: exportable field records, restoration by altitude band and participatory monitoring.',
   'f-rol': 'Developer · amateur agroecologist',
-  'f-p': 'Builds Chagra from Guatoc, in Choachí, Cundinamarca, on the eastern slope of the Eastern Cordillera. No venture capital, no accelerators: one purpose, that Colombian farmers have digital tools that respect them.',
+  'f-p': 'Builds Chagra from Guatoc Lab, in Choachí, Cundinamarca, on the eastern slope of the Eastern Cordillera. No venture capital, no accelerators: one purpose, that Colombian farmers have digital tools that respect them.',
   'f-btn': 'Write to us',
-  'pie-1': 'Colombian agroecology agent. An initiative of Guatoc-EcoHub, made in Choachí with solar power. AGPL-3.0 · 2026.',
+  'lab-ante': 'Who makes it', 'lab-tit': 'Guatoc Lab, in Choachí',
+  'lab-ent': 'Chagra is built and tested at Guatoc Lab, a living laboratory for conservation, ecosystem restoration and agroecology in the El Curí rural district of Choachí (Cundinamarca, Colombia). It is high mountain country, 2,300 to 2,500 metres above sea level, facing the La Chorrera canyon.',
+  'lab1-t': 'The laboratory', 'lab1-p': 'Chagra’s server runs there on solar power, and the app is tested there before it goes to other farms.', 'lab1-ir': 'Visit Guatoc Lab at guatoc.co →',
+  'lab2-t': 'Keynote, CICOM 2026', 'lab2-p': '“Cómo construir un agente de IA con herramientas open source: Chagra, un agente agroecológico” (How to build an AI agent with open-source tools: Chagra, an agroecology agent). XVI International Computing Congress CICOM 2026, Faculty of Philosophy and Letters, Universidad Autónoma de Nuevo León (UANL), Monterrey, 8 October 2026.', 'lab2-ir': 'The code, open on GitHub (AGPL-3.0) →',
+  'pil-ante': 'What we propose', 'pil-tit': 'Farms that measure',
+  'pil-ent': 'We propose a nine-month pilot with 10 smallholder farms in the district, together with its Community Action Board. We are looking for partners to make it happen.',
+  'p1-t': '10 farms', 'p1-p': 'Each farm keeps its records in Chagra: planting, harvests, pests and practices, also by voice. The data belongs to the people who farm.',
+  'p2-t': 'Soil and weather, measured', 'p2-p': 'Soil and weather monitoring stations on the farms, with their readings in Chagra, to build an agro-climatic calendar and a practice guide for the district.',
+  'p3-t': 'Young monitors', 'p3-p': 'Three young people from the district trained as monitors, and nine open workshops so every family learns to read its own data.',
+  'pil-med': 'Status today: the software to receive sensor readings is ready; no station is installed on a farm yet. The pilot is a proposal and is looking for partners.',
+  'pil-btn': 'How to join as a partner', 'pie-ali': 'Partners: how to join',
+  'pie-1': 'Colombian agroecology agent. An initiative of Guatoc Lab, made in Choachí with solar power. AGPL-3.0 · 2026.',
   'pie-2': 'Reference information based on academic literature and public regulations (ICA, AGROSAVIA, MADS). No formal institutional agreements.',
   'pie-h2': 'Go to', 'pie-app': 'The app', 'pie-apr': 'Learn', 'pie-gh': 'Code on GitHub', 'pie-legal': 'Terms and privacy', 'pie-h3': 'Contact',
   'sab-t': 'Ethnobotanical knowledge cited from the scientific literature:',
