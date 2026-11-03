@@ -12,9 +12,9 @@ Para revisar las redirecciones localmente, use Wrangler Pages:
 
 ```sh
 python3 tests/prepare-preview.py
-npx wrangler pages dev _gate/preview --ip 127.0.0.1 --port 8080
-python3 tests/check-site.py http://127.0.0.1:8080
-bash tests/smoke-css-coverage.sh http://127.0.0.1:8080
+npx wrangler pages dev _gate/preview --ip localhost --port 8080
+python3 tests/check-site.py http://localhost:8080
+bash tests/smoke-css-coverage.sh http://localhost:8080
 ```
 
 Un servidor HTTP estático sencillo permite revisar el HTML, pero no aplica las

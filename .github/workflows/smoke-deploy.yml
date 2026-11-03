@@ -6,12 +6,17 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   preview-smoke:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
       - name: Start Pages preview
@@ -19,9 +24,9 @@ jobs:
           WRANGLER_SEND_METRICS: 'false'
         run: |
           python3 tests/prepare-preview.py
-          npx --yes wrangler@4.148.0 pages dev _gate/preview --ip 127.0.0.1 --port 8080 --compatibility-date=2026-10-06 > _gate/preview.log 2>&1 &
+          npx --yes wrangler@4.148.0 pages dev _gate/preview --ip localhost --port 8080 --compatibility-date=2026-10-06 > _gate/preview.log 2>&1 &
           for attempt in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8080/ -o /dev/null; then
+            if curl -fsS http://localhost:8080/ -o /dev/null; then
               exit 0
             fi
             sleep 2
@@ -29,15 +34,17 @@ jobs:
           cat _gate/preview.log
           exit 1
       - name: Verify links, anchors and course redirects
-        run: python3 tests/check-site.py http://127.0.0.1:8080
+        run: python3 tests/check-site.py http://localhost:8080
       - name: Verify CSS coverage
-        run: bash tests/smoke-css-coverage.sh http://127.0.0.1:8080
+        run: bash tests/smoke-css-coverage.sh http://localhost:8080
 
   smoke-test:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Wait for Cloudflare Pages deploy
         run: sleep 120
       - name: Verify public routes
