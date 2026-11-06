@@ -15,7 +15,7 @@ if output.exists():
 output.mkdir(parents=True)
 for name in ('index.html', '404.html', 'styles.css', 'main.js', '_headers',
              '_redirects', 'robots.txt', 'sitemap.xml', 'assets', 'aprender',
-             'legal', 'reportar-invasora'):
+             'legal', 'reportar-invasora', 'aliados'):
     source = root / name
     if source.is_dir():
         shutil.copytree(source, output / name)
