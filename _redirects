@@ -1,16 +1,31 @@
-/app      https://chagra.guatoc.co   302
-/github   https://github.com/guatoc-ecohub/Chagra   302
+/app      https://chagra.app   302
 /agpl     https://www.gnu.org/licenses/agpl-3.0.html   302
 
-# Aprender — URLs cortas. Bioseguridad → unidad interactiva; 15-15-15 → lectura reescrita el 23-sep-2026.
-# Artículo standalone movido a /aprender/articulo/<tema> para evitar colisión clean-URL.
-/aprender/bioseguridad         /aprender/unidad/bioseguridad/         301
-/aprender/transicion-15-15-15  /aprender/articulo/transicion-15-15-15  301
+# Los cursos se ofrecen en el sitio educativo.
+/aprender/curso                       https://edu.chagra.bio/cursos/aprende-a-usar-chagra/   301
+/aprender/bioseguridad                https://edu.chagra.bio/cursos/bioseguridad/            301
+/aprender/transicion-15-15-15          https://edu.chagra.bio/cursos/transicion-15-15-15/    301
+/aprender/unidad/bioseguridad          https://edu.chagra.bio/cursos/bioseguridad/            301
+/aprender/unidad/transicion-15-15-15   https://edu.chagra.bio/cursos/transicion-15-15-15/    301
+/aprender/mini-curso                  https://edu.chagra.bio/                               301
+/aprender/mini-curso/modulo2/leccion5  https://edu.chagra.bio/compost/                       301
+/aprender/mini-curso/modulo2/leccion5/ https://edu.chagra.bio/compost/                       301
+/aprender/mini-curso/modulo2/leccion5/index.html https://edu.chagra.bio/compost/            301
 
-# Archivos internos del repo: Cloudflare Pages publica todo el repo, así que se desvían a la portada.
+# Archivos de documentación y pruebas fuera de la navegación pública.
 /README.md     /   302
 /README        /   302
 /.gitignore    /   302
+
+/aprender/curso/*                     https://edu.chagra.bio/cursos/aprende-a-usar-chagra/   301
+/aprender/bioseguridad/*              https://edu.chagra.bio/cursos/bioseguridad/            301
+/aprender/transicion-15-15-15/*        https://edu.chagra.bio/cursos/transicion-15-15-15/    301
+/aprender/unidad/bioseguridad/*        https://edu.chagra.bio/cursos/bioseguridad/            301
+/aprender/unidad/transicion-15-15-15/* https://edu.chagra.bio/cursos/transicion-15-15-15/    301
+/aprender/mini-curso/modulo1/*         https://edu.chagra.bio/cursos/aprende-a-usar-chagra/   301
+/aprender/mini-curso/modulo2/*         https://edu.chagra.bio/biopreparados/                  301
+/aprender/mini-curso/modulo3/*         https://edu.chagra.bio/control-biologico/             301
+/aprender/mini-curso/*                https://edu.chagra.bio/                               301
 /.github/*     /   302
 /tests/*       /   302
 /_gate/*       /   302

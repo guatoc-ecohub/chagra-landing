@@ -1,1 +1,5 @@
 node_modules
+/_gate/
+/.wrangler/
+.env
+.env.local

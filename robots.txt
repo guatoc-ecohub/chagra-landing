@@ -6,7 +6,6 @@ User-agent: *
 Allow: /
 
 # Opt-out explícito para crawlers de entrenamiento LLM.
-# Refuerza la regla en _redirects.
 
 User-agent: GPTBot
 Disallow: /
@@ -35,4 +34,4 @@ Disallow: /
 User-agent: Bytespider
 Disallow: /
 
-Sitemap: https://chagra.app/sitemap.xml
+Sitemap: https://chagra.bio/sitemap.xml

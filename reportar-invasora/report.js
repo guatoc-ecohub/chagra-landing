@@ -1,31 +1,4 @@
-/* /reportar-invasora/report.js — form publico de reporte de invasoras
- *
- * Security-first decisions:
- *   - Sin backend: el form genera un mailto con cuerpo pre-llenado.
- *     Cloudflare Pages no tiene endpoint propio en este sitio. No abrimos
- *     ningun endpoint con CORS amplio porque ese seria vector de spam.
- *   - Honeypot field "website": bots de form-fillers lo llenan; humanos no
- *     lo ven (display:none en CSS). Si tiene valor, abortamos silenciosamente.
- *   - Rate-limit local: maximo 1 envio cada 15s por sesion (sessionStorage).
- *     Bot replays se cortan; usuario legitimo no se entera.
- *   - Validacion estricta cliente: largo de strings, formato decimal de coords,
- *     archivo MIME y peso < 3 MB. El servidor de email (no controlado por nos)
- *     hace de segundo filtro.
- *   - Sin innerHTML con datos de usuario: todo via textContent / value.
- *
- * TODO (Fase 2 — pendiente):
- *   - Cloudflare Worker + Turnstile (captcha CF nativo) para validacion server-side
- *     y deduplicacion contra el catalogo Chagra.
- *   - IA local de pre-filtrado (Plantix-like) que valide que la foto SI es la
- *     species reportada. Sidecar HTTP MCP + Vision model (qwen2.5vl:7b o
- *     llama3.2-vision:11b sobre Ollama en alpha). Por ahora, validacion manual
- *     del equipo Chagra.
- *   - Integracion con KG (Apache AGE 1.5.0 en postgres-farm DB chagra_kg)
- *     para enriquecer el reporte con coordenadas-vereda-municipio y matchear
- *     con observaciones previas.
- *
- * AGPL-3.0
- */
+/* Formulario ciudadano: prepara un correo para revisión manual. */
 (function(){
 'use strict';
 
@@ -56,7 +29,7 @@ honey.setAttribute('aria-hidden', 'true');
 honey.className = 'report-honeypot';
 form.appendChild(honey);
 
-/* === carga del catalogo === */
+/* === carga del catálogo === */
 fetch(JSON_URL, { credentials: 'omit', cache: 'default' })
   .then(r => {
     if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -64,13 +37,13 @@ fetch(JSON_URL, { credentials: 'omit', cache: 'default' })
   })
   .then(data => {
     const species = Array.isArray(data && data.species) ? data.species : [];
-    /* sort por nombre comun para UX */
+    /* sort por nombre común para UX */
     species.sort((a, b) => (a.nombre_comun || '').localeCompare(b.nombre_comun || '', 'es-CO'));
     for (const s of species) {
       const opt = document.createElement('option');
       opt.value = s.id;
       /* textContent — sin innerHTML, defensa anti-XSS por si el JSON
-         se viera contaminado. AGPL-3.0 + revision manual del catalogo
+         se viera contaminado. AGPL-3.0 + revisión manual del catálogo
          hace este vector improbable, pero defensa en profundidad. */
       opt.textContent = (s.nombre_comun || s.id) + ' — ' + (s.nombre_cientifico || '');
       opt.dataset.cientifico = s.nombre_cientifico || '';
@@ -78,15 +51,15 @@ fetch(JSON_URL, { credentials: 'omit', cache: 'default' })
       speciesSel.appendChild(opt);
     }
     if (species.length === 0) {
-      setStatus('No se pudo cargar el catalogo de especies. Recargue la pagina o reporte via SiB Colombia.', 'error');
+      setStatus('No se pudo cargar el catálogo de especies. Recargue la página o reporte vía SiB Colombia.', 'error');
     }
   })
   .catch(err => {
-    /* sin console.log para mantener limpio el output en produccion */
-    setStatus('No se pudo cargar el catalogo (' + err.message + '). Recargue la pagina.', 'error');
+    /* sin console.log para mantener limpio el output en producción */
+    setStatus('No se pudo cargar el catálogo (' + err.message + '). Recargue la página.', 'error');
   });
 
-/* === contador caracteres descripcion === */
+/* === contador caracteres descripción === */
 if (descTa && counter) {
   const updateCounter = () => {
     const n = descTa.value.length;
@@ -97,7 +70,7 @@ if (descTa && counter) {
   updateCounter();
 }
 
-/* === validacion peso foto === */
+/* === validación peso foto === */
 if (photoInput) {
   photoInput.addEventListener('change', () => {
     const f = photoInput.files && photoInput.files[0];
@@ -113,7 +86,7 @@ if (photoInput) {
       photoInput.value = '';
       return;
     }
-    setStatus('Foto cargada: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB). Recuerde adjuntarla manualmente en su email cuando se abra el cliente.', 'ok');
+    setStatus('Foto cargada: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB). Recuerde adjuntarla manualmente en su correo cuando se abra el cliente.', 'ok');
   });
 }
 
@@ -153,20 +126,20 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  /* coords formato decimal valido si vienen */
+  /* coords formato decimal válido si vienen */
   if (lat && !/^-?\d{1,2}(\.\d+)?$/.test(lat)) {
-    setStatus('Latitud invalida. Use formato decimal, ej. 4.5294.', 'error');
+    setStatus('Latitud inválida. Use formato decimal, ej. 4.5294.', 'error');
     return;
   }
   if (lon && !/^-?\d{1,3}(\.\d+)?$/.test(lon)) {
-    setStatus('Longitud invalida. Use formato decimal, ej. -74.0392.', 'error');
+    setStatus('Longitud inválida. Use formato decimal, ej. -74.0392.', 'error');
     return;
   }
 
-  /* descripcion max */
+  /* descripción max */
   const desc = (descTa && descTa.value || '').trim();
   if (desc.length > 500) {
-    setStatus('La descripcion excede 500 caracteres.', 'error');
+    setStatus('La descripción excede 500 caracteres.', 'error');
     return;
   }
 
@@ -186,17 +159,17 @@ form.addEventListener('submit', e => {
   lines.push('Reporte ciudadano de especie invasora — sitio chagra.bio');
   lines.push('');
   lines.push('Especie:        ' + comun + ' (' + cientifico + ')');
-  lines.push('Id catalogo:    ' + sid);
+  lines.push('Identificador del catálogo:    ' + sid);
   if (loc)   lines.push('Sitio:          ' + loc);
   if (lat && lon) lines.push('Coordenadas:    ' + lat + ', ' + lon);
-  if (desc)  lines.push('Descripcion:    ' + desc);
+  if (desc)  lines.push('Descripción:    ' + desc);
   lines.push('');
-  lines.push('Foto adjunta:   ' + (photoInput.files && photoInput.files[0] ? 'SI — recuerde adjuntar ' + photoInput.files[0].name + ' manualmente' : 'no'));
+  lines.push('Foto adjunta:   ' + (photoInput.files && photoInput.files[0] ? 'SÍ — recuerde adjuntar ' + photoInput.files[0].name + ' manualmente' : 'no'));
   lines.push('');
   lines.push('---');
-  lines.push('Enviado desde el form publico /reportar-invasora/ de chagra.bio.');
-  lines.push('Marco legal: Resolucion 0684/2018 MinAmbiente.');
-  lines.push('Este reporte es revisado manualmente por el equipo Chagra antes de incorporarse al catalogo.');
+  lines.push('Enviado desde el formulario público /reportar-invasora/ de chagra.bio.');
+  lines.push('Marco legal: Resolución 0684/2018 MinAmbiente.');
+  lines.push('Este reporte es revisado manualmente por el equipo Chagra antes de incorporarse al catálogo.');
   const body = lines.join('\n');
 
   const subject = '[Reporte invasora] ' + comun + (loc ? ' — ' + loc : '');
@@ -210,7 +183,7 @@ form.addEventListener('submit', e => {
   /* abrir el cliente de email del usuario */
   window.location.href = mailto;
 
-  setStatus('Se abrio su cliente de correo con el reporte pre-llenado. Si tiene foto, adjuntela antes de enviar.', 'ok');
+  setStatus('Se abrió su cliente de correo con el reporte preparado. Si tiene foto, adjúntela antes de enviar.', 'ok');
   submitBtn.disabled = true;
   setTimeout(() => { submitBtn.disabled = false; }, RATE_LIMIT_MS);
 });
